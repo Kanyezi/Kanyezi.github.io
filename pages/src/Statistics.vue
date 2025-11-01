@@ -268,14 +268,16 @@ const loadData = async () => {
   try {
     // 使用导入的数据而不是fetch
     // 筛选2025级数据
+    const data: AppData = allData;
     const data25:AppData = {users:[],data:{}};
-    for(let i=0;i<allData.users.length;i++){
-      if(allData.users[i].grade==2025){
-        data25.users.push(allData.users[i]);
-        data25.data[allData.users[i].name]=allData.data[allData.users[i].name];
-      }
+    for(let i=0;i<data.users.length;i++){
+      const u = data.users[i];   // ← 一次性收窄
+      if (!u || u.grade !== 2025) continue;
+
+      data25.users.push(u);
+      const d = data.data[u.name];
+      if (d) data25.data[u.name] = d;   // 防止 data 里没有这个人
     }
-    // const data: AppData = allData;
     users.value = data25.users;
     userData.value = data25.data;
     await nextTick();
