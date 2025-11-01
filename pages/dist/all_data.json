@@ -1,0 +1,919 @@
+{
+  "users": [
+    {
+      "name": "孙叶",
+      "class": "25计算机1班",
+      "codeforces_id": "chu4351",
+      "atcoder_id": "chu4351",
+      "matiji_id": "218118",
+      "grade": 2025,
+      "atcoder": 8,
+      "codeforces": 19,
+      "matiji": 12
+    },
+    {
+      "name": "陈宣扬",
+      "class": "25计算机3班",
+      "codeforces_id": "cxycec",
+      "atcoder_id": "cxy2006",
+      "matiji_id": "217005",
+      "grade": 2025,
+      "atcoder": 21,
+      "codeforces": 59,
+      "matiji": 37
+    },
+    {
+      "name": "杜光明",
+      "class": "25计算机3班",
+      "codeforces_id": "Rei_.",
+      "atcoder_id": "ruanmei",
+      "matiji_id": "217486",
+      "grade": 2025,
+      "atcoder": 12,
+      "codeforces": 29,
+      "matiji": 18
+    },
+    {
+      "name": "陈光照",
+      "class": "25计算机3班",
+      "codeforces_id": "MysterService",
+      "atcoder_id": "MysterService",
+      "matiji_id": "218083",
+      "grade": 2025,
+      "atcoder": 4,
+      "codeforces": 12,
+      "matiji": 21
+    },
+    {
+      "name": "刘意群",
+      "class": "25计算机专升本3班",
+      "codeforces_id": "liuning123",
+      "atcoder_id": "liuning123",
+      "matiji_id": "151967",
+      "grade": 2025,
+      "atcoder": 39,
+      "codeforces": 81,
+      "matiji": 0
+    },
+    {
+      "name": "万奕忻",
+      "class": "25软件1班",
+      "codeforces_id": "yixinWan",
+      "atcoder_id": "yixinWan",
+      "matiji_id": "218264",
+      "grade": 2025,
+      "atcoder": 2,
+      "codeforces": 2,
+      "matiji": 26
+    },
+    {
+      "name": "陈轩宇",
+      "class": "25软件1班",
+      "codeforces_id": "kilt",
+      "atcoder_id": "kilty",
+      "matiji_id": "",
+      "grade": 2025,
+      "atcoder": 2,
+      "codeforces": 4,
+      "matiji": 0
+    },
+    {
+      "name": "胡悠茗",
+      "class": "25软件2班",
+      "codeforces_id": "breadog",
+      "atcoder_id": "breadog",
+      "matiji_id": "216994",
+      "grade": 2025,
+      "atcoder": 21,
+      "codeforces": 73,
+      "matiji": 12
+    },
+    {
+      "name": "施宇轩",
+      "class": "25软件2班",
+      "codeforces_id": "zhouxian",
+      "atcoder_id": "zhouxian",
+      "matiji_id": "217815",
+      "grade": 2025,
+      "atcoder": 4,
+      "codeforces": 20,
+      "matiji": 23
+    },
+    {
+      "name": "巫浩锋",
+      "class": "25软件2班",
+      "codeforces_id": "Kyrie_117",
+      "atcoder_id": "Kyrie_11",
+      "matiji_id": "218127",
+      "grade": 2025,
+      "atcoder": 0,
+      "codeforces": 1,
+      "matiji": 2
+    },
+    {
+      "name": "连全威",
+      "class": "25软件2班",
+      "codeforces_id": "Koijia",
+      "atcoder_id": "Koijia",
+      "matiji_id": "218207",
+      "grade": 2025,
+      "atcoder": 0,
+      "codeforces": 0,
+      "matiji": 2
+    },
+    {
+      "name": "张宇翔",
+      "class": "25软件3班",
+      "codeforces_id": "OOZYXOO",
+      "atcoder_id": "OOZYXOO",
+      "matiji_id": "216972",
+      "grade": 2025,
+      "atcoder": 23,
+      "codeforces": 91,
+      "matiji": 12
+    },
+    {
+      "name": "周晓飞",
+      "class": "25软件3班",
+      "codeforces_id": "hei_di",
+      "atcoder_id": "hei_di",
+      "matiji_id": "217113",
+      "grade": 2025,
+      "atcoder": 13,
+      "codeforces": 23,
+      "matiji": 6
+    },
+    {
+      "name": "刘云琪",
+      "class": "25软件3班",
+      "codeforces_id": "toykowww",
+      "atcoder_id": "tokyoww",
+      "matiji_id": "216968",
+      "grade": 2025,
+      "atcoder": 17,
+      "codeforces": 64,
+      "matiji": 23
+    },
+    {
+      "name": "吴春雷",
+      "class": "25软件3班",
+      "codeforces_id": "wuchunlei",
+      "atcoder_id": "wuchunlei",
+      "matiji_id": "217859",
+      "grade": 2025,
+      "atcoder": 6,
+      "codeforces": 18,
+      "matiji": 2
+    },
+    {
+      "name": "叶宇喆",
+      "class": "25软件3班",
+      "codeforces_id": "gdyg666",
+      "atcoder_id": "gdyg666",
+      "matiji_id": "",
+      "grade": 2025,
+      "atcoder": 3,
+      "codeforces": 3,
+      "matiji": 0
+    },
+    {
+      "name": "王佳欣",
+      "class": "25软件3班",
+      "codeforces_id": "changem1",
+      "atcoder_id": "lushishen",
+      "matiji_id": "217855",
+      "grade": 2025,
+      "atcoder": 9,
+      "codeforces": 34,
+      "matiji": 31
+    },
+    {
+      "name": "王西门",
+      "class": "25软件3班",
+      "codeforces_id": "gggsss",
+      "atcoder_id": "gggsss",
+      "matiji_id": "218124",
+      "grade": 2025,
+      "atcoder": 5,
+      "codeforces": 8,
+      "matiji": 2
+    },
+    {
+      "name": "燕诺",
+      "class": "25软件3班",
+      "codeforces_id": "YwY1126",
+      "atcoder_id": "Ywy1126",
+      "matiji_id": "218193",
+      "grade": 2025,
+      "atcoder": 5,
+      "codeforces": 17,
+      "matiji": 18
+    },
+    {
+      "name": "苏奕铖",
+      "class": "25软件3班",
+      "codeforces_id": "",
+      "atcoder_id": "",
+      "matiji_id": "",
+      "grade": 2025,
+      "atcoder": 0,
+      "codeforces": 0,
+      "matiji": 0
+    },
+    {
+      "name": "郑亦宇",
+      "class": "25软件专升本1班",
+      "codeforces_id": "zhengyiyu",
+      "atcoder_id": "zhengyiyu",
+      "matiji_id": "217035",
+      "grade": 2025,
+      "atcoder": 13,
+      "codeforces": 62,
+      "matiji": 76
+    },
+    {
+      "name": "徐文静",
+      "class": "25软件专升本2班",
+      "codeforces_id": "yesswlqbj",
+      "atcoder_id": "yesswlqbjs",
+      "matiji_id": "217485",
+      "grade": 2025,
+      "atcoder": 15,
+      "codeforces": 65,
+      "matiji": 33
+    },
+    {
+      "name": "符轩跃",
+      "class": "25软件专升本2班",
+      "codeforces_id": "fuxuanyue",
+      "atcoder_id": "fuxuanyue",
+      "matiji_id": "122691",
+      "grade": 2025,
+      "atcoder": 30,
+      "codeforces": 54,
+      "matiji": 30
+    },
+    {
+      "name": "刘筱朵",
+      "class": "25软件专升本3班",
+      "codeforces_id": "_lxd_",
+      "atcoder_id": "lxd_",
+      "matiji_id": "217489",
+      "grade": 2025,
+      "atcoder": 6,
+      "codeforces": 78,
+      "matiji": 17
+    },
+    {
+      "name": "倪志杰",
+      "class": "25软件专升本3班",
+      "codeforces_id": "Ardmore",
+      "atcoder_id": "Ardmore",
+      "matiji_id": "217991",
+      "grade": 2025,
+      "atcoder": 9,
+      "codeforces": 48,
+      "matiji": 31
+    },
+    {
+      "name": "朱雯婧",
+      "class": "25软件专升本3班",
+      "codeforces_id": "Morbid698",
+      "atcoder_id": "Morbid698",
+      "matiji_id": "218204",
+      "grade": 2025,
+      "atcoder": 8,
+      "codeforces": 11,
+      "matiji": 19
+    },
+    {
+      "name": "陈硕",
+      "class": "",
+      "codeforces_id": "xing_yao",
+      "atcoder_id": "xing_yao",
+      "matiji_id": "",
+      "grade": 2023,
+      "atcoder": 252,
+      "codeforces": 1157,
+      "matiji": 0
+    },
+    {
+      "name": "曹政业",
+      "class": "",
+      "codeforces_id": "caozhengye",
+      "atcoder_id": "caozhengye",
+      "matiji_id": "",
+      "grade": 2023,
+      "atcoder": 297,
+      "codeforces": 1305,
+      "matiji": 0
+    },
+    {
+      "name": "陈资权",
+      "class": "",
+      "codeforces_id": "LuckyCc.",
+      "atcoder_id": "LuckyCc",
+      "matiji_id": "",
+      "grade": 2023,
+      "atcoder": 177,
+      "codeforces": 795,
+      "matiji": 0
+    },
+    {
+      "name": "叶智豪",
+      "class": "",
+      "codeforces_id": "YonagiKei",
+      "atcoder_id": "Yonagi_Kei",
+      "matiji_id": "",
+      "grade": 2023,
+      "atcoder": 0,
+      "codeforces": 762,
+      "matiji": 0
+    },
+    {
+      "name": "余凯",
+      "class": "",
+      "codeforces_id": "Gai_yk",
+      "atcoder_id": "ykkkk",
+      "matiji_id": "",
+      "grade": 2024,
+      "atcoder": 117,
+      "codeforces": 237,
+      "matiji": 0
+    },
+    {
+      "name": "陈姿蓥",
+      "class": "",
+      "codeforces_id": "ziying032",
+      "atcoder_id": "ziying032",
+      "matiji_id": "",
+      "grade": 2024,
+      "atcoder": 68,
+      "codeforces": 202,
+      "matiji": 0
+    },
+    {
+      "name": "姜银",
+      "class": "",
+      "codeforces_id": "jiangyin0750",
+      "atcoder_id": "jiangyin0750",
+      "matiji_id": "",
+      "grade": 2024,
+      "atcoder": 140,
+      "codeforces": 317,
+      "matiji": 0
+    },
+    {
+      "name": "尚淇淇",
+      "class": "",
+      "codeforces_id": "x_yeyue",
+      "atcoder_id": "x_yeyue",
+      "matiji_id": "",
+      "grade": 2024,
+      "atcoder": 145,
+      "codeforces": 295,
+      "matiji": 0
+    },
+    {
+      "name": "王瑞珽",
+      "class": "",
+      "codeforces_id": "wangruiting",
+      "atcoder_id": "wangruiting",
+      "matiji_id": "",
+      "grade": 2024,
+      "atcoder": 114,
+      "codeforces": 362,
+      "matiji": 0
+    },
+    {
+      "name": "马逍遥",
+      "class": "",
+      "codeforces_id": "lies-",
+      "atcoder_id": "moon1ight",
+      "matiji_id": "",
+      "grade": 2024,
+      "atcoder": 94,
+      "codeforces": 218,
+      "matiji": 0
+    },
+    {
+      "name": "杜蘇航",
+      "class": "",
+      "codeforces_id": "xiao_shuang",
+      "atcoder_id": "xiaoshuang",
+      "matiji_id": "",
+      "grade": 2024,
+      "atcoder": 94,
+      "codeforces": 182,
+      "matiji": 0
+    },
+    {
+      "name": "赵星宇",
+      "class": "",
+      "codeforces_id": "zhaooooo",
+      "atcoder_id": "zhao_xy",
+      "matiji_id": "",
+      "grade": 2024,
+      "atcoder": 130,
+      "codeforces": 149,
+      "matiji": 0
+    },
+    {
+      "name": "李俊",
+      "class": "",
+      "codeforces_id": "ami_XR",
+      "atcoder_id": "AMI_Xxr",
+      "matiji_id": "",
+      "grade": 2024,
+      "atcoder": 36,
+      "codeforces": 145,
+      "matiji": 0
+    }
+  ],
+  "data": {
+    "孙叶": {
+      "atcoder": {
+        "2025-10-20": 6,
+        "2025-11-01": 8
+      },
+      "codeforces": {
+        "2025-10-20": 6,
+        "2025-11-01": 19
+      },
+      "matiji": {
+        "2025-10-20": 3,
+        "2025-11-01": 12
+      }
+    },
+    "陈宣扬": {
+      "atcoder": {
+        "2025-10-20": 18,
+        "2025-11-01": 21
+      },
+      "codeforces": {
+        "2025-10-20": 48,
+        "2025-11-01": 59
+      },
+      "matiji": {
+        "2025-10-20": 20,
+        "2025-11-01": 37
+      }
+    },
+    "杜光明": {
+      "atcoder": {
+        "2025-10-20": 9,
+        "2025-11-01": 12
+      },
+      "codeforces": {
+        "2025-10-20": 22,
+        "2025-11-01": 29
+      },
+      "matiji": {
+        "2025-10-20": 11,
+        "2025-11-01": 18
+      }
+    },
+    "陈光照": {
+      "atcoder": {
+        "2025-10-20": 4,
+        "2025-11-01": 4
+      },
+      "codeforces": {
+        "2025-10-20": 6,
+        "2025-11-01": 12
+      },
+      "matiji": {
+        "2025-10-20": 10,
+        "2025-11-01": 21
+      }
+    },
+    "刘意群": {
+      "atcoder": {
+        "2025-10-20": 31,
+        "2025-11-01": 39
+      },
+      "codeforces": {
+        "2025-10-20": 66,
+        "2025-11-01": 81
+      },
+      "matiji": {
+        "2025-10-20": 0,
+        "2025-11-01": 0
+      }
+    },
+    "万奕忻": {
+      "atcoder": {
+        "2025-10-20": 2,
+        "2025-11-01": 2
+      },
+      "codeforces": {
+        "2025-10-20": 2,
+        "2025-11-01": 2
+      },
+      "matiji": {
+        "2025-10-20": 7,
+        "2025-11-01": 26
+      }
+    },
+    "陈轩宇": {
+      "atcoder": {
+        "2025-10-20": 2,
+        "2025-11-01": 2
+      },
+      "codeforces": {
+        "2025-10-20": 2,
+        "2025-11-01": 4
+      },
+      "matiji": {}
+    },
+    "胡悠茗": {
+      "atcoder": {
+        "2025-10-20": 18,
+        "2025-11-01": 21
+      },
+      "codeforces": {
+        "2025-10-20": 55,
+        "2025-11-01": 73
+      },
+      "matiji": {
+        "2025-10-20": 10,
+        "2025-11-01": 12
+      }
+    },
+    "施宇轩": {
+      "atcoder": {
+        "2025-10-20": 2,
+        "2025-11-01": 4
+      },
+      "codeforces": {
+        "2025-10-20": 8,
+        "2025-11-01": 20
+      },
+      "matiji": {
+        "2025-10-20": 14,
+        "2025-11-01": 23
+      }
+    },
+    "巫浩锋": {
+      "atcoder": {},
+      "codeforces": {
+        "2025-10-20": 1,
+        "2025-11-01": 1
+      },
+      "matiji": {
+        "2025-10-20": 2,
+        "2025-11-01": 2
+      }
+    },
+    "连全威": {
+      "atcoder": {},
+      "codeforces": {
+        "2025-10-20": 0,
+        "2025-11-01": 0
+      },
+      "matiji": {
+        "2025-10-20": 2,
+        "2025-11-01": 2
+      }
+    },
+    "张宇翔": {
+      "atcoder": {
+        "2025-10-20": 19,
+        "2025-11-01": 23
+      },
+      "codeforces": {
+        "2025-10-20": 68,
+        "2025-11-01": 91
+      },
+      "matiji": {
+        "2025-10-20": 12,
+        "2025-11-01": 12
+      }
+    },
+    "周晓飞": {
+      "atcoder": {
+        "2025-10-20": 11,
+        "2025-11-01": 13
+      },
+      "codeforces": {
+        "2025-10-20": 23,
+        "2025-11-01": 23
+      },
+      "matiji": {
+        "2025-10-20": 6,
+        "2025-11-01": 6
+      }
+    },
+    "刘云琪": {
+      "atcoder": {
+        "2025-10-20": 14,
+        "2025-11-01": 17
+      },
+      "codeforces": {
+        "2025-10-20": 49,
+        "2025-11-01": 64
+      },
+      "matiji": {
+        "2025-10-20": 16,
+        "2025-11-01": 23
+      }
+    },
+    "吴春雷": {
+      "atcoder": {
+        "2025-10-20": 4,
+        "2025-11-01": 6
+      },
+      "codeforces": {
+        "2025-10-20": 9,
+        "2025-11-01": 18
+      },
+      "matiji": {
+        "2025-10-20": 2,
+        "2025-11-01": 2
+      }
+    },
+    "叶宇喆": {
+      "atcoder": {
+        "2025-10-20": 3,
+        "2025-11-01": 3
+      },
+      "codeforces": {
+        "2025-10-20": 3,
+        "2025-11-01": 3
+      },
+      "matiji": {}
+    },
+    "王佳欣": {
+      "atcoder": {
+        "2025-10-20": 6,
+        "2025-11-01": 9
+      },
+      "codeforces": {
+        "2025-10-20": 13,
+        "2025-11-01": 34
+      },
+      "matiji": {
+        "2025-10-20": 17,
+        "2025-11-01": 31
+      }
+    },
+    "王西门": {
+      "atcoder": {
+        "2025-10-20": 3,
+        "2025-11-01": 5
+      },
+      "codeforces": {
+        "2025-10-20": 4,
+        "2025-11-01": 8
+      },
+      "matiji": {
+        "2025-10-20": 2,
+        "2025-11-01": 2
+      }
+    },
+    "燕诺": {
+      "atcoder": {
+        "2025-10-20": 2,
+        "2025-11-01": 5
+      },
+      "codeforces": {
+        "2025-10-20": 5,
+        "2025-11-01": 17
+      },
+      "matiji": {
+        "2025-10-20": 7,
+        "2025-11-01": 18
+      }
+    },
+    "苏奕铖": {
+      "atcoder": {},
+      "codeforces": {},
+      "matiji": {}
+    },
+    "郑亦宇": {
+      "atcoder": {
+        "2025-10-20": 10,
+        "2025-11-01": 13
+      },
+      "codeforces": {
+        "2025-10-20": 55,
+        "2025-11-01": 62
+      },
+      "matiji": {
+        "2025-10-20": 45,
+        "2025-11-01": 76
+      }
+    },
+    "徐文静": {
+      "atcoder": {
+        "2025-10-20": 12,
+        "2025-11-01": 15
+      },
+      "codeforces": {
+        "2025-10-20": 43,
+        "2025-11-01": 65
+      },
+      "matiji": {
+        "2025-10-20": 22,
+        "2025-11-01": 33
+      }
+    },
+    "符轩跃": {
+      "atcoder": {
+        "2025-10-20": 23,
+        "2025-11-01": 30
+      },
+      "codeforces": {
+        "2025-10-20": 26,
+        "2025-11-01": 54
+      },
+      "matiji": {
+        "2025-10-20": 22,
+        "2025-11-01": 30
+      }
+    },
+    "刘筱朵": {
+      "atcoder": {
+        "2025-10-20": 6,
+        "2025-11-01": 6
+      },
+      "codeforces": {
+        "2025-10-20": 70,
+        "2025-11-01": 78
+      },
+      "matiji": {
+        "2025-10-20": 10,
+        "2025-11-01": 17
+      }
+    },
+    "倪志杰": {
+      "atcoder": {
+        "2025-10-20": 6,
+        "2025-11-01": 9
+      },
+      "codeforces": {
+        "2025-10-20": 22,
+        "2025-11-01": 48
+      },
+      "matiji": {
+        "2025-10-20": 19,
+        "2025-11-01": 31
+      }
+    },
+    "朱雯婧": {
+      "atcoder": {
+        "2025-10-20": 5,
+        "2025-11-01": 8
+      },
+      "codeforces": {
+        "2025-10-20": 6,
+        "2025-11-01": 11
+      },
+      "matiji": {
+        "2025-10-20": 9,
+        "2025-11-01": 19
+      }
+    },
+    "陈硕": {
+      "atcoder": {
+        "2025-10-20": 250,
+        "2025-11-01": 252
+      },
+      "codeforces": {
+        "2025-10-20": 1156,
+        "2025-11-01": 1157
+      },
+      "matiji": {}
+    },
+    "曹政业": {
+      "atcoder": {
+        "2025-10-20": 297,
+        "2025-11-01": 297
+      },
+      "codeforces": {
+        "2025-10-20": 1305,
+        "2025-11-01": 1305
+      },
+      "matiji": {}
+    },
+    "陈资权": {
+      "atcoder": {
+        "2025-10-20": 177,
+        "2025-11-01": 177
+      },
+      "codeforces": {
+        "2025-10-20": 786,
+        "2025-11-01": 795
+      },
+      "matiji": {}
+    },
+    "叶智豪": {
+      "atcoder": {},
+      "codeforces": {
+        "2025-10-20": 762,
+        "2025-11-01": 762
+      },
+      "matiji": {}
+    },
+    "余凯": {
+      "atcoder": {
+        "2025-10-20": 111,
+        "2025-11-01": 117
+      },
+      "codeforces": {
+        "2025-10-20": 233,
+        "2025-11-01": 237
+      },
+      "matiji": {}
+    },
+    "陈姿蓥": {
+      "atcoder": {
+        "2025-10-20": 68,
+        "2025-11-01": 68
+      },
+      "codeforces": {
+        "2025-10-20": 202,
+        "2025-11-01": 202
+      },
+      "matiji": {}
+    },
+    "姜银": {
+      "atcoder": {
+        "2025-10-20": 130,
+        "2025-11-01": 140
+      },
+      "codeforces": {
+        "2025-10-20": 307,
+        "2025-11-01": 317
+      },
+      "matiji": {}
+    },
+    "尚淇淇": {
+      "atcoder": {
+        "2025-10-20": 140,
+        "2025-11-01": 145
+      },
+      "codeforces": {
+        "2025-10-20": 285,
+        "2025-11-01": 295
+      },
+      "matiji": {}
+    },
+    "王瑞珽": {
+      "atcoder": {
+        "2025-10-20": 109,
+        "2025-11-01": 114
+      },
+      "codeforces": {
+        "2025-10-20": 334,
+        "2025-11-01": 362
+      },
+      "matiji": {}
+    },
+    "马逍遥": {
+      "atcoder": {
+        "2025-10-20": 86,
+        "2025-11-01": 94
+      },
+      "codeforces": {
+        "2025-10-20": 212,
+        "2025-11-01": 218
+      },
+      "matiji": {}
+    },
+    "杜蘇航": {
+      "atcoder": {
+        "2025-10-20": 85,
+        "2025-11-01": 94
+      },
+      "codeforces": {
+        "2025-10-20": 180,
+        "2025-11-01": 182
+      },
+      "matiji": {}
+    },
+    "赵星宇": {
+      "atcoder": {
+        "2025-10-20": 128,
+        "2025-11-01": 130
+      },
+      "codeforces": {
+        "2025-10-20": 146,
+        "2025-11-01": 149
+      },
+      "matiji": {}
+    },
+    "李俊": {
+      "atcoder": {
+        "2025-10-20": 28,
+        "2025-11-01": 36
+      },
+      "codeforces": {
+        "2025-10-20": 131,
+        "2025-11-01": 145
+      },
+      "matiji": {}
+    }
+  },
+  "lastUpdate": "2025-11-01T14:58:02.446965"
+}
