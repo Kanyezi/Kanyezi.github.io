@@ -267,9 +267,17 @@ import allData from '../public/all_data.json';
 const loadData = async () => {
   try {
     // 使用导入的数据而不是fetch
-    const data: AppData = allData;
-    users.value = data.users;
-    userData.value = data.data;
+    // 筛选2025级数据
+    const data25:AppData = {users:[],data:{}};
+    for(let i=0;i<allData.users.length;i++){
+      if(allData.users[i].grade==2025){
+        data25.users.push(allData.users[i]);
+        data25.data[allData.users[i].name]=allData.data[allData.users[i].name];
+      }
+    }
+    // const data: AppData = allData;
+    users.value = data25.users;
+    userData.value = data25.data;
     await nextTick();
     // 使用立即渲染，不使用防抖
     immediateRenderCharts();
