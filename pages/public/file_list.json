@@ -1,14 +1,17 @@
 {
   "atcoder": [
     "2025-10-20_atcoder.json",
-    "2025-11-01_atcoder.json"
+    "2025-11-01_atcoder.json",
+    "2025-11-20_atcoder.json"
   ],
   "codeforces": [
     "2025-10-20_codeforces.json",
-    "2025-11-01_codeforces.json"
+    "2025-11-01_codeforces.json",
+    "2025-11-20_codeforces.json"
   ],
   "matiji": [
     "2025-10-20_matiji.json",
-    "2025-11-01_matiji.json"
+    "2025-11-01_matiji.json",
+    "2025-11-20_matiji.json"
   ]
 }
