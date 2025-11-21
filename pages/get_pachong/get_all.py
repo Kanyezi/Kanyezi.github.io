@@ -6,7 +6,7 @@ if __name__ == "__main__":
     atcoderData.atcoder_gets()
     codeforcesData.codeforces_gets()
     matijiData.matiji_gets()
-    # 合并
-    data_converter.data_convert()
     # 地址列表生成
     file_list_generator.generate_file_list()
+    # 合并
+    data_converter.data_convert()
