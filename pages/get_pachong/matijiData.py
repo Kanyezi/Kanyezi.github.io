@@ -4,10 +4,7 @@ import datetime
 from matiji_get import get_user_ac_count
 import os
 
-# 使用示例
-if __name__ == "__main__":
-    # 替换为你想查询的AtCoder用户名
-    # username = "tourist"  # 示例：著名选手tourist
+def matiji_gets():
     data = {}
     current_dir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
     print(current_dir)
@@ -34,3 +31,7 @@ if __name__ == "__main__":
                 print(uid,"获取数据失败，请检查用户名或网络连接")
             time.sleep(0.1)
         json.dump(ru,f)
+
+# 使用示例
+if __name__ == "__main__":
+    matiji_gets()
