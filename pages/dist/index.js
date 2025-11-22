@@ -21075,8 +21075,9 @@ var __async = (__this, __arguments, generator) => {
           userData.value = data25.data;
           if (allDates.size > 0) {
             const sortedDates = Array.from(allDates).sort((a, b) => new Date(b).getTime() - new Date(a).getTime());
-            if (sortedDates.length > 0) {
-              lastUpdate.value = sortedDates[0];
+            const latestDate = sortedDates[0];
+            if (latestDate) {
+              lastUpdate.value = latestDate;
             }
           }
           yield nextTick();
@@ -21136,7 +21137,7 @@ var __async = (__this, __arguments, generator) => {
       };
     }
   });
-  const Statistics = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-4d592552"]]);
+  const Statistics = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-87f6c867"]]);
   const _hoisted_1 = { class: "app" };
   const _hoisted_2 = { class: "page" };
   const _sfc_main = /* @__PURE__ */ defineComponent({
