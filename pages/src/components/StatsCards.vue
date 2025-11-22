@@ -40,6 +40,6 @@ withDefaults(defineProps<Props>(), {
 /* Import base framework styles */
 @import '../styles/base-framework.css';
 
-/* Import enhanced styles */
-@import '../styles/enhanced-styles.css';
+/* Import stats cards styles */
+@import '../styles/stats-cards.css';
 </style>

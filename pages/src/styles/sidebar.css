@@ -1,0 +1,209 @@
+/* 侧边栏基础样式 */
+.sidebar {
+  width: 320px;
+  background: white;
+  box-shadow: var(--card-shadow);
+  padding: 20px;
+  overflow-y: auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  transition: var(--transition);
+  box-sizing: border-box;
+}
+
+.sidebar-header {
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-header h2 {
+  color: var(--primary-color);
+}
+
+.user-search {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.user-list {
+  overflow-y: auto;
+  flex: 1;
+}
+
+.user-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.user-item:hover {
+  background-color: var(--light-bg);
+}
+
+.user-item.active {
+  background-color: rgba(74, 108, 247, 0.1);
+  border-left: 3px solid var(--primary-color);
+}
+
+.user-info {
+  flex: 1;
+}
+
+.user-name {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.user-stats {
+  font-size: 0.85rem;
+  color: var(--secondary-color);
+}
+
+.user-stats span {
+  background-color: var(--light-bg);
+  padding: 2px 6px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  margin-right: 5px;
+}
+
+/* 侧边栏增强样式 */
+.sidebar-enhanced {
+  padding: 30px;
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  z-index: 10;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafd 100%);
+  backdrop-filter: blur(10px);
+}
+
+.sidebar-enhanced:hover {
+  box-shadow: var(--card-shadow-hover);
+  transform: translateX(-5px);
+}
+
+.sidebar-header-enhanced {
+  padding-bottom: 25px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.sidebar-header-enhanced::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary-light), transparent);
+}
+
+.sidebar-header-enhanced h2 {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.user-search-enhanced {
+  width: calc(100% - 4px);
+  padding: 14px 18px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: var(--transition);
+  margin-bottom: 25px;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.user-search-enhanced:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(67, 97, 238, 0.2);
+  transform: translateY(-2px);
+}
+
+.user-item-enhanced {
+  padding: 18px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  background: linear-gradient(180deg, #ffffff 0%, #fafbff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.user-item-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(67, 97, 238, 0.03) 0%, rgba(255, 255, 255, 0.5) 100%);
+  z-index: -1;
+}
+
+.user-item-enhanced:hover {
+  background: linear-gradient(180deg, #ffffff 0%, #edf2ff 100%);
+  transform: translateY(-3px) translateX(3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(67, 97, 238, 0.15);
+}
+
+.user-item-enhanced.active {
+  background: linear-gradient(180deg, #eef4ff 0%, #dee9ff 100%);
+  border: 1px solid rgba(67, 97, 238, 0.3);
+  box-shadow: 0 8px 20px rgba(67, 97, 238, 0.15);
+  transform: translateY(-3px) translateX(3px);
+}
+
+.user-name-enhanced {
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+  color: var(--dark-bg);
+}
+
+.user-stats-enhanced span {
+  background: linear-gradient(135deg, var(--light-bg) 0%, #ffffff 100%);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  margin-right: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+}
+
+/* 响应式设计 */
+@media (max-width: 992px) {
+  .sidebar {
+    width: 100%;
+    max-height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    max-height: 300px;
+  }
+}
+
+@media (max-width: 576px) {
+  .sidebar {
+    width: 100%;
+    max-height: 300px;
+  }
+}

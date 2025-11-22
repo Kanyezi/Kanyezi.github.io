@@ -80,6 +80,6 @@ const refreshData = () => {
 /* Import base framework styles */
 @import '../styles/base-framework.css';
 
-/* Import enhanced styles */
-@import '../styles/enhanced-styles.css';
+/* Import filter controls styles */
+@import '../styles/filter-controls.css';
 </style>

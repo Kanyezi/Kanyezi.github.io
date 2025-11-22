@@ -328,6 +328,6 @@ footer {
 /* Import base framework styles */
 @import './styles/base-framework.css';
 
-/* Import enhanced styles */
-@import './styles/enhanced-styles.css';
+/* Import main content styles */
+@import './styles/main-content.css';
 </style>

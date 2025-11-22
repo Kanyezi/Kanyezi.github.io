@@ -86,6 +86,6 @@ const toggleUser = (userName: string) => {
 /* Import base framework styles */
 @import '../styles/base-framework.css';
 
-/* Import enhanced styles */
-@import '../styles/enhanced-styles.css';
+/* Import sidebar styles */
+@import '../styles/sidebar.css';
 </style>
