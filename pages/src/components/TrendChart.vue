@@ -258,48 +258,9 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-.chart-container {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: var(--card-shadow);
-  margin-bottom: 30px;
-  position: relative;
-  height: 500px;
-}
+/* Import base framework styles */
+@import '../styles/base-framework.css';
 
-.chart-container canvas {
-  max-height: 450px !important;
-  width: 100% !important;
-}
-
-.chart-title {
-  font-size: 1.3rem;
-  margin-bottom: 15px;
-  color: var(--dark-bg);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.chart-actions {
-  display: flex;
-  gap: 10px;
-}
-
-.chart-actions button {
-  background: none;
-  border: 1px solid var(--border-color);
-  padding: 4px 8px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.85rem;
-  transition: all 0.2s;
-}
-
-.chart-actions button.active {
-  background-color: var(--primary-color);
-  color: white;
-  border-color: var(--primary-color);
-}
+/* Import enhanced styles */
+@import '../styles/enhanced-styles.css';
 </style>

@@ -77,43 +77,9 @@ const refreshData = () => {
 </script>
 
 <style scoped>
-.controls {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 25px;
-  flex-wrap: wrap;
-  gap: 15px;
-  background: white;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: var(--card-shadow);
-}
+/* Import base framework styles */
+@import '../styles/base-framework.css';
 
-.filter-group {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-}
-
-.filter-select {
-  padding: 8px 12px;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  font-size: 1rem;
-  min-width: 150px;
-}
-
-.btn {
-  padding: 8px 16px;
-  background-color: var(--primary-color);
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s;
-}
-
-.btn:hover {
-  background-color: #3a5ce5;
-}
+/* Import enhanced styles */
+@import '../styles/enhanced-styles.css';
 </style>

@@ -37,30 +37,9 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <style scoped>
-.stats-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  margin-bottom: 30px;
-}
+/* Import base framework styles */
+@import '../styles/base-framework.css';
 
-.card {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: var(--card-shadow);
-  text-align: center;
-}
-
-.card h3 {
-  font-size: 0.9rem;
-  color: var(--secondary-color);
-  margin-bottom: 10px;
-}
-
-.card .value {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: var(--primary-color);
-}
+/* Import enhanced styles */
+@import '../styles/enhanced-styles.css';
 </style>

@@ -83,70 +83,9 @@ const toggleUser = (userName: string) => {
 </script>
 
 <style scoped>
-.sidebar {
-  width: 400px;
-  background: white;
-  box-shadow: var(--card-shadow);
-  padding: 20px;
-  overflow-y: auto;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
+/* Import base framework styles */
+@import '../styles/base-framework.css';
 
-.sidebar-header {
-  padding-bottom: 15px;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.sidebar-header h2 {
-  color: var(--primary-color);
-}
-
-.user-search {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-}
-
-.user-list {
-  overflow-y: auto;
-}
-
-.user-item {
-  display: flex;
-  align-items: center;
-  padding: 12px 10px;
-  border-bottom: 1px solid var(--border-color);
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.user-item:hover {
-  background-color: var(--light-bg);
-}
-
-.user-item.active {
-  background-color: rgba(74, 108, 247, 0.1);
-  border-left: 3px solid var(--primary-color);
-}
-
-.user-info {
-  flex: 1;
-}
-
-.user-name {
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
-.user-stats {
-  font-size: 0.85rem;
-  color: var(--secondary-color);
-}
-.user-stats span {
-  background-color: var(--light-bg);
-  padding: 2px 6px;
-}
+/* Import enhanced styles */
+@import '../styles/enhanced-styles.css';
 </style>
