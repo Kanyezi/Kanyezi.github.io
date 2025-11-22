@@ -36,11 +36,7 @@ interface Props {
   platformFilter: string;
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  periodFilter: 'all',
-  userFilter: 'all',
-  platformFilter: 'all'
-});
+const { periodFilter = 'all', userFilter = 'all', platformFilter = 'all' } = defineProps<Props>();
 
 // 定义事件
 interface Emits {
@@ -77,9 +73,6 @@ const refreshData = () => {
 </script>
 
 <style scoped>
-/* Import base framework styles */
-@import '../styles/base-framework.css';
-
-/* Import filter controls styles */
-@import '../styles/filter-controls.css';
+/* Import all styles */
+@import '../styles/app.css';
 </style>

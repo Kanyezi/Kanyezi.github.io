@@ -72,7 +72,6 @@ var __async = (__this, __arguments, generator) => {
   const isArray$1 = Array.isArray;
   const isMap = (val) => toTypeString(val) === "[object Map]";
   const isSet = (val) => toTypeString(val) === "[object Set]";
-  const isDate = (val) => toTypeString(val) === "[object Date]";
   const isFunction$1 = (val) => typeof val === "function";
   const isString = (val) => typeof val === "string";
   const isSymbol = (val) => typeof val === "symbol";
@@ -193,55 +192,6 @@ var __async = (__this, __arguments, generator) => {
   const isSpecialBooleanAttr = /* @__PURE__ */ makeMap(specialBooleanAttrs);
   function includeBooleanAttr(value) {
     return !!value || value === "";
-  }
-  function looseCompareArrays(a, b) {
-    if (a.length !== b.length) return false;
-    let equal = true;
-    for (let i = 0; equal && i < a.length; i++) {
-      equal = looseEqual(a[i], b[i]);
-    }
-    return equal;
-  }
-  function looseEqual(a, b) {
-    if (a === b) return true;
-    let aValidType = isDate(a);
-    let bValidType = isDate(b);
-    if (aValidType || bValidType) {
-      return aValidType && bValidType ? a.getTime() === b.getTime() : false;
-    }
-    aValidType = isSymbol(a);
-    bValidType = isSymbol(b);
-    if (aValidType || bValidType) {
-      return a === b;
-    }
-    aValidType = isArray$1(a);
-    bValidType = isArray$1(b);
-    if (aValidType || bValidType) {
-      return aValidType && bValidType ? looseCompareArrays(a, b) : false;
-    }
-    aValidType = isObject$1(a);
-    bValidType = isObject$1(b);
-    if (aValidType || bValidType) {
-      if (!aValidType || !bValidType) {
-        return false;
-      }
-      const aKeysCount = Object.keys(a).length;
-      const bKeysCount = Object.keys(b).length;
-      if (aKeysCount !== bKeysCount) {
-        return false;
-      }
-      for (const key in a) {
-        const aHasKey = a.hasOwnProperty(key);
-        const bHasKey = b.hasOwnProperty(key);
-        if (aHasKey && !bHasKey || !aHasKey && bHasKey || !looseEqual(a[key], b[key])) {
-          return false;
-        }
-      }
-    }
-    return String(a) === String(b);
-  }
-  function looseIndexOf(arr, val) {
-    return arr.findIndex((item) => looseEqual(item, val));
   }
   const isRef$1 = (val) => {
     return !!(val && val["__v_isRef"] === true);
@@ -2123,36 +2073,6 @@ var __async = (__this, __arguments, generator) => {
     renderFnWithContext._d = true;
     return renderFnWithContext;
   }
-  function withDirectives(vnode, directives) {
-    if (currentRenderingInstance === null) {
-      return vnode;
-    }
-    const instance = getComponentPublicInstance(currentRenderingInstance);
-    const bindings = vnode.dirs || (vnode.dirs = []);
-    for (let i = 0; i < directives.length; i++) {
-      let [dir, value, arg, modifiers = EMPTY_OBJ] = directives[i];
-      if (dir) {
-        if (isFunction$1(dir)) {
-          dir = {
-            mounted: dir,
-            updated: dir
-          };
-        }
-        if (dir.deep) {
-          traverse(value);
-        }
-        bindings.push({
-          dir,
-          instance,
-          value,
-          oldValue: void 0,
-          arg,
-          modifiers
-        });
-      }
-    }
-    return vnode;
-  }
   function invokeDirectiveHook(vnode, prevVNode, instance, name) {
     const bindings = vnode.dirs;
     const oldBindings = prevVNode && prevVNode.dirs;
@@ -2474,7 +2394,7 @@ var __async = (__this, __arguments, generator) => {
       if (key === "__v_skip") {
         return true;
       }
-      const { ctx, setupState, data: data2, props, accessCache, type, appContext } = instance;
+      const { ctx, setupState, data, props, accessCache, type, appContext } = instance;
       let normalizedProps;
       if (key[0] !== "$") {
         const n = accessCache[key];
@@ -2483,7 +2403,7 @@ var __async = (__this, __arguments, generator) => {
             case 1:
               return setupState[key];
             case 2:
-              return data2[key];
+              return data[key];
             case 4:
               return ctx[key];
             case 3:
@@ -2492,9 +2412,9 @@ var __async = (__this, __arguments, generator) => {
         } else if (hasSetupBinding(setupState, key)) {
           accessCache[key] = 1;
           return setupState[key];
-        } else if (data2 !== EMPTY_OBJ && hasOwn(data2, key)) {
+        } else if (data !== EMPTY_OBJ && hasOwn(data, key)) {
           accessCache[key] = 2;
-          return data2[key];
+          return data[key];
         } else if (
           // only cache other properties when instance has declared (thus stable)
           // props
@@ -2534,12 +2454,12 @@ var __async = (__this, __arguments, generator) => {
       } else ;
     },
     set({ _: instance }, key, value) {
-      const { data: data2, setupState, ctx } = instance;
+      const { data, setupState, ctx } = instance;
       if (hasSetupBinding(setupState, key)) {
         setupState[key] = value;
         return true;
-      } else if (data2 !== EMPTY_OBJ && hasOwn(data2, key)) {
-        data2[key] = value;
+      } else if (data !== EMPTY_OBJ && hasOwn(data, key)) {
+        data[key] = value;
         return true;
       } else if (hasOwn(instance.props, key)) {
         return false;
@@ -2554,10 +2474,10 @@ var __async = (__this, __arguments, generator) => {
       return true;
     },
     has({
-      _: { data: data2, setupState, accessCache, ctx, appContext, propsOptions, type }
+      _: { data, setupState, accessCache, ctx, appContext, propsOptions, type }
     }, key) {
       let normalizedProps, cssModules;
-      return !!(accessCache[key] || data2 !== EMPTY_OBJ && key[0] !== "$" && hasOwn(data2, key) || hasSetupBinding(setupState, key) || (normalizedProps = propsOptions[0]) && hasOwn(normalizedProps, key) || hasOwn(ctx, key) || hasOwn(publicPropertiesMap, key) || hasOwn(appContext.config.globalProperties, key) || (cssModules = type.__cssModules) && cssModules[key]);
+      return !!(accessCache[key] || data !== EMPTY_OBJ && key[0] !== "$" && hasOwn(data, key) || hasSetupBinding(setupState, key) || (normalizedProps = propsOptions[0]) && hasOwn(normalizedProps, key) || hasOwn(ctx, key) || hasOwn(publicPropertiesMap, key) || hasOwn(appContext.config.globalProperties, key) || (cssModules = type.__cssModules) && cssModules[key]);
     },
     defineProperty(target, key, descriptor) {
       if (descriptor.get != null) {
@@ -2631,10 +2551,10 @@ var __async = (__this, __arguments, generator) => {
       }
     }
     if (dataOptions) {
-      const data2 = dataOptions.call(publicThis, publicThis);
-      if (!isObject$1(data2)) ;
+      const data = dataOptions.call(publicThis, publicThis);
+      if (!isObject$1(data)) ;
       else {
-        instance.data = reactive(data2);
+        instance.data = reactive(data);
       }
     }
     shouldCacheAccess = true;
@@ -4980,7 +4900,7 @@ var __async = (__this, __arguments, generator) => {
       render,
       renderCache,
       props,
-      data: data2,
+      data,
       setupState,
       ctx,
       inheritAttrs
@@ -5008,7 +4928,7 @@ var __async = (__this, __arguments, generator) => {
             renderCache,
             false ? shallowReadonly(props) : props,
             setupState,
-            data2,
+            data,
             ctx
           )
         );
@@ -6165,135 +6085,6 @@ var __async = (__this, __arguments, generator) => {
     }
     return key in el;
   }
-  const getModelAssigner = (vnode) => {
-    const fn = vnode.props["onUpdate:modelValue"] || false;
-    return isArray$1(fn) ? (value) => invokeArrayFns(fn, value) : fn;
-  };
-  function onCompositionStart(e) {
-    e.target.composing = true;
-  }
-  function onCompositionEnd(e) {
-    const target = e.target;
-    if (target.composing) {
-      target.composing = false;
-      target.dispatchEvent(new Event("input"));
-    }
-  }
-  const assignKey = Symbol("_assign");
-  const vModelText = {
-    created(el, { modifiers: { lazy, trim, number } }, vnode) {
-      el[assignKey] = getModelAssigner(vnode);
-      const castToNumber = number || vnode.props && vnode.props.type === "number";
-      addEventListener(el, lazy ? "change" : "input", (e) => {
-        if (e.target.composing) return;
-        let domValue = el.value;
-        if (trim) {
-          domValue = domValue.trim();
-        }
-        if (castToNumber) {
-          domValue = looseToNumber(domValue);
-        }
-        el[assignKey](domValue);
-      });
-      if (trim) {
-        addEventListener(el, "change", () => {
-          el.value = el.value.trim();
-        });
-      }
-      if (!lazy) {
-        addEventListener(el, "compositionstart", onCompositionStart);
-        addEventListener(el, "compositionend", onCompositionEnd);
-        addEventListener(el, "change", onCompositionEnd);
-      }
-    },
-    // set value on mounted so it's after min/max for type="range"
-    mounted(el, { value }) {
-      el.value = value == null ? "" : value;
-    },
-    beforeUpdate(el, { value, oldValue, modifiers: { lazy, trim, number } }, vnode) {
-      el[assignKey] = getModelAssigner(vnode);
-      if (el.composing) return;
-      const elValue = (number || el.type === "number") && !/^0\d/.test(el.value) ? looseToNumber(el.value) : el.value;
-      const newValue = value == null ? "" : value;
-      if (elValue === newValue) {
-        return;
-      }
-      if (document.activeElement === el && el.type !== "range") {
-        if (lazy && value === oldValue) {
-          return;
-        }
-        if (trim && el.value.trim() === newValue) {
-          return;
-        }
-      }
-      el.value = newValue;
-    }
-  };
-  const vModelSelect = {
-    // <select multiple> value need to be deep traversed
-    deep: true,
-    created(el, { value, modifiers: { number } }, vnode) {
-      const isSetModel = isSet(value);
-      addEventListener(el, "change", () => {
-        const selectedVal = Array.prototype.filter.call(el.options, (o) => o.selected).map(
-          (o) => number ? looseToNumber(getValue(o)) : getValue(o)
-        );
-        el[assignKey](
-          el.multiple ? isSetModel ? new Set(selectedVal) : selectedVal : selectedVal[0]
-        );
-        el._assigning = true;
-        nextTick(() => {
-          el._assigning = false;
-        });
-      });
-      el[assignKey] = getModelAssigner(vnode);
-    },
-    // set value in mounted & updated because <select> relies on its children
-    // <option>s.
-    mounted(el, { value }) {
-      setSelected(el, value);
-    },
-    beforeUpdate(el, _binding, vnode) {
-      el[assignKey] = getModelAssigner(vnode);
-    },
-    updated(el, { value }) {
-      if (!el._assigning) {
-        setSelected(el, value);
-      }
-    }
-  };
-  function setSelected(el, value) {
-    const isMultiple = el.multiple;
-    const isArrayValue = isArray$1(value);
-    if (isMultiple && !isArrayValue && !isSet(value)) {
-      return;
-    }
-    for (let i = 0, l = el.options.length; i < l; i++) {
-      const option = el.options[i];
-      const optionValue = getValue(option);
-      if (isMultiple) {
-        if (isArrayValue) {
-          const optionType = typeof optionValue;
-          if (optionType === "string" || optionType === "number") {
-            option.selected = value.some((v) => String(v) === String(optionValue));
-          } else {
-            option.selected = looseIndexOf(value, optionValue) > -1;
-          }
-        } else {
-          option.selected = value.has(optionValue);
-        }
-      } else if (looseEqual(getValue(option), value)) {
-        if (el.selectedIndex !== i) el.selectedIndex = i;
-        return;
-      }
-    }
-    if (!isMultiple && el.selectedIndex !== -1) {
-      el.selectedIndex = -1;
-    }
-  }
-  function getValue(el) {
-    return "_value" in el ? el._value : el.value;
-  }
   const rendererOptions = /* @__PURE__ */ extend({ patchProp }, nodeOps);
   let renderer;
   function ensureRenderer() {
@@ -6336,6 +6127,117 @@ var __async = (__this, __arguments, generator) => {
     }
     return container;
   }
+  const _hoisted_1$5 = { class: "sidebar" };
+  const _hoisted_2$5 = { class: "sidebar-header" };
+  const _hoisted_3$3 = ["value"];
+  const _hoisted_4$2 = { class: "user-list" };
+  const _hoisted_5$2 = ["onClick"];
+  const _hoisted_6$1 = { class: "user-info" };
+  const _hoisted_7$1 = { class: "user-name" };
+  const _hoisted_8$1 = { class: "user-stats" };
+  const _sfc_main$5 = /* @__PURE__ */ defineComponent({
+    __name: "UserListSidebar",
+    props: {
+      users: { default: () => [] },
+      selectedUsers: { default: () => [] },
+      searchTerm: { default: "" }
+    },
+    emits: ["toggle-user", "update:searchTerm"],
+    setup(__props, { emit: __emit }) {
+      const props = __props;
+      const emit2 = __emit;
+      const filteredUsers = computed(() => {
+        if (!props.searchTerm) return props.users;
+        return props.users.filter(
+          (user) => user.name.toLowerCase().includes(props.searchTerm.toLowerCase())
+        );
+      });
+      const toggleUser = (userName) => {
+        emit2("toggle-user", userName);
+      };
+      return (_ctx, _cache) => {
+        return openBlock(), createElementBlock("div", _hoisted_1$5, [
+          createBaseVNode("div", _hoisted_2$5, [
+            _cache[1] || (_cache[1] = createBaseVNode("h2", null, "用户列表", -1)),
+            createBaseVNode("input", {
+              type: "text",
+              class: "user-search",
+              placeholder: "搜索用户...",
+              value: __props.searchTerm,
+              onInput: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:searchTerm", $event.target.value))
+            }, null, 40, _hoisted_3$3)
+          ]),
+          createBaseVNode("div", _hoisted_4$2, [
+            (openBlock(true), createElementBlock(Fragment, null, renderList(filteredUsers.value, (user) => {
+              return openBlock(), createElementBlock("div", {
+                key: user.name,
+                class: normalizeClass(["user-item", { active: __props.selectedUsers.includes(user.name) }]),
+                onClick: ($event) => toggleUser(user.name)
+              }, [
+                createBaseVNode("div", _hoisted_6$1, [
+                  createBaseVNode("div", _hoisted_7$1, toDisplayString(user.name), 1),
+                  createBaseVNode("div", _hoisted_8$1, [
+                    createBaseVNode("span", null, "atcoder: " + toDisplayString(user.atcoder), 1),
+                    createBaseVNode("span", null, "codeforces: " + toDisplayString(user.codeforces), 1),
+                    createBaseVNode("span", null, "matiji: " + toDisplayString(user.matiji), 1)
+                  ])
+                ])
+              ], 10, _hoisted_5$2);
+            }), 128))
+          ])
+        ]);
+      };
+    }
+  });
+  const _export_sfc = (sfc, props) => {
+    const target = sfc.__vccOpts || sfc;
+    for (const [key, val] of props) {
+      target[key] = val;
+    }
+    return target;
+  };
+  const UserListSidebar = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-c828247c"]]);
+  const _hoisted_1$4 = { class: "stats-cards" };
+  const _hoisted_2$4 = { class: "card" };
+  const _hoisted_3$2 = { class: "value" };
+  const _hoisted_4$1 = { class: "card" };
+  const _hoisted_5$1 = { class: "value" };
+  const _hoisted_6 = { class: "card" };
+  const _hoisted_7 = { class: "value" };
+  const _hoisted_8 = { class: "card" };
+  const _hoisted_9 = { class: "value" };
+  const _sfc_main$4 = /* @__PURE__ */ defineComponent({
+    __name: "StatsCards",
+    props: {
+      activeUsersCount: { default: 0 },
+      totalCount: { default: 0 },
+      averageCount: { default: 0 },
+      maxCount: { default: 0 }
+    },
+    setup(__props) {
+      return (_ctx, _cache) => {
+        return openBlock(), createElementBlock("div", _hoisted_1$4, [
+          createBaseVNode("div", _hoisted_2$4, [
+            _cache[0] || (_cache[0] = createBaseVNode("h3", null, "活跃用户数", -1)),
+            createBaseVNode("div", _hoisted_3$2, toDisplayString(__props.activeUsersCount), 1)
+          ]),
+          createBaseVNode("div", _hoisted_4$1, [
+            _cache[1] || (_cache[1] = createBaseVNode("h3", null, "总刷题数量", -1)),
+            createBaseVNode("div", _hoisted_5$1, toDisplayString(__props.totalCount.toLocaleString()), 1)
+          ]),
+          createBaseVNode("div", _hoisted_6, [
+            _cache[2] || (_cache[2] = createBaseVNode("h3", null, "平均刷题数", -1)),
+            createBaseVNode("div", _hoisted_7, toDisplayString(__props.averageCount), 1)
+          ]),
+          createBaseVNode("div", _hoisted_8, [
+            _cache[3] || (_cache[3] = createBaseVNode("h3", null, "最高刷题数", -1)),
+            createBaseVNode("div", _hoisted_9, toDisplayString(__props.maxCount), 1)
+          ])
+        ]);
+      };
+    }
+  });
+  const StatsCards = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-72aaedf7"]]);
   /*!
    * @kurkle/color v0.3.4
    * https://github.com/kurkle/color#readme
@@ -7851,10 +7753,10 @@ var __async = (__this, __arguments, generator) => {
     }
     return (font.style ? font.style + " " : "") + (font.weight ? font.weight + " " : "") + font.size + "px " + font.family;
   }
-  function _measureText(ctx, data2, gc, longest, string) {
-    let textWidth = data2[string];
+  function _measureText(ctx, data, gc, longest, string) {
+    let textWidth = data[string];
     if (!textWidth) {
-      textWidth = data2[string] = ctx.measureText(string).width;
+      textWidth = data[string] = ctx.measureText(string).width;
       gc.push(string);
     }
     if (textWidth > longest) {
@@ -7864,10 +7766,10 @@ var __async = (__this, __arguments, generator) => {
   }
   function _longestText(ctx, font, arrayOfThings, cache) {
     cache = cache || {};
-    let data2 = cache.data = cache.data || {};
+    let data = cache.data = cache.data || {};
     let gc = cache.garbageCollect = cache.garbageCollect || [];
     if (cache.font !== font) {
-      data2 = cache.data = {};
+      data = cache.data = {};
       gc = cache.garbageCollect = [];
       cache.font = font;
     }
@@ -7879,12 +7781,12 @@ var __async = (__this, __arguments, generator) => {
     for (i = 0; i < ilen; i++) {
       thing = arrayOfThings[i];
       if (thing !== void 0 && thing !== null && !isArray(thing)) {
-        longest = _measureText(ctx, data2, gc, longest, thing);
+        longest = _measureText(ctx, data, gc, longest, thing);
       } else if (isArray(thing)) {
         for (j = 0, jlen = thing.length; j < jlen; j++) {
           nestedThing = thing[j];
           if (nestedThing !== void 0 && nestedThing !== null && !isArray(nestedThing)) {
-            longest = _measureText(ctx, data2, gc, longest, nestedThing);
+            longest = _measureText(ctx, data, gc, longest, nestedThing);
           }
         }
       }
@@ -7893,7 +7795,7 @@ var __async = (__this, __arguments, generator) => {
     const gcLen = gc.length / 2;
     if (gcLen > arrayOfThings.length) {
       for (i = 0; i < gcLen; i++) {
-        delete data2[gc[i]];
+        delete data[gc[i]];
       }
       gc.splice(0, gcLen);
     }
@@ -8423,13 +8325,13 @@ var __async = (__this, __arguments, generator) => {
     }
     return value;
   }
-  function _resolveScriptable(prop, getValue2, target, receiver) {
+  function _resolveScriptable(prop, getValue, target, receiver) {
     const { _proxy, _context, _subProxy, _stack } = target;
     if (_stack.has(prop)) {
       throw new Error("Recursion detected: " + Array.from(_stack).join("->") + "->" + prop);
     }
     _stack.add(prop);
-    let value = getValue2(_context, _subProxy || receiver);
+    let value = getValue(_context, _subProxy || receiver);
     _stack.delete(prop);
     if (needsSubResolver(prop, value)) {
       value = createSubResolver(_proxy._scopes, _proxy, prop, value);
@@ -8546,14 +8448,14 @@ var __async = (__this, __arguments, generator) => {
     }
     return Array.from(set2);
   }
-  function _parseObjectDataRadialScale(meta, data2, start, count) {
+  function _parseObjectDataRadialScale(meta, data, start, count) {
     const { iScale } = meta;
     const { key = "r" } = this._parsing;
     const parsed = new Array(count);
     let i, ilen, index2, item;
     for (i = 0, ilen = count; i < ilen; ++i) {
       index2 = i + start;
-      item = data2[index2];
+      item = data[index2];
       parsed[i] = {
         r: iScale.parse(resolveObjectKey(item, key), index2)
       };
@@ -9751,18 +9653,18 @@ var __async = (__this, __arguments, generator) => {
     }
     return value;
   }
-  function convertObjectDataToArray(data2, meta) {
+  function convertObjectDataToArray(data, meta) {
     const { iScale, vScale } = meta;
     const iAxisKey = iScale.axis === "x" ? "x" : "y";
     const vAxisKey = vScale.axis === "x" ? "x" : "y";
-    const keys = Object.keys(data2);
+    const keys = Object.keys(data);
     const adata = new Array(keys.length);
     let i, ilen, key;
     for (i = 0, ilen = keys.length; i < ilen; ++i) {
       key = keys[i];
       adata[i] = {
         [iAxisKey]: key,
-        [vAxisKey]: data2[key]
+        [vAxisKey]: data[key]
       };
     }
     return adata;
@@ -9948,23 +9850,23 @@ var __async = (__this, __arguments, generator) => {
     }
     _dataCheck() {
       const dataset = this.getDataset();
-      const data2 = dataset.data || (dataset.data = []);
+      const data = dataset.data || (dataset.data = []);
       const _data = this._data;
-      if (isObject(data2)) {
+      if (isObject(data)) {
         const meta = this._cachedMeta;
-        this._data = convertObjectDataToArray(data2, meta);
-      } else if (_data !== data2) {
+        this._data = convertObjectDataToArray(data, meta);
+      } else if (_data !== data) {
         if (_data) {
           unlistenArrayEvents(_data, this);
           const meta = this._cachedMeta;
           clearStacks(meta);
           meta._parsed = [];
         }
-        if (data2 && Object.isExtensible(data2)) {
-          listenArrayEvents(data2, this);
+        if (data && Object.isExtensible(data)) {
+          listenArrayEvents(data, this);
         }
         this._syncList = [];
-        this._data = data2;
+        this._data = data;
       }
     }
     addElements() {
@@ -10001,23 +9903,23 @@ var __async = (__this, __arguments, generator) => {
       this._cachedDataOpts = {};
     }
     parse(start, count) {
-      const { _cachedMeta: meta, _data: data2 } = this;
+      const { _cachedMeta: meta, _data: data } = this;
       const { iScale, _stacked } = meta;
       const iAxis = iScale.axis;
-      let sorted = start === 0 && count === data2.length ? true : meta._sorted;
+      let sorted = start === 0 && count === data.length ? true : meta._sorted;
       let prev = start > 0 && meta._parsed[start - 1];
       let i, cur, parsed;
       if (this._parsing === false) {
-        meta._parsed = data2;
+        meta._parsed = data;
         meta._sorted = true;
-        parsed = data2;
+        parsed = data;
       } else {
-        if (isArray(data2[start])) {
-          parsed = this.parseArrayData(meta, data2, start, count);
-        } else if (isObject(data2[start])) {
-          parsed = this.parseObjectData(meta, data2, start, count);
+        if (isArray(data[start])) {
+          parsed = this.parseArrayData(meta, data, start, count);
+        } else if (isObject(data[start])) {
+          parsed = this.parseObjectData(meta, data, start, count);
         } else {
-          parsed = this.parsePrimitiveData(meta, data2, start, count);
+          parsed = this.parsePrimitiveData(meta, data, start, count);
         }
         const isNotInOrderComparedToPrev = () => cur[iAxis] === null || prev && cur[iAxis] < prev[iAxis];
         for (i = 0; i < count; ++i) {
@@ -10035,7 +9937,7 @@ var __async = (__this, __arguments, generator) => {
         updateStacks(this, parsed);
       }
     }
-    parsePrimitiveData(meta, data2, start, count) {
+    parsePrimitiveData(meta, data, start, count) {
       const { iScale, vScale } = meta;
       const iAxis = iScale.axis;
       const vAxis = vScale.axis;
@@ -10047,18 +9949,18 @@ var __async = (__this, __arguments, generator) => {
         index2 = i + start;
         parsed[i] = {
           [iAxis]: singleScale || iScale.parse(labels[index2], index2),
-          [vAxis]: vScale.parse(data2[index2], index2)
+          [vAxis]: vScale.parse(data[index2], index2)
         };
       }
       return parsed;
     }
-    parseArrayData(meta, data2, start, count) {
+    parseArrayData(meta, data, start, count) {
       const { xScale, yScale } = meta;
       const parsed = new Array(count);
       let i, ilen, index2, item;
       for (i = 0, ilen = count; i < ilen; ++i) {
         index2 = i + start;
-        item = data2[index2];
+        item = data[index2];
         parsed[i] = {
           x: xScale.parse(item[0], index2),
           y: yScale.parse(item[1], index2)
@@ -10066,14 +9968,14 @@ var __async = (__this, __arguments, generator) => {
       }
       return parsed;
     }
-    parseObjectData(meta, data2, start, count) {
+    parseObjectData(meta, data, start, count) {
       const { xScale, yScale } = meta;
       const { xAxisKey = "x", yAxisKey = "y" } = this._parsing;
       const parsed = new Array(count);
       let i, ilen, index2, item;
       for (i = 0, ilen = count; i < ilen; ++i) {
         index2 = i + start;
-        item = data2[index2];
+        item = data[index2];
         parsed[i] = {
           x: xScale.parse(resolveObjectKey(item, xAxisKey), index2),
           y: yScale.parse(resolveObjectKey(item, yAxisKey), index2)
@@ -10346,14 +10248,14 @@ var __async = (__this, __arguments, generator) => {
       }
     }
     _resyncElements(resetNewElements) {
-      const data2 = this._data;
+      const data = this._data;
       const elements2 = this._cachedMeta.data;
       for (const [method, arg1, arg2] of this._syncList) {
         this[method](arg1, arg2);
       }
       this._syncList = [];
       const numMeta = elements2.length;
-      const numData = data2.length;
+      const numData = data.length;
       const count = Math.min(numData, numMeta);
       if (count) {
         this.parse(0, count);
@@ -10366,7 +10268,7 @@ var __async = (__this, __arguments, generator) => {
     }
     _insertElements(start, count, resetNewElements = true) {
       const meta = this._cachedMeta;
-      const data2 = meta.data;
+      const data = meta.data;
       const end = start + count;
       let i;
       const move = (arr) => {
@@ -10375,16 +10277,16 @@ var __async = (__this, __arguments, generator) => {
           arr[i] = arr[i - count];
         }
       };
-      move(data2);
+      move(data);
       for (i = start; i < end; ++i) {
-        data2[i] = new this.dataElementType();
+        data[i] = new this.dataElementType();
       }
       if (this._parsing) {
         move(meta._parsed);
       }
       this.parse(start, count);
       if (resetNewElements) {
-        this.updateElements(data2, start, count, "reset");
+        this.updateElements(data, start, count, "reset");
       }
     }
     updateElements(element, start, count, mode) {
@@ -10562,7 +10464,7 @@ var __async = (__this, __arguments, generator) => {
     }
     return item;
   }
-  function parseArrayOrPrimitive(meta, data2, start, count) {
+  function parseArrayOrPrimitive(meta, data, start, count) {
     const iScale = meta.iScale;
     const vScale = meta.vScale;
     const labels = iScale.getLabels();
@@ -10570,7 +10472,7 @@ var __async = (__this, __arguments, generator) => {
     const parsed = [];
     let i, ilen, item, entry;
     for (i = start, ilen = start + count; i < ilen; ++i) {
-      entry = data2[i];
+      entry = data[i];
       item = {};
       item[iScale.axis] = singleScale || iScale.parse(labels[i], i);
       parsed.push(parseValue(entry, item, vScale, i));
@@ -10662,13 +10564,13 @@ var __async = (__this, __arguments, generator) => {
     properties.inflateAmount = inflateAmount === "auto" ? ratio === 1 ? 0.33 : 0 : inflateAmount;
   }
   class BarController extends DatasetController {
-    parsePrimitiveData(meta, data2, start, count) {
-      return parseArrayOrPrimitive(meta, data2, start, count);
+    parsePrimitiveData(meta, data, start, count) {
+      return parseArrayOrPrimitive(meta, data, start, count);
     }
-    parseArrayData(meta, data2, start, count) {
-      return parseArrayOrPrimitive(meta, data2, start, count);
+    parseArrayData(meta, data, start, count) {
+      return parseArrayOrPrimitive(meta, data, start, count);
     }
-    parseObjectData(meta, data2, start, count) {
+    parseObjectData(meta, data, start, count) {
       const { iScale, vScale } = meta;
       const { xAxisKey = "x", yAxisKey = "y" } = this._parsing;
       const iAxisKey = iScale.axis === "x" ? xAxisKey : yAxisKey;
@@ -10676,7 +10578,7 @@ var __async = (__this, __arguments, generator) => {
       const parsed = [];
       let i, ilen, item, obj;
       for (i = start, ilen = start + count; i < ilen; ++i) {
-        obj = data2[i];
+        obj = data[i];
         item = {};
         item[iScale.axis] = iScale.parse(resolveObjectKey(obj, iAxisKey), i);
         parsed.push(parseValue(resolveObjectKey(obj, vAxisKey), item, vScale, i));
@@ -10960,34 +10862,34 @@ var __async = (__this, __arguments, generator) => {
       this.enableOptionSharing = true;
       super.initialize();
     }
-    parsePrimitiveData(meta, data2, start, count) {
-      const parsed = super.parsePrimitiveData(meta, data2, start, count);
+    parsePrimitiveData(meta, data, start, count) {
+      const parsed = super.parsePrimitiveData(meta, data, start, count);
       for (let i = 0; i < parsed.length; i++) {
         parsed[i]._custom = this.resolveDataElementOptions(i + start).radius;
       }
       return parsed;
     }
-    parseArrayData(meta, data2, start, count) {
-      const parsed = super.parseArrayData(meta, data2, start, count);
+    parseArrayData(meta, data, start, count) {
+      const parsed = super.parseArrayData(meta, data, start, count);
       for (let i = 0; i < parsed.length; i++) {
-        const item = data2[start + i];
+        const item = data[start + i];
         parsed[i]._custom = valueOrDefault(item[2], this.resolveDataElementOptions(i + start).radius);
       }
       return parsed;
     }
-    parseObjectData(meta, data2, start, count) {
-      const parsed = super.parseObjectData(meta, data2, start, count);
+    parseObjectData(meta, data, start, count) {
+      const parsed = super.parseObjectData(meta, data, start, count);
       for (let i = 0; i < parsed.length; i++) {
-        const item = data2[start + i];
+        const item = data[start + i];
         parsed[i]._custom = valueOrDefault(item && item.r && +item.r, this.resolveDataElementOptions(i + start).radius);
       }
       return parsed;
     }
     getMaxOverflow() {
-      const data2 = this._cachedMeta.data;
+      const data = this._cachedMeta.data;
       let max = 0;
-      for (let i = data2.length - 1; i >= 0; --i) {
-        max = Math.max(max, data2[i].size(this.resolveDataElementOptions(i)) / 2);
+      for (let i = data.length - 1; i >= 0; --i) {
+        max = Math.max(max, data[i].size(this.resolveDataElementOptions(i)) / 2);
       }
       return max > 0 && max;
     }
@@ -11114,15 +11016,15 @@ var __async = (__this, __arguments, generator) => {
     linkScales() {
     }
     parse(start, count) {
-      const data2 = this.getDataset().data;
+      const data = this.getDataset().data;
       const meta = this._cachedMeta;
       if (this._parsing === false) {
-        meta._parsed = data2;
+        meta._parsed = data;
       } else {
-        let getter = (i2) => +data2[i2];
-        if (isObject(data2[start])) {
+        let getter = (i2) => +data[i2];
+        if (isObject(data[start])) {
           const { key = "value" } = this._parsing;
-          getter = (i2) => +resolveObjectKey(data2[i2], key);
+          getter = (i2) => +resolveObjectKey(data[i2], key);
         }
         let i, ilen;
         for (i = start, ilen = start + count; i < ilen; ++i) {
@@ -11343,10 +11245,10 @@ var __async = (__this, __arguments, generator) => {
       legend: {
         labels: {
           generateLabels(chart) {
-            const data2 = chart.data;
+            const data = chart.data;
             const { labels: { pointStyle, textAlign, color: color2, useBorderRadius, borderRadius } } = chart.legend.options;
-            if (data2.labels.length && data2.datasets.length) {
-              return data2.labels.map((label, i) => {
+            if (data.labels.length && data.datasets.length) {
+              return data.labels.map((label, i) => {
                 const meta = chart.getDatasetMeta(0);
                 const style = meta.controller.getStyle(i);
                 return {
@@ -11450,12 +11352,12 @@ var __async = (__this, __arguments, generator) => {
       const meta = this._cachedMeta;
       const dataset = meta.dataset;
       const border = dataset.options && dataset.options.borderWidth || 0;
-      const data2 = meta.data || [];
-      if (!data2.length) {
+      const data = meta.data || [];
+      if (!data.length) {
         return border;
       }
-      const firstPoint = data2[0].size(this.resolveDataElementOptions(0));
-      const lastPoint = data2[data2.length - 1].size(this.resolveDataElementOptions(data2.length - 1));
+      const firstPoint = data[0].size(this.resolveDataElementOptions(0));
+      const lastPoint = data[data.length - 1].size(this.resolveDataElementOptions(data.length - 1));
       return Math.max(border, firstPoint, lastPoint) / 2;
     }
     draw() {
@@ -11497,8 +11399,8 @@ var __async = (__this, __arguments, generator) => {
         value
       };
     }
-    parseObjectData(meta, data2, start, count) {
-      return _parseObjectDataRadialScale.bind(this)(meta, data2, start, count);
+    parseObjectData(meta, data, start, count) {
+      return _parseObjectDataRadialScale.bind(this)(meta, data, start, count);
     }
     update(mode) {
       const arcs = this._cachedMeta.data;
@@ -11619,10 +11521,10 @@ var __async = (__this, __arguments, generator) => {
       legend: {
         labels: {
           generateLabels(chart) {
-            const data2 = chart.data;
-            if (data2.labels.length && data2.datasets.length) {
+            const data = chart.data;
+            if (data.labels.length && data.datasets.length) {
               const { labels: { pointStyle, color: color2 } } = chart.legend.options;
-              return data2.labels.map((label, i) => {
+              return data.labels.map((label, i) => {
                 const meta = chart.getDatasetMeta(0);
                 const style = meta.controller.getStyle(i);
                 return {
@@ -11681,8 +11583,8 @@ var __async = (__this, __arguments, generator) => {
         value: "" + vScale.getLabelForValue(parsed[vScale.axis])
       };
     }
-    parseObjectData(meta, data2, start, count) {
-      return _parseObjectDataRadialScale.bind(this)(meta, data2, start, count);
+    parseObjectData(meta, data, start, count) {
+      return _parseObjectDataRadialScale.bind(this)(meta, data, start, count);
     }
     update(mode) {
       const meta = this._cachedMeta;
@@ -11833,21 +11735,21 @@ var __async = (__this, __arguments, generator) => {
     }
     getMaxOverflow() {
       const meta = this._cachedMeta;
-      const data2 = meta.data || [];
+      const data = meta.data || [];
       if (!this.options.showLine) {
         let max = 0;
-        for (let i = data2.length - 1; i >= 0; --i) {
-          max = Math.max(max, data2[i].size(this.resolveDataElementOptions(i)) / 2);
+        for (let i = data.length - 1; i >= 0; --i) {
+          max = Math.max(max, data[i].size(this.resolveDataElementOptions(i)) / 2);
         }
         return max > 0 && max;
       }
       const dataset = meta.dataset;
       const border = dataset.options && dataset.options.borderWidth || 0;
-      if (!data2.length) {
+      if (!data.length) {
         return border;
       }
-      const firstPoint = data2[0].size(this.resolveDataElementOptions(0));
-      const lastPoint = data2[data2.length - 1].size(this.resolveDataElementOptions(data2.length - 1));
+      const firstPoint = data[0].size(this.resolveDataElementOptions(0));
+      const lastPoint = data[data.length - 1].size(this.resolveDataElementOptions(data.length - 1));
       return Math.max(border, firstPoint, lastPoint) / 2;
     }
   }
@@ -11932,13 +11834,13 @@ var __async = (__this, __arguments, generator) => {
     _date: DateAdapterBase
   };
   function binarySearch(metaset, axis, value, intersect) {
-    const { controller, data: data2, _sorted } = metaset;
+    const { controller, data, _sorted } = metaset;
     const iScale = controller._cachedMeta.iScale;
     const spanGaps = metaset.dataset ? metaset.dataset.options ? metaset.dataset.options.spanGaps : null : null;
-    if (iScale && axis === iScale.axis && axis !== "r" && _sorted && data2.length) {
+    if (iScale && axis === iScale.axis && axis !== "r" && _sorted && data.length) {
       const lookupMethod = iScale._reversePixels ? _rlookupByKey : _lookupByKey;
       if (!intersect) {
-        const result = lookupMethod(data2, axis, value);
+        const result = lookupMethod(data, axis, value);
         if (spanGaps) {
           const { vScale } = controller._cachedMeta;
           const { _parsed } = metaset;
@@ -11949,11 +11851,11 @@ var __async = (__this, __arguments, generator) => {
         }
         return result;
       } else if (controller._sharedOptions) {
-        const el = data2[0];
+        const el = data[0];
         const range = typeof el.getRange === "function" && el.getRange(axis);
         if (range) {
-          const start = lookupMethod(data2, axis, value - range);
-          const end = lookupMethod(data2, axis, value + range);
+          const start = lookupMethod(data, axis, value - range);
+          const end = lookupMethod(data, axis, value + range);
           return {
             lo: start.lo,
             hi: end.hi
@@ -11963,17 +11865,17 @@ var __async = (__this, __arguments, generator) => {
     }
     return {
       lo: 0,
-      hi: data2.length - 1
+      hi: data.length - 1
     };
   }
   function evaluateInteractionItems(chart, axis, position, handler, intersect) {
     const metasets = chart.getSortedVisibleDatasetMetas();
     const value = position[axis];
     for (let i = 0, ilen = metasets.length; i < ilen; ++i) {
-      const { index: index2, data: data2 } = metasets[i];
+      const { index: index2, data } = metasets[i];
       const { lo, hi } = binarySearch(metasets[i], axis, value, intersect);
       for (let j = lo; j <= hi; ++j) {
-        const element = data2[j];
+        const element = data[j];
         if (!element.skip) {
           handler(element, index2, j);
         }
@@ -12122,11 +12024,11 @@ var __async = (__this, __arguments, generator) => {
         let items = options.intersect ? getIntersectItems(chart, position, axis, useFinalPosition, includeInvisible) : getNearestItems(chart, position, axis, false, useFinalPosition, includeInvisible);
         if (items.length > 0) {
           const datasetIndex = items[0].datasetIndex;
-          const data2 = chart.getDatasetMeta(datasetIndex).data;
+          const data = chart.getDatasetMeta(datasetIndex).data;
           items = [];
-          for (let i = 0; i < data2.length; ++i) {
+          for (let i = 0; i < data.length; ++i) {
             items.push({
-              element: data2[i],
+              element: data[i],
               datasetIndex,
               index: i
             });
@@ -13157,8 +13059,8 @@ var __async = (__this, __arguments, generator) => {
       return this.ticks;
     }
     getLabels() {
-      const data2 = this.chart.data;
-      return this.options.labels || (this.isHorizontal() ? data2.xLabels : data2.yLabels) || data2.labels || [];
+      const data = this.chart.data;
+      return this.options.labels || (this.isHorizontal() ? data.xLabels : data.yLabels) || data.labels || [];
     }
     getLabelItems(chartArea = this.chart.chartArea) {
       const items = this._labelItems || (this._labelItems = this._computeLabelItems(chartArea));
@@ -14615,11 +14517,11 @@ var __async = (__this, __arguments, generator) => {
     options.plugins = valueOrDefault(options.plugins, {});
     options.scales = mergeScaleConfig(config, options);
   }
-  function initData(data2) {
-    data2 = data2 || {};
-    data2.datasets = data2.datasets || [];
-    data2.labels = data2.labels || [];
-    return data2;
+  function initData(data) {
+    data = data || {};
+    data.datasets = data.datasets || [];
+    data.labels = data.labels || [];
+    return data;
   }
   function initConfig(config) {
     config = config || {};
@@ -14662,8 +14564,8 @@ var __async = (__this, __arguments, generator) => {
     get data() {
       return this._config.data;
     }
-    set data(data2) {
-      this._config.data = initData(data2);
+    set data(data) {
+      this._config.data = initData(data);
     }
     get options() {
       return this._config.options;
@@ -14973,8 +14875,8 @@ var __async = (__this, __arguments, generator) => {
     get data() {
       return this.config.data;
     }
-    set data(data2) {
-      this.config.data = data2;
+    set data(data) {
+      this.config.data = data;
     }
     get options() {
       return this._options;
@@ -16658,10 +16560,10 @@ var __async = (__this, __arguments, generator) => {
       datasets.forEach(colorizer);
     }
   };
-  function lttbDecimation(data2, start, count, availableWidth, options) {
+  function lttbDecimation(data, start, count, availableWidth, options) {
     const samples = options.samples || availableWidth;
     if (samples >= count) {
-      return data2.slice(start, start + count);
+      return data.slice(start, start + count);
     }
     const decimated = [];
     const bucketWidth = (count - 2) / (samples - 2);
@@ -16669,7 +16571,7 @@ var __async = (__this, __arguments, generator) => {
     const endIndex = start + count - 1;
     let a = start;
     let i, maxAreaPoint, maxArea, area, nextA;
-    decimated[sampledIndex++] = data2[a];
+    decimated[sampledIndex++] = data[a];
     for (i = 0; i < samples - 2; i++) {
       let avgX = 0;
       let avgY = 0;
@@ -16678,40 +16580,40 @@ var __async = (__this, __arguments, generator) => {
       const avgRangeEnd = Math.min(Math.floor((i + 2) * bucketWidth) + 1, count) + start;
       const avgRangeLength = avgRangeEnd - avgRangeStart;
       for (j = avgRangeStart; j < avgRangeEnd; j++) {
-        avgX += data2[j].x;
-        avgY += data2[j].y;
+        avgX += data[j].x;
+        avgY += data[j].y;
       }
       avgX /= avgRangeLength;
       avgY /= avgRangeLength;
       const rangeOffs = Math.floor(i * bucketWidth) + 1 + start;
       const rangeTo = Math.min(Math.floor((i + 1) * bucketWidth) + 1, count) + start;
-      const { x: pointAx, y: pointAy } = data2[a];
+      const { x: pointAx, y: pointAy } = data[a];
       maxArea = area = -1;
       for (j = rangeOffs; j < rangeTo; j++) {
-        area = 0.5 * Math.abs((pointAx - avgX) * (data2[j].y - pointAy) - (pointAx - data2[j].x) * (avgY - pointAy));
+        area = 0.5 * Math.abs((pointAx - avgX) * (data[j].y - pointAy) - (pointAx - data[j].x) * (avgY - pointAy));
         if (area > maxArea) {
           maxArea = area;
-          maxAreaPoint = data2[j];
+          maxAreaPoint = data[j];
           nextA = j;
         }
       }
       decimated[sampledIndex++] = maxAreaPoint;
       a = nextA;
     }
-    decimated[sampledIndex++] = data2[endIndex];
+    decimated[sampledIndex++] = data[endIndex];
     return decimated;
   }
-  function minMaxDecimation(data2, start, count, availableWidth) {
+  function minMaxDecimation(data, start, count, availableWidth) {
     let avgX = 0;
     let countX = 0;
     let i, point, x, y, prevX, minIndex, maxIndex, startIndex, minY, maxY;
     const decimated = [];
     const endIndex = start + count - 1;
-    const xMin = data2[start].x;
-    const xMax = data2[endIndex].x;
+    const xMin = data[start].x;
+    const xMax = data[endIndex].x;
     const dx = xMax - xMin;
     for (i = start; i < start + count; ++i) {
-      point = data2[i];
+      point = data[i];
       x = (point.x - xMin) / dx * availableWidth;
       y = point.y;
       const truncX = x | 0;
@@ -16730,18 +16632,18 @@ var __async = (__this, __arguments, generator) => {
           const intermediateIndex1 = Math.min(minIndex, maxIndex);
           const intermediateIndex2 = Math.max(minIndex, maxIndex);
           if (intermediateIndex1 !== startIndex && intermediateIndex1 !== lastIndex) {
-            decimated.push(__spreadProps(__spreadValues({}, data2[intermediateIndex1]), {
+            decimated.push(__spreadProps(__spreadValues({}, data[intermediateIndex1]), {
               x: avgX
             }));
           }
           if (intermediateIndex2 !== startIndex && intermediateIndex2 !== lastIndex) {
-            decimated.push(__spreadProps(__spreadValues({}, data2[intermediateIndex2]), {
+            decimated.push(__spreadProps(__spreadValues({}, data[intermediateIndex2]), {
               x: avgX
             }));
           }
         }
         if (i > 0 && lastIndex !== startIndex) {
-          decimated.push(data2[lastIndex]);
+          decimated.push(data[lastIndex]);
         }
         decimated.push(point);
         prevX = truncX;
@@ -16754,14 +16656,14 @@ var __async = (__this, __arguments, generator) => {
   }
   function cleanDecimatedDataset(dataset) {
     if (dataset._decimated) {
-      const data2 = dataset._data;
+      const data = dataset._data;
       delete dataset._decimated;
       delete dataset._data;
       Object.defineProperty(dataset, "data", {
         configurable: true,
         enumerable: true,
         writable: true,
-        value: data2
+        value: data
       });
     }
   }
@@ -16804,7 +16706,7 @@ var __async = (__this, __arguments, generator) => {
       chart.data.datasets.forEach((dataset, datasetIndex) => {
         const { _data, indexAxis } = dataset;
         const meta = chart.getDatasetMeta(datasetIndex);
-        const data2 = _data || dataset.data;
+        const data = _data || dataset.data;
         if (resolve([
           indexAxis,
           chart.options.indexAxis
@@ -16821,14 +16723,14 @@ var __async = (__this, __arguments, generator) => {
         if (chart.options.parsing) {
           return;
         }
-        let { start, count } = getStartAndCountOfVisiblePointsSimplified(meta, data2);
+        let { start, count } = getStartAndCountOfVisiblePointsSimplified(meta, data);
         const threshold = options.threshold || 4 * availableWidth;
         if (count <= threshold) {
           cleanDecimatedDataset(dataset);
           return;
         }
         if (isNullOrUndef(_data)) {
-          dataset._data = data2;
+          dataset._data = data;
           delete dataset.data;
           Object.defineProperty(dataset, "data", {
             configurable: true,
@@ -16844,10 +16746,10 @@ var __async = (__this, __arguments, generator) => {
         let decimated;
         switch (options.algorithm) {
           case "lttb":
-            decimated = lttbDecimation(data2, start, count, availableWidth, options);
+            decimated = lttbDecimation(data, start, count, availableWidth, options);
             break;
           case "min-max":
-            decimated = minMaxDecimation(data2, start, count, availableWidth);
+            decimated = minMaxDecimation(data, start, count, availableWidth);
             break;
           default:
             throw new Error(`Unsupported decimation algorithm '${options.algorithm}'`);
@@ -18644,7 +18546,7 @@ var __async = (__this, __arguments, generator) => {
     }
     _createItems(options) {
       const active = this._active;
-      const data2 = this.chart.data;
+      const data = this.chart.data;
       const labelColors = [];
       const labelPointStyles = [];
       const labelTextColors = [];
@@ -18654,10 +18556,10 @@ var __async = (__this, __arguments, generator) => {
         tooltipItems.push(createTooltipItem(this.chart, active[i]));
       }
       if (options.filter) {
-        tooltipItems = tooltipItems.filter((element, index2, array) => options.filter(element, index2, array, data2));
+        tooltipItems = tooltipItems.filter((element, index2, array) => options.filter(element, index2, array, data));
       }
       if (options.itemSort) {
-        tooltipItems = tooltipItems.sort((a, b) => options.itemSort(a, b, data2));
+        tooltipItems = tooltipItems.sort((a, b) => options.itemSort(a, b, data));
       }
       each(tooltipItems, (context) => {
         const scoped = overrideCallbacks(options.callbacks, context);
@@ -20760,12 +20662,12 @@ var __async = (__this, __arguments, generator) => {
       if (timestamps.length) {
         return timestamps;
       }
-      const data2 = this.getDataTimestamps();
+      const data = this.getDataTimestamps();
       const label = this.getLabelTimestamps();
-      if (data2.length && label.length) {
-        timestamps = this.normalize(data2.concat(label));
+      if (data.length && label.length) {
+        timestamps = this.normalize(data.concat(label));
       } else {
-        timestamps = data2.length ? data2 : label;
+        timestamps = data.length ? data : label;
       }
       timestamps = this._cache.all = timestamps;
       return timestamps;
@@ -20797,69 +20699,303 @@ var __async = (__this, __arguments, generator) => {
     scales
   ];
   Chart.register(...registerables);
-  const users = [{ "name": "孙叶", "class": "25计算机1班", "codeforces_id": "chu4351", "atcoder_id": "chu4351", "matiji_id": "218118", "grade": 2025, "atcoder": 8, "codeforces": 31, "matiji": 22 }, { "name": "陈宣扬", "class": "25计算机3班", "codeforces_id": "cxycec", "atcoder_id": "cxy2006", "matiji_id": "217005", "grade": 2025, "atcoder": 21, "codeforces": 87, "matiji": 54 }, { "name": "杜光明", "class": "25计算机3班", "codeforces_id": "Rei_.", "atcoder_id": "ruanmei", "matiji_id": "217486", "grade": 2025, "atcoder": 12, "codeforces": 46, "matiji": 25 }, { "name": "陈光照", "class": "25计算机3班", "codeforces_id": "MysterService", "atcoder_id": "MysterService", "matiji_id": "218083", "grade": 2025, "atcoder": 4, "codeforces": 17, "matiji": 33 }, { "name": "刘意群", "class": "25计算机专升本3班", "codeforces_id": "liuning123", "atcoder_id": "liuning123", "matiji_id": "151967", "grade": 2025, "atcoder": 39, "codeforces": 103, "matiji": 0 }, { "name": "万奕忻", "class": "25软件1班", "codeforces_id": "yixinWan", "atcoder_id": "yixinWan", "matiji_id": "218264", "grade": 2025, "atcoder": 2, "codeforces": 4, "matiji": 32 }, { "name": "陈轩宇", "class": "25软件1班", "codeforces_id": "kilt", "atcoder_id": "kilty", "matiji_id": "", "grade": 2025, "atcoder": 2, "codeforces": 8, "matiji": 0 }, { "name": "胡悠茗", "class": "25软件2班", "codeforces_id": "breadog", "atcoder_id": "breadog", "matiji_id": "216994", "grade": 2025, "atcoder": 21, "codeforces": 89, "matiji": 28 }, { "name": "施宇轩", "class": "25软件2班", "codeforces_id": "zhouxian", "atcoder_id": "zhouxian", "matiji_id": "217815", "grade": 2025, "atcoder": 4, "codeforces": 29, "matiji": 27 }, { "name": "巫浩锋", "class": "25软件2班", "codeforces_id": "Kyrie_117", "atcoder_id": "Kyrie_11", "matiji_id": "218127", "grade": 2025, "atcoder": 0, "codeforces": 1, "matiji": 2 }, { "name": "连全威", "class": "25软件2班", "codeforces_id": "Koijia", "atcoder_id": "Koijia", "matiji_id": "218207", "grade": 2025, "atcoder": 0, "codeforces": 0, "matiji": 2 }, { "name": "张宇翔", "class": "25软件3班", "codeforces_id": "OOZYXOO", "atcoder_id": "OOZYXOO", "matiji_id": "216972", "grade": 2025, "atcoder": 23, "codeforces": 119, "matiji": 14 }, { "name": "周晓飞", "class": "25软件3班", "codeforces_id": "hei_di", "atcoder_id": "hei_di", "matiji_id": "217113", "grade": 2025, "atcoder": 13, "codeforces": 23, "matiji": 6 }, { "name": "刘云琪", "class": "25软件3班", "codeforces_id": "toykowww", "atcoder_id": "tokyoww", "matiji_id": "216968", "grade": 2025, "atcoder": 17, "codeforces": 82, "matiji": 24 }, { "name": "吴春雷", "class": "25软件3班", "codeforces_id": "wuchunlei", "atcoder_id": "wuchunlei", "matiji_id": "217859", "grade": 2025, "atcoder": 6, "codeforces": 32, "matiji": 2 }, { "name": "叶宇喆", "class": "25软件3班", "codeforces_id": "gdyg666", "atcoder_id": "gdyg666", "matiji_id": "", "grade": 2025, "atcoder": 3, "codeforces": 3, "matiji": 0 }, { "name": "王佳欣", "class": "25软件3班", "codeforces_id": "changem1", "atcoder_id": "lushishen", "matiji_id": "217855", "grade": 2025, "atcoder": 9, "codeforces": 50, "matiji": 46 }, { "name": "王西门", "class": "25软件3班", "codeforces_id": "gggsss", "atcoder_id": "gggsss", "matiji_id": "218124", "grade": 2025, "atcoder": 5, "codeforces": 11, "matiji": 2 }, { "name": "燕诺", "class": "25软件3班", "codeforces_id": "YwY1126", "atcoder_id": "Ywy1126", "matiji_id": "218193", "grade": 2025, "atcoder": 5, "codeforces": 23, "matiji": 26 }, { "name": "苏奕铖", "class": "25软件3班", "codeforces_id": "", "atcoder_id": "", "matiji_id": "", "grade": 2025, "atcoder": 0, "codeforces": 0, "matiji": 0 }, { "name": "郑亦宇", "class": "25软件专升本1班", "codeforces_id": "zhengyiyu", "atcoder_id": "zhengyiyu", "matiji_id": "217035", "grade": 2025, "atcoder": 13, "codeforces": 65, "matiji": 124 }, { "name": "徐文静", "class": "25软件专升本2班", "codeforces_id": "yesswlqbj", "atcoder_id": "yesswlqbjs", "matiji_id": "217485", "grade": 2025, "atcoder": 15, "codeforces": 76, "matiji": 42 }, { "name": "符轩跃", "class": "25软件专升本2班", "codeforces_id": "fuxuanyue", "atcoder_id": "fuxuanyue", "matiji_id": "122691", "grade": 2025, "atcoder": 30, "codeforces": 78, "matiji": 30 }, { "name": "刘筱朵", "class": "25软件专升本3班", "codeforces_id": "_lxd_", "atcoder_id": "lxd_", "matiji_id": "217489", "grade": 2025, "atcoder": 6, "codeforces": 78, "matiji": 17 }, { "name": "倪志杰", "class": "25软件专升本3班", "codeforces_id": "Ardmore", "atcoder_id": "Ardmore", "matiji_id": "217991", "grade": 2025, "atcoder": 9, "codeforces": 73, "matiji": 41 }, { "name": "朱雯婧", "class": "25软件专升本3班", "codeforces_id": "Morbid698", "atcoder_id": "Morbid698", "matiji_id": "218204", "grade": 2025, "atcoder": 8, "codeforces": 11, "matiji": 22 }, { "name": "陈硕", "class": "", "codeforces_id": "xing_yao", "atcoder_id": "xing_yao", "matiji_id": "", "grade": 2023, "atcoder": 252, "codeforces": 1157, "matiji": 0 }, { "name": "曹政业", "class": "", "codeforces_id": "caozhengye", "atcoder_id": "caozhengye", "matiji_id": "", "grade": 2023, "atcoder": 297, "codeforces": 1309, "matiji": 0 }, { "name": "陈资权", "class": "", "codeforces_id": "LuckyCc.", "atcoder_id": "LuckyCc", "matiji_id": "", "grade": 2023, "atcoder": 177, "codeforces": 800, "matiji": 0 }, { "name": "叶智豪", "class": "", "codeforces_id": "YonagiKei", "atcoder_id": "Yonagi_Kei", "matiji_id": "", "grade": 2023, "atcoder": 0, "codeforces": 764, "matiji": 0 }, { "name": "余凯", "class": "", "codeforces_id": "Gai_yk", "atcoder_id": "ykkkk", "matiji_id": "", "grade": 2024, "atcoder": 117, "codeforces": 242, "matiji": 0 }, { "name": "陈姿蓥", "class": "", "codeforces_id": "ziying032", "atcoder_id": "ziying032", "matiji_id": "", "grade": 2024, "atcoder": 68, "codeforces": 202, "matiji": 0 }, { "name": "姜银", "class": "", "codeforces_id": "jiangyin0750", "atcoder_id": "jiangyin0750", "matiji_id": "", "grade": 2024, "atcoder": 140, "codeforces": 333, "matiji": 0 }, { "name": "尚淇淇", "class": "", "codeforces_id": "x_yeyue", "atcoder_id": "x_yeyue", "matiji_id": "", "grade": 2024, "atcoder": 145, "codeforces": 302, "matiji": 0 }, { "name": "王瑞珽", "class": "", "codeforces_id": "wangruiting", "atcoder_id": "wangruiting", "matiji_id": "", "grade": 2024, "atcoder": 114, "codeforces": 398, "matiji": 0 }, { "name": "马逍遥", "class": "", "codeforces_id": "lies-", "atcoder_id": "moon1ight", "matiji_id": "", "grade": 2024, "atcoder": 94, "codeforces": 221, "matiji": 0 }, { "name": "杜蘇航", "class": "", "codeforces_id": "xiao_shuang", "atcoder_id": "xiaoshuang", "matiji_id": "", "grade": 2024, "atcoder": 94, "codeforces": 185, "matiji": 0 }, { "name": "赵星宇", "class": "", "codeforces_id": "zhaooooo", "atcoder_id": "zhao_xy", "matiji_id": "", "grade": 2024, "atcoder": 130, "codeforces": 156, "matiji": 0 }, { "name": "李俊", "class": "", "codeforces_id": "ami_XR", "atcoder_id": "AMI_Xxr", "matiji_id": "", "grade": 2024, "atcoder": 36, "codeforces": 165, "matiji": 0 }];
-  const data = { "孙叶": { "atcoder": { "2025-10-20": 6, "2025-11-01": 8 }, "codeforces": { "2025-10-20": 6, "2025-11-01": 19, "2025-11-20": 31 }, "matiji": { "2025-10-20": 3, "2025-11-01": 12, "2025-11-20": 22 } }, "陈宣扬": { "atcoder": { "2025-10-20": 18, "2025-11-01": 21 }, "codeforces": { "2025-10-20": 48, "2025-11-01": 59, "2025-11-20": 87 }, "matiji": { "2025-10-20": 20, "2025-11-01": 37, "2025-11-20": 54 } }, "杜光明": { "atcoder": { "2025-10-20": 9, "2025-11-01": 12 }, "codeforces": { "2025-10-20": 22, "2025-11-01": 29, "2025-11-20": 46 }, "matiji": { "2025-10-20": 11, "2025-11-01": 18, "2025-11-20": 25 } }, "陈光照": { "atcoder": { "2025-10-20": 4, "2025-11-01": 4 }, "codeforces": { "2025-10-20": 6, "2025-11-01": 12, "2025-11-20": 17 }, "matiji": { "2025-10-20": 10, "2025-11-01": 21, "2025-11-20": 33 } }, "刘意群": { "atcoder": { "2025-10-20": 31, "2025-11-01": 39 }, "codeforces": { "2025-10-20": 66, "2025-11-01": 81, "2025-11-20": 103 }, "matiji": { "2025-10-20": 0, "2025-11-01": 0, "2025-11-20": 0 } }, "万奕忻": { "atcoder": { "2025-10-20": 2, "2025-11-01": 2 }, "codeforces": { "2025-10-20": 2, "2025-11-01": 2, "2025-11-20": 4 }, "matiji": { "2025-10-20": 7, "2025-11-01": 26, "2025-11-20": 32 } }, "陈轩宇": { "atcoder": { "2025-10-20": 2, "2025-11-01": 2 }, "codeforces": { "2025-10-20": 2, "2025-11-01": 4, "2025-11-20": 8 }, "matiji": {} }, "胡悠茗": { "atcoder": { "2025-10-20": 18, "2025-11-01": 21 }, "codeforces": { "2025-10-20": 55, "2025-11-01": 73, "2025-11-20": 89 }, "matiji": { "2025-10-20": 10, "2025-11-01": 12, "2025-11-20": 28 } }, "施宇轩": { "atcoder": { "2025-10-20": 2, "2025-11-01": 4 }, "codeforces": { "2025-10-20": 8, "2025-11-01": 20, "2025-11-20": 29 }, "matiji": { "2025-10-20": 14, "2025-11-01": 23, "2025-11-20": 27 } }, "巫浩锋": { "atcoder": {}, "codeforces": { "2025-10-20": 1, "2025-11-01": 1, "2025-11-20": 1 }, "matiji": { "2025-10-20": 2, "2025-11-01": 2, "2025-11-20": 2 } }, "连全威": { "atcoder": {}, "codeforces": { "2025-10-20": 0, "2025-11-01": 0, "2025-11-20": 0 }, "matiji": { "2025-10-20": 2, "2025-11-01": 2, "2025-11-20": 2 } }, "张宇翔": { "atcoder": { "2025-10-20": 19, "2025-11-01": 23 }, "codeforces": { "2025-10-20": 68, "2025-11-01": 91, "2025-11-20": 119 }, "matiji": { "2025-10-20": 12, "2025-11-01": 12, "2025-11-20": 14 } }, "周晓飞": { "atcoder": { "2025-10-20": 11, "2025-11-01": 13 }, "codeforces": { "2025-10-20": 23, "2025-11-01": 23, "2025-11-20": 23 }, "matiji": { "2025-10-20": 6, "2025-11-01": 6, "2025-11-20": 6 } }, "刘云琪": { "atcoder": { "2025-10-20": 14, "2025-11-01": 17 }, "codeforces": { "2025-10-20": 49, "2025-11-01": 64, "2025-11-20": 82 }, "matiji": { "2025-10-20": 16, "2025-11-01": 23, "2025-11-20": 24 } }, "吴春雷": { "atcoder": { "2025-10-20": 4, "2025-11-01": 6 }, "codeforces": { "2025-10-20": 9, "2025-11-01": 18, "2025-11-20": 32 }, "matiji": { "2025-10-20": 2, "2025-11-01": 2, "2025-11-20": 2 } }, "叶宇喆": { "atcoder": { "2025-10-20": 3, "2025-11-01": 3 }, "codeforces": { "2025-10-20": 3, "2025-11-01": 3, "2025-11-20": 3 }, "matiji": {} }, "王佳欣": { "atcoder": { "2025-10-20": 6, "2025-11-01": 9 }, "codeforces": { "2025-10-20": 13, "2025-11-01": 34, "2025-11-20": 50 }, "matiji": { "2025-10-20": 17, "2025-11-01": 31, "2025-11-20": 46 } }, "王西门": { "atcoder": { "2025-10-20": 3, "2025-11-01": 5 }, "codeforces": { "2025-10-20": 4, "2025-11-01": 8, "2025-11-20": 11 }, "matiji": { "2025-10-20": 2, "2025-11-01": 2, "2025-11-20": 2 } }, "燕诺": { "atcoder": { "2025-10-20": 2, "2025-11-01": 5 }, "codeforces": { "2025-10-20": 5, "2025-11-01": 17, "2025-11-20": 23 }, "matiji": { "2025-10-20": 7, "2025-11-01": 18, "2025-11-20": 26 } }, "苏奕铖": { "atcoder": {}, "codeforces": {}, "matiji": {} }, "郑亦宇": { "atcoder": { "2025-10-20": 10, "2025-11-01": 13 }, "codeforces": { "2025-10-20": 55, "2025-11-01": 62, "2025-11-20": 65 }, "matiji": { "2025-10-20": 45, "2025-11-01": 76, "2025-11-20": 124 } }, "徐文静": { "atcoder": { "2025-10-20": 12, "2025-11-01": 15 }, "codeforces": { "2025-10-20": 43, "2025-11-01": 65, "2025-11-20": 76 }, "matiji": { "2025-10-20": 22, "2025-11-01": 33, "2025-11-20": 42 } }, "符轩跃": { "atcoder": { "2025-10-20": 23, "2025-11-01": 30 }, "codeforces": { "2025-10-20": 26, "2025-11-01": 54, "2025-11-20": 78 }, "matiji": { "2025-10-20": 22, "2025-11-01": 30, "2025-11-20": 30 } }, "刘筱朵": { "atcoder": { "2025-10-20": 6, "2025-11-01": 6 }, "codeforces": { "2025-10-20": 70, "2025-11-01": 78, "2025-11-20": 78 }, "matiji": { "2025-10-20": 10, "2025-11-01": 17, "2025-11-20": 17 } }, "倪志杰": { "atcoder": { "2025-10-20": 6, "2025-11-01": 9 }, "codeforces": { "2025-10-20": 22, "2025-11-01": 48, "2025-11-20": 73 }, "matiji": { "2025-10-20": 19, "2025-11-01": 31, "2025-11-20": 41 } }, "朱雯婧": { "atcoder": { "2025-10-20": 5, "2025-11-01": 8 }, "codeforces": { "2025-10-20": 6, "2025-11-01": 11, "2025-11-20": 11 }, "matiji": { "2025-10-20": 9, "2025-11-01": 19, "2025-11-20": 22 } }, "陈硕": { "atcoder": { "2025-10-20": 250, "2025-11-01": 252 }, "codeforces": { "2025-10-20": 1156, "2025-11-01": 1157, "2025-11-20": 1157 }, "matiji": {} }, "曹政业": { "atcoder": { "2025-10-20": 297, "2025-11-01": 297 }, "codeforces": { "2025-10-20": 1305, "2025-11-01": 1305, "2025-11-20": 1309 }, "matiji": {} }, "陈资权": { "atcoder": { "2025-10-20": 177, "2025-11-01": 177 }, "codeforces": { "2025-10-20": 786, "2025-11-01": 795, "2025-11-20": 800 }, "matiji": {} }, "叶智豪": { "atcoder": {}, "codeforces": { "2025-10-20": 762, "2025-11-01": 762, "2025-11-20": 764 }, "matiji": {} }, "余凯": { "atcoder": { "2025-10-20": 111, "2025-11-01": 117 }, "codeforces": { "2025-10-20": 233, "2025-11-01": 237, "2025-11-20": 242 }, "matiji": {} }, "陈姿蓥": { "atcoder": { "2025-10-20": 68, "2025-11-01": 68 }, "codeforces": { "2025-10-20": 202, "2025-11-01": 202, "2025-11-20": 202 }, "matiji": {} }, "姜银": { "atcoder": { "2025-10-20": 130, "2025-11-01": 140 }, "codeforces": { "2025-10-20": 307, "2025-11-01": 317, "2025-11-20": 333 }, "matiji": {} }, "尚淇淇": { "atcoder": { "2025-10-20": 140, "2025-11-01": 145 }, "codeforces": { "2025-10-20": 285, "2025-11-01": 295, "2025-11-20": 302 }, "matiji": {} }, "王瑞珽": { "atcoder": { "2025-10-20": 109, "2025-11-01": 114 }, "codeforces": { "2025-10-20": 334, "2025-11-01": 362, "2025-11-20": 398 }, "matiji": {} }, "马逍遥": { "atcoder": { "2025-10-20": 86, "2025-11-01": 94 }, "codeforces": { "2025-10-20": 212, "2025-11-01": 218, "2025-11-20": 221 }, "matiji": {} }, "杜蘇航": { "atcoder": { "2025-10-20": 85, "2025-11-01": 94 }, "codeforces": { "2025-10-20": 180, "2025-11-01": 182, "2025-11-20": 185 }, "matiji": {} }, "赵星宇": { "atcoder": { "2025-10-20": 128, "2025-11-01": 130 }, "codeforces": { "2025-10-20": 146, "2025-11-01": 149, "2025-11-20": 156 }, "matiji": {} }, "李俊": { "atcoder": { "2025-10-20": 28, "2025-11-01": 36 }, "codeforces": { "2025-10-20": 131, "2025-11-01": 145, "2025-11-20": 165 }, "matiji": {} } };
-  const lastUpdate = "2025-11-20T18:48:03.471730";
-  const allData = {
-    users,
-    data,
-    lastUpdate
-  };
+  const _hoisted_1$3 = { class: "chart-container" };
+  const _hoisted_2$3 = { class: "chart-title" };
+  const _hoisted_3$1 = { class: "chart-actions" };
+  const _sfc_main$3 = /* @__PURE__ */ defineComponent({
+    __name: "TrendChart",
+    props: {
+      displayUsers: { default: () => [] },
+      userData: { default: () => ({}) },
+      currentPlatformFilter: { default: "all" },
+      chartType: { default: "line" }
+    },
+    emits: ["chart-type-change"],
+    setup(__props, { emit: __emit }) {
+      const props = __props;
+      const emit2 = __emit;
+      const trendChartRef = ref(null);
+      let chartInstance = null;
+      const chartTitle = computed(() => {
+        switch (props.currentPlatformFilter) {
+          case "atcoder":
+            return "AtCoder 刷题数量趋势";
+          case "codeforces":
+            return "Codeforces 刷题数量趋势";
+          case "matiji":
+            return "Matiji 刷题数量趋势";
+          default:
+            return "全部平台 刷题数量趋势";
+        }
+      });
+      const currentChartType = ref(props.chartType);
+      const getDateLabels = () => {
+        const allDates = /* @__PURE__ */ new Set();
+        props.displayUsers.forEach((user) => {
+          const userHistory = props.userData[user.name];
+          if (userHistory) {
+            Object.values(userHistory).forEach((platformData) => {
+              Object.keys(platformData).forEach((date) => allDates.add(date));
+            });
+          }
+        });
+        return Array.from(allDates).sort((date1, date2) => {
+          const d1 = new Date(date1);
+          const d2 = new Date(date2);
+          return d1.getTime() - d2.getTime();
+        });
+      };
+      const renderChart = () => {
+        if (!trendChartRef.value) return;
+        try {
+          if (chartInstance) {
+            chartInstance.destroy();
+            chartInstance = null;
+          }
+          if (!document.body.contains(trendChartRef.value)) {
+            console.warn("Canvas元素已从DOM中移除，跳过图表渲染");
+            return;
+          }
+          const dateLabels = getDateLabels();
+          const platform = props.currentPlatformFilter;
+          const colors2 = [
+            "#4a6cf7",
+            "#28a745",
+            "#ffc107",
+            "#dc3545",
+            "#6f42c1",
+            "#20c997",
+            "#fd7e14",
+            "#e83e8c"
+          ];
+          const datasets = props.displayUsers.map((user, index2) => {
+            let data = [];
+            if (platform === "all") {
+              data = dateLabels.map((date) => {
+                const userHistory = props.userData[user.name];
+                if (!userHistory) return 0;
+                let total = 0;
+                Object.values(userHistory).forEach((platformData) => {
+                  if (platformData[date]) {
+                    total += platformData[date];
+                  }
+                });
+                return total;
+              });
+            } else {
+              const userHistory = props.userData[user.name];
+              if (userHistory && userHistory[platform]) {
+                const platformData = userHistory[platform];
+                data = dateLabels.map((date) => platformData[date] || 0);
+              } else {
+                data = dateLabels.map(() => 0);
+              }
+            }
+            return {
+              label: user.name,
+              data,
+              backgroundColor: currentChartType.value === "bar" ? colors2[index2 % colors2.length] : "transparent",
+              borderColor: colors2[index2 % colors2.length],
+              borderWidth: 2,
+              pointBackgroundColor: colors2[index2 % colors2.length],
+              pointBorderColor: "#fff",
+              pointBorderWidth: 2,
+              pointRadius: 5,
+              tension: 0.3
+            };
+          });
+          const ctx = trendChartRef.value.getContext("2d");
+          if (ctx) {
+            chartInstance = new Chart(ctx, {
+              type: currentChartType.value,
+              data: {
+                labels: dateLabels,
+                datasets
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                  legend: {
+                    position: "top"
+                  },
+                  tooltip: {
+                    mode: "index",
+                    intersect: false
+                  },
+                  title: {
+                    display: true,
+                    text: chartTitle.value
+                  }
+                },
+                scales: {
+                  y: {
+                    beginAtZero: true,
+                    title: {
+                      display: true,
+                      text: "刷题数量"
+                    }
+                  },
+                  x: {
+                    title: {
+                      display: false,
+                      text: "日期"
+                    }
+                  }
+                },
+                animation: false
+              }
+            });
+          }
+        } catch (error) {
+          console.error("图表渲染过程中出现未预期错误:", error);
+          if (chartInstance) {
+            try {
+              chartInstance.destroy();
+            } catch (e) {
+              console.warn("销毁图表实例时出错:", e);
+            }
+            chartInstance = null;
+          }
+        }
+      };
+      const changeChartType = (type) => {
+        currentChartType.value = type;
+        emit2("chart-type-change", type);
+        nextTick(() => {
+          renderChart();
+        });
+      };
+      watch(() => [props.displayUsers, props.currentPlatformFilter, currentChartType.value], () => {
+        nextTick(() => {
+          renderChart();
+        });
+      }, { deep: true });
+      onMounted(() => {
+        nextTick(() => {
+          renderChart();
+        });
+      });
+      onBeforeUnmount(() => {
+        if (chartInstance) {
+          chartInstance.destroy();
+        }
+      });
+      return (_ctx, _cache) => {
+        return openBlock(), createElementBlock("div", _hoisted_1$3, [
+          createBaseVNode("div", _hoisted_2$3, [
+            createBaseVNode("span", null, toDisplayString(chartTitle.value), 1),
+            createBaseVNode("div", _hoisted_3$1, [
+              createBaseVNode("button", {
+                onClick: _cache[0] || (_cache[0] = ($event) => changeChartType("line")),
+                class: normalizeClass({ active: currentChartType.value === "line" })
+              }, "折线图", 2),
+              createBaseVNode("button", {
+                onClick: _cache[1] || (_cache[1] = ($event) => changeChartType("bar")),
+                class: normalizeClass({ active: currentChartType.value === "bar" })
+              }, "柱状图", 2)
+            ])
+          ]),
+          createBaseVNode("canvas", {
+            ref_key: "trendChartRef",
+            ref: trendChartRef
+          }, null, 512)
+        ]);
+      };
+    }
+  });
+  const TrendChart = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-4e7263a5"]]);
+  const _hoisted_1$2 = { class: "controls" };
+  const _hoisted_2$2 = { class: "filter-group" };
+  const _hoisted_3 = ["value"];
+  const _hoisted_4 = ["value"];
+  const _hoisted_5 = ["value"];
+  const _sfc_main$2 = /* @__PURE__ */ defineComponent({
+    __name: "FilterControls",
+    props: {
+      periodFilter: { default: "all" },
+      userFilter: { default: "all" },
+      platformFilter: { default: "all" }
+    },
+    emits: ["update:periodFilter", "update:userFilter", "update:platformFilter", "refresh-data"],
+    setup(__props, { emit: __emit }) {
+      const emit2 = __emit;
+      const onPeriodFilterChange = (event) => {
+        const target = event.target;
+        emit2("update:periodFilter", target.value);
+      };
+      const onUserFilterChange = (event) => {
+        const target = event.target;
+        emit2("update:userFilter", target.value);
+      };
+      const onPlatformFilterChange = (event) => {
+        const target = event.target;
+        emit2("update:platformFilter", target.value);
+      };
+      const refreshData = () => {
+        emit2("refresh-data");
+      };
+      return (_ctx, _cache) => {
+        return openBlock(), createElementBlock("div", _hoisted_1$2, [
+          createBaseVNode("div", _hoisted_2$2, [
+            createBaseVNode("select", {
+              class: "filter-select",
+              value: __props.periodFilter,
+              onChange: onPeriodFilterChange
+            }, [..._cache[0] || (_cache[0] = [
+              createBaseVNode("option", { value: "all" }, "全部周期", -1),
+              createBaseVNode("option", { value: "last4" }, "最近4期", -1),
+              createBaseVNode("option", { value: "last8" }, "最近8期", -1)
+            ])], 40, _hoisted_3),
+            createBaseVNode("select", {
+              class: "filter-select",
+              value: __props.userFilter,
+              onChange: onUserFilterChange
+            }, [..._cache[1] || (_cache[1] = [
+              createBaseVNode("option", { value: "all" }, "全部用户", -1),
+              createBaseVNode("option", { value: "selected" }, "仅选中用户", -1)
+            ])], 40, _hoisted_4),
+            createBaseVNode("select", {
+              class: "filter-select",
+              value: __props.platformFilter,
+              onChange: onPlatformFilterChange
+            }, [..._cache[2] || (_cache[2] = [
+              createBaseVNode("option", { value: "all" }, "全部平台", -1),
+              createBaseVNode("option", { value: "atcoder" }, "AtCoder", -1),
+              createBaseVNode("option", { value: "codeforces" }, "Codeforces", -1),
+              createBaseVNode("option", { value: "matiji" }, "Matiji", -1)
+            ])], 40, _hoisted_5)
+          ]),
+          createBaseVNode("div", { class: "filter-group" }, [
+            createBaseVNode("button", {
+              class: "btn",
+              onClick: refreshData
+            }, "刷新数据")
+          ])
+        ]);
+      };
+    }
+  });
+  const FilterControls = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-8acf8ac0"]]);
   const _hoisted_1$1 = { class: "container" };
-  const _hoisted_2$1 = { class: "sidebar" };
-  const _hoisted_3 = { class: "sidebar-header" };
-  const _hoisted_4 = { class: "user-list" };
-  const _hoisted_5 = ["onClick"];
-  const _hoisted_6 = { class: "user-info" };
-  const _hoisted_7 = { class: "user-name" };
-  const _hoisted_8 = { class: "user-stats" };
-  const _hoisted_9 = { class: "main-content" };
-  const _hoisted_10 = { class: "controls" };
-  const _hoisted_11 = { class: "filter-group" };
-  const _hoisted_12 = { class: "stats-cards" };
-  const _hoisted_13 = { class: "card" };
-  const _hoisted_14 = { class: "value" };
-  const _hoisted_15 = { class: "card" };
-  const _hoisted_16 = { class: "value" };
-  const _hoisted_17 = { class: "card" };
-  const _hoisted_18 = { class: "value" };
-  const _hoisted_19 = { class: "card" };
-  const _hoisted_20 = { class: "value" };
-  const _hoisted_21 = { class: "chart-container" };
-  const _hoisted_22 = { class: "chart-title" };
-  const _hoisted_23 = { class: "chart-actions" };
+  const _hoisted_2$1 = { class: "main-content" };
   const _sfc_main$1 = /* @__PURE__ */ defineComponent({
     __name: "Statistics",
     setup(__props) {
-      let chartRenderTimeout = null;
-      const debounce2 = (func, wait) => {
-        return (...args) => {
-          if (chartRenderTimeout) clearTimeout(chartRenderTimeout);
-          chartRenderTimeout = setTimeout(() => func(...args), wait);
-        };
-      };
-      const users2 = ref([]);
+      const users = ref([]);
       const userData = ref({});
-      const lastUpdate2 = ref((/* @__PURE__ */ new Date()).toISOString().split("T")[0] || "");
+      const lastUpdate = ref((/* @__PURE__ */ new Date()).toISOString().split("T")[0] || "");
       const searchTerm = ref("");
       const selectedUsers = ref(["孙叶", "陈宣扬", "杜光明"]);
       const currentPeriodFilter = ref("all");
       const currentUserFilter = ref("selected");
       const currentPlatformFilter = ref("all");
       const trendChartType = ref("line");
-      const trendChartInstance = ref(null);
-      const trendChart = ref(null);
-      const filteredUsers = computed(() => {
-        if (!searchTerm.value) return users2.value;
-        return users2.value.filter(
-          (user) => user.name.toLowerCase().includes(searchTerm.value.toLowerCase())
-        );
-      });
       const displayUsers = computed(() => {
         if (currentUserFilter.value === "all") {
-          return users2.value;
+          return users.value;
         }
-        return users2.value.filter((user) => selectedUsers.value.includes(user.name));
+        return users.value.filter((user) => selectedUsers.value.includes(user.name));
       });
       const activeUsersCount = computed(() => displayUsers.value.length);
       const getPlatformTotal = (platform) => {
@@ -20892,9 +21028,6 @@ var __async = (__this, __arguments, generator) => {
           (user) => user[currentPlatformFilter.value]
         ));
       });
-      watch(currentPlatformFilter, () => {
-        renderCharts();
-      });
       const toggleUser = (userName) => {
         const index2 = selectedUsers.value.indexOf(userName);
         if (index2 > -1) {
@@ -20903,338 +21036,99 @@ var __async = (__this, __arguments, generator) => {
           selectedUsers.value.push(userName);
         }
       };
-      const getDateLabels = () => {
-        const allDates = /* @__PURE__ */ new Set();
-        displayUsers.value.forEach((user) => {
-          const userHistory = userData.value[user.name];
-          if (userHistory) {
-            Object.values(userHistory).forEach((platformData) => {
-              Object.keys(platformData).forEach((date) => allDates.add(date));
-            });
-          }
-        });
-        return Array.from(allDates).sort((date1, date2) => {
-          const d1 = new Date(date1);
-          const d2 = new Date(date2);
-          return d1.getTime() - d2.getTime();
-        });
+      const handleSearchChange = (searchValue) => {
+        searchTerm.value = searchValue;
       };
+      const handleChartTypeChange = (chartType) => {
+        trendChartType.value = chartType;
+      };
+      const updatePeriodFilter = (value) => {
+        currentPeriodFilter.value = value;
+      };
+      const updateUserFilter = (value) => {
+        currentUserFilter.value = value;
+      };
+      const updatePlatformFilter = (value) => {
+        currentPlatformFilter.value = value;
+      };
+      const loadAllData = () => __async(null, null, function* () {
+        return yield fetch("/all_data.json").then((res) => res.json());
+      });
       const loadData = () => __async(null, null, function* () {
         try {
-          const data2 = allData;
+          const data = yield loadAllData();
           const data25 = { users: [], data: {} };
-          for (let i = 0; i < data2.users.length; i++) {
-            const u = data2.users[i];
+          const allDates = /* @__PURE__ */ new Set();
+          for (let i = 0; i < data.users.length; i++) {
+            const u = data.users[i];
             if (!u || u.grade !== 2025) continue;
             data25.users.push(u);
-            const d = data2.data[u.name];
-            if (d) data25.data[u.name] = d;
+            const d = data.data[u.name];
+            if (d) {
+              data25.data[u.name] = d;
+              Object.values(d).forEach((platformData) => {
+                Object.keys(platformData).forEach((date) => allDates.add(date));
+              });
+            }
           }
-          users2.value = data25.users;
+          users.value = data25.users;
           userData.value = data25.data;
+          if (allDates.size > 0) {
+            const sortedDates = Array.from(allDates).sort((a, b) => new Date(b).getTime() - new Date(a).getTime());
+            if (sortedDates.length > 0) {
+              lastUpdate.value = sortedDates[0];
+            }
+          }
           yield nextTick();
-          immediateRenderCharts();
         } catch (error) {
           console.error("加载数据失败:", error);
         }
       });
-      const getPlatformName = () => {
-        switch (currentPlatformFilter.value) {
-          case "atcoder":
-            return "AtCoder";
-          case "codeforces":
-            return "Codeforces";
-          case "matiji":
-            return "Matiji";
-          default:
-            return "全部平台";
-        }
-      };
-      const renderCharts = () => {
-        if (trendChart.value) {
-          renderTrendChart();
-        }
-      };
-      const immediateRenderCharts = () => {
-        if (chartRenderTimeout) {
-          clearTimeout(chartRenderTimeout);
-          chartRenderTimeout = null;
-        }
-        nextTick(() => {
-          renderCharts();
-        });
-      };
       const refreshData = () => {
-        lastUpdate2.value = (/* @__PURE__ */ new Date()).toISOString().split("T")[0] || "";
         loadData();
-      };
-      const compareMode = () => {
-        alert(`对比模式已激活！当前平台: ${getPlatformName()}`);
-      };
-      const debouncedRenderCharts = debounce2(() => {
-        nextTick(() => {
-          renderCharts();
-        });
-      }, 200);
-      watch([currentUserFilter, selectedUsers, trendChartType], () => {
-        debouncedRenderCharts();
-      }, { deep: true });
-      const renderTrendChart = () => {
-        if (!trendChart.value) return;
-        try {
-          if (trendChartInstance.value) {
-            if (trendChartInstance.value.destroy) {
-              trendChartInstance.value.destroy();
-            }
-            trendChartInstance.value = null;
-          }
-          if (!document.body.contains(trendChart.value)) {
-            console.warn("Canvas元素已从DOM中移除，跳过图表渲染");
-            return;
-          }
-          const dateLabels = getDateLabels();
-          const platform = currentPlatformFilter.value;
-          const colors2 = [
-            "#4a6cf7",
-            "#28a745",
-            "#ffc107",
-            "#dc3545",
-            "#6f42c1",
-            "#20c997",
-            "#fd7e14",
-            "#e83e8c"
-          ];
-          const datasets = displayUsers.value.map((user, index2) => {
-            let data2 = [];
-            if (platform === "all") {
-              data2 = dateLabels.map((date) => {
-                const userHistory = userData.value[user.name];
-                if (!userHistory) return 0;
-                let total = 0;
-                Object.values(userHistory).forEach((platformData) => {
-                  if (platformData[date]) {
-                    total += platformData[date];
-                  }
-                });
-                return total;
-              });
-            } else {
-              const userHistory = userData.value[user.name];
-              if (userHistory && userHistory[platform]) {
-                const platformData = userHistory[platform];
-                data2 = dateLabels.map((date) => platformData[date] || 0);
-              } else {
-                data2 = dateLabels.map(() => 0);
-              }
-            }
-            return {
-              label: user.name,
-              data: data2,
-              backgroundColor: trendChartType.value === "bar" ? colors2[index2 % colors2.length] : "transparent",
-              borderColor: colors2[index2 % colors2.length],
-              borderWidth: 2,
-              pointBackgroundColor: colors2[index2 % colors2.length],
-              pointBorderColor: "#fff",
-              pointBorderWidth: 2,
-              pointRadius: 5,
-              tension: 0.3
-            };
-          });
-          const ctx = trendChart.value.getContext("2d");
-          if (ctx) {
-            try {
-              ctx.clearRect(0, 0, trendChart.value.width, trendChart.value.height);
-              trendChartInstance.value = new Chart(ctx, {
-                type: trendChartType.value,
-                data: {
-                  labels: dateLabels,
-                  datasets
-                },
-                options: {
-                  responsive: true,
-                  maintainAspectRatio: false,
-                  plugins: {
-                    legend: {
-                      position: "top"
-                    },
-                    tooltip: {
-                      mode: "index",
-                      intersect: false
-                    },
-                    title: {
-                      display: true,
-                      text: `${getPlatformName()} 刷题数量趋势`
-                    }
-                  },
-                  scales: {
-                    y: {
-                      beginAtZero: true,
-                      title: {
-                        display: true,
-                        text: "刷题数量"
-                      }
-                    },
-                    x: {
-                      title: {
-                        display: true,
-                        text: "日期"
-                      }
-                    }
-                  },
-                  // 禁用动画以减少Canvas上下文错误风险
-                  animation: false
-                }
-              });
-            } catch (error) {
-              console.error("创建图表时出错:", error);
-              trendChartInstance.value = null;
-            }
-          }
-        } catch (error) {
-          console.error("图表渲染过程中出现未预期错误:", error);
-          if (trendChartInstance.value) {
-            try {
-              trendChartInstance.value.destroy();
-            } catch (e) {
-              console.warn("销毁图表实例时出错:", e);
-            }
-            trendChartInstance.value = null;
-          }
-        }
       };
       onMounted(() => {
         loadData();
       });
-      onBeforeUnmount(() => {
-        if (trendChartInstance.value) {
-          trendChartInstance.value.destroy();
-        }
-        if (chartRenderTimeout) {
-          clearTimeout(chartRenderTimeout);
-        }
-      });
       return (_ctx, _cache) => {
         return openBlock(), createElementBlock("div", _hoisted_1$1, [
+          createVNode(UserListSidebar, {
+            users: users.value,
+            "selected-users": selectedUsers.value,
+            "search-term": searchTerm.value,
+            onToggleUser: toggleUser,
+            "onUpdate:searchTerm": handleSearchChange
+          }, null, 8, ["users", "selected-users", "search-term"]),
           createBaseVNode("div", _hoisted_2$1, [
-            createBaseVNode("div", _hoisted_3, [
-              _cache[6] || (_cache[6] = createBaseVNode("h2", null, "用户列表", -1)),
-              withDirectives(createBaseVNode("input", {
-                type: "text",
-                class: "user-search",
-                placeholder: "搜索用户...",
-                "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => searchTerm.value = $event)
-              }, null, 512), [
-                [vModelText, searchTerm.value]
-              ])
-            ]),
-            createBaseVNode("div", _hoisted_4, [
-              (openBlock(true), createElementBlock(Fragment, null, renderList(filteredUsers.value, (user) => {
-                return openBlock(), createElementBlock("div", {
-                  key: user.name,
-                  class: normalizeClass(["user-item", { active: selectedUsers.value.includes(user.name) }]),
-                  onClick: ($event) => toggleUser(user.name)
-                }, [
-                  createBaseVNode("div", _hoisted_6, [
-                    createBaseVNode("div", _hoisted_7, toDisplayString(user.name), 1),
-                    createBaseVNode("div", _hoisted_8, [
-                      createBaseVNode("span", null, "atcoder: " + toDisplayString(user.atcoder), 1),
-                      createBaseVNode("span", null, "codeforces: " + toDisplayString(user.codeforces), 1),
-                      createBaseVNode("span", null, "matiji: " + toDisplayString(user.matiji), 1)
-                    ])
-                  ])
-                ], 10, _hoisted_5);
-              }), 128))
-            ])
-          ]),
-          createBaseVNode("div", _hoisted_9, [
-            _cache[16] || (_cache[16] = createBaseVNode("header", null, [
+            _cache[1] || (_cache[1] = createBaseVNode("header", null, [
               createBaseVNode("h1", null, "多用户刷题数据统计")
             ], -1)),
-            createBaseVNode("div", _hoisted_10, [
-              createBaseVNode("div", _hoisted_11, [
-                withDirectives(createBaseVNode("select", {
-                  class: "filter-select",
-                  "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => currentPeriodFilter.value = $event)
-                }, [..._cache[7] || (_cache[7] = [
-                  createBaseVNode("option", { value: "all" }, "全部周期", -1),
-                  createBaseVNode("option", { value: "last4" }, "最近4期", -1),
-                  createBaseVNode("option", { value: "last8" }, "最近8期", -1)
-                ])], 512), [
-                  [vModelSelect, currentPeriodFilter.value]
-                ]),
-                withDirectives(createBaseVNode("select", {
-                  class: "filter-select",
-                  "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => currentUserFilter.value = $event)
-                }, [..._cache[8] || (_cache[8] = [
-                  createBaseVNode("option", { value: "all" }, "全部用户", -1),
-                  createBaseVNode("option", { value: "selected" }, "仅选中用户", -1)
-                ])], 512), [
-                  [vModelSelect, currentUserFilter.value]
-                ]),
-                withDirectives(createBaseVNode("select", {
-                  class: "filter-select",
-                  "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => currentPlatformFilter.value = $event)
-                }, [..._cache[9] || (_cache[9] = [
-                  createBaseVNode("option", { value: "all" }, "全部平台", -1),
-                  createBaseVNode("option", { value: "atcoder" }, "AtCoder", -1),
-                  createBaseVNode("option", { value: "codeforces" }, "Codeforces", -1),
-                  createBaseVNode("option", { value: "matiji" }, "Matiji", -1)
-                ])], 512), [
-                  [vModelSelect, currentPlatformFilter.value]
-                ]),
-                createBaseVNode("button", {
-                  class: "btn",
-                  onClick: compareMode
-                }, "对比模式")
-              ]),
-              createBaseVNode("div", { class: "filter-group" }, [
-                createBaseVNode("button", {
-                  class: "btn",
-                  onClick: refreshData
-                }, "刷新数据")
-              ])
-            ]),
-            createBaseVNode("div", _hoisted_12, [
-              createBaseVNode("div", _hoisted_13, [
-                _cache[10] || (_cache[10] = createBaseVNode("h3", null, "活跃用户数", -1)),
-                createBaseVNode("div", _hoisted_14, toDisplayString(activeUsersCount.value), 1)
-              ]),
-              createBaseVNode("div", _hoisted_15, [
-                _cache[11] || (_cache[11] = createBaseVNode("h3", null, "总刷题数量", -1)),
-                createBaseVNode("div", _hoisted_16, toDisplayString(totalCount.value.toLocaleString()), 1)
-              ]),
-              createBaseVNode("div", _hoisted_17, [
-                _cache[12] || (_cache[12] = createBaseVNode("h3", null, "平均刷题数", -1)),
-                createBaseVNode("div", _hoisted_18, toDisplayString(averageCount.value), 1)
-              ]),
-              createBaseVNode("div", _hoisted_19, [
-                _cache[13] || (_cache[13] = createBaseVNode("h3", null, "最高刷题数", -1)),
-                createBaseVNode("div", _hoisted_20, toDisplayString(maxCount.value), 1)
-              ])
-            ]),
-            createBaseVNode("div", _hoisted_21, [
-              createBaseVNode("div", _hoisted_22, [
-                _cache[14] || (_cache[14] = createBaseVNode("span", null, "用户刷题数量趋势", -1)),
-                createBaseVNode("div", _hoisted_23, [
-                  createBaseVNode("button", {
-                    onClick: _cache[4] || (_cache[4] = ($event) => trendChartType.value = "line"),
-                    class: normalizeClass({ active: trendChartType.value === "line" })
-                  }, "折线图", 2),
-                  createBaseVNode("button", {
-                    onClick: _cache[5] || (_cache[5] = ($event) => trendChartType.value = "bar"),
-                    class: normalizeClass({ active: trendChartType.value === "bar" })
-                  }, "柱状图", 2)
-                ])
-              ]),
-              createBaseVNode("canvas", {
-                ref_key: "trendChart",
-                ref: trendChart
-              }, null, 512)
-            ]),
+            createVNode(FilterControls, {
+              "period-filter": currentPeriodFilter.value,
+              "user-filter": currentUserFilter.value,
+              "platform-filter": currentPlatformFilter.value,
+              "onUpdate:periodFilter": updatePeriodFilter,
+              "onUpdate:userFilter": updateUserFilter,
+              "onUpdate:platformFilter": updatePlatformFilter,
+              onRefreshData: refreshData
+            }, null, 8, ["period-filter", "user-filter", "platform-filter"]),
+            createVNode(StatsCards, {
+              "active-users-count": activeUsersCount.value,
+              "total-count": totalCount.value,
+              "average-count": averageCount.value,
+              "max-count": maxCount.value
+            }, null, 8, ["active-users-count", "total-count", "average-count", "max-count"]),
+            createVNode(TrendChart, {
+              "display-users": displayUsers.value,
+              "user-data": userData.value,
+              "current-platform-filter": currentPlatformFilter.value,
+              "chart-type": trendChartType.value,
+              onChartTypeChange: handleChartTypeChange
+            }, null, 8, ["display-users", "user-data", "current-platform-filter", "chart-type"]),
             createBaseVNode("footer", null, [
               createBaseVNode("p", null, [
-                _cache[15] || (_cache[15] = createTextVNode("数据每10天更新一次 | 最后更新: ", -1)),
-                createBaseVNode("span", null, toDisplayString(lastUpdate2.value), 1)
+                _cache[0] || (_cache[0] = createTextVNode("数据每10天更新一次 | 最后更新: ", -1)),
+                createBaseVNode("span", null, toDisplayString(lastUpdate.value), 1)
               ])
             ])
           ])
@@ -21242,14 +21136,7 @@ var __async = (__this, __arguments, generator) => {
       };
     }
   });
-  const _export_sfc = (sfc, props) => {
-    const target = sfc.__vccOpts || sfc;
-    for (const [key, val] of props) {
-      target[key] = val;
-    }
-    return target;
-  };
-  const Statistics = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-df7b7b25"]]);
+  const Statistics = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-4d592552"]]);
   const _hoisted_1 = { class: "app" };
   const _hoisted_2 = { class: "page" };
   const _sfc_main = /* @__PURE__ */ defineComponent({

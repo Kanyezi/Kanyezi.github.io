@@ -49,7 +49,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, nextTick, watch } from 'vue';
+import { ref, computed, onMounted, nextTick } from 'vue';
 import UserListSidebar from './components/UserListSidebar.vue';
 import StatsCards from './components/StatsCards.vue';
 import TrendChart from './components/TrendChart.vue';
@@ -150,11 +150,7 @@ const handleSearchChange = (searchValue: string) => {
   searchTerm.value = searchValue;
 };
 
-const handleFilterChange = (filters: { period: string; user: string; platform: string }) => {
-  currentPeriodFilter.value = filters.period;
-  currentUserFilter.value = filters.user;
-  currentPlatformFilter.value = filters.platform;
-};
+
 
 const handleChartTypeChange = (chartType: string) => {
   trendChartType.value = chartType;
@@ -204,7 +200,9 @@ const loadData = async () => {
     // 从收集的日期中找出最新的日期
     if (allDates.size > 0) {
       const sortedDates = Array.from(allDates).sort((a, b) => new Date(b).getTime() - new Date(a).getTime());
-      lastUpdate.value = sortedDates[0]; // 最新的日期
+      if (sortedDates.length > 0) {
+        lastUpdate.value = sortedDates[0]; // 最新的日期
+      }
     }
     
     await nextTick();
@@ -325,9 +323,6 @@ footer {
 </style>
 
 <style scoped>
-/* Import base framework styles */
-@import './styles/base-framework.css';
-
-/* Import main content styles */
-@import './styles/main-content.css';
+/* Import all styles */
+@import './styles/app.css';
 </style>

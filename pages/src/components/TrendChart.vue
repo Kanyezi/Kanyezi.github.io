@@ -203,7 +203,7 @@ const renderChart = () => {
             },
             x: {
               title: {
-                display: true,
+                display: false,
                 text: '日期'
               }
             }
@@ -258,9 +258,6 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-/* Import base framework styles */
-@import '../styles/base-framework.css';
-
-/* Import trend chart styles */
-@import '../styles/trend-chart.css';
+/* Import all styles */
+@import '../styles/app.css';
 </style>
