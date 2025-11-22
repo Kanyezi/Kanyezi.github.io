@@ -200,8 +200,9 @@ const loadData = async () => {
     // 从收集的日期中找出最新的日期
     if (allDates.size > 0) {
       const sortedDates = Array.from(allDates).sort((a, b) => new Date(b).getTime() - new Date(a).getTime());
-      if (sortedDates.length > 0) {
-        lastUpdate.value = sortedDates[0]; // 最新的日期
+      const latestDate = sortedDates[0];
+      if (latestDate) {
+        lastUpdate.value = latestDate; // 最新的日期
       }
     }
     
