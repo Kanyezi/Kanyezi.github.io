@@ -60,11 +60,6 @@
   backdrop-filter: blur(10px);
 }
 
-.sidebar:hover {
-  box-shadow: var(--card-shadow-hover);
-  transform: translateX(-5px);
-}
-
 .sidebar-header {
   padding-bottom: 25px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
@@ -130,15 +125,8 @@
   z-index: -1;
 }
 
-.user-item:hover {
-  background: linear-gradient(180deg, #ffffff 0%, #edf2ff 100%);
-  transform: translateY(-3px) translateX(3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(67, 97, 238, 0.15);
-}
-
 .user-item.active {
-  background: linear-gradient(180deg, #eef4ff 0%, #dee9ff 100%);
+  /* background: linear-gradient(180deg, #eef4ff 0%, #dee9ff 100%); */
   border: 1px solid rgba(67, 97, 238, 0.3);
   box-shadow: 0 8px 20px rgba(67, 97, 238, 0.15);
   transform: translateY(-3px) translateX(3px);
@@ -203,11 +191,6 @@ h1 {
   z-index: -1;
 }
 
-.controls:hover {
-  box-shadow: var(--card-shadow-hover);
-  transform: translateY(-3px);
-  border: 1px solid rgba(67, 97, 238, 0.15);
-}
 
 .filter-select {
   padding: 14px 18px;
@@ -218,12 +201,6 @@ h1 {
 
 .filter-select:focus {
   box-shadow: 0 0 0 4px rgba(67, 97, 238, 0.2);
-  transform: translateY(-2px);
-}
-
-.filter-select:hover {
-  border-color: var(--primary-light);
-  box-shadow: 0 6px 15px rgba(67, 97, 238, 0.15);
   transform: translateY(-2px);
 }
 
@@ -246,11 +223,6 @@ h1 {
   height: 100%;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
   z-index: -1;
-}
-
-.btn:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 10px 25px rgba(67, 97, 238, 0.4);
 }
 
 /* Enhanced stats cards styles */
@@ -290,12 +262,6 @@ h1 {
   z-index: -1;
 }
 
-.card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: var(--card-shadow-hover);
-  border: 1px solid rgba(67, 97, 238, 0.2);
-}
-
 .card h3 {
   font-size: 1.1rem;
   text-transform: uppercase;
@@ -332,12 +298,6 @@ h1 {
   z-index: -1;
 }
 
-.chart-container:hover {
-  box-shadow: var(--card-shadow-hover);
-  transform: translateY(-5px);
-  border: 1px solid rgba(67, 97, 238, 0.15);
-}
-
 .chart-title {
   font-size: 1.5rem;
   font-weight: 700;
@@ -364,16 +324,6 @@ h1 {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-.chart-actions button:hover {
-  box-shadow: 0 6px 15px rgba(67, 97, 238, 0.2);
-  transform: translateY(-2px);
-}
-
-.chart-actions button.active {
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
-  box-shadow: 0 6px 15px rgba(67, 97, 238, 0.3);
-  transform: translateY(-2px);
-}
 
 /* Enhanced footer styles */
 footer {
