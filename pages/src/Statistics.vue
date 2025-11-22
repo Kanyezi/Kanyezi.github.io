@@ -54,6 +54,7 @@ import UserListSidebar from './components/UserListSidebar.vue';
 import StatsCards from './components/StatsCards.vue';
 import TrendChart from './components/TrendChart.vue';
 import FilterControls from './components/FilterControls.vue';
+import allData from '../public/all_data.json';
 
 // 定义数据类型
 interface User {
@@ -81,6 +82,7 @@ interface StudentData {
 interface AppData {
   users: User[];
   data: Record<string, StudentData>;
+  lastUpdate?: string;
 }
 
 // 响应式数据
@@ -168,40 +170,12 @@ const updatePlatformFilter = (value: string) => {
   currentPlatformFilter.value = value;
 };
 
-// 使用 XMLHttpRequest 加载数据，以支持 file:// 协议
-function loadAllData(): Promise<AppData> {
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    // 使用根相对路径访问数据文件，确保在构建后的环境中也能正确加载
-    xhr.open('GET', './all_data.json');
-    xhr.onload = function() {
-      // 对于 file:// 协议，xhr.status 为 0 也是正常的
-      if (xhr.status === 200 || (xhr.status === 0 && xhr.responseText)) {
-        try {
-          const data: AppData = JSON.parse(xhr.responseText);
-          resolve(data);
-        } catch (e) {
-          console.error('JSON 解析错误:', e);
-          reject(new Error('JSON parsing error: ' + e));
-        }
-      } else {
-        console.error('加载数据失败:', xhr.status);
-        reject(new Error('Failed to load data: ' + xhr.status));
-      }
-    };
-    xhr.onerror = function() {
-      console.error('网络请求错误');
-      reject(new Error('Network error'));
-    };
-    xhr.send();
-  });
-}
 
 const loadData = async () => {
   try {
-    // 使用导入的数据而不是fetch
+    // 直接使用导入的数据
     // 筛选2025级数据
-    const data: AppData = await loadAllData();
+    const data: AppData = allData as AppData;
     const data25:AppData = {users:[],data:{}};
     // 收集所有日期以确定最后更新日期
     const allDates = new Set<string>();
@@ -229,6 +203,13 @@ const loadData = async () => {
       if (latestDate) {
         lastUpdate.value = latestDate; // 最新的日期
       }
+    }
+    
+    // 使用JSON数据中的lastUpdate字段
+    if (data.lastUpdate) {
+      const lastUpdateData = data.lastUpdate;
+      const datePart = lastUpdateData.split('T')[0];
+      lastUpdate.value = datePart || ''; // 确保提供一个默认值
     }
     
     await nextTick();

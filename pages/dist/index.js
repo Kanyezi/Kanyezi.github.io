@@ -2394,7 +2394,7 @@ var __async = (__this, __arguments, generator) => {
       if (key === "__v_skip") {
         return true;
       }
-      const { ctx, setupState, data, props, accessCache, type, appContext } = instance;
+      const { ctx, setupState, data: data2, props, accessCache, type, appContext } = instance;
       let normalizedProps;
       if (key[0] !== "$") {
         const n = accessCache[key];
@@ -2403,7 +2403,7 @@ var __async = (__this, __arguments, generator) => {
             case 1:
               return setupState[key];
             case 2:
-              return data[key];
+              return data2[key];
             case 4:
               return ctx[key];
             case 3:
@@ -2412,9 +2412,9 @@ var __async = (__this, __arguments, generator) => {
         } else if (hasSetupBinding(setupState, key)) {
           accessCache[key] = 1;
           return setupState[key];
-        } else if (data !== EMPTY_OBJ && hasOwn(data, key)) {
+        } else if (data2 !== EMPTY_OBJ && hasOwn(data2, key)) {
           accessCache[key] = 2;
-          return data[key];
+          return data2[key];
         } else if (
           // only cache other properties when instance has declared (thus stable)
           // props
@@ -2454,12 +2454,12 @@ var __async = (__this, __arguments, generator) => {
       } else ;
     },
     set({ _: instance }, key, value) {
-      const { data, setupState, ctx } = instance;
+      const { data: data2, setupState, ctx } = instance;
       if (hasSetupBinding(setupState, key)) {
         setupState[key] = value;
         return true;
-      } else if (data !== EMPTY_OBJ && hasOwn(data, key)) {
-        data[key] = value;
+      } else if (data2 !== EMPTY_OBJ && hasOwn(data2, key)) {
+        data2[key] = value;
         return true;
       } else if (hasOwn(instance.props, key)) {
         return false;
@@ -2474,10 +2474,10 @@ var __async = (__this, __arguments, generator) => {
       return true;
     },
     has({
-      _: { data, setupState, accessCache, ctx, appContext, propsOptions, type }
+      _: { data: data2, setupState, accessCache, ctx, appContext, propsOptions, type }
     }, key) {
       let normalizedProps, cssModules;
-      return !!(accessCache[key] || data !== EMPTY_OBJ && key[0] !== "$" && hasOwn(data, key) || hasSetupBinding(setupState, key) || (normalizedProps = propsOptions[0]) && hasOwn(normalizedProps, key) || hasOwn(ctx, key) || hasOwn(publicPropertiesMap, key) || hasOwn(appContext.config.globalProperties, key) || (cssModules = type.__cssModules) && cssModules[key]);
+      return !!(accessCache[key] || data2 !== EMPTY_OBJ && key[0] !== "$" && hasOwn(data2, key) || hasSetupBinding(setupState, key) || (normalizedProps = propsOptions[0]) && hasOwn(normalizedProps, key) || hasOwn(ctx, key) || hasOwn(publicPropertiesMap, key) || hasOwn(appContext.config.globalProperties, key) || (cssModules = type.__cssModules) && cssModules[key]);
     },
     defineProperty(target, key, descriptor) {
       if (descriptor.get != null) {
@@ -2551,10 +2551,10 @@ var __async = (__this, __arguments, generator) => {
       }
     }
     if (dataOptions) {
-      const data = dataOptions.call(publicThis, publicThis);
-      if (!isObject$1(data)) ;
+      const data2 = dataOptions.call(publicThis, publicThis);
+      if (!isObject$1(data2)) ;
       else {
-        instance.data = reactive(data);
+        instance.data = reactive(data2);
       }
     }
     shouldCacheAccess = true;
@@ -4900,7 +4900,7 @@ var __async = (__this, __arguments, generator) => {
       render,
       renderCache,
       props,
-      data,
+      data: data2,
       setupState,
       ctx,
       inheritAttrs
@@ -4928,7 +4928,7 @@ var __async = (__this, __arguments, generator) => {
             renderCache,
             false ? shallowReadonly(props) : props,
             setupState,
-            data,
+            data2,
             ctx
           )
         );
@@ -7753,10 +7753,10 @@ var __async = (__this, __arguments, generator) => {
     }
     return (font.style ? font.style + " " : "") + (font.weight ? font.weight + " " : "") + font.size + "px " + font.family;
   }
-  function _measureText(ctx, data, gc, longest, string) {
-    let textWidth = data[string];
+  function _measureText(ctx, data2, gc, longest, string) {
+    let textWidth = data2[string];
     if (!textWidth) {
-      textWidth = data[string] = ctx.measureText(string).width;
+      textWidth = data2[string] = ctx.measureText(string).width;
       gc.push(string);
     }
     if (textWidth > longest) {
@@ -7766,10 +7766,10 @@ var __async = (__this, __arguments, generator) => {
   }
   function _longestText(ctx, font, arrayOfThings, cache) {
     cache = cache || {};
-    let data = cache.data = cache.data || {};
+    let data2 = cache.data = cache.data || {};
     let gc = cache.garbageCollect = cache.garbageCollect || [];
     if (cache.font !== font) {
-      data = cache.data = {};
+      data2 = cache.data = {};
       gc = cache.garbageCollect = [];
       cache.font = font;
     }
@@ -7781,12 +7781,12 @@ var __async = (__this, __arguments, generator) => {
     for (i = 0; i < ilen; i++) {
       thing = arrayOfThings[i];
       if (thing !== void 0 && thing !== null && !isArray(thing)) {
-        longest = _measureText(ctx, data, gc, longest, thing);
+        longest = _measureText(ctx, data2, gc, longest, thing);
       } else if (isArray(thing)) {
         for (j = 0, jlen = thing.length; j < jlen; j++) {
           nestedThing = thing[j];
           if (nestedThing !== void 0 && nestedThing !== null && !isArray(nestedThing)) {
-            longest = _measureText(ctx, data, gc, longest, nestedThing);
+            longest = _measureText(ctx, data2, gc, longest, nestedThing);
           }
         }
       }
@@ -7795,7 +7795,7 @@ var __async = (__this, __arguments, generator) => {
     const gcLen = gc.length / 2;
     if (gcLen > arrayOfThings.length) {
       for (i = 0; i < gcLen; i++) {
-        delete data[gc[i]];
+        delete data2[gc[i]];
       }
       gc.splice(0, gcLen);
     }
@@ -8448,14 +8448,14 @@ var __async = (__this, __arguments, generator) => {
     }
     return Array.from(set2);
   }
-  function _parseObjectDataRadialScale(meta, data, start, count) {
+  function _parseObjectDataRadialScale(meta, data2, start, count) {
     const { iScale } = meta;
     const { key = "r" } = this._parsing;
     const parsed = new Array(count);
     let i, ilen, index2, item;
     for (i = 0, ilen = count; i < ilen; ++i) {
       index2 = i + start;
-      item = data[index2];
+      item = data2[index2];
       parsed[i] = {
         r: iScale.parse(resolveObjectKey(item, key), index2)
       };
@@ -9653,18 +9653,18 @@ var __async = (__this, __arguments, generator) => {
     }
     return value;
   }
-  function convertObjectDataToArray(data, meta) {
+  function convertObjectDataToArray(data2, meta) {
     const { iScale, vScale } = meta;
     const iAxisKey = iScale.axis === "x" ? "x" : "y";
     const vAxisKey = vScale.axis === "x" ? "x" : "y";
-    const keys = Object.keys(data);
+    const keys = Object.keys(data2);
     const adata = new Array(keys.length);
     let i, ilen, key;
     for (i = 0, ilen = keys.length; i < ilen; ++i) {
       key = keys[i];
       adata[i] = {
         [iAxisKey]: key,
-        [vAxisKey]: data[key]
+        [vAxisKey]: data2[key]
       };
     }
     return adata;
@@ -9850,23 +9850,23 @@ var __async = (__this, __arguments, generator) => {
     }
     _dataCheck() {
       const dataset = this.getDataset();
-      const data = dataset.data || (dataset.data = []);
+      const data2 = dataset.data || (dataset.data = []);
       const _data = this._data;
-      if (isObject(data)) {
+      if (isObject(data2)) {
         const meta = this._cachedMeta;
-        this._data = convertObjectDataToArray(data, meta);
-      } else if (_data !== data) {
+        this._data = convertObjectDataToArray(data2, meta);
+      } else if (_data !== data2) {
         if (_data) {
           unlistenArrayEvents(_data, this);
           const meta = this._cachedMeta;
           clearStacks(meta);
           meta._parsed = [];
         }
-        if (data && Object.isExtensible(data)) {
-          listenArrayEvents(data, this);
+        if (data2 && Object.isExtensible(data2)) {
+          listenArrayEvents(data2, this);
         }
         this._syncList = [];
-        this._data = data;
+        this._data = data2;
       }
     }
     addElements() {
@@ -9903,23 +9903,23 @@ var __async = (__this, __arguments, generator) => {
       this._cachedDataOpts = {};
     }
     parse(start, count) {
-      const { _cachedMeta: meta, _data: data } = this;
+      const { _cachedMeta: meta, _data: data2 } = this;
       const { iScale, _stacked } = meta;
       const iAxis = iScale.axis;
-      let sorted = start === 0 && count === data.length ? true : meta._sorted;
+      let sorted = start === 0 && count === data2.length ? true : meta._sorted;
       let prev = start > 0 && meta._parsed[start - 1];
       let i, cur, parsed;
       if (this._parsing === false) {
-        meta._parsed = data;
+        meta._parsed = data2;
         meta._sorted = true;
-        parsed = data;
+        parsed = data2;
       } else {
-        if (isArray(data[start])) {
-          parsed = this.parseArrayData(meta, data, start, count);
-        } else if (isObject(data[start])) {
-          parsed = this.parseObjectData(meta, data, start, count);
+        if (isArray(data2[start])) {
+          parsed = this.parseArrayData(meta, data2, start, count);
+        } else if (isObject(data2[start])) {
+          parsed = this.parseObjectData(meta, data2, start, count);
         } else {
-          parsed = this.parsePrimitiveData(meta, data, start, count);
+          parsed = this.parsePrimitiveData(meta, data2, start, count);
         }
         const isNotInOrderComparedToPrev = () => cur[iAxis] === null || prev && cur[iAxis] < prev[iAxis];
         for (i = 0; i < count; ++i) {
@@ -9937,7 +9937,7 @@ var __async = (__this, __arguments, generator) => {
         updateStacks(this, parsed);
       }
     }
-    parsePrimitiveData(meta, data, start, count) {
+    parsePrimitiveData(meta, data2, start, count) {
       const { iScale, vScale } = meta;
       const iAxis = iScale.axis;
       const vAxis = vScale.axis;
@@ -9949,18 +9949,18 @@ var __async = (__this, __arguments, generator) => {
         index2 = i + start;
         parsed[i] = {
           [iAxis]: singleScale || iScale.parse(labels[index2], index2),
-          [vAxis]: vScale.parse(data[index2], index2)
+          [vAxis]: vScale.parse(data2[index2], index2)
         };
       }
       return parsed;
     }
-    parseArrayData(meta, data, start, count) {
+    parseArrayData(meta, data2, start, count) {
       const { xScale, yScale } = meta;
       const parsed = new Array(count);
       let i, ilen, index2, item;
       for (i = 0, ilen = count; i < ilen; ++i) {
         index2 = i + start;
-        item = data[index2];
+        item = data2[index2];
         parsed[i] = {
           x: xScale.parse(item[0], index2),
           y: yScale.parse(item[1], index2)
@@ -9968,14 +9968,14 @@ var __async = (__this, __arguments, generator) => {
       }
       return parsed;
     }
-    parseObjectData(meta, data, start, count) {
+    parseObjectData(meta, data2, start, count) {
       const { xScale, yScale } = meta;
       const { xAxisKey = "x", yAxisKey = "y" } = this._parsing;
       const parsed = new Array(count);
       let i, ilen, index2, item;
       for (i = 0, ilen = count; i < ilen; ++i) {
         index2 = i + start;
-        item = data[index2];
+        item = data2[index2];
         parsed[i] = {
           x: xScale.parse(resolveObjectKey(item, xAxisKey), index2),
           y: yScale.parse(resolveObjectKey(item, yAxisKey), index2)
@@ -10248,14 +10248,14 @@ var __async = (__this, __arguments, generator) => {
       }
     }
     _resyncElements(resetNewElements) {
-      const data = this._data;
+      const data2 = this._data;
       const elements2 = this._cachedMeta.data;
       for (const [method, arg1, arg2] of this._syncList) {
         this[method](arg1, arg2);
       }
       this._syncList = [];
       const numMeta = elements2.length;
-      const numData = data.length;
+      const numData = data2.length;
       const count = Math.min(numData, numMeta);
       if (count) {
         this.parse(0, count);
@@ -10268,7 +10268,7 @@ var __async = (__this, __arguments, generator) => {
     }
     _insertElements(start, count, resetNewElements = true) {
       const meta = this._cachedMeta;
-      const data = meta.data;
+      const data2 = meta.data;
       const end = start + count;
       let i;
       const move = (arr) => {
@@ -10277,16 +10277,16 @@ var __async = (__this, __arguments, generator) => {
           arr[i] = arr[i - count];
         }
       };
-      move(data);
+      move(data2);
       for (i = start; i < end; ++i) {
-        data[i] = new this.dataElementType();
+        data2[i] = new this.dataElementType();
       }
       if (this._parsing) {
         move(meta._parsed);
       }
       this.parse(start, count);
       if (resetNewElements) {
-        this.updateElements(data, start, count, "reset");
+        this.updateElements(data2, start, count, "reset");
       }
     }
     updateElements(element, start, count, mode) {
@@ -10464,7 +10464,7 @@ var __async = (__this, __arguments, generator) => {
     }
     return item;
   }
-  function parseArrayOrPrimitive(meta, data, start, count) {
+  function parseArrayOrPrimitive(meta, data2, start, count) {
     const iScale = meta.iScale;
     const vScale = meta.vScale;
     const labels = iScale.getLabels();
@@ -10472,7 +10472,7 @@ var __async = (__this, __arguments, generator) => {
     const parsed = [];
     let i, ilen, item, entry;
     for (i = start, ilen = start + count; i < ilen; ++i) {
-      entry = data[i];
+      entry = data2[i];
       item = {};
       item[iScale.axis] = singleScale || iScale.parse(labels[i], i);
       parsed.push(parseValue(entry, item, vScale, i));
@@ -10564,13 +10564,13 @@ var __async = (__this, __arguments, generator) => {
     properties.inflateAmount = inflateAmount === "auto" ? ratio === 1 ? 0.33 : 0 : inflateAmount;
   }
   class BarController extends DatasetController {
-    parsePrimitiveData(meta, data, start, count) {
-      return parseArrayOrPrimitive(meta, data, start, count);
+    parsePrimitiveData(meta, data2, start, count) {
+      return parseArrayOrPrimitive(meta, data2, start, count);
     }
-    parseArrayData(meta, data, start, count) {
-      return parseArrayOrPrimitive(meta, data, start, count);
+    parseArrayData(meta, data2, start, count) {
+      return parseArrayOrPrimitive(meta, data2, start, count);
     }
-    parseObjectData(meta, data, start, count) {
+    parseObjectData(meta, data2, start, count) {
       const { iScale, vScale } = meta;
       const { xAxisKey = "x", yAxisKey = "y" } = this._parsing;
       const iAxisKey = iScale.axis === "x" ? xAxisKey : yAxisKey;
@@ -10578,7 +10578,7 @@ var __async = (__this, __arguments, generator) => {
       const parsed = [];
       let i, ilen, item, obj;
       for (i = start, ilen = start + count; i < ilen; ++i) {
-        obj = data[i];
+        obj = data2[i];
         item = {};
         item[iScale.axis] = iScale.parse(resolveObjectKey(obj, iAxisKey), i);
         parsed.push(parseValue(resolveObjectKey(obj, vAxisKey), item, vScale, i));
@@ -10862,34 +10862,34 @@ var __async = (__this, __arguments, generator) => {
       this.enableOptionSharing = true;
       super.initialize();
     }
-    parsePrimitiveData(meta, data, start, count) {
-      const parsed = super.parsePrimitiveData(meta, data, start, count);
+    parsePrimitiveData(meta, data2, start, count) {
+      const parsed = super.parsePrimitiveData(meta, data2, start, count);
       for (let i = 0; i < parsed.length; i++) {
         parsed[i]._custom = this.resolveDataElementOptions(i + start).radius;
       }
       return parsed;
     }
-    parseArrayData(meta, data, start, count) {
-      const parsed = super.parseArrayData(meta, data, start, count);
+    parseArrayData(meta, data2, start, count) {
+      const parsed = super.parseArrayData(meta, data2, start, count);
       for (let i = 0; i < parsed.length; i++) {
-        const item = data[start + i];
+        const item = data2[start + i];
         parsed[i]._custom = valueOrDefault(item[2], this.resolveDataElementOptions(i + start).radius);
       }
       return parsed;
     }
-    parseObjectData(meta, data, start, count) {
-      const parsed = super.parseObjectData(meta, data, start, count);
+    parseObjectData(meta, data2, start, count) {
+      const parsed = super.parseObjectData(meta, data2, start, count);
       for (let i = 0; i < parsed.length; i++) {
-        const item = data[start + i];
+        const item = data2[start + i];
         parsed[i]._custom = valueOrDefault(item && item.r && +item.r, this.resolveDataElementOptions(i + start).radius);
       }
       return parsed;
     }
     getMaxOverflow() {
-      const data = this._cachedMeta.data;
+      const data2 = this._cachedMeta.data;
       let max = 0;
-      for (let i = data.length - 1; i >= 0; --i) {
-        max = Math.max(max, data[i].size(this.resolveDataElementOptions(i)) / 2);
+      for (let i = data2.length - 1; i >= 0; --i) {
+        max = Math.max(max, data2[i].size(this.resolveDataElementOptions(i)) / 2);
       }
       return max > 0 && max;
     }
@@ -11016,15 +11016,15 @@ var __async = (__this, __arguments, generator) => {
     linkScales() {
     }
     parse(start, count) {
-      const data = this.getDataset().data;
+      const data2 = this.getDataset().data;
       const meta = this._cachedMeta;
       if (this._parsing === false) {
-        meta._parsed = data;
+        meta._parsed = data2;
       } else {
-        let getter = (i2) => +data[i2];
-        if (isObject(data[start])) {
+        let getter = (i2) => +data2[i2];
+        if (isObject(data2[start])) {
           const { key = "value" } = this._parsing;
-          getter = (i2) => +resolveObjectKey(data[i2], key);
+          getter = (i2) => +resolveObjectKey(data2[i2], key);
         }
         let i, ilen;
         for (i = start, ilen = start + count; i < ilen; ++i) {
@@ -11245,10 +11245,10 @@ var __async = (__this, __arguments, generator) => {
       legend: {
         labels: {
           generateLabels(chart) {
-            const data = chart.data;
+            const data2 = chart.data;
             const { labels: { pointStyle, textAlign, color: color2, useBorderRadius, borderRadius } } = chart.legend.options;
-            if (data.labels.length && data.datasets.length) {
-              return data.labels.map((label, i) => {
+            if (data2.labels.length && data2.datasets.length) {
+              return data2.labels.map((label, i) => {
                 const meta = chart.getDatasetMeta(0);
                 const style = meta.controller.getStyle(i);
                 return {
@@ -11352,12 +11352,12 @@ var __async = (__this, __arguments, generator) => {
       const meta = this._cachedMeta;
       const dataset = meta.dataset;
       const border = dataset.options && dataset.options.borderWidth || 0;
-      const data = meta.data || [];
-      if (!data.length) {
+      const data2 = meta.data || [];
+      if (!data2.length) {
         return border;
       }
-      const firstPoint = data[0].size(this.resolveDataElementOptions(0));
-      const lastPoint = data[data.length - 1].size(this.resolveDataElementOptions(data.length - 1));
+      const firstPoint = data2[0].size(this.resolveDataElementOptions(0));
+      const lastPoint = data2[data2.length - 1].size(this.resolveDataElementOptions(data2.length - 1));
       return Math.max(border, firstPoint, lastPoint) / 2;
     }
     draw() {
@@ -11399,8 +11399,8 @@ var __async = (__this, __arguments, generator) => {
         value
       };
     }
-    parseObjectData(meta, data, start, count) {
-      return _parseObjectDataRadialScale.bind(this)(meta, data, start, count);
+    parseObjectData(meta, data2, start, count) {
+      return _parseObjectDataRadialScale.bind(this)(meta, data2, start, count);
     }
     update(mode) {
       const arcs = this._cachedMeta.data;
@@ -11521,10 +11521,10 @@ var __async = (__this, __arguments, generator) => {
       legend: {
         labels: {
           generateLabels(chart) {
-            const data = chart.data;
-            if (data.labels.length && data.datasets.length) {
+            const data2 = chart.data;
+            if (data2.labels.length && data2.datasets.length) {
               const { labels: { pointStyle, color: color2 } } = chart.legend.options;
-              return data.labels.map((label, i) => {
+              return data2.labels.map((label, i) => {
                 const meta = chart.getDatasetMeta(0);
                 const style = meta.controller.getStyle(i);
                 return {
@@ -11583,8 +11583,8 @@ var __async = (__this, __arguments, generator) => {
         value: "" + vScale.getLabelForValue(parsed[vScale.axis])
       };
     }
-    parseObjectData(meta, data, start, count) {
-      return _parseObjectDataRadialScale.bind(this)(meta, data, start, count);
+    parseObjectData(meta, data2, start, count) {
+      return _parseObjectDataRadialScale.bind(this)(meta, data2, start, count);
     }
     update(mode) {
       const meta = this._cachedMeta;
@@ -11735,21 +11735,21 @@ var __async = (__this, __arguments, generator) => {
     }
     getMaxOverflow() {
       const meta = this._cachedMeta;
-      const data = meta.data || [];
+      const data2 = meta.data || [];
       if (!this.options.showLine) {
         let max = 0;
-        for (let i = data.length - 1; i >= 0; --i) {
-          max = Math.max(max, data[i].size(this.resolveDataElementOptions(i)) / 2);
+        for (let i = data2.length - 1; i >= 0; --i) {
+          max = Math.max(max, data2[i].size(this.resolveDataElementOptions(i)) / 2);
         }
         return max > 0 && max;
       }
       const dataset = meta.dataset;
       const border = dataset.options && dataset.options.borderWidth || 0;
-      if (!data.length) {
+      if (!data2.length) {
         return border;
       }
-      const firstPoint = data[0].size(this.resolveDataElementOptions(0));
-      const lastPoint = data[data.length - 1].size(this.resolveDataElementOptions(data.length - 1));
+      const firstPoint = data2[0].size(this.resolveDataElementOptions(0));
+      const lastPoint = data2[data2.length - 1].size(this.resolveDataElementOptions(data2.length - 1));
       return Math.max(border, firstPoint, lastPoint) / 2;
     }
   }
@@ -11834,13 +11834,13 @@ var __async = (__this, __arguments, generator) => {
     _date: DateAdapterBase
   };
   function binarySearch(metaset, axis, value, intersect) {
-    const { controller, data, _sorted } = metaset;
+    const { controller, data: data2, _sorted } = metaset;
     const iScale = controller._cachedMeta.iScale;
     const spanGaps = metaset.dataset ? metaset.dataset.options ? metaset.dataset.options.spanGaps : null : null;
-    if (iScale && axis === iScale.axis && axis !== "r" && _sorted && data.length) {
+    if (iScale && axis === iScale.axis && axis !== "r" && _sorted && data2.length) {
       const lookupMethod = iScale._reversePixels ? _rlookupByKey : _lookupByKey;
       if (!intersect) {
-        const result = lookupMethod(data, axis, value);
+        const result = lookupMethod(data2, axis, value);
         if (spanGaps) {
           const { vScale } = controller._cachedMeta;
           const { _parsed } = metaset;
@@ -11851,11 +11851,11 @@ var __async = (__this, __arguments, generator) => {
         }
         return result;
       } else if (controller._sharedOptions) {
-        const el = data[0];
+        const el = data2[0];
         const range = typeof el.getRange === "function" && el.getRange(axis);
         if (range) {
-          const start = lookupMethod(data, axis, value - range);
-          const end = lookupMethod(data, axis, value + range);
+          const start = lookupMethod(data2, axis, value - range);
+          const end = lookupMethod(data2, axis, value + range);
           return {
             lo: start.lo,
             hi: end.hi
@@ -11865,17 +11865,17 @@ var __async = (__this, __arguments, generator) => {
     }
     return {
       lo: 0,
-      hi: data.length - 1
+      hi: data2.length - 1
     };
   }
   function evaluateInteractionItems(chart, axis, position, handler, intersect) {
     const metasets = chart.getSortedVisibleDatasetMetas();
     const value = position[axis];
     for (let i = 0, ilen = metasets.length; i < ilen; ++i) {
-      const { index: index2, data } = metasets[i];
+      const { index: index2, data: data2 } = metasets[i];
       const { lo, hi } = binarySearch(metasets[i], axis, value, intersect);
       for (let j = lo; j <= hi; ++j) {
-        const element = data[j];
+        const element = data2[j];
         if (!element.skip) {
           handler(element, index2, j);
         }
@@ -12024,11 +12024,11 @@ var __async = (__this, __arguments, generator) => {
         let items = options.intersect ? getIntersectItems(chart, position, axis, useFinalPosition, includeInvisible) : getNearestItems(chart, position, axis, false, useFinalPosition, includeInvisible);
         if (items.length > 0) {
           const datasetIndex = items[0].datasetIndex;
-          const data = chart.getDatasetMeta(datasetIndex).data;
+          const data2 = chart.getDatasetMeta(datasetIndex).data;
           items = [];
-          for (let i = 0; i < data.length; ++i) {
+          for (let i = 0; i < data2.length; ++i) {
             items.push({
-              element: data[i],
+              element: data2[i],
               datasetIndex,
               index: i
             });
@@ -13059,8 +13059,8 @@ var __async = (__this, __arguments, generator) => {
       return this.ticks;
     }
     getLabels() {
-      const data = this.chart.data;
-      return this.options.labels || (this.isHorizontal() ? data.xLabels : data.yLabels) || data.labels || [];
+      const data2 = this.chart.data;
+      return this.options.labels || (this.isHorizontal() ? data2.xLabels : data2.yLabels) || data2.labels || [];
     }
     getLabelItems(chartArea = this.chart.chartArea) {
       const items = this._labelItems || (this._labelItems = this._computeLabelItems(chartArea));
@@ -14517,11 +14517,11 @@ var __async = (__this, __arguments, generator) => {
     options.plugins = valueOrDefault(options.plugins, {});
     options.scales = mergeScaleConfig(config, options);
   }
-  function initData(data) {
-    data = data || {};
-    data.datasets = data.datasets || [];
-    data.labels = data.labels || [];
-    return data;
+  function initData(data2) {
+    data2 = data2 || {};
+    data2.datasets = data2.datasets || [];
+    data2.labels = data2.labels || [];
+    return data2;
   }
   function initConfig(config) {
     config = config || {};
@@ -14564,8 +14564,8 @@ var __async = (__this, __arguments, generator) => {
     get data() {
       return this._config.data;
     }
-    set data(data) {
-      this._config.data = initData(data);
+    set data(data2) {
+      this._config.data = initData(data2);
     }
     get options() {
       return this._config.options;
@@ -14875,8 +14875,8 @@ var __async = (__this, __arguments, generator) => {
     get data() {
       return this.config.data;
     }
-    set data(data) {
-      this.config.data = data;
+    set data(data2) {
+      this.config.data = data2;
     }
     get options() {
       return this._options;
@@ -16560,10 +16560,10 @@ var __async = (__this, __arguments, generator) => {
       datasets.forEach(colorizer);
     }
   };
-  function lttbDecimation(data, start, count, availableWidth, options) {
+  function lttbDecimation(data2, start, count, availableWidth, options) {
     const samples = options.samples || availableWidth;
     if (samples >= count) {
-      return data.slice(start, start + count);
+      return data2.slice(start, start + count);
     }
     const decimated = [];
     const bucketWidth = (count - 2) / (samples - 2);
@@ -16571,7 +16571,7 @@ var __async = (__this, __arguments, generator) => {
     const endIndex = start + count - 1;
     let a = start;
     let i, maxAreaPoint, maxArea, area, nextA;
-    decimated[sampledIndex++] = data[a];
+    decimated[sampledIndex++] = data2[a];
     for (i = 0; i < samples - 2; i++) {
       let avgX = 0;
       let avgY = 0;
@@ -16580,40 +16580,40 @@ var __async = (__this, __arguments, generator) => {
       const avgRangeEnd = Math.min(Math.floor((i + 2) * bucketWidth) + 1, count) + start;
       const avgRangeLength = avgRangeEnd - avgRangeStart;
       for (j = avgRangeStart; j < avgRangeEnd; j++) {
-        avgX += data[j].x;
-        avgY += data[j].y;
+        avgX += data2[j].x;
+        avgY += data2[j].y;
       }
       avgX /= avgRangeLength;
       avgY /= avgRangeLength;
       const rangeOffs = Math.floor(i * bucketWidth) + 1 + start;
       const rangeTo = Math.min(Math.floor((i + 1) * bucketWidth) + 1, count) + start;
-      const { x: pointAx, y: pointAy } = data[a];
+      const { x: pointAx, y: pointAy } = data2[a];
       maxArea = area = -1;
       for (j = rangeOffs; j < rangeTo; j++) {
-        area = 0.5 * Math.abs((pointAx - avgX) * (data[j].y - pointAy) - (pointAx - data[j].x) * (avgY - pointAy));
+        area = 0.5 * Math.abs((pointAx - avgX) * (data2[j].y - pointAy) - (pointAx - data2[j].x) * (avgY - pointAy));
         if (area > maxArea) {
           maxArea = area;
-          maxAreaPoint = data[j];
+          maxAreaPoint = data2[j];
           nextA = j;
         }
       }
       decimated[sampledIndex++] = maxAreaPoint;
       a = nextA;
     }
-    decimated[sampledIndex++] = data[endIndex];
+    decimated[sampledIndex++] = data2[endIndex];
     return decimated;
   }
-  function minMaxDecimation(data, start, count, availableWidth) {
+  function minMaxDecimation(data2, start, count, availableWidth) {
     let avgX = 0;
     let countX = 0;
     let i, point, x, y, prevX, minIndex, maxIndex, startIndex, minY, maxY;
     const decimated = [];
     const endIndex = start + count - 1;
-    const xMin = data[start].x;
-    const xMax = data[endIndex].x;
+    const xMin = data2[start].x;
+    const xMax = data2[endIndex].x;
     const dx = xMax - xMin;
     for (i = start; i < start + count; ++i) {
-      point = data[i];
+      point = data2[i];
       x = (point.x - xMin) / dx * availableWidth;
       y = point.y;
       const truncX = x | 0;
@@ -16632,18 +16632,18 @@ var __async = (__this, __arguments, generator) => {
           const intermediateIndex1 = Math.min(minIndex, maxIndex);
           const intermediateIndex2 = Math.max(minIndex, maxIndex);
           if (intermediateIndex1 !== startIndex && intermediateIndex1 !== lastIndex) {
-            decimated.push(__spreadProps(__spreadValues({}, data[intermediateIndex1]), {
+            decimated.push(__spreadProps(__spreadValues({}, data2[intermediateIndex1]), {
               x: avgX
             }));
           }
           if (intermediateIndex2 !== startIndex && intermediateIndex2 !== lastIndex) {
-            decimated.push(__spreadProps(__spreadValues({}, data[intermediateIndex2]), {
+            decimated.push(__spreadProps(__spreadValues({}, data2[intermediateIndex2]), {
               x: avgX
             }));
           }
         }
         if (i > 0 && lastIndex !== startIndex) {
-          decimated.push(data[lastIndex]);
+          decimated.push(data2[lastIndex]);
         }
         decimated.push(point);
         prevX = truncX;
@@ -16656,14 +16656,14 @@ var __async = (__this, __arguments, generator) => {
   }
   function cleanDecimatedDataset(dataset) {
     if (dataset._decimated) {
-      const data = dataset._data;
+      const data2 = dataset._data;
       delete dataset._decimated;
       delete dataset._data;
       Object.defineProperty(dataset, "data", {
         configurable: true,
         enumerable: true,
         writable: true,
-        value: data
+        value: data2
       });
     }
   }
@@ -16706,7 +16706,7 @@ var __async = (__this, __arguments, generator) => {
       chart.data.datasets.forEach((dataset, datasetIndex) => {
         const { _data, indexAxis } = dataset;
         const meta = chart.getDatasetMeta(datasetIndex);
-        const data = _data || dataset.data;
+        const data2 = _data || dataset.data;
         if (resolve([
           indexAxis,
           chart.options.indexAxis
@@ -16723,14 +16723,14 @@ var __async = (__this, __arguments, generator) => {
         if (chart.options.parsing) {
           return;
         }
-        let { start, count } = getStartAndCountOfVisiblePointsSimplified(meta, data);
+        let { start, count } = getStartAndCountOfVisiblePointsSimplified(meta, data2);
         const threshold = options.threshold || 4 * availableWidth;
         if (count <= threshold) {
           cleanDecimatedDataset(dataset);
           return;
         }
         if (isNullOrUndef(_data)) {
-          dataset._data = data;
+          dataset._data = data2;
           delete dataset.data;
           Object.defineProperty(dataset, "data", {
             configurable: true,
@@ -16746,10 +16746,10 @@ var __async = (__this, __arguments, generator) => {
         let decimated;
         switch (options.algorithm) {
           case "lttb":
-            decimated = lttbDecimation(data, start, count, availableWidth, options);
+            decimated = lttbDecimation(data2, start, count, availableWidth, options);
             break;
           case "min-max":
-            decimated = minMaxDecimation(data, start, count, availableWidth);
+            decimated = minMaxDecimation(data2, start, count, availableWidth);
             break;
           default:
             throw new Error(`Unsupported decimation algorithm '${options.algorithm}'`);
@@ -18546,7 +18546,7 @@ var __async = (__this, __arguments, generator) => {
     }
     _createItems(options) {
       const active = this._active;
-      const data = this.chart.data;
+      const data2 = this.chart.data;
       const labelColors = [];
       const labelPointStyles = [];
       const labelTextColors = [];
@@ -18556,10 +18556,10 @@ var __async = (__this, __arguments, generator) => {
         tooltipItems.push(createTooltipItem(this.chart, active[i]));
       }
       if (options.filter) {
-        tooltipItems = tooltipItems.filter((element, index2, array) => options.filter(element, index2, array, data));
+        tooltipItems = tooltipItems.filter((element, index2, array) => options.filter(element, index2, array, data2));
       }
       if (options.itemSort) {
-        tooltipItems = tooltipItems.sort((a, b) => options.itemSort(a, b, data));
+        tooltipItems = tooltipItems.sort((a, b) => options.itemSort(a, b, data2));
       }
       each(tooltipItems, (context) => {
         const scoped = overrideCallbacks(options.callbacks, context);
@@ -20662,12 +20662,12 @@ var __async = (__this, __arguments, generator) => {
       if (timestamps.length) {
         return timestamps;
       }
-      const data = this.getDataTimestamps();
+      const data2 = this.getDataTimestamps();
       const label = this.getLabelTimestamps();
-      if (data.length && label.length) {
-        timestamps = this.normalize(data.concat(label));
+      if (data2.length && label.length) {
+        timestamps = this.normalize(data2.concat(label));
       } else {
-        timestamps = data.length ? data : label;
+        timestamps = data2.length ? data2 : label;
       }
       timestamps = this._cache.all = timestamps;
       return timestamps;
@@ -20769,9 +20769,9 @@ var __async = (__this, __arguments, generator) => {
             "#e83e8c"
           ];
           const datasets = props.displayUsers.map((user, index2) => {
-            let data = [];
+            let data2 = [];
             if (platform === "all") {
-              data = dateLabels.map((date) => {
+              data2 = dateLabels.map((date) => {
                 const userHistory = props.userData[user.name];
                 if (!userHistory) return 0;
                 let total = 0;
@@ -20786,14 +20786,14 @@ var __async = (__this, __arguments, generator) => {
               const userHistory = props.userData[user.name];
               if (userHistory && userHistory[platform]) {
                 const platformData = userHistory[platform];
-                data = dateLabels.map((date) => platformData[date] || 0);
+                data2 = dateLabels.map((date) => platformData[date] || 0);
               } else {
-                data = dateLabels.map(() => 0);
+                data2 = dateLabels.map(() => 0);
               }
             }
             return {
               label: user.name,
-              data,
+              data: data2,
               backgroundColor: currentChartType.value === "bar" ? colors2[index2 % colors2.length] : "transparent",
               borderColor: colors2[index2 % colors2.length],
               borderWidth: 2,
@@ -20977,14 +20977,1034 @@ var __async = (__this, __arguments, generator) => {
     }
   });
   const FilterControls = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-8acf8ac0"]]);
+  const users = [
+    {
+      name: "孙叶",
+      "class": "25计算机1班",
+      codeforces_id: "chu4351",
+      atcoder_id: "chu4351",
+      matiji_id: "218118",
+      grade: 2025,
+      atcoder: 22,
+      codeforces: 31,
+      matiji: 22
+    },
+    {
+      name: "陈宣扬",
+      "class": "25计算机3班",
+      codeforces_id: "cxycec",
+      atcoder_id: "cxy2006",
+      matiji_id: "217005",
+      grade: 2025,
+      atcoder: 40,
+      codeforces: 87,
+      matiji: 54
+    },
+    {
+      name: "杜光明",
+      "class": "25计算机3班",
+      codeforces_id: "Rei_.",
+      atcoder_id: "ruanmei",
+      matiji_id: "217486",
+      grade: 2025,
+      atcoder: 29,
+      codeforces: 46,
+      matiji: 25
+    },
+    {
+      name: "陈光照",
+      "class": "25计算机3班",
+      codeforces_id: "MysterService",
+      atcoder_id: "MysterService",
+      matiji_id: "218083",
+      grade: 2025,
+      atcoder: 13,
+      codeforces: 17,
+      matiji: 33
+    },
+    {
+      name: "刘意群",
+      "class": "25计算机专升本3班",
+      codeforces_id: "liuning123",
+      atcoder_id: "liuning123",
+      matiji_id: "151967",
+      grade: 2025,
+      atcoder: 55,
+      codeforces: 103,
+      matiji: 0
+    },
+    {
+      name: "万奕忻",
+      "class": "25软件1班",
+      codeforces_id: "yixinWan",
+      atcoder_id: "yixinWan",
+      matiji_id: "218264",
+      grade: 2025,
+      atcoder: 4,
+      codeforces: 4,
+      matiji: 32
+    },
+    {
+      name: "陈轩宇",
+      "class": "25软件1班",
+      codeforces_id: "kilt",
+      atcoder_id: "kilty",
+      matiji_id: "",
+      grade: 2025,
+      atcoder: 5,
+      codeforces: 8,
+      matiji: 0
+    },
+    {
+      name: "胡悠茗",
+      "class": "25软件2班",
+      codeforces_id: "breadog",
+      atcoder_id: "breadog",
+      matiji_id: "216994",
+      grade: 2025,
+      atcoder: 35,
+      codeforces: 89,
+      matiji: 28
+    },
+    {
+      name: "施宇轩",
+      "class": "25软件2班",
+      codeforces_id: "zhouxian",
+      atcoder_id: "zhouxian",
+      matiji_id: "217815",
+      grade: 2025,
+      atcoder: 7,
+      codeforces: 29,
+      matiji: 27
+    },
+    {
+      name: "巫浩锋",
+      "class": "25软件2班",
+      codeforces_id: "Kyrie_117",
+      atcoder_id: "Kyrie_11",
+      matiji_id: "218127",
+      grade: 2025,
+      atcoder: 0,
+      codeforces: 1,
+      matiji: 2
+    },
+    {
+      name: "连全威",
+      "class": "25软件2班",
+      codeforces_id: "Koijia",
+      atcoder_id: "Koijia",
+      matiji_id: "218207",
+      grade: 2025,
+      atcoder: 0,
+      codeforces: 0,
+      matiji: 2
+    },
+    {
+      name: "张宇翔",
+      "class": "25软件3班",
+      codeforces_id: "OOZYXOO",
+      atcoder_id: "OOZYXOO",
+      matiji_id: "216972",
+      grade: 2025,
+      atcoder: 37,
+      codeforces: 119,
+      matiji: 14
+    },
+    {
+      name: "周晓飞",
+      "class": "25软件3班",
+      codeforces_id: "hei_di",
+      atcoder_id: "hei_di",
+      matiji_id: "217113",
+      grade: 2025,
+      atcoder: 13,
+      codeforces: 23,
+      matiji: 6
+    },
+    {
+      name: "刘云琪",
+      "class": "25软件3班",
+      codeforces_id: "toykowww",
+      atcoder_id: "tokyoww",
+      matiji_id: "216968",
+      grade: 2025,
+      atcoder: 29,
+      codeforces: 82,
+      matiji: 24
+    },
+    {
+      name: "吴春雷",
+      "class": "25软件3班",
+      codeforces_id: "wuchunlei",
+      atcoder_id: "wuchunlei",
+      matiji_id: "217859",
+      grade: 2025,
+      atcoder: 9,
+      codeforces: 32,
+      matiji: 2
+    },
+    {
+      name: "叶宇喆",
+      "class": "25软件3班",
+      codeforces_id: "gdyg666",
+      atcoder_id: "gdyg666",
+      matiji_id: "",
+      grade: 2025,
+      atcoder: 3,
+      codeforces: 3,
+      matiji: 0
+    },
+    {
+      name: "王佳欣",
+      "class": "25软件3班",
+      codeforces_id: "changem1",
+      atcoder_id: "lushishen",
+      matiji_id: "217855",
+      grade: 2025,
+      atcoder: 22,
+      codeforces: 50,
+      matiji: 46
+    },
+    {
+      name: "王西门",
+      "class": "25软件3班",
+      codeforces_id: "gggsss",
+      atcoder_id: "gggsss",
+      matiji_id: "218124",
+      grade: 2025,
+      atcoder: 7,
+      codeforces: 11,
+      matiji: 2
+    },
+    {
+      name: "燕诺",
+      "class": "25软件3班",
+      codeforces_id: "YwY1126",
+      atcoder_id: "Ywy1126",
+      matiji_id: "218193",
+      grade: 2025,
+      atcoder: 11,
+      codeforces: 23,
+      matiji: 26
+    },
+    {
+      name: "苏奕铖",
+      "class": "25软件3班",
+      codeforces_id: "",
+      atcoder_id: "",
+      matiji_id: "",
+      grade: 2025,
+      atcoder: 0,
+      codeforces: 0,
+      matiji: 0
+    },
+    {
+      name: "郑亦宇",
+      "class": "25软件专升本1班",
+      codeforces_id: "zhengyiyu",
+      atcoder_id: "zhengyiyu",
+      matiji_id: "217035",
+      grade: 2025,
+      atcoder: 17,
+      codeforces: 65,
+      matiji: 124
+    },
+    {
+      name: "徐文静",
+      "class": "25软件专升本2班",
+      codeforces_id: "yesswlqbj",
+      atcoder_id: "yesswlqbjs",
+      matiji_id: "217485",
+      grade: 2025,
+      atcoder: 27,
+      codeforces: 76,
+      matiji: 42
+    },
+    {
+      name: "符轩跃",
+      "class": "25软件专升本2班",
+      codeforces_id: "fuxuanyue",
+      atcoder_id: "fuxuanyue",
+      matiji_id: "122691",
+      grade: 2025,
+      atcoder: 50,
+      codeforces: 78,
+      matiji: 30
+    },
+    {
+      name: "刘筱朵",
+      "class": "25软件专升本3班",
+      codeforces_id: "_lxd_",
+      atcoder_id: "lxd_",
+      matiji_id: "217489",
+      grade: 2025,
+      atcoder: 7,
+      codeforces: 78,
+      matiji: 17
+    },
+    {
+      name: "倪志杰",
+      "class": "25软件专升本3班",
+      codeforces_id: "Ardmore",
+      atcoder_id: "Ardmore",
+      matiji_id: "217991",
+      grade: 2025,
+      atcoder: 21,
+      codeforces: 73,
+      matiji: 41
+    },
+    {
+      name: "朱雯婧",
+      "class": "25软件专升本3班",
+      codeforces_id: "Morbid698",
+      atcoder_id: "Morbid698",
+      matiji_id: "218204",
+      grade: 2025,
+      atcoder: 14,
+      codeforces: 11,
+      matiji: 22
+    },
+    {
+      name: "陈硕",
+      "class": "",
+      codeforces_id: "xing_yao",
+      atcoder_id: "xing_yao",
+      matiji_id: "",
+      grade: 2023,
+      atcoder: 261,
+      codeforces: 1157,
+      matiji: 0
+    },
+    {
+      name: "曹政业",
+      "class": "",
+      codeforces_id: "caozhengye",
+      atcoder_id: "caozhengye",
+      matiji_id: "",
+      grade: 2023,
+      atcoder: 307,
+      codeforces: 1309,
+      matiji: 0
+    },
+    {
+      name: "陈资权",
+      "class": "",
+      codeforces_id: "LuckyCc.",
+      atcoder_id: "LuckyCc",
+      matiji_id: "",
+      grade: 2023,
+      atcoder: 184,
+      codeforces: 800,
+      matiji: 0
+    },
+    {
+      name: "叶智豪",
+      "class": "",
+      codeforces_id: "YonagiKei",
+      atcoder_id: "Yonagi_Kei",
+      matiji_id: "",
+      grade: 2023,
+      atcoder: 6,
+      codeforces: 764,
+      matiji: 0
+    },
+    {
+      name: "余凯",
+      "class": "",
+      codeforces_id: "Gai_yk",
+      atcoder_id: "ykkkk",
+      matiji_id: "",
+      grade: 2024,
+      atcoder: 120,
+      codeforces: 242,
+      matiji: 0
+    },
+    {
+      name: "陈姿蓥",
+      "class": "",
+      codeforces_id: "ziying032",
+      atcoder_id: "ziying032",
+      matiji_id: "",
+      grade: 2024,
+      atcoder: 73,
+      codeforces: 202,
+      matiji: 0
+    },
+    {
+      name: "姜银",
+      "class": "",
+      codeforces_id: "jiangyin0750",
+      atcoder_id: "jiangyin0750",
+      matiji_id: "",
+      grade: 2024,
+      atcoder: 155,
+      codeforces: 333,
+      matiji: 0
+    },
+    {
+      name: "尚淇淇",
+      "class": "",
+      codeforces_id: "x_yeyue",
+      atcoder_id: "x_yeyue",
+      matiji_id: "",
+      grade: 2024,
+      atcoder: 166,
+      codeforces: 302,
+      matiji: 0
+    },
+    {
+      name: "王瑞珽",
+      "class": "",
+      codeforces_id: "wangruiting",
+      atcoder_id: "wangruiting",
+      matiji_id: "",
+      grade: 2024,
+      atcoder: 121,
+      codeforces: 398,
+      matiji: 0
+    },
+    {
+      name: "马逍遥",
+      "class": "",
+      codeforces_id: "lies-",
+      atcoder_id: "moon1ight",
+      matiji_id: "",
+      grade: 2024,
+      atcoder: 114,
+      codeforces: 221,
+      matiji: 0
+    },
+    {
+      name: "杜蘇航",
+      "class": "",
+      codeforces_id: "xiao_shuang",
+      atcoder_id: "xiaoshuang",
+      matiji_id: "",
+      grade: 2024,
+      atcoder: 119,
+      codeforces: 185,
+      matiji: 0
+    },
+    {
+      name: "赵星宇",
+      "class": "",
+      codeforces_id: "zhaooooo",
+      atcoder_id: "zhao_xy",
+      matiji_id: "",
+      grade: 2024,
+      atcoder: 138,
+      codeforces: 156,
+      matiji: 0
+    },
+    {
+      name: "李俊",
+      "class": "",
+      codeforces_id: "ami_XR",
+      atcoder_id: "AMI_Xxr",
+      matiji_id: "",
+      grade: 2024,
+      atcoder: 56,
+      codeforces: 165,
+      matiji: 0
+    }
+  ];
+  const data = {
+    "孙叶": {
+      atcoder: {
+        "2025-10-20": 6,
+        "2025-11-01": 8,
+        "2025-11-20": 22
+      },
+      codeforces: {
+        "2025-10-20": 6,
+        "2025-11-01": 19,
+        "2025-11-20": 31
+      },
+      matiji: {
+        "2025-10-20": 3,
+        "2025-11-01": 12,
+        "2025-11-20": 22
+      }
+    },
+    "陈宣扬": {
+      atcoder: {
+        "2025-10-20": 18,
+        "2025-11-01": 21,
+        "2025-11-20": 40
+      },
+      codeforces: {
+        "2025-10-20": 48,
+        "2025-11-01": 59,
+        "2025-11-20": 87
+      },
+      matiji: {
+        "2025-10-20": 20,
+        "2025-11-01": 37,
+        "2025-11-20": 54
+      }
+    },
+    "杜光明": {
+      atcoder: {
+        "2025-10-20": 9,
+        "2025-11-01": 12,
+        "2025-11-20": 29
+      },
+      codeforces: {
+        "2025-10-20": 22,
+        "2025-11-01": 29,
+        "2025-11-20": 46
+      },
+      matiji: {
+        "2025-10-20": 11,
+        "2025-11-01": 18,
+        "2025-11-20": 25
+      }
+    },
+    "陈光照": {
+      atcoder: {
+        "2025-10-20": 4,
+        "2025-11-01": 4,
+        "2025-11-20": 13
+      },
+      codeforces: {
+        "2025-10-20": 6,
+        "2025-11-01": 12,
+        "2025-11-20": 17
+      },
+      matiji: {
+        "2025-10-20": 10,
+        "2025-11-01": 21,
+        "2025-11-20": 33
+      }
+    },
+    "刘意群": {
+      atcoder: {
+        "2025-10-20": 31,
+        "2025-11-01": 39,
+        "2025-11-20": 55
+      },
+      codeforces: {
+        "2025-10-20": 66,
+        "2025-11-01": 81,
+        "2025-11-20": 103
+      },
+      matiji: {
+        "2025-10-20": 0,
+        "2025-11-01": 0,
+        "2025-11-20": 0
+      }
+    },
+    "万奕忻": {
+      atcoder: {
+        "2025-10-20": 2,
+        "2025-11-01": 2,
+        "2025-11-20": 4
+      },
+      codeforces: {
+        "2025-10-20": 2,
+        "2025-11-01": 2,
+        "2025-11-20": 4
+      },
+      matiji: {
+        "2025-10-20": 7,
+        "2025-11-01": 26,
+        "2025-11-20": 32
+      }
+    },
+    "陈轩宇": {
+      atcoder: {
+        "2025-10-20": 2,
+        "2025-11-01": 2,
+        "2025-11-20": 5
+      },
+      codeforces: {
+        "2025-10-20": 2,
+        "2025-11-01": 4,
+        "2025-11-20": 8
+      },
+      matiji: {}
+    },
+    "胡悠茗": {
+      atcoder: {
+        "2025-10-20": 18,
+        "2025-11-01": 21,
+        "2025-11-20": 35
+      },
+      codeforces: {
+        "2025-10-20": 55,
+        "2025-11-01": 73,
+        "2025-11-20": 89
+      },
+      matiji: {
+        "2025-10-20": 10,
+        "2025-11-01": 12,
+        "2025-11-20": 28
+      }
+    },
+    "施宇轩": {
+      atcoder: {
+        "2025-10-20": 2,
+        "2025-11-01": 4,
+        "2025-11-20": 7
+      },
+      codeforces: {
+        "2025-10-20": 8,
+        "2025-11-01": 20,
+        "2025-11-20": 29
+      },
+      matiji: {
+        "2025-10-20": 14,
+        "2025-11-01": 23,
+        "2025-11-20": 27
+      }
+    },
+    "巫浩锋": {
+      atcoder: {},
+      codeforces: {
+        "2025-10-20": 1,
+        "2025-11-01": 1,
+        "2025-11-20": 1
+      },
+      matiji: {
+        "2025-10-20": 2,
+        "2025-11-01": 2,
+        "2025-11-20": 2
+      }
+    },
+    "连全威": {
+      atcoder: {},
+      codeforces: {
+        "2025-10-20": 0,
+        "2025-11-01": 0,
+        "2025-11-20": 0
+      },
+      matiji: {
+        "2025-10-20": 2,
+        "2025-11-01": 2,
+        "2025-11-20": 2
+      }
+    },
+    "张宇翔": {
+      atcoder: {
+        "2025-10-20": 19,
+        "2025-11-01": 23,
+        "2025-11-20": 37
+      },
+      codeforces: {
+        "2025-10-20": 68,
+        "2025-11-01": 91,
+        "2025-11-20": 119
+      },
+      matiji: {
+        "2025-10-20": 12,
+        "2025-11-01": 12,
+        "2025-11-20": 14
+      }
+    },
+    "周晓飞": {
+      atcoder: {
+        "2025-10-20": 11,
+        "2025-11-01": 13,
+        "2025-11-20": 13
+      },
+      codeforces: {
+        "2025-10-20": 23,
+        "2025-11-01": 23,
+        "2025-11-20": 23
+      },
+      matiji: {
+        "2025-10-20": 6,
+        "2025-11-01": 6,
+        "2025-11-20": 6
+      }
+    },
+    "刘云琪": {
+      atcoder: {
+        "2025-10-20": 14,
+        "2025-11-01": 17,
+        "2025-11-20": 29
+      },
+      codeforces: {
+        "2025-10-20": 49,
+        "2025-11-01": 64,
+        "2025-11-20": 82
+      },
+      matiji: {
+        "2025-10-20": 16,
+        "2025-11-01": 23,
+        "2025-11-20": 24
+      }
+    },
+    "吴春雷": {
+      atcoder: {
+        "2025-10-20": 4,
+        "2025-11-01": 6,
+        "2025-11-20": 9
+      },
+      codeforces: {
+        "2025-10-20": 9,
+        "2025-11-01": 18,
+        "2025-11-20": 32
+      },
+      matiji: {
+        "2025-10-20": 2,
+        "2025-11-01": 2,
+        "2025-11-20": 2
+      }
+    },
+    "叶宇喆": {
+      atcoder: {
+        "2025-10-20": 3,
+        "2025-11-01": 3,
+        "2025-11-20": 3
+      },
+      codeforces: {
+        "2025-10-20": 3,
+        "2025-11-01": 3,
+        "2025-11-20": 3
+      },
+      matiji: {}
+    },
+    "王佳欣": {
+      atcoder: {
+        "2025-10-20": 6,
+        "2025-11-01": 9,
+        "2025-11-20": 22
+      },
+      codeforces: {
+        "2025-10-20": 13,
+        "2025-11-01": 34,
+        "2025-11-20": 50
+      },
+      matiji: {
+        "2025-10-20": 17,
+        "2025-11-01": 31,
+        "2025-11-20": 46
+      }
+    },
+    "王西门": {
+      atcoder: {
+        "2025-10-20": 3,
+        "2025-11-01": 5,
+        "2025-11-20": 7
+      },
+      codeforces: {
+        "2025-10-20": 4,
+        "2025-11-01": 8,
+        "2025-11-20": 11
+      },
+      matiji: {
+        "2025-10-20": 2,
+        "2025-11-01": 2,
+        "2025-11-20": 2
+      }
+    },
+    "燕诺": {
+      atcoder: {
+        "2025-10-20": 2,
+        "2025-11-01": 5,
+        "2025-11-20": 11
+      },
+      codeforces: {
+        "2025-10-20": 5,
+        "2025-11-01": 17,
+        "2025-11-20": 23
+      },
+      matiji: {
+        "2025-10-20": 7,
+        "2025-11-01": 18,
+        "2025-11-20": 26
+      }
+    },
+    "苏奕铖": {
+      atcoder: {},
+      codeforces: {},
+      matiji: {}
+    },
+    "郑亦宇": {
+      atcoder: {
+        "2025-10-20": 10,
+        "2025-11-01": 13,
+        "2025-11-20": 17
+      },
+      codeforces: {
+        "2025-10-20": 55,
+        "2025-11-01": 62,
+        "2025-11-20": 65
+      },
+      matiji: {
+        "2025-10-20": 45,
+        "2025-11-01": 76,
+        "2025-11-20": 124
+      }
+    },
+    "徐文静": {
+      atcoder: {
+        "2025-10-20": 12,
+        "2025-11-01": 15,
+        "2025-11-20": 27
+      },
+      codeforces: {
+        "2025-10-20": 43,
+        "2025-11-01": 65,
+        "2025-11-20": 76
+      },
+      matiji: {
+        "2025-10-20": 22,
+        "2025-11-01": 33,
+        "2025-11-20": 42
+      }
+    },
+    "符轩跃": {
+      atcoder: {
+        "2025-10-20": 23,
+        "2025-11-01": 30,
+        "2025-11-20": 50
+      },
+      codeforces: {
+        "2025-10-20": 26,
+        "2025-11-01": 54,
+        "2025-11-20": 78
+      },
+      matiji: {
+        "2025-10-20": 22,
+        "2025-11-01": 30,
+        "2025-11-20": 30
+      }
+    },
+    "刘筱朵": {
+      atcoder: {
+        "2025-10-20": 6,
+        "2025-11-01": 6,
+        "2025-11-20": 7
+      },
+      codeforces: {
+        "2025-10-20": 70,
+        "2025-11-01": 78,
+        "2025-11-20": 78
+      },
+      matiji: {
+        "2025-10-20": 10,
+        "2025-11-01": 17,
+        "2025-11-20": 17
+      }
+    },
+    "倪志杰": {
+      atcoder: {
+        "2025-10-20": 6,
+        "2025-11-01": 9,
+        "2025-11-20": 21
+      },
+      codeforces: {
+        "2025-10-20": 22,
+        "2025-11-01": 48,
+        "2025-11-20": 73
+      },
+      matiji: {
+        "2025-10-20": 19,
+        "2025-11-01": 31,
+        "2025-11-20": 41
+      }
+    },
+    "朱雯婧": {
+      atcoder: {
+        "2025-10-20": 5,
+        "2025-11-01": 8,
+        "2025-11-20": 14
+      },
+      codeforces: {
+        "2025-10-20": 6,
+        "2025-11-01": 11,
+        "2025-11-20": 11
+      },
+      matiji: {
+        "2025-10-20": 9,
+        "2025-11-01": 19,
+        "2025-11-20": 22
+      }
+    },
+    "陈硕": {
+      atcoder: {
+        "2025-10-20": 250,
+        "2025-11-01": 252,
+        "2025-11-20": 261
+      },
+      codeforces: {
+        "2025-10-20": 1156,
+        "2025-11-01": 1157,
+        "2025-11-20": 1157
+      },
+      matiji: {}
+    },
+    "曹政业": {
+      atcoder: {
+        "2025-10-20": 297,
+        "2025-11-01": 297,
+        "2025-11-20": 307
+      },
+      codeforces: {
+        "2025-10-20": 1305,
+        "2025-11-01": 1305,
+        "2025-11-20": 1309
+      },
+      matiji: {}
+    },
+    "陈资权": {
+      atcoder: {
+        "2025-10-20": 177,
+        "2025-11-01": 177,
+        "2025-11-20": 184
+      },
+      codeforces: {
+        "2025-10-20": 786,
+        "2025-11-01": 795,
+        "2025-11-20": 800
+      },
+      matiji: {}
+    },
+    "叶智豪": {
+      atcoder: {
+        "2025-11-20": 6
+      },
+      codeforces: {
+        "2025-10-20": 762,
+        "2025-11-01": 762,
+        "2025-11-20": 764
+      },
+      matiji: {}
+    },
+    "余凯": {
+      atcoder: {
+        "2025-10-20": 111,
+        "2025-11-01": 117,
+        "2025-11-20": 120
+      },
+      codeforces: {
+        "2025-10-20": 233,
+        "2025-11-01": 237,
+        "2025-11-20": 242
+      },
+      matiji: {}
+    },
+    "陈姿蓥": {
+      atcoder: {
+        "2025-10-20": 68,
+        "2025-11-01": 68,
+        "2025-11-20": 73
+      },
+      codeforces: {
+        "2025-10-20": 202,
+        "2025-11-01": 202,
+        "2025-11-20": 202
+      },
+      matiji: {}
+    },
+    "姜银": {
+      atcoder: {
+        "2025-10-20": 130,
+        "2025-11-01": 140,
+        "2025-11-20": 155
+      },
+      codeforces: {
+        "2025-10-20": 307,
+        "2025-11-01": 317,
+        "2025-11-20": 333
+      },
+      matiji: {}
+    },
+    "尚淇淇": {
+      atcoder: {
+        "2025-10-20": 140,
+        "2025-11-01": 145,
+        "2025-11-20": 166
+      },
+      codeforces: {
+        "2025-10-20": 285,
+        "2025-11-01": 295,
+        "2025-11-20": 302
+      },
+      matiji: {}
+    },
+    "王瑞珽": {
+      atcoder: {
+        "2025-10-20": 109,
+        "2025-11-01": 114,
+        "2025-11-20": 121
+      },
+      codeforces: {
+        "2025-10-20": 334,
+        "2025-11-01": 362,
+        "2025-11-20": 398
+      },
+      matiji: {}
+    },
+    "马逍遥": {
+      atcoder: {
+        "2025-10-20": 86,
+        "2025-11-01": 94,
+        "2025-11-20": 114
+      },
+      codeforces: {
+        "2025-10-20": 212,
+        "2025-11-01": 218,
+        "2025-11-20": 221
+      },
+      matiji: {}
+    },
+    "杜蘇航": {
+      atcoder: {
+        "2025-10-20": 85,
+        "2025-11-01": 94,
+        "2025-11-20": 119
+      },
+      codeforces: {
+        "2025-10-20": 180,
+        "2025-11-01": 182,
+        "2025-11-20": 185
+      },
+      matiji: {}
+    },
+    "赵星宇": {
+      atcoder: {
+        "2025-10-20": 128,
+        "2025-11-01": 130,
+        "2025-11-20": 138
+      },
+      codeforces: {
+        "2025-10-20": 146,
+        "2025-11-01": 149,
+        "2025-11-20": 156
+      },
+      matiji: {}
+    },
+    "李俊": {
+      atcoder: {
+        "2025-10-20": 28,
+        "2025-11-01": 36,
+        "2025-11-20": 56
+      },
+      codeforces: {
+        "2025-10-20": 131,
+        "2025-11-01": 145,
+        "2025-11-20": 165
+      },
+      matiji: {}
+    }
+  };
+  const lastUpdate = "2025-11-22T21:15:49.919036";
+  const allData = {
+    users,
+    data,
+    lastUpdate
+  };
   const _hoisted_1$1 = { class: "container" };
   const _hoisted_2$1 = { class: "main-content" };
   const _sfc_main$1 = /* @__PURE__ */ defineComponent({
     __name: "Statistics",
     setup(__props) {
-      const users = ref([]);
+      const users2 = ref([]);
       const userData = ref({});
-      const lastUpdate = ref((/* @__PURE__ */ new Date()).toISOString().split("T")[0] || "");
+      const lastUpdate2 = ref((/* @__PURE__ */ new Date()).toISOString().split("T")[0] || "");
       const searchTerm = ref("");
       const selectedUsers = ref(["孙叶", "陈宣扬", "杜光明"]);
       const currentPeriodFilter = ref("all");
@@ -20993,9 +22013,9 @@ var __async = (__this, __arguments, generator) => {
       const trendChartType = ref("line");
       const displayUsers = computed(() => {
         if (currentUserFilter.value === "all") {
-          return users.value;
+          return users2.value;
         }
-        return users.value.filter((user) => selectedUsers.value.includes(user.name));
+        return users2.value.filter((user) => selectedUsers.value.includes(user.name));
       });
       const activeUsersCount = computed(() => displayUsers.value.length);
       const getPlatformTotal = (platform) => {
@@ -21051,41 +22071,16 @@ var __async = (__this, __arguments, generator) => {
       const updatePlatformFilter = (value) => {
         currentPlatformFilter.value = value;
       };
-      function loadAllData() {
-        return new Promise((resolve2, reject) => {
-          const xhr = new XMLHttpRequest();
-          xhr.open("GET", "./all_data.json");
-          xhr.onload = function() {
-            if (xhr.status === 200 || xhr.status === 0 && xhr.responseText) {
-              try {
-                const data = JSON.parse(xhr.responseText);
-                resolve2(data);
-              } catch (e) {
-                console.error("JSON 解析错误:", e);
-                reject(new Error("JSON parsing error: " + e));
-              }
-            } else {
-              console.error("加载数据失败:", xhr.status);
-              reject(new Error("Failed to load data: " + xhr.status));
-            }
-          };
-          xhr.onerror = function() {
-            console.error("网络请求错误");
-            reject(new Error("Network error"));
-          };
-          xhr.send();
-        });
-      }
       const loadData = () => __async(null, null, function* () {
         try {
-          const data = yield loadAllData();
+          const data2 = allData;
           const data25 = { users: [], data: {} };
           const allDates = /* @__PURE__ */ new Set();
-          for (let i = 0; i < data.users.length; i++) {
-            const u = data.users[i];
+          for (let i = 0; i < data2.users.length; i++) {
+            const u = data2.users[i];
             if (!u || u.grade !== 2025) continue;
             data25.users.push(u);
-            const d = data.data[u.name];
+            const d = data2.data[u.name];
             if (d) {
               data25.data[u.name] = d;
               Object.values(d).forEach((platformData) => {
@@ -21093,14 +22088,19 @@ var __async = (__this, __arguments, generator) => {
               });
             }
           }
-          users.value = data25.users;
+          users2.value = data25.users;
           userData.value = data25.data;
           if (allDates.size > 0) {
             const sortedDates = Array.from(allDates).sort((a, b) => new Date(b).getTime() - new Date(a).getTime());
             const latestDate = sortedDates[0];
             if (latestDate) {
-              lastUpdate.value = latestDate;
+              lastUpdate2.value = latestDate;
             }
+          }
+          if (data2.lastUpdate) {
+            const lastUpdateData = data2.lastUpdate;
+            const datePart = lastUpdateData.split("T")[0];
+            lastUpdate2.value = datePart || "";
           }
           yield nextTick();
         } catch (error) {
@@ -21116,7 +22116,7 @@ var __async = (__this, __arguments, generator) => {
       return (_ctx, _cache) => {
         return openBlock(), createElementBlock("div", _hoisted_1$1, [
           createVNode(UserListSidebar, {
-            users: users.value,
+            users: users2.value,
             "selected-users": selectedUsers.value,
             "search-term": searchTerm.value,
             onToggleUser: toggleUser,
@@ -21151,7 +22151,7 @@ var __async = (__this, __arguments, generator) => {
             createBaseVNode("footer", null, [
               createBaseVNode("p", null, [
                 _cache[0] || (_cache[0] = createTextVNode("数据每10天更新一次 | 最后更新: ", -1)),
-                createBaseVNode("span", null, toDisplayString(lastUpdate.value), 1)
+                createBaseVNode("span", null, toDisplayString(lastUpdate2.value), 1)
               ])
             ])
           ])
@@ -21159,7 +22159,7 @@ var __async = (__this, __arguments, generator) => {
       };
     }
   });
-  const Statistics = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-e6d39c44"]]);
+  const Statistics = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-d577524c"]]);
   const _hoisted_1 = { class: "app" };
   const _hoisted_2 = { class: "page" };
   const _sfc_main = /* @__PURE__ */ defineComponent({
