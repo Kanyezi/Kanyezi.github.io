@@ -168,9 +168,34 @@ const updatePlatformFilter = (value: string) => {
   currentPlatformFilter.value = value;
 };
 
-// 直接导入数据而不是通过fetch请求，避免CORS问题
-// 由于all_data.json在public目录下，需要使用动态导入
-const loadAllData = async () => await fetch('/all_data.json').then(res => res.json());
+// 使用 XMLHttpRequest 加载数据，以支持 file:// 协议
+function loadAllData(): Promise<AppData> {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    // 使用根相对路径访问数据文件，确保在构建后的环境中也能正确加载
+    xhr.open('GET', './all_data.json');
+    xhr.onload = function() {
+      // 对于 file:// 协议，xhr.status 为 0 也是正常的
+      if (xhr.status === 200 || (xhr.status === 0 && xhr.responseText)) {
+        try {
+          const data: AppData = JSON.parse(xhr.responseText);
+          resolve(data);
+        } catch (e) {
+          console.error('JSON 解析错误:', e);
+          reject(new Error('JSON parsing error: ' + e));
+        }
+      } else {
+        console.error('加载数据失败:', xhr.status);
+        reject(new Error('Failed to load data: ' + xhr.status));
+      }
+    };
+    xhr.onerror = function() {
+      console.error('网络请求错误');
+      reject(new Error('Network error'));
+    };
+    xhr.send();
+  });
+}
 
 const loadData = async () => {
   try {

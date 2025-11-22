@@ -33,5 +33,9 @@ export default defineConfig({
   resolve: {
     alias: {},
     preserveSymlinks: false
+  },
+  // 启用 JSON 导入
+  json: {
+    stringify: false
   }
 })

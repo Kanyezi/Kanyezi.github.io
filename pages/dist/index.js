@@ -21051,9 +21051,31 @@ var __async = (__this, __arguments, generator) => {
       const updatePlatformFilter = (value) => {
         currentPlatformFilter.value = value;
       };
-      const loadAllData = () => __async(null, null, function* () {
-        return yield fetch("/all_data.json").then((res) => res.json());
-      });
+      function loadAllData() {
+        return new Promise((resolve2, reject) => {
+          const xhr = new XMLHttpRequest();
+          xhr.open("GET", "./all_data.json");
+          xhr.onload = function() {
+            if (xhr.status === 200 || xhr.status === 0 && xhr.responseText) {
+              try {
+                const data = JSON.parse(xhr.responseText);
+                resolve2(data);
+              } catch (e) {
+                console.error("JSON 解析错误:", e);
+                reject(new Error("JSON parsing error: " + e));
+              }
+            } else {
+              console.error("加载数据失败:", xhr.status);
+              reject(new Error("Failed to load data: " + xhr.status));
+            }
+          };
+          xhr.onerror = function() {
+            console.error("网络请求错误");
+            reject(new Error("Network error"));
+          };
+          xhr.send();
+        });
+      }
       const loadData = () => __async(null, null, function* () {
         try {
           const data = yield loadAllData();
@@ -21137,7 +21159,7 @@ var __async = (__this, __arguments, generator) => {
       };
     }
   });
-  const Statistics = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-87f6c867"]]);
+  const Statistics = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-e6d39c44"]]);
   const _hoisted_1 = { class: "app" };
   const _hoisted_2 = { class: "page" };
   const _sfc_main = /* @__PURE__ */ defineComponent({
