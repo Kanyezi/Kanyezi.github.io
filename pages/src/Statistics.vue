@@ -22,7 +22,7 @@
         @update:period-filter="updatePeriodFilter"
         @update:user-filter="updateUserFilter"
         @update:platform-filter="updatePlatformFilter"
-        @compare-mode="compareMode"
+        
         @refresh-data="refreshData"
       />
       
@@ -182,16 +182,31 @@ const loadData = async () => {
     // 筛选2025级数据
     const data: AppData = await loadAllData();
     const data25:AppData = {users:[],data:{}};
+    // 收集所有日期以确定最后更新日期
+    const allDates = new Set<string>();
     for(let i=0;i<data.users.length;i++){
       const u = data.users[i];   // ← 一次性收窄
       if (!u || u.grade !== 2025) continue;
 
       data25.users.push(u);
       const d = data.data[u.name];
-      if (d) data25.data[u.name] = d;   // 防止 data 里没有这个人
+      if (d) {
+        data25.data[u.name] = d;   // 防止 data 里没有这个人
+        // 收集所有平台的日期
+        Object.values(d).forEach(platformData => {
+          Object.keys(platformData).forEach(date => allDates.add(date));
+        });
+      }
     }
     users.value = data25.users;
     userData.value = data25.data;
+    
+    // 从收集的日期中找出最新的日期
+    if (allDates.size > 0) {
+      const sortedDates = Array.from(allDates).sort((a, b) => new Date(b).getTime() - new Date(a).getTime());
+      lastUpdate.value = sortedDates[0]; // 最新的日期
+    }
+    
     await nextTick();
   } catch (error) {
     console.error('加载数据失败:', error);
@@ -199,14 +214,10 @@ const loadData = async () => {
 };
 
 const refreshData = () => {
-  lastUpdate.value = new Date().toISOString().split('T')[0] || '';
   loadData();
 };
 
-const compareMode = () => {
-  // 可以在这里实现更复杂的对比模式逻辑
-  alert(`对比模式已激活！当前平台: ${currentPlatformFilter.value}`);
-};
+
 
 // 生命周期
 onMounted(() => {

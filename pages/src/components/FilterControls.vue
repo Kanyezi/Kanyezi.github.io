@@ -19,7 +19,7 @@
         <option value="matiji">Matiji</option>
       </select>
       
-      <button class="btn" @click="compareMode">对比模式</button>
+      
     </div>
     
     <div class="filter-group">
@@ -47,7 +47,7 @@ interface Emits {
   (e: 'update:periodFilter', value: string): void;
   (e: 'update:userFilter', value: string): void;
   (e: 'update:platformFilter', value: string): void;
-  (e: 'compare-mode'): void;
+  
   (e: 'refresh-data'): void;
 }
 
@@ -69,9 +69,7 @@ const onPlatformFilterChange = (event: Event) => {
   emit('update:platformFilter', target.value);
 };
 
-const compareMode = () => {
-  emit('compare-mode');
-};
+
 
 const refreshData = () => {
   emit('refresh-data');
