@@ -5,12 +5,16 @@ class PathS:
         # current_dir = os.path.join(current_dir, "pages/get_pachong/")
         
         data = {
+            "root_path": "./data/",
             "users_path": "./data/users.json",
             "atcoder_path": "./data/atcoder/",
             "codeforces_path": "./data/codeforces/",
             "matiji_path": "./data/matiji/",
-            "nowcoder_path": "./data/nowcoder/"
+            "nowcoder_path": "./data/nowcoder/",
+            "out_path": "./../public/all_data.json"
         }
+        self.out_path = os.path.join(current_dir,data["out_path"])
+        self.root_path = os.path.join(current_dir,data["root_path"])
         self.users_path = os.path.join(current_dir,data["users_path"])
 
         self.atcoder_path_contest =  os.path.join(current_dir,data["atcoder_path"]+"contest/")
@@ -28,7 +32,4 @@ class PathS:
 
 if __name__ == "__main__":
     pc = PathS()
-    print(pc.atcoder_path_contest)
-    print(pc.codeforces_path_user)
-    print(pc.matiji_path_contest)
-    print(pc.nowcoder_path_user)
+    print(pc.root_path)

@@ -49,6 +49,6 @@ if __name__ == "__main__":
     # matijiData.matiji_gets(user,ps.matiji_path_user)
 
     # # 地址列表生成
-    # file_list_generator.generate_file_list()
+    # file_list_generator.generate_file_list_json(ps.root_path)
     # # 合并
-    # data_converter.data_convert()
+    data_converter.convert_data(ps.root_path,user,ps.out_path)

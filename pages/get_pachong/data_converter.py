@@ -4,17 +4,12 @@ import re
 from datetime import datetime
 
 # 文件路径定义
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PUBLIC_DIR = os.path.join(BASE_DIR, 'public')
-DATA_JSON_PATH = os.path.join(PUBLIC_DIR, 'data.json')
-ALL_DATA_PATH = os.path.join(PUBLIC_DIR, 'all_data.json')
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# PUBLIC_DIR = os.path.join(BASE_DIR, 'public')
+# DATA_JSON_PATH = os.path.join(PUBLIC_DIR, 'data.json')
+# ALL_DATA_PATH = os.path.join(PUBLIC_DIR, 'all_data.json')
 
-# 平台目录映射
-PLATFORM_DIRS = {
-    'atcoder': os.path.join(PUBLIC_DIR, 'atcoder'),
-    'codeforces': os.path.join(PUBLIC_DIR, 'codeforces'),
-    'matiji': os.path.join(PUBLIC_DIR, 'matiji')
-}
+
 
 def load_json_file(file_path):
     """加载JSON文件"""
@@ -35,7 +30,7 @@ def extract_date_from_filename(filename):
         return f"{year}-{month}-{day}"
     return None
 
-def convert_data():
+def convert_data(root_path,user_path,out_path):
     """转换数据并生成all_data.json，读取所有数据文件并按日期组织"""
     print("开始转换数据...")
     
@@ -44,6 +39,13 @@ def convert_data():
         'atcoder': {},
         'codeforces': {},
         'matiji': {}
+    }
+
+    # 平台目录映射
+    PLATFORM_DIRS = {
+        'atcoder': os.path.join(root_path, 'atcoder/user_problems/'),
+        'codeforces': os.path.join(root_path, 'codeforces/user_problems/'),
+        'matiji': os.path.join(root_path, 'matiji/user_problems/')
     }
     
     total_files = 0
@@ -78,7 +80,7 @@ def convert_data():
     print(f"总共读取了 {total_files} 个数据文件")
     
     # 2. 读取data.json
-    students = load_json_file(DATA_JSON_PATH)
+    students = load_json_file(user_path)
     if not students:
         print("无法读取data.json")
         return False
@@ -141,9 +143,9 @@ def convert_data():
     
     # 4. 保存到all_data.json
     try:
-        with open(ALL_DATA_PATH, 'w', encoding='utf-8') as f:
+        with open(out_path, 'w', encoding='utf-8') as f:
             json.dump(all_data, f, ensure_ascii=False, indent=2)
-        print(f"数据已成功保存到: {ALL_DATA_PATH}")
+        print(f"数据已成功保存到: {out_path}")
         return True
     except Exception as e:
         print(f"保存all_data.json失败: {e}")

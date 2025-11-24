@@ -2,8 +2,6 @@ import os
 import json
 
 # 定义项目根目录和目标文件夹路径
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PUBLIC_DIR = os.path.join(BASE_DIR, 'public')
 TARGET_FOLDERS = ['atcoder', 'codeforces', 'matiji']
 
 
@@ -11,6 +9,7 @@ def get_file_list(folder_path):
     """
     获取指定文件夹下的所有文件名（不包含子文件夹）
     """
+    folder_path = os.path.join(folder_path, 'user_problems')
     try:
         # 获取文件夹中的所有项目
         items = os.listdir(folder_path)
@@ -22,7 +21,7 @@ def get_file_list(folder_path):
         return []
 
 
-def generate_file_list_json():
+def generate_file_list_json(file_path):
     """
     生成文件列表JSON并保存到public目录
     """
@@ -31,7 +30,7 @@ def generate_file_list_json():
     
     # 遍历每个目标文件夹
     for folder_name in TARGET_FOLDERS:
-        folder_path = os.path.join(PUBLIC_DIR, folder_name)
+        folder_path = os.path.join(file_path, folder_name)
         if os.path.exists(folder_path) and os.path.isdir(folder_path):
             file_list_data[folder_name] = get_file_list(folder_path)
         else:
@@ -39,7 +38,7 @@ def generate_file_list_json():
             file_list_data[folder_name] = []
     
     # 保存结果到JSON文件
-    output_file = os.path.join(PUBLIC_DIR, 'file_list.json')
+    output_file = os.path.join(file_path, 'file_list.json')
     try:
         with open(output_file, 'w', encoding='utf-8') as f:
             json.dump(file_list_data, f, ensure_ascii=False, indent=2)
