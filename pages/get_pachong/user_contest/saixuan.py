@@ -1,20 +1,26 @@
-import atcoder_contest
-import codeforces_contest
-import matiji_contest
-import nowcoder_contest
+try:
+    from . import atcoder_contest
+    from . import codeforces_contest
+    from . import matiji_contest
+    from . import nowcoder_contest
+except ImportError:
+    import atcoder_contest
+    import codeforces_contest
+    import matiji_contest
+    import nowcoder_contest
 #筛选比赛数据
-def read_contest_records(type,contest):
+def read_contest_records(type,contest,contest_path):
     if(type=="atcoder"):
-        data=atcoder_contest.read_json(contest)
+        data=atcoder_contest.read_json(contest,contest_path)
         return data['StandingsData']
     elif(type=="codeforces"):
-        data=codeforces_contest.read_json(contest)
+        data=codeforces_contest.read_json(contest,contest_path)
         return data['result']['rows']
     elif(type=="matiji"):
-        data=matiji_contest.read_json(contest)
+        data=matiji_contest.read_json(contest,contest_path)
         return data['data']['datas']
     elif(type=="nowcoder"):
-        data=nowcoder_contest.read_json(contest)
+        data=nowcoder_contest.read_json(contest,contest_path)
         return data['data']['rankData']
     return None
 def check(type,record,users):
@@ -34,9 +40,9 @@ def check(type,record,users):
         return True
     return False
     
-def saixuan_contest_records(type,contest,users,paths):
+def saixuan_contest_records(type,contest,users,paths,contest_path):
     result = []
-    data=read_contest_records(type,contest)
+    data=read_contest_records(type,contest,contest_path)
     
     for record in data:
         # print(record["userId"])

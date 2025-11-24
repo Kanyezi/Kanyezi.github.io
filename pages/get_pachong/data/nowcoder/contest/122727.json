@@ -141,7 +141,7 @@
             },
             {
                 "acceptedCount": 5,
-                "colorLevel": 1,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 15512000,
                 "ranking": 2,
@@ -1317,7 +1317,7 @@
             },
             {
                 "acceptedCount": 4,
-                "colorLevel": 1,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 9134000,
                 "ranking": 14,
@@ -1611,7 +1611,7 @@
             },
             {
                 "acceptedCount": 4,
-                "colorLevel": 5,
+                "colorLevel": 6,
                 "fullScore": 0.0,
                 "penaltyTime": 10462000,
                 "ranking": 17,
@@ -2101,7 +2101,7 @@
             },
             {
                 "acceptedCount": 4,
-                "colorLevel": 5,
+                "colorLevel": 6,
                 "fullScore": 0.0,
                 "penaltyTime": 12424000,
                 "ranking": 22,
@@ -2199,7 +2199,7 @@
             },
             {
                 "acceptedCount": 4,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 12745000,
                 "ranking": 23,
@@ -2297,7 +2297,7 @@
             },
             {
                 "acceptedCount": 4,
-                "colorLevel": 1,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 12971000,
                 "ranking": 24,
@@ -2591,7 +2591,7 @@
             },
             {
                 "acceptedCount": 4,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 13802000,
                 "ranking": 27,
@@ -3477,7 +3477,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 16451000,
                 "ranking": 36,
-                "school": "湖南财政经济学院",
+                "school": "原神大学",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -3669,7 +3669,7 @@
             },
             {
                 "acceptedCount": 4,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 16529000,
                 "ranking": 38,
@@ -5237,7 +5237,7 @@
             },
             {
                 "acceptedCount": 4,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 23548000,
                 "ranking": 54,
@@ -5825,7 +5825,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 3750000,
                 "ranking": 60,
@@ -6119,7 +6119,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 1,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 4658000,
                 "ranking": 63,
@@ -6903,7 +6903,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 5655000,
                 "ranking": 71,
@@ -8373,7 +8373,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 7376000,
                 "ranking": 86,
@@ -8667,7 +8667,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 1,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 7860000,
                 "ranking": 89,
@@ -8863,7 +8863,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 8120000,
                 "ranking": 91,
@@ -9451,7 +9451,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 8639000,
                 "ranking": 97,
@@ -10725,7 +10725,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 1,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 9686000,
                 "ranking": 110,
@@ -10921,7 +10921,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 9919000,
                 "ranking": 112,
@@ -11019,7 +11019,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 9934000,
                 "ranking": 113,
@@ -11215,7 +11215,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 1,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 10192000,
                 "ranking": 115,
@@ -11901,7 +11901,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 10674000,
                 "ranking": 122,
@@ -12195,7 +12195,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 10971000,
                 "ranking": 125,
@@ -12293,7 +12293,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 11096000,
                 "ranking": 126,
@@ -12783,7 +12783,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 11320000,
                 "ranking": 131,
@@ -12885,7 +12885,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 11493000,
                 "ranking": 132,
-                "school": "杭州第二中学",
+                "school": "国防科技大学附属小学",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -13763,7 +13763,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 12706000,
                 "ranking": 141,
@@ -14155,7 +14155,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 13090000,
                 "ranking": 145,
@@ -14253,7 +14253,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 13109000,
                 "ranking": 146,
@@ -14645,7 +14645,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 13344000,
                 "ranking": 150,
@@ -14939,7 +14939,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 13615000,
                 "ranking": 153,
@@ -15037,7 +15037,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 13645000,
                 "ranking": 154,
@@ -15527,7 +15527,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 14172000,
                 "ranking": 159,
@@ -15723,7 +15723,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 14184000,
                 "ranking": 161,
@@ -16899,7 +16899,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 15137000,
                 "ranking": 173,
@@ -16997,7 +16997,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 15232000,
                 "ranking": 174,
@@ -17389,7 +17389,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 15893000,
                 "ranking": 178,
@@ -18173,7 +18173,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 1,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 17285000,
                 "ranking": 186,
@@ -21015,7 +21015,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 1,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 21386000,
                 "ranking": 215,
@@ -21407,7 +21407,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 22217000,
                 "ranking": 219,
@@ -21505,7 +21505,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 23180000,
                 "ranking": 220,
@@ -22093,7 +22093,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 1,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 26518000,
                 "ranking": 226,
@@ -23269,7 +23269,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 2445000,
                 "ranking": 238,
@@ -24739,7 +24739,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 4423000,
                 "ranking": 253,
@@ -25033,7 +25033,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 4577000,
                 "ranking": 256,
@@ -25817,7 +25817,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 5255000,
                 "ranking": 264,
@@ -26013,7 +26013,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 5559000,
                 "ranking": 266,
@@ -26307,7 +26307,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 4,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 5938000,
                 "ranking": 269,
@@ -26993,7 +26993,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 6489000,
                 "ranking": 276,
@@ -27777,7 +27777,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 4,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 7064000,
                 "ranking": 284,
@@ -27973,7 +27973,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 7098000,
                 "ranking": 286,
@@ -28463,7 +28463,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 7404000,
                 "ranking": 291,
@@ -28659,7 +28659,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 7594000,
                 "ranking": 293,
@@ -28855,7 +28855,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 7668000,
                 "ranking": 295,
@@ -29051,7 +29051,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 7845000,
                 "ranking": 297,
@@ -30031,7 +30031,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 8608000,
                 "ranking": 307,
@@ -30129,7 +30129,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 8630000,
                 "ranking": 308,
@@ -30423,7 +30423,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 8665000,
                 "ranking": 311,
@@ -30521,7 +30521,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 8777000,
                 "ranking": 312,
@@ -30619,7 +30619,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 8799000,
                 "ranking": 313,
@@ -32089,7 +32089,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 9846000,
                 "ranking": 328,
@@ -32187,7 +32187,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 10108000,
                 "ranking": 329,
@@ -32285,7 +32285,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 10140000,
                 "ranking": 330,
@@ -32481,7 +32481,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 10336000,
                 "ranking": 332,
@@ -32775,7 +32775,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 10726000,
                 "ranking": 335,
@@ -33167,7 +33167,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 11063000,
                 "ranking": 339,
@@ -33363,7 +33363,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 11160000,
                 "ranking": 341,
@@ -33559,7 +33559,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 11342000,
                 "ranking": 343,
@@ -33853,7 +33853,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 11608000,
                 "ranking": 346,
@@ -34343,7 +34343,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 11917000,
                 "ranking": 351,
@@ -34637,7 +34637,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 12086000,
                 "ranking": 354,
@@ -34833,7 +34833,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 12112000,
                 "ranking": 356,
@@ -35029,7 +35029,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 12268000,
                 "ranking": 358,
@@ -35225,7 +35225,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 12320000,
                 "ranking": 360,
@@ -35323,7 +35323,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 12513000,
                 "ranking": 361,
@@ -35519,7 +35519,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 12581000,
                 "ranking": 363,
@@ -35617,7 +35617,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 12636000,
                 "ranking": 364,
@@ -36107,7 +36107,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 13118000,
                 "ranking": 369,
@@ -36695,7 +36695,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 13302000,
                 "ranking": 375,
@@ -36793,7 +36793,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 13322000,
                 "ranking": 376,
@@ -36891,7 +36891,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 13381000,
                 "ranking": 377,
@@ -37479,7 +37479,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 13928000,
                 "ranking": 383,
@@ -37675,7 +37675,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 14073000,
                 "ranking": 385,
@@ -37871,7 +37871,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 14222000,
                 "ranking": 387,
@@ -38165,7 +38165,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 14584000,
                 "ranking": 390,
@@ -38949,7 +38949,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 15596000,
                 "ranking": 398,
@@ -39047,7 +39047,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 15624000,
                 "ranking": 399,
@@ -39341,7 +39341,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 16098000,
                 "ranking": 402,
@@ -39635,7 +39635,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 16416000,
                 "ranking": 405,
@@ -40223,7 +40223,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 16955000,
                 "ranking": 411,
@@ -40517,7 +40517,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 17415000,
                 "ranking": 414,
@@ -40615,7 +40615,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 17464000,
                 "ranking": 415,
@@ -40713,7 +40713,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 17637000,
                 "ranking": 416,
@@ -40811,7 +40811,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 17887000,
                 "ranking": 417,
@@ -40913,7 +40913,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 17983000,
                 "ranking": 418,
-                "school": "宁波大学",
+                "school": "玄奘大学",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -41007,7 +41007,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 17983000,
                 "ranking": 418,
@@ -41791,7 +41791,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 18835000,
                 "ranking": 427,
@@ -41987,7 +41987,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 18990000,
                 "ranking": 429,
@@ -42183,7 +42183,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 19109000,
                 "ranking": 430,
@@ -42477,7 +42477,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 19570000,
                 "ranking": 434,
@@ -42673,7 +42673,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 19594000,
                 "ranking": 436,
@@ -43457,7 +43457,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 21265000,
                 "ranking": 444,
@@ -44143,7 +44143,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 24540000,
                 "ranking": 451,
@@ -44241,7 +44241,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 24633000,
                 "ranking": 452,
@@ -44437,7 +44437,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 27694000,
                 "ranking": 454,
@@ -44535,7 +44535,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 27941000,
                 "ranking": 455,
@@ -44927,7 +44927,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 620000,
                 "ranking": 459,
@@ -45123,7 +45123,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 859000,
                 "ranking": 461,
@@ -45515,7 +45515,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 1178000,
                 "ranking": 465,
@@ -46005,7 +46005,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 1373000,
                 "ranking": 470,
@@ -46103,7 +46103,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 1404000,
                 "ranking": 471,
@@ -46299,7 +46299,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 1684000,
                 "ranking": 473,
@@ -46593,7 +46593,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 1780000,
                 "ranking": 476,
@@ -46691,7 +46691,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 1866000,
                 "ranking": 477,
@@ -46789,7 +46789,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 1883000,
                 "ranking": 478,
@@ -47279,7 +47279,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 2232000,
                 "ranking": 483,
@@ -47377,7 +47377,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 2272000,
                 "ranking": 484,
@@ -47867,7 +47867,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 2448000,
                 "ranking": 489,
@@ -47965,7 +47965,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 2465000,
                 "ranking": 490,
@@ -48455,7 +48455,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 2726000,
                 "ranking": 495,
@@ -48553,7 +48553,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 2738000,
                 "ranking": 496,
@@ -48651,7 +48651,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 2787000,
                 "ranking": 497,
@@ -48945,11 +48945,11 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 2935000,
                 "ranking": 500,
-                "school": "大连市第二十四中学",
+                "school": "中国人民大学",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -49435,7 +49435,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 3246000,
                 "ranking": 505,
@@ -49827,7 +49827,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 3494000,
                 "ranking": 509,
@@ -51003,7 +51003,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 3896000,
                 "ranking": 521,
@@ -51297,7 +51297,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 3983000,
                 "ranking": 524,
@@ -51395,7 +51395,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 3988000,
                 "ranking": 525,
@@ -51493,7 +51493,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 4079000,
                 "ranking": 526,
@@ -51787,7 +51787,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 4154000,
                 "ranking": 529,
@@ -51885,7 +51885,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 4178000,
                 "ranking": 530,
@@ -52375,7 +52375,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 4490000,
                 "ranking": 535,
@@ -52571,7 +52571,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 4520000,
                 "ranking": 537,
@@ -52865,7 +52865,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 4627000,
                 "ranking": 540,
@@ -53159,7 +53159,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 4717000,
                 "ranking": 543,
@@ -53355,7 +53355,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 4740000,
                 "ranking": 545,
@@ -53453,7 +53453,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 4807000,
                 "ranking": 546,
@@ -53747,7 +53747,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 4,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 4959000,
                 "ranking": 549,
@@ -54041,7 +54041,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 4,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 5126000,
                 "ranking": 552,
@@ -54139,7 +54139,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 5232000,
                 "ranking": 553,
@@ -54335,7 +54335,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 5291000,
                 "ranking": 555,
@@ -55119,7 +55119,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 5973000,
                 "ranking": 563,
@@ -55315,7 +55315,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 6148000,
                 "ranking": 565,
@@ -55805,7 +55805,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 6330000,
                 "ranking": 570,
@@ -55907,7 +55907,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 6339000,
                 "ranking": 571,
-                "school": "广州大学",
+                "school": "广东工业大学",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -56099,7 +56099,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 6572000,
                 "ranking": 573,
@@ -56491,7 +56491,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 6815000,
                 "ranking": 577,
@@ -56883,7 +56883,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 6914000,
                 "ranking": 581,
@@ -57079,7 +57079,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 6938000,
                 "ranking": 583,
@@ -57275,7 +57275,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 7144000,
                 "ranking": 585,
@@ -57373,7 +57373,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 7166000,
                 "ranking": 586,
@@ -57569,7 +57569,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 7187000,
                 "ranking": 588,
@@ -57667,7 +57667,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 7240000,
                 "ranking": 589,
@@ -58059,7 +58059,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 7387000,
                 "ranking": 592,
@@ -58353,7 +58353,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 7585000,
                 "ranking": 596,
@@ -58451,7 +58451,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 7650000,
                 "ranking": 597,
@@ -59235,7 +59235,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 8384000,
                 "ranking": 605,
@@ -59627,7 +59627,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 8528000,
                 "ranking": 609,
@@ -60411,7 +60411,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 8719000,
                 "ranking": 617,
@@ -61097,7 +61097,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 8957000,
                 "ranking": 624,
@@ -61587,7 +61587,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 9806000,
                 "ranking": 629,
@@ -61783,7 +61783,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 9852000,
                 "ranking": 631,
@@ -62273,7 +62273,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 10794000,
                 "ranking": 636,
@@ -62371,7 +62371,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 10935000,
                 "ranking": 637,
@@ -62567,7 +62567,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 11341000,
                 "ranking": 639,
@@ -62763,7 +62763,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 11517000,
                 "ranking": 641,
@@ -62959,7 +62959,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 11906000,
                 "ranking": 643,
@@ -63057,7 +63057,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 12027000,
                 "ranking": 644,
@@ -63253,7 +63253,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 12212000,
                 "ranking": 646,
@@ -63449,7 +63449,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 12709000,
                 "ranking": 648,
@@ -63841,7 +63841,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 13327000,
                 "ranking": 652,
@@ -64135,7 +64135,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 14062000,
                 "ranking": 655,
@@ -64429,7 +64429,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 15340000,
                 "ranking": 658,
@@ -64723,7 +64723,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 15872000,
                 "ranking": 661,
@@ -65311,7 +65311,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 21739000,
                 "ranking": 667,
@@ -65605,7 +65605,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 24023000,
                 "ranking": 670,
@@ -65703,7 +65703,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 24619000,
                 "ranking": 671,
@@ -66193,7 +66193,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -66389,7 +66389,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -69231,7 +69231,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -69427,7 +69427,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -70113,7 +70113,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -70309,7 +70309,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -70407,7 +70407,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -70603,7 +70603,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -71191,7 +71191,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -72171,7 +72171,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -72367,7 +72367,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -72465,7 +72465,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -74033,7 +74033,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -74523,7 +74523,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -74719,7 +74719,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -74915,7 +74915,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -75209,7 +75209,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -75503,7 +75503,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -76679,7 +76679,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -77169,7 +77169,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -77561,7 +77561,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -77659,7 +77659,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -78443,7 +78443,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -78541,7 +78541,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -78933,7 +78933,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -79031,7 +79031,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -79619,7 +79619,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -80109,7 +80109,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -80501,7 +80501,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -80599,7 +80599,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -80893,7 +80893,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -81187,7 +81187,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -81775,7 +81775,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -81971,7 +81971,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -82951,7 +82951,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -83049,7 +83049,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -83245,7 +83245,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -83735,7 +83735,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -83833,7 +83833,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -85205,7 +85205,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -85303,7 +85303,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -86577,7 +86577,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -86773,7 +86773,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -87067,7 +87067,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -89419,7 +89419,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -89615,7 +89615,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -89811,7 +89811,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
