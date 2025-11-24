@@ -31,22 +31,22 @@ def get_matiji_contest_standing(contest):
     except Exception as e:
         print(f"matiji处理过程中发生错误: {e}")
         return None
-def save_json_to_file(contest):
+def save_json_to_file(contest,contest_path):
     standing = get_matiji_contest_standing(contest)
 
-    current_dir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
-    # print(current_dir)
-    path_r = os.path.join(current_dir,"./public/data.json")
-    # print(path_r)
-    path_w = os.path.join(current_dir,"../public/contest/matiji")
+    # current_dir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+    # # print(current_dir)
+    # path_r = os.path.join(current_dir,"./public/data.json")
+    # # print(path_r)
+    # path_w = os.path.join(current_dir,"../public/contest/matiji")
     # print(path_w)
-    with open(path_w+f"/{contest}.json",'w', encoding='utf-8') as f:
+    with open(contest_path+f"/{contest}.json",'w', encoding='utf-8') as f:
         json.dump(standing, f, ensure_ascii=False, indent=4)
-        print(f"matiji排名数据已保存到{path_w}/{contest}.json")
-def read_json(contest):
-    current_dir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
-    path_w = os.path.join(current_dir,"../public/contest/matiji")
-    with open(path_w+f"/{contest}.json",'r', encoding='utf-8') as f:
+        print(f"matiji排名数据已保存到{contest_path}/{contest}.json")
+def read_json(contest,contest_path):
+    # current_dir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+    # path_w = os.path.join(current_dir,"../public/contest/matiji")
+    with open(contest_path+f"/{contest}.json",'r', encoding='utf-8') as f:
         data = json.load(f)
         return data
 if __name__ == "__main__":

@@ -6,18 +6,13 @@ from .codeforces_get import get_user_ac_count
 import os
 
 # 使用示例
-def codeforces_gets():
+def codeforces_gets(user_path,problems_path):
     data = {}
-    current_dir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
-    print(current_dir)
-    path_r = os.path.join(current_dir,"./public/data.json")
-    print(path_r)
-    path_w = os.path.join(current_dir,"./public/codeforces/")
-    print(path_w)
-    with open(path_r,'r', encoding='utf-8') as f:
+
+    with open(user_path,'r', encoding='utf-8') as f:
         data = json.load(f)
         # print(data)
-    with open(path_w+str(datetime.date.today())+"_codeforces.json",'w', encoding='utf-8') as f:
+    with open(problems_path+str(datetime.date.today())+"_codeforces.json",'w', encoding='utf-8') as f:
         ru = {}
         for user in data:
             uname = user['name']

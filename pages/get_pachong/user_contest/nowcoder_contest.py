@@ -39,22 +39,22 @@ def get_nowcoder_contest_standings(contest):
         page+=1
         time.sleep(0.3)
     return data
-def save_json_to_file(contest):
+def save_json_to_file(contest,contest_path):
     standing = get_nowcoder_contest_standings(contest)
 
-    current_dir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
-    # print(current_dir)
-    path_r = os.path.join(current_dir,"./public/data.json")
-    # print(path_r)
-    path_w = os.path.join(current_dir,"../public/contest/nowcoder")
+    # current_dir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+    # # print(current_dir)
+    # path_r = os.path.join(current_dir,"./public/data.json")
+    # # print(path_r)
+    # path_w = os.path.join(current_dir,"../public/contest/nowcoder")
     # print(path_w)
-    with open(path_w+f"/{contest}.json",'w', encoding='utf-8') as f:
+    with open(contest_path+f"/{contest}.json",'w', encoding='utf-8') as f:
         json.dump(standing, f, ensure_ascii=False, indent=4)
         print(f"NowCoder排名数据已保存到{contest}.json")
-def read_json(contest):
-    current_dir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
-    path_w = os.path.join(current_dir,"../public/contest/nowcoder")
-    with open(path_w+f"/{contest}.json",'r', encoding='utf-8') as f:
+def read_json(contest,contest_path):
+    # current_dir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+    # path_w = os.path.join(current_dir,"../public/contest/nowcoder")
+    with open(contest_path+f"/{contest}.json",'r', encoding='utf-8') as f:
         data = json.load(f)
         return data
 if __name__ == "__main__":

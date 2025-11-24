@@ -2,6 +2,7 @@ import requests
 import json
 import os
 
+
 def get_atcoder_contest_standing(contests):
     url=f"https://atcoder.jp/contests/{contests}/standings/json"
     headers = {
@@ -21,22 +22,22 @@ def get_atcoder_contest_standing(contests):
     except Exception as e:
         print(f"AtCoder处理过程中发生错误: {e}")
         return None
-def save_json_to_file(contest):
+def save_json_to_file(contest,contest_path):
     standing = get_atcoder_contest_standing(contest)
 
-    current_dir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
-    # print(current_dir)
-    path_r = os.path.join(current_dir,"./public/data.json")
-    # print(path_r)
-    path_w = os.path.join(current_dir,"../public/contest/atcoder")
+    # current_dir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+    # # print(current_dir)
+    # path_r = os.path.join(current_dir,"./public/data.json")
+    # # print(path_r)
+    # path_w = os.path.join(current_dir,"../public/contest/atcoder")
     # print(path_w)
-    with open(path_w+f"/{contest}.json",'w', encoding='utf-8') as f:
+    with open(contest_path+f"/{contest}.json",'w', encoding='utf-8') as f:
         json.dump(standing, f, ensure_ascii=False, indent=4)
         print(f"AtCoder排名数据已保存到{contest}.json")
-def read_json(contest):
-    current_dir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
-    path_w = os.path.join(current_dir,"../public/contest/atcoder")
-    with open(path_w+f"/{contest}.json",'r', encoding='utf-8') as f:
+def read_json(contest,contest_path):
+    # current_dir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+    # path_w = os.path.join(current_dir,"../public/contest/atcoder")
+    with open(contest_path+f"/{contest}.json",'r', encoding='utf-8') as f:
         data = json.load(f)
         return data
 if __name__ == "__main__":
