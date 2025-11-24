@@ -1,0 +1,34 @@
+import os
+class PathS:
+    def __init__(self):
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        # current_dir = os.path.join(current_dir, "pages/get_pachong/")
+        
+        data = {
+            "users_path": "./data/users.json",
+            "atcoder_path": "./data/atcoder/",
+            "codeforces_path": "./data/codeforces/",
+            "matijie_path": "./data/matijie/",
+            "nowcoder_path": "./data/nowcoder/"
+        }
+        self.users_path = os.path.join(current_dir,data["users_path"])
+
+        self.atcoder_path_contest =  os.path.join(current_dir,data["atcoder_path"]+"contest/")
+        self.atcoder_path_user =  os.path.join(current_dir,data["atcoder_path"]+"user_problems/")
+        
+        self.codeforces_path_contest = os.path.join(current_dir,data["codeforces_path"]+"contest/")
+        self.codeforces_path_user = os.path.join(current_dir,data["codeforces_path"]+"user_problems/")
+
+        self.matijie_path_contest = os.path.join(current_dir,data["matijie_path"]+"contest/")
+        self.matijie_path_user = os.path.join(current_dir,data["matijie_path"]+"user_problems/")
+
+        self.nowcoder_path_contest = os.path.join(current_dir,data["nowcoder_path"]+"contest/")
+        self.nowcoder_path_user = os.path.join(current_dir,data["nowcoder_path"]+"user_problems/")
+    
+
+if __name__ == "__main__":
+    pc = PathS()
+    print(pc.atcoder_path_contest)
+    print(pc.codeforces_path_user)
+    print(pc.matijie_path_contest)
+    print(pc.nowcoder_path_user)
