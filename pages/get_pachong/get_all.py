@@ -42,8 +42,8 @@ if __name__ == "__main__":
     # format=[["ranking"],["userName"]]
     # contest_path=ps.nowcoder_path_contest
 
-    records=saixuan.saixuan_contest_records(type,contest,users,format,contest_path)
-    print(records)
+    # records=saixuan.saixuan_contest_records(type,contest,users,format,contest_path)
+    # print(records)
 
 
     # 抓取用户ac题目数
