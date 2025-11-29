@@ -39,4 +39,4 @@ def get_user_ac_count(handle):
         print(f"处理错误: {e}")
         return None
 if __name__ == "__main__":
-    print(get_user_ac_count("Gai_yk"))
+    print(get_user_ac_count("YonagiKei"))

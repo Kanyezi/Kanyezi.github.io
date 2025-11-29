@@ -6,7 +6,7 @@ class PathS:
         
         data = {
             "root_path": "./data/",
-            "users_path": "./data/users.json",
+            "users_path": "./data/user.json",
             "atcoder_path": "./data/atcoder/",
             "codeforces_path": "./data/codeforces/",
             "matiji_path": "./data/matiji/",
