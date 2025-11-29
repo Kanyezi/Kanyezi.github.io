@@ -20984,7 +20984,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "Gai_yk",
       atcoder_id: "ykkkk",
       matiji_id: "167506",
-      grade: 24,
+      grade: 2024,
       atcoder: 120,
       codeforces: 242,
       matiji: 61
@@ -20995,7 +20995,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "YonagiKei",
       atcoder_id: "Yonagi_Kei",
       matiji_id: "120398",
-      grade: 23,
+      grade: 2023,
       atcoder: 12,
       codeforces: 768,
       matiji: 304
@@ -21006,7 +21006,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "YwY1126",
       atcoder_id: "YwY1126",
       matiji_id: "218193",
-      grade: 25,
+      grade: 2025,
       atcoder: 14,
       codeforces: 26,
       matiji: 26
@@ -21017,7 +21017,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "ami_XR",
       atcoder_id: "AMI_Xxr",
       matiji_id: "193239",
-      grade: 24,
+      grade: 2024,
       atcoder: 64,
       codeforces: 180,
       matiji: 181
@@ -21028,7 +21028,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "gggsss",
       atcoder_id: "gggsss",
       matiji_id: "218124",
-      grade: 25,
+      grade: 2025,
       atcoder: 7,
       codeforces: 12,
       matiji: 2
@@ -21039,7 +21039,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "breadog",
       atcoder_id: "breadog",
       matiji_id: "216994",
-      grade: 25,
+      grade: 2025,
       atcoder: 38,
       codeforces: 93,
       matiji: 28
@@ -21050,7 +21050,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "fuxuanyue",
       atcoder_id: "fuxuanyue",
       matiji_id: "122691",
-      grade: 25,
+      grade: 2025,
       atcoder: 50,
       codeforces: 84,
       matiji: 30
@@ -21061,7 +21061,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "yesswlqbj",
       atcoder_id: "yesswlqbjs",
       matiji_id: "217485",
-      grade: 25,
+      grade: 2025,
       atcoder: 28,
       codeforces: 78,
       matiji: 42
@@ -21072,7 +21072,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "caozhengye",
       atcoder_id: "caozhengye",
       matiji_id: "119042",
-      grade: 23,
+      grade: 2023,
       atcoder: 309,
       codeforces: 1314,
       matiji: 210
@@ -21083,7 +21083,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "jiangyin0750",
       atcoder_id: "jiangyin0750",
       matiji_id: "162183",
-      grade: 24,
+      grade: 2024,
       atcoder: 159,
       codeforces: 338,
       matiji: 95
@@ -21094,7 +21094,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "xing_yao",
       atcoder_id: "xing_yao",
       matiji_id: "119037",
-      grade: 23,
+      grade: 2023,
       atcoder: 266,
       codeforces: 1159,
       matiji: 199
@@ -21105,7 +21105,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "Arase",
       atcoder_id: "Rrase",
       matiji_id: "219493",
-      grade: 25,
+      grade: 2025,
       atcoder: 13,
       codeforces: 27,
       matiji: 14
@@ -21116,7 +21116,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "TakeMeToChurch",
       atcoder_id: "PeterBoy",
       matiji_id: "167506",
-      grade: 23,
+      grade: 2023,
       atcoder: 44,
       codeforces: 54,
       matiji: 61
@@ -21127,7 +21127,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "666ggh",
       atcoder_id: "Cando1",
       matiji_id: "94143",
-      grade: 24,
+      grade: 2024,
       atcoder: 132,
       codeforces: 322,
       matiji: 71
@@ -21138,7 +21138,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "zhaooooo",
       atcoder_id: "zhao_xy",
       matiji_id: "164301",
-      grade: 24,
+      grade: 2024,
       atcoder: 142,
       codeforces: 161,
       matiji: 107
@@ -21149,7 +21149,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "xiao_shuang",
       atcoder_id: "xiaoshuang",
       matiji_id: "162424",
-      grade: 24,
+      grade: 2024,
       atcoder: 123,
       codeforces: 190,
       matiji: 165
@@ -21160,7 +21160,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "x_yeyue",
       atcoder_id: "x_yeyue",
       matiji_id: "162361",
-      grade: 24,
+      grade: 2024,
       atcoder: 170,
       codeforces: 314,
       matiji: 112
@@ -21171,7 +21171,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "LuckyCc.",
       atcoder_id: "LuckyCc",
       matiji_id: "56618",
-      grade: 24,
+      grade: 2024,
       atcoder: 188,
       codeforces: 812,
       matiji: 75
@@ -21182,7 +21182,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "OOZYXOO",
       atcoder_id: "OOZYXOO",
       matiji_id: "216972",
-      grade: 25,
+      grade: 2025,
       atcoder: 40,
       codeforces: 132,
       matiji: 14
@@ -21193,7 +21193,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "lies-",
       atcoder_id: "moon1ight",
       matiji_id: "162363",
-      grade: 24,
+      grade: 2024,
       atcoder: 121,
       codeforces: 225,
       matiji: 122
@@ -21204,7 +21204,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "zhengyiyu",
       atcoder_id: "zhengyiyu",
       matiji_id: "217035",
-      grade: 25,
+      grade: 2025,
       atcoder: 20,
       codeforces: 66,
       matiji: 124
@@ -21215,7 +21215,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "wangruiting",
       atcoder_id: "wangruiting",
       matiji_id: "162386",
-      grade: 24,
+      grade: 2024,
       atcoder: 127,
       codeforces: 418,
       matiji: 92
@@ -21226,7 +21226,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "CGX_XWS",
       atcoder_id: "FinaICode",
       matiji_id: "118407",
-      grade: 23,
+      grade: 2023,
       atcoder: 43,
       codeforces: 1037,
       matiji: 193
@@ -21237,7 +21237,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "MysterService",
       atcoder_id: "MysterService",
       matiji_id: "218083",
-      grade: 25,
+      grade: 2025,
       atcoder: 15,
       codeforces: 19,
       matiji: 33
@@ -21248,7 +21248,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "chu4351",
       atcoder_id: "chu4351",
       matiji_id: "218118",
-      grade: 25,
+      grade: 2025,
       atcoder: 25,
       codeforces: 34,
       matiji: 22
@@ -21259,7 +21259,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "stone0629",
       atcoder_id: "stone0629",
       matiji_id: "",
-      grade: 24,
+      grade: 2024,
       atcoder: 139,
       codeforces: 758,
       matiji: 0
@@ -21270,7 +21270,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "hql666",
       atcoder_id: "hql666",
       matiji_id: "218654",
-      grade: 25,
+      grade: 2025,
       atcoder: 14,
       codeforces: 19,
       matiji: 22
@@ -21281,7 +21281,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "thefool23331",
       atcoder_id: "thefool23331",
       matiji_id: "219491",
-      grade: 25,
+      grade: 2025,
       atcoder: 11,
       codeforces: 1,
       matiji: 1
@@ -21292,7 +21292,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "cxycec",
       atcoder_id: "cxy2006",
       matiji_id: "217005",
-      grade: 25,
+      grade: 2025,
       atcoder: 44,
       codeforces: 96,
       matiji: 54
@@ -21303,7 +21303,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "Ardmore",
       atcoder_id: "Ardmore",
       matiji_id: "217991",
-      grade: 25,
+      grade: 2025,
       atcoder: 25,
       codeforces: 85,
       matiji: 41
@@ -21314,7 +21314,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "sunshine_K",
       atcoder_id: "sunshine_K",
       matiji_id: "219563",
-      grade: 25,
+      grade: 2025,
       atcoder: 0,
       codeforces: 0,
       matiji: 1
@@ -21325,7 +21325,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "Aax",
       atcoder_id: "Aaax",
       matiji_id: "219537",
-      grade: 25,
+      grade: 2025,
       atcoder: 2,
       codeforces: 4,
       matiji: 2
@@ -21336,7 +21336,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "zhouxian",
       atcoder_id: "zhouxian",
       matiji_id: "217815",
-      grade: 25,
+      grade: 2025,
       atcoder: 9,
       codeforces: 32,
       matiji: 27
@@ -21347,7 +21347,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "kilt",
       atcoder_id: "kilty",
       matiji_id: "218246",
-      grade: 25,
+      grade: 2025,
       atcoder: 5,
       codeforces: 8,
       matiji: 16
@@ -21358,7 +21358,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "caidetianhuaban",
       atcoder_id: "caidetianhuaban",
       matiji_id: "菜的天花板",
-      grade: 25,
+      grade: 2025,
       atcoder: 8,
       codeforces: 48,
       matiji: 0
@@ -21369,7 +21369,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "liuning123",
       atcoder_id: "liuning123",
       matiji_id: "151967",
-      grade: 25,
+      grade: 2025,
       atcoder: 58,
       codeforces: 114,
       matiji: 0
@@ -21380,7 +21380,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "Asyurains",
       atcoder_id: "Asyurain",
       matiji_id: "221672",
-      grade: 24,
+      grade: 2024,
       atcoder: 11,
       codeforces: 17,
       matiji: 2
@@ -21391,7 +21391,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "toykowww",
       atcoder_id: "tokyoww",
       matiji_id: "216968",
-      grade: 25,
+      grade: 2025,
       atcoder: 32,
       codeforces: 96,
       matiji: 24
@@ -21402,7 +21402,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "Kyrie_117",
       atcoder_id: "Kyrie_11",
       matiji_id: "218127",
-      grade: 25,
+      grade: 2025,
       atcoder: 0,
       codeforces: 1,
       matiji: 2
@@ -21413,7 +21413,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "Oabj6n",
       atcoder_id: "Oabj6n",
       matiji_id: "167579",
-      grade: 24,
+      grade: 2024,
       atcoder: 39,
       codeforces: 76,
       matiji: 66
@@ -21424,7 +21424,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "ziying032",
       atcoder_id: "ziying032",
       matiji_id: "162137",
-      grade: 24,
+      grade: 2024,
       atcoder: 73,
       codeforces: 202,
       matiji: 8
@@ -21435,7 +21435,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "Rei_.",
       atcoder_id: "ruanmei",
       matiji_id: "217486",
-      grade: 25,
+      grade: 2025,
       atcoder: 32,
       codeforces: 49,
       matiji: 25
@@ -21446,7 +21446,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "SiShao",
       atcoder_id: "SiShao",
       matiji_id: "218729",
-      grade: 25,
+      grade: 2025,
       atcoder: 6,
       codeforces: 8,
       matiji: 12
@@ -21457,7 +21457,7 @@ var __async = (__this, __arguments, generator) => {
       codeforces_id: "yixinWan",
       atcoder_id: "yixinWan",
       matiji_id: "218264",
-      grade: 25,
+      grade: 2025,
       atcoder: 4,
       codeforces: 4,
       matiji: 38
@@ -22173,7 +22173,7 @@ var __async = (__this, __arguments, generator) => {
       }
     }
   };
-  const lastUpdate = "2025-11-29T22:50:56.790824";
+  const lastUpdate = "2025-11-29T23:05:42.625949";
   const allData = {
     users,
     data,
@@ -22184,6 +22184,7 @@ var __async = (__this, __arguments, generator) => {
   const _sfc_main$1 = /* @__PURE__ */ defineComponent({
     __name: "Statistics",
     setup(__props) {
+      console.log(allData);
       const users2 = ref([]);
       const userData = ref({});
       const lastUpdate2 = ref((/* @__PURE__ */ new Date()).toISOString().split("T")[0] || "");
@@ -22341,7 +22342,7 @@ var __async = (__this, __arguments, generator) => {
       };
     }
   });
-  const Statistics = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-c7eb017a"]]);
+  const Statistics = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-21e0ea8b"]]);
   const _hoisted_1 = { class: "app" };
   const _hoisted_2 = { class: "page" };
   const _sfc_main = /* @__PURE__ */ defineComponent({
