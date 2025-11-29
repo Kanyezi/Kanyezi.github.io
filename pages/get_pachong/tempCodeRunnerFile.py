@@ -1,5 +1,5 @@
 
-    contest="122727"
-    users={"738977420","795955061"}
-    format=[["ranking"],["userName"]]
-    contest_path=ps.nowcoder_path_contest
+    contest="296"
+    users=matiji_contest.matiji_usrs(user)
+    format=[["orderIndex"],["nickname"]]
+    contest_path=ps.matiji_path_contest

@@ -1,7 +1,13 @@
 import requests
 import json
 import os
-
+def matiji_usrs(user_path):
+    list = {}
+    with open(user_path,'r', encoding='utf-8') as f:
+        data = json.load(f)
+        for item in data:
+            list[item['matiji_id']]={"name":item['name']}
+    return list
 def get_matiji_contest_standing(contest):
     url=f"https://www.matiji.net/exam-back/pc/queryMatchRankListById.do"
     headers = {

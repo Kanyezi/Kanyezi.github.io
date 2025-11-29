@@ -37,7 +37,7 @@ def check(type,record,users):
     # print(users,end='')
     if(name in users):
         # print("找到用户："+name)
-        return True
+        return users[name]["name"]
     return False
     
 def saixuan_contest_records(type,contest,users,paths,contest_path):
@@ -47,7 +47,8 @@ def saixuan_contest_records(type,contest,users,paths,contest_path):
     for record in data:
         # print(record["userId"])
         if check(type,record,users):
-            user=[]
+            name=check(type,record,users)
+            user=[name]
             for path in paths:
                 current = record
                 for key in path:

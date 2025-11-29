@@ -2,7 +2,13 @@ import requests
 import json
 import os
 
-
+def atcoder_usrs(user_path):
+    list = {}
+    with open(user_path,'r', encoding='utf-8') as f:
+        data = json.load(f)
+        for item in data:
+            list[item['atcoder_id']]={"name":item['name']}
+    return list
 def get_atcoder_contest_standing(contests):
     url=f"https://atcoder.jp/contests/{contests}/standings/json"
     headers = {

@@ -2,6 +2,13 @@ import requests
 import json
 import os
 
+def codeforces_usrs(user_path):
+    list = {}
+    with open(user_path,'r', encoding='utf-8') as f:
+        data = json.load(f)
+        for item in data:
+            list[item['codeforces_id']]={"name":item['name']}
+    return list
 def get_codeforces_contest_standing(contest):
     url = f"https://codeforces.com/api/contest.standings?contestId={contest}"
 

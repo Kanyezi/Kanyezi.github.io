@@ -49,4 +49,4 @@ def get_user_ac_count(id):
         return requ.json()["data"]["passNum"]
 
 if __name__ == "__main__":
-    print(get_user_ac_count(167506))
+    print(get_user_ac_count(218775))

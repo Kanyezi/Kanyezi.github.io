@@ -2,6 +2,13 @@ import requests
 import json
 import os
 import time
+def nowcoder_usrs(user_path):
+    list = {}
+    with open(user_path,'r', encoding='utf-8') as f:
+        data = json.load(f)
+        for item in data:
+            list[item['nowcoder_id']]={"name":item['name']}
+    return list
 def get_nowcoder_contest_standing(contest,page):
     url=f"https://ac.nowcoder.com/acm-heavy/acm/contest/real-time-rank-data?token=&id={contest}&limit=0&page={page}"
     headers = {
