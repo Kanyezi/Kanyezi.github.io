@@ -83,6 +83,5 @@ const toggleUser = (userName: string) => {
 </script>
 
 <style scoped>
-/* Import all styles */
-@import '../styles/app.css';
+@import '../styles/UserListSidebar.css';
 </style>

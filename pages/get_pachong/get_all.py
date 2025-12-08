@@ -55,4 +55,4 @@ if __name__ == "__main__":
     # # 地址列表生成
     # file_list_generator.generate_file_list_json(ps.root_path)
     # # 合并
-    # data_converter.convert_data(ps.root_path,user,ps.out_path)
+    data_converter.convert_data(ps.root_path,user,ps.out_path)

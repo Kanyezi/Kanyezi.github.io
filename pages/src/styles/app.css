@@ -7,10 +7,11 @@
   --warning-color: #ffc107;
   --danger-color: #dc3545;
   --light-bg: #f8f9fa;
+  --light-bg2: #dcdcdc;
   --dark-bg: #343a40;
-  --border-color: #dee2e6;
+  --border-color: #aaa;
   --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --border-radius: 8px;
+  --border-radius: 20px;
   --transition: all 0.3s ease;
 }
 

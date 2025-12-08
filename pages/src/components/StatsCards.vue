@@ -37,6 +37,5 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <style scoped>
-/* Import all styles */
-@import '../styles/app.css';
+@import '../styles/StatsCards.css';
 </style>

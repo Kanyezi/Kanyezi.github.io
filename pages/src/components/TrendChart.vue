@@ -3,11 +3,65 @@
     <div class="chart-title">
       <span>{{ chartTitle }}</span>
       <div class="chart-actions">
-        <button @click="changeChartType('line')" :class="{ active: currentChartType === 'line' }">折线图</button>
-        <button @click="changeChartType('bar')" :class="{ active: currentChartType === 'bar' }">柱状图</button>
+        <button @click="changeView('table')" :class="{ active: currentView === 'table' }">表格</button>
+        <button @click="changeView('chart')" :class="{ active: currentView === 'chart' }">图表</button>
       </div>
     </div>
-    <canvas ref="trendChartRef"></canvas>
+    
+    <!-- 图表 -->
+    <div v-if="currentView === 'chart'">
+      <canvas ref="trendChartRef"></canvas>
+    </div>
+    
+    <!-- 数据表格 -->
+    <div v-if="currentView === 'table'" class="data-table-container">
+      <h3>数据表格</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th @click="sortBy('name')" :class="{ 'sortable': true, 'sorted-asc': sortKey === 'name' && sortOrder === 1, 'sorted-desc': sortKey === 'name' && sortOrder === -1 }">
+              姓名
+              <span v-if="sortKey === 'name'" class="sort-indicator">
+                {{ sortOrder === 1 ? '↑' : '↓' }}
+              </span>
+            </th>
+            <th @click="sortBy('atcoder')" :class="{ 'sortable': true, 'sorted-asc': sortKey === 'atcoder' && sortOrder === 1, 'sorted-desc': sortKey === 'atcoder' && sortOrder === -1 }">
+              AtCoder题数
+              <span v-if="sortKey === 'atcoder'" class="sort-indicator">
+                {{ sortOrder === 1 ? '↑' : '↓' }}
+              </span>
+            </th>
+            <th @click="sortBy('codeforces')" :class="{ 'sortable': true, 'sorted-asc': sortKey === 'codeforces' && sortOrder === 1, 'sorted-desc': sortKey === 'codeforces' && sortOrder === -1 }">
+              Codeforces题数
+              <span v-if="sortKey === 'codeforces'" class="sort-indicator">
+                {{ sortOrder === 1 ? '↑' : '↓' }}
+              </span>
+            </th>
+            <th @click="sortBy('matiji')" :class="{ 'sortable': true, 'sorted-asc': sortKey === 'matiji' && sortOrder === 1, 'sorted-desc': sortKey === 'matiji' && sortOrder === -1 }">
+              Matiji题数
+              <span v-if="sortKey === 'matiji'" class="sort-indicator">
+                {{ sortOrder === 1 ? '↑' : '↓' }}
+              </span>
+            </th>
+            <th @click="sortBy('total')" :class="{ 'sortable': true, 'sorted-asc': sortKey === 'total' && sortOrder === 1, 'sorted-desc': sortKey === 'total' && sortOrder === -1 }">
+              总题数
+              <span v-if="sortKey === 'total'" class="sort-indicator">
+                {{ sortOrder === 1 ? '↑' : '↓' }}
+              </span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="user in sortedUsers" :key="user.name">
+            <td>{{ user.name }}</td>
+            <td>{{ user.atcoder }}</td>
+            <td>{{ user.codeforces }}</td>
+            <td>{{ user.matiji }}</td>
+            <td>{{ user.atcoder + user.codeforces + user.matiji }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -62,6 +116,9 @@ const emit = defineEmits<Emits>();
 // 引用和响应式数据
 const trendChartRef = ref<HTMLCanvasElement | null>(null);
 let chartInstance: Chart | null = null;
+const currentView = ref('chart'); // 'chart' or 'table'
+const sortKey = ref(''); // 当前排序的列
+const sortOrder = ref(1); // 1 为升序，-1 为降序
 
 // 计算属性
 const chartTitle = computed(() => {
@@ -76,7 +133,7 @@ const chartTitle = computed(() => {
 const currentChartType = ref(props.chartType);
 
 // 获取所有日期标签
-const getDateLabels = () => {
+const dateLabels = computed(() => {
   // 从所有用户的数据中获取所有唯一日期并排序
   const allDates = new Set<string>();
   
@@ -98,7 +155,64 @@ const getDateLabels = () => {
     // 按日期从小到大排序（递增）
     return d1.getTime() - d2.getTime();
   });
+});
+
+// 切换视图（图表/表格）
+const changeView = (view: string) => {
+  currentView.value = view;
 };
+
+// 排序方法
+const sortBy = (key: string) => {
+  if (sortKey.value === key) {
+    // 如果当前排序列与点击列相同，切换升序/降序
+    sortOrder.value = -sortOrder.value;
+  } else {
+    // 如果是新的排序列，设置为升序
+    sortKey.value = key;
+    sortOrder.value = 1;
+  }
+};
+
+// 计算排序后的用户列表
+const sortedUsers = computed(() => {
+  if (!sortKey.value) {
+    return props.displayUsers;
+  }
+  
+  return [...props.displayUsers].sort((a, b) => {
+    let valueA, valueB;
+    
+    if (sortKey.value === 'name') {
+      valueA = a.name;
+      valueB = b.name;
+    } else if (sortKey.value === 'atcoder') {
+      valueA = a.atcoder;
+      valueB = b.atcoder;
+    } else if (sortKey.value === 'codeforces') {
+      valueA = a.codeforces;
+      valueB = b.codeforces;
+    } else if (sortKey.value === 'matiji') {
+      valueA = a.matiji;
+      valueB = b.matiji;
+    } else if (sortKey.value === 'total') {
+      valueA = a.atcoder + a.codeforces + a.matiji;
+      valueB = b.atcoder + b.codeforces + b.matiji;
+    } else {
+      return 0;
+    }
+    
+    // 确保对字符串和数字的排序处理
+    if (typeof valueA === 'string' && typeof valueB === 'string') {
+      return valueA.localeCompare(valueB) * sortOrder.value;
+    } else {
+      // 确保valueA和valueB是数字类型
+      const numA = Number(valueA);
+      const numB = Number(valueB);
+      return (numA - numB) * sortOrder.value;
+    }
+  });
+});
 
 // 图表渲染函数
 const renderChart = () => {
@@ -117,7 +231,6 @@ const renderChart = () => {
       return;
     }
     
-    const dateLabels = getDateLabels();
     const platform = props.currentPlatformFilter;
     
     const colors = [
@@ -131,7 +244,7 @@ const renderChart = () => {
       
       if (platform === 'all') {
         // 全部平台：计算每个日期的总和
-        data = dateLabels.map(date => {
+        data = dateLabels.value.map(date => {
           const userHistory = props.userData[user.name];
           if (!userHistory) return 0;
           
@@ -148,9 +261,9 @@ const renderChart = () => {
         const userHistory = props.userData[user.name];
         if (userHistory && userHistory[platform as keyof StudentData]) {
           const platformData = userHistory[platform as keyof StudentData];
-          data = dateLabels.map(date => platformData[date] || 0);
+          data = dateLabels.value.map(date => platformData[date] || 0);
         } else {
-          data = dateLabels.map(() => 0);
+          data = dateLabels.value.map(() => 0);
         }
       }
       
@@ -174,7 +287,7 @@ const renderChart = () => {
       chartInstance = new Chart(ctx, {
         type: currentChartType.value as 'line' | 'bar',
         data: {
-          labels: dateLabels,
+          labels: dateLabels.value,
           datasets: datasets
         },
         options: {
@@ -226,26 +339,21 @@ const renderChart = () => {
   }
 };
 
-// 更改图表类型的方法
-const changeChartType = (type: string) => {
-  currentChartType.value = type;
-  emit('chart-type-change', type);
-  nextTick(() => {
-    renderChart();
-  });
-};
-
 // 监听属性变化并重绘图表
-watch(() => [props.displayUsers, props.currentPlatformFilter, currentChartType.value], () => {
+watch(() => [props.displayUsers, props.currentPlatformFilter, currentChartType.value, currentView.value], () => {
   nextTick(() => {
-    renderChart();
+    if (currentView.value === 'chart') {
+      renderChart();
+    }
   });
 }, { deep: true });
 
 // 生命周期
 onMounted(() => {
   nextTick(() => {
-    renderChart();
+    if (currentView.value === 'chart') {
+      renderChart();
+    }
   });
 });
 
@@ -258,6 +366,6 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-/* Import all styles */
 @import '../styles/app.css';
+@import '../styles/TrendChart.css';
 </style>

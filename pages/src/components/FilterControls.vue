@@ -73,6 +73,5 @@ const refreshData = () => {
 </script>
 
 <style scoped>
-/* Import all styles */
-@import '../styles/app.css';
+@import '../styles/FilterControls.css';
 </style>

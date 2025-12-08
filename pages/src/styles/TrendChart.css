@@ -1,0 +1,145 @@
+/* TrendChart基础样式 */
+.chart-container {
+  background: white;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  margin-bottom: 30px;
+  position: relative;
+  height: 500px;
+}
+
+.chart-container canvas {
+  max-height: 450px !important;
+  width: 100% !important;
+}
+
+.chart-title {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: var(--dark-bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chart-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.chart-actions button {
+  background: white;
+  border: 2px solid var(--border-color);
+  padding: 10px 18px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: var(--transition);
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.chart-actions button:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(67, 97, 238, 0.2);
+}
+
+.chart-actions button.active {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light-enhanced) 100%);
+  color: white;
+  border-color: var(--primary-color);
+  box-shadow: 0 6px 15px rgba(67, 97, 238, 0.3);
+  transform: translateY(-2px);
+}
+
+.data-table-container {
+  margin-top: 20px;
+  overflow-x: auto;
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  padding: 20px;
+}
+
+.data-table-container h3 {
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+  color: var(--dark-bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9em;
+  background-color: #fff;
+  box-shadow: var(--card-shadow);
+}
+
+.data-table thead th {
+  background-color: var(--light-bg);
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 2px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  font-weight: 600;
+  color: var(--dark-bg);
+}
+
+.data-table tbody td {
+  padding: 10px 15px;
+  /* border-bottom: 1px solid var(--border-color); */
+  white-space: nowrap;
+}
+
+.data-table tbody tr {
+  background-color: var(--light-bg);
+}
+
+/* 交替行颜色 */
+.data-table tbody tr:nth-child(even) {
+  background-color: var(--light-bg);
+}
+
+.data-table tbody tr:nth-child(even):hover {
+  background-color: #e9ecef;
+}
+
+/* 排序样式 */
+.data-table th.sortable {
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  padding-right: 20px;
+}
+
+/* .data-table th.sortable:hover {
+  background-color: var(--light-bg);
+} */
+
+.data-table th .sort-indicator {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8em;
+  color: var(--primary-color);
+}
+
+.data-table th.sorted-asc, 
+.data-table th.sorted-desc {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.data-table th.sorted-asc .sort-indicator,
+.data-table th.sorted-desc .sort-indicator {
+  color: white;
+}

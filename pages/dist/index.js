@@ -5130,6 +5130,18 @@ var __async = (__this, __arguments, generator) => {
       )
     );
   }
+  function createBlock(type, props, children, patchFlag, dynamicProps) {
+    return setupBlock(
+      createVNode(
+        type,
+        props,
+        children,
+        patchFlag,
+        dynamicProps,
+        true
+      )
+    );
+  }
   function isVNode(value) {
     return value ? value.__v_isVNode === true : false;
   }
@@ -5312,6 +5324,9 @@ var __async = (__this, __arguments, generator) => {
   }
   function createTextVNode(text = " ", flag = 0) {
     return createVNode(Text, null, text, flag);
+  }
+  function createCommentVNode(text = "", asBlock = false) {
+    return asBlock ? (openBlock(), createBlock(Comment, null, text)) : createVNode(Comment, null, text);
   }
   function normalizeVNode(child) {
     if (child == null || typeof child === "boolean") {
@@ -6130,11 +6145,11 @@ var __async = (__this, __arguments, generator) => {
   const _hoisted_1$5 = { class: "sidebar" };
   const _hoisted_2$5 = { class: "sidebar-header" };
   const _hoisted_3$3 = ["value"];
-  const _hoisted_4$2 = { class: "user-list" };
-  const _hoisted_5$2 = ["onClick"];
-  const _hoisted_6$1 = { class: "user-info" };
-  const _hoisted_7$1 = { class: "user-name" };
-  const _hoisted_8$1 = { class: "user-stats" };
+  const _hoisted_4$3 = { class: "user-list" };
+  const _hoisted_5$3 = ["onClick"];
+  const _hoisted_6$2 = { class: "user-info" };
+  const _hoisted_7$2 = { class: "user-name" };
+  const _hoisted_8$2 = { class: "user-stats" };
   const _sfc_main$5 = /* @__PURE__ */ defineComponent({
     __name: "UserListSidebar",
     props: {
@@ -6167,22 +6182,22 @@ var __async = (__this, __arguments, generator) => {
               onInput: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:searchTerm", $event.target.value))
             }, null, 40, _hoisted_3$3)
           ]),
-          createBaseVNode("div", _hoisted_4$2, [
+          createBaseVNode("div", _hoisted_4$3, [
             (openBlock(true), createElementBlock(Fragment, null, renderList(filteredUsers.value, (user) => {
               return openBlock(), createElementBlock("div", {
                 key: user.name,
                 class: normalizeClass(["user-item", { active: __props.selectedUsers.includes(user.name) }]),
                 onClick: ($event) => toggleUser(user.name)
               }, [
-                createBaseVNode("div", _hoisted_6$1, [
-                  createBaseVNode("div", _hoisted_7$1, toDisplayString(user.name), 1),
-                  createBaseVNode("div", _hoisted_8$1, [
+                createBaseVNode("div", _hoisted_6$2, [
+                  createBaseVNode("div", _hoisted_7$2, toDisplayString(user.name), 1),
+                  createBaseVNode("div", _hoisted_8$2, [
                     createBaseVNode("span", null, "atcoder: " + toDisplayString(user.atcoder), 1),
                     createBaseVNode("span", null, "codeforces: " + toDisplayString(user.codeforces), 1),
                     createBaseVNode("span", null, "matiji: " + toDisplayString(user.matiji), 1)
                   ])
                 ])
-              ], 10, _hoisted_5$2);
+              ], 10, _hoisted_5$3);
             }), 128))
           ])
         ]);
@@ -6196,16 +6211,16 @@ var __async = (__this, __arguments, generator) => {
     }
     return target;
   };
-  const UserListSidebar = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-2a16bbda"]]);
+  const UserListSidebar = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-96d643b5"]]);
   const _hoisted_1$4 = { class: "stats-cards" };
   const _hoisted_2$4 = { class: "card" };
   const _hoisted_3$2 = { class: "value" };
-  const _hoisted_4$1 = { class: "card" };
-  const _hoisted_5$1 = { class: "value" };
-  const _hoisted_6 = { class: "card" };
-  const _hoisted_7 = { class: "value" };
-  const _hoisted_8 = { class: "card" };
-  const _hoisted_9 = { class: "value" };
+  const _hoisted_4$2 = { class: "card" };
+  const _hoisted_5$2 = { class: "value" };
+  const _hoisted_6$1 = { class: "card" };
+  const _hoisted_7$1 = { class: "value" };
+  const _hoisted_8$1 = { class: "card" };
+  const _hoisted_9$1 = { class: "value" };
   const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     __name: "StatsCards",
     props: {
@@ -6221,23 +6236,23 @@ var __async = (__this, __arguments, generator) => {
             _cache[0] || (_cache[0] = createBaseVNode("h3", null, "活跃用户数", -1)),
             createBaseVNode("div", _hoisted_3$2, toDisplayString(__props.activeUsersCount), 1)
           ]),
-          createBaseVNode("div", _hoisted_4$1, [
+          createBaseVNode("div", _hoisted_4$2, [
             _cache[1] || (_cache[1] = createBaseVNode("h3", null, "总刷题数量", -1)),
-            createBaseVNode("div", _hoisted_5$1, toDisplayString(__props.totalCount.toLocaleString()), 1)
+            createBaseVNode("div", _hoisted_5$2, toDisplayString(__props.totalCount.toLocaleString()), 1)
           ]),
-          createBaseVNode("div", _hoisted_6, [
+          createBaseVNode("div", _hoisted_6$1, [
             _cache[2] || (_cache[2] = createBaseVNode("h3", null, "平均刷题数", -1)),
-            createBaseVNode("div", _hoisted_7, toDisplayString(__props.averageCount), 1)
+            createBaseVNode("div", _hoisted_7$1, toDisplayString(__props.averageCount), 1)
           ]),
-          createBaseVNode("div", _hoisted_8, [
+          createBaseVNode("div", _hoisted_8$1, [
             _cache[3] || (_cache[3] = createBaseVNode("h3", null, "最高刷题数", -1)),
-            createBaseVNode("div", _hoisted_9, toDisplayString(__props.maxCount), 1)
+            createBaseVNode("div", _hoisted_9$1, toDisplayString(__props.maxCount), 1)
           ])
         ]);
       };
     }
   });
-  const StatsCards = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-f4bbfa3a"]]);
+  const StatsCards = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-7121af01"]]);
   /*!
    * @kurkle/color v0.3.4
    * https://github.com/kurkle/color#readme
@@ -20702,6 +20717,32 @@ var __async = (__this, __arguments, generator) => {
   const _hoisted_1$3 = { class: "chart-container" };
   const _hoisted_2$3 = { class: "chart-title" };
   const _hoisted_3$1 = { class: "chart-actions" };
+  const _hoisted_4$1 = { key: 0 };
+  const _hoisted_5$1 = {
+    key: 1,
+    class: "data-table-container"
+  };
+  const _hoisted_6 = { class: "data-table" };
+  const _hoisted_7 = {
+    key: 0,
+    class: "sort-indicator"
+  };
+  const _hoisted_8 = {
+    key: 0,
+    class: "sort-indicator"
+  };
+  const _hoisted_9 = {
+    key: 0,
+    class: "sort-indicator"
+  };
+  const _hoisted_10 = {
+    key: 0,
+    class: "sort-indicator"
+  };
+  const _hoisted_11 = {
+    key: 0,
+    class: "sort-indicator"
+  };
   const _sfc_main$3 = /* @__PURE__ */ defineComponent({
     __name: "TrendChart",
     props: {
@@ -20713,9 +20754,11 @@ var __async = (__this, __arguments, generator) => {
     emits: ["chart-type-change"],
     setup(__props, { emit: __emit }) {
       const props = __props;
-      const emit2 = __emit;
       const trendChartRef = ref(null);
       let chartInstance = null;
+      const currentView = ref("chart");
+      const sortKey = ref("");
+      const sortOrder = ref(1);
       const chartTitle = computed(() => {
         switch (props.currentPlatformFilter) {
           case "atcoder":
@@ -20729,7 +20772,7 @@ var __async = (__this, __arguments, generator) => {
         }
       });
       const currentChartType = ref(props.chartType);
-      const getDateLabels = () => {
+      const dateLabels = computed(() => {
         const allDates = /* @__PURE__ */ new Set();
         props.displayUsers.forEach((user) => {
           const userHistory = props.userData[user.name];
@@ -20744,7 +20787,51 @@ var __async = (__this, __arguments, generator) => {
           const d2 = new Date(date2);
           return d1.getTime() - d2.getTime();
         });
+      });
+      const changeView = (view) => {
+        currentView.value = view;
       };
+      const sortBy = (key) => {
+        if (sortKey.value === key) {
+          sortOrder.value = -sortOrder.value;
+        } else {
+          sortKey.value = key;
+          sortOrder.value = 1;
+        }
+      };
+      const sortedUsers = computed(() => {
+        if (!sortKey.value) {
+          return props.displayUsers;
+        }
+        return [...props.displayUsers].sort((a, b) => {
+          let valueA, valueB;
+          if (sortKey.value === "name") {
+            valueA = a.name;
+            valueB = b.name;
+          } else if (sortKey.value === "atcoder") {
+            valueA = a.atcoder;
+            valueB = b.atcoder;
+          } else if (sortKey.value === "codeforces") {
+            valueA = a.codeforces;
+            valueB = b.codeforces;
+          } else if (sortKey.value === "matiji") {
+            valueA = a.matiji;
+            valueB = b.matiji;
+          } else if (sortKey.value === "total") {
+            valueA = a.atcoder + a.codeforces + a.matiji;
+            valueB = b.atcoder + b.codeforces + b.matiji;
+          } else {
+            return 0;
+          }
+          if (typeof valueA === "string" && typeof valueB === "string") {
+            return valueA.localeCompare(valueB) * sortOrder.value;
+          } else {
+            const numA = Number(valueA);
+            const numB = Number(valueB);
+            return (numA - numB) * sortOrder.value;
+          }
+        });
+      });
       const renderChart = () => {
         if (!trendChartRef.value) return;
         try {
@@ -20756,7 +20843,6 @@ var __async = (__this, __arguments, generator) => {
             console.warn("Canvas元素已从DOM中移除，跳过图表渲染");
             return;
           }
-          const dateLabels = getDateLabels();
           const platform = props.currentPlatformFilter;
           const colors2 = [
             "#4a6cf7",
@@ -20771,7 +20857,7 @@ var __async = (__this, __arguments, generator) => {
           const datasets = props.displayUsers.map((user, index2) => {
             let data2 = [];
             if (platform === "all") {
-              data2 = dateLabels.map((date) => {
+              data2 = dateLabels.value.map((date) => {
                 const userHistory = props.userData[user.name];
                 if (!userHistory) return 0;
                 let total = 0;
@@ -20786,9 +20872,9 @@ var __async = (__this, __arguments, generator) => {
               const userHistory = props.userData[user.name];
               if (userHistory && userHistory[platform]) {
                 const platformData = userHistory[platform];
-                data2 = dateLabels.map((date) => platformData[date] || 0);
+                data2 = dateLabels.value.map((date) => platformData[date] || 0);
               } else {
-                data2 = dateLabels.map(() => 0);
+                data2 = dateLabels.value.map(() => 0);
               }
             }
             return {
@@ -20809,7 +20895,7 @@ var __async = (__this, __arguments, generator) => {
             chartInstance = new Chart(ctx, {
               type: currentChartType.value,
               data: {
-                labels: dateLabels,
+                labels: dateLabels.value,
                 datasets
               },
               options: {
@@ -20859,21 +20945,18 @@ var __async = (__this, __arguments, generator) => {
           }
         }
       };
-      const changeChartType = (type) => {
-        currentChartType.value = type;
-        emit2("chart-type-change", type);
+      watch(() => [props.displayUsers, props.currentPlatformFilter, currentChartType.value, currentView.value], () => {
         nextTick(() => {
-          renderChart();
-        });
-      };
-      watch(() => [props.displayUsers, props.currentPlatformFilter, currentChartType.value], () => {
-        nextTick(() => {
-          renderChart();
+          if (currentView.value === "chart") {
+            renderChart();
+          }
         });
       }, { deep: true });
       onMounted(() => {
         nextTick(() => {
-          renderChart();
+          if (currentView.value === "chart") {
+            renderChart();
+          }
         });
       });
       onBeforeUnmount(() => {
@@ -20887,24 +20970,83 @@ var __async = (__this, __arguments, generator) => {
             createBaseVNode("span", null, toDisplayString(chartTitle.value), 1),
             createBaseVNode("div", _hoisted_3$1, [
               createBaseVNode("button", {
-                onClick: _cache[0] || (_cache[0] = ($event) => changeChartType("line")),
-                class: normalizeClass({ active: currentChartType.value === "line" })
-              }, "折线图", 2),
+                onClick: _cache[0] || (_cache[0] = ($event) => changeView("table")),
+                class: normalizeClass({ active: currentView.value === "table" })
+              }, "表格", 2),
               createBaseVNode("button", {
-                onClick: _cache[1] || (_cache[1] = ($event) => changeChartType("bar")),
-                class: normalizeClass({ active: currentChartType.value === "bar" })
-              }, "柱状图", 2)
+                onClick: _cache[1] || (_cache[1] = ($event) => changeView("chart")),
+                class: normalizeClass({ active: currentView.value === "chart" })
+              }, "图表", 2)
             ])
           ]),
-          createBaseVNode("canvas", {
-            ref_key: "trendChartRef",
-            ref: trendChartRef
-          }, null, 512)
+          currentView.value === "chart" ? (openBlock(), createElementBlock("div", _hoisted_4$1, [
+            createBaseVNode("canvas", {
+              ref_key: "trendChartRef",
+              ref: trendChartRef
+            }, null, 512)
+          ])) : createCommentVNode("", true),
+          currentView.value === "table" ? (openBlock(), createElementBlock("div", _hoisted_5$1, [
+            _cache[12] || (_cache[12] = createBaseVNode("h3", null, "数据表格", -1)),
+            createBaseVNode("table", _hoisted_6, [
+              createBaseVNode("thead", null, [
+                createBaseVNode("tr", null, [
+                  createBaseVNode("th", {
+                    onClick: _cache[2] || (_cache[2] = ($event) => sortBy("name")),
+                    class: normalizeClass({ "sortable": true, "sorted-asc": sortKey.value === "name" && sortOrder.value === 1, "sorted-desc": sortKey.value === "name" && sortOrder.value === -1 })
+                  }, [
+                    _cache[7] || (_cache[7] = createTextVNode(" 姓名 ", -1)),
+                    sortKey.value === "name" ? (openBlock(), createElementBlock("span", _hoisted_7, toDisplayString(sortOrder.value === 1 ? "↑" : "↓"), 1)) : createCommentVNode("", true)
+                  ], 2),
+                  createBaseVNode("th", {
+                    onClick: _cache[3] || (_cache[3] = ($event) => sortBy("atcoder")),
+                    class: normalizeClass({ "sortable": true, "sorted-asc": sortKey.value === "atcoder" && sortOrder.value === 1, "sorted-desc": sortKey.value === "atcoder" && sortOrder.value === -1 })
+                  }, [
+                    _cache[8] || (_cache[8] = createTextVNode(" AtCoder题数 ", -1)),
+                    sortKey.value === "atcoder" ? (openBlock(), createElementBlock("span", _hoisted_8, toDisplayString(sortOrder.value === 1 ? "↑" : "↓"), 1)) : createCommentVNode("", true)
+                  ], 2),
+                  createBaseVNode("th", {
+                    onClick: _cache[4] || (_cache[4] = ($event) => sortBy("codeforces")),
+                    class: normalizeClass({ "sortable": true, "sorted-asc": sortKey.value === "codeforces" && sortOrder.value === 1, "sorted-desc": sortKey.value === "codeforces" && sortOrder.value === -1 })
+                  }, [
+                    _cache[9] || (_cache[9] = createTextVNode(" Codeforces题数 ", -1)),
+                    sortKey.value === "codeforces" ? (openBlock(), createElementBlock("span", _hoisted_9, toDisplayString(sortOrder.value === 1 ? "↑" : "↓"), 1)) : createCommentVNode("", true)
+                  ], 2),
+                  createBaseVNode("th", {
+                    onClick: _cache[5] || (_cache[5] = ($event) => sortBy("matiji")),
+                    class: normalizeClass({ "sortable": true, "sorted-asc": sortKey.value === "matiji" && sortOrder.value === 1, "sorted-desc": sortKey.value === "matiji" && sortOrder.value === -1 })
+                  }, [
+                    _cache[10] || (_cache[10] = createTextVNode(" Matiji题数 ", -1)),
+                    sortKey.value === "matiji" ? (openBlock(), createElementBlock("span", _hoisted_10, toDisplayString(sortOrder.value === 1 ? "↑" : "↓"), 1)) : createCommentVNode("", true)
+                  ], 2),
+                  createBaseVNode("th", {
+                    onClick: _cache[6] || (_cache[6] = ($event) => sortBy("total")),
+                    class: normalizeClass({ "sortable": true, "sorted-asc": sortKey.value === "total" && sortOrder.value === 1, "sorted-desc": sortKey.value === "total" && sortOrder.value === -1 })
+                  }, [
+                    _cache[11] || (_cache[11] = createTextVNode(" 总题数 ", -1)),
+                    sortKey.value === "total" ? (openBlock(), createElementBlock("span", _hoisted_11, toDisplayString(sortOrder.value === 1 ? "↑" : "↓"), 1)) : createCommentVNode("", true)
+                  ], 2)
+                ])
+              ]),
+              createBaseVNode("tbody", null, [
+                (openBlock(true), createElementBlock(Fragment, null, renderList(sortedUsers.value, (user) => {
+                  return openBlock(), createElementBlock("tr", {
+                    key: user.name
+                  }, [
+                    createBaseVNode("td", null, toDisplayString(user.name), 1),
+                    createBaseVNode("td", null, toDisplayString(user.atcoder), 1),
+                    createBaseVNode("td", null, toDisplayString(user.codeforces), 1),
+                    createBaseVNode("td", null, toDisplayString(user.matiji), 1),
+                    createBaseVNode("td", null, toDisplayString(user.atcoder + user.codeforces + user.matiji), 1)
+                  ]);
+                }), 128))
+              ])
+            ])
+          ])) : createCommentVNode("", true)
         ]);
       };
     }
   });
-  const TrendChart = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-0ccf3eff"]]);
+  const TrendChart = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-b777d40a"]]);
   const _hoisted_1$2 = { class: "controls" };
   const _hoisted_2$2 = { class: "filter-group" };
   const _hoisted_3 = ["value"];
@@ -20976,7 +21118,7 @@ var __async = (__this, __arguments, generator) => {
       };
     }
   });
-  const FilterControls = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-b71ac2c5"]]);
+  const FilterControls = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-585d65da"]]);
   const users = [
     {
       name: "余凯",
@@ -20985,6 +21127,7 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "ykkkk",
       matiji_id: "167506",
       grade: 2024,
+      nowcoder_id: "684165880",
       atcoder: 120,
       codeforces: 242,
       matiji: 61
@@ -20996,8 +21139,9 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "Yonagi_Kei",
       matiji_id: "120398",
       grade: 2023,
+      nowcoder_id: "486854788",
       atcoder: 12,
-      codeforces: 768,
+      codeforces: 772,
       matiji: 304
     },
     {
@@ -21007,8 +21151,9 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "YwY1126",
       matiji_id: "218193",
       grade: 2025,
-      atcoder: 14,
-      codeforces: 26,
+      nowcoder_id: "814490201",
+      atcoder: 19,
+      codeforces: 32,
       matiji: 26
     },
     {
@@ -21018,8 +21163,9 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "AMI_Xxr",
       matiji_id: "193239",
       grade: 2024,
+      nowcoder_id: "257465926",
       atcoder: 64,
-      codeforces: 180,
+      codeforces: 189,
       matiji: 181
     },
     {
@@ -21029,6 +21175,7 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "gggsss",
       matiji_id: "218124",
       grade: 2025,
+      nowcoder_id: "875811272",
       atcoder: 7,
       codeforces: 12,
       matiji: 2
@@ -21040,8 +21187,9 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "breadog",
       matiji_id: "216994",
       grade: 2025,
-      atcoder: 38,
-      codeforces: 93,
+      nowcoder_id: "217712409",
+      atcoder: 39,
+      codeforces: 101,
       matiji: 28
     },
     {
@@ -21051,8 +21199,9 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "fuxuanyue",
       matiji_id: "122691",
       grade: 2025,
+      nowcoder_id: "478034914",
       atcoder: 50,
-      codeforces: 84,
+      codeforces: 87,
       matiji: 30
     },
     {
@@ -21062,8 +21211,9 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "yesswlqbjs",
       matiji_id: "217485",
       grade: 2025,
+      nowcoder_id: "266168715",
       atcoder: 28,
-      codeforces: 78,
+      codeforces: 80,
       matiji: 42
     },
     {
@@ -21073,8 +21223,9 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "caozhengye",
       matiji_id: "119042",
       grade: 2023,
+      nowcoder_id: "568297046",
       atcoder: 309,
-      codeforces: 1314,
+      codeforces: 1321,
       matiji: 210
     },
     {
@@ -21084,8 +21235,9 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "jiangyin0750",
       matiji_id: "162183",
       grade: 2024,
+      nowcoder_id: "313343355",
       atcoder: 159,
-      codeforces: 338,
+      codeforces: 349,
       matiji: 95
     },
     {
@@ -21095,9 +21247,10 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "xing_yao",
       matiji_id: "119037",
       grade: 2023,
+      nowcoder_id: "858264820",
       atcoder: 266,
       codeforces: 1159,
-      matiji: 199
+      matiji: 204
     },
     {
       name: "屈健健",
@@ -21106,8 +21259,9 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "Rrase",
       matiji_id: "219493",
       grade: 2025,
-      atcoder: 13,
-      codeforces: 27,
+      nowcoder_id: "264059817",
+      atcoder: 18,
+      codeforces: 34,
       matiji: 14
     },
     {
@@ -21117,8 +21271,9 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "PeterBoy",
       matiji_id: "167506",
       grade: 2023,
+      nowcoder_id: "495585083",
       atcoder: 44,
-      codeforces: 54,
+      codeforces: 64,
       matiji: 61
     },
     {
@@ -21128,6 +21283,7 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "Cando1",
       matiji_id: "94143",
       grade: 2024,
+      nowcoder_id: "155607206",
       atcoder: 132,
       codeforces: 322,
       matiji: 71
@@ -21139,8 +21295,9 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "zhao_xy",
       matiji_id: "164301",
       grade: 2024,
+      nowcoder_id: "403382445",
       atcoder: 142,
-      codeforces: 161,
+      codeforces: 165,
       matiji: 107
     },
     {
@@ -21150,8 +21307,9 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "xiaoshuang",
       matiji_id: "162424",
       grade: 2024,
+      nowcoder_id: "781002196",
       atcoder: 123,
-      codeforces: 190,
+      codeforces: 205,
       matiji: 165
     },
     {
@@ -21161,8 +21319,9 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "x_yeyue",
       matiji_id: "162361",
       grade: 2024,
+      nowcoder_id: "734467163",
       atcoder: 170,
-      codeforces: 314,
+      codeforces: 320,
       matiji: 112
     },
     {
@@ -21172,8 +21331,9 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "LuckyCc",
       matiji_id: "56618",
       grade: 2024,
+      nowcoder_id: "972160990",
       atcoder: 188,
-      codeforces: 812,
+      codeforces: 817,
       matiji: 75
     },
     {
@@ -21183,8 +21343,9 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "OOZYXOO",
       matiji_id: "216972",
       grade: 2025,
-      atcoder: 40,
-      codeforces: 132,
+      nowcoder_id: "495136812",
+      atcoder: 45,
+      codeforces: 137,
       matiji: 14
     },
     {
@@ -21194,8 +21355,9 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "moon1ight",
       matiji_id: "162363",
       grade: 2024,
+      nowcoder_id: "967691174",
       atcoder: 121,
-      codeforces: 225,
+      codeforces: 229,
       matiji: 122
     },
     {
@@ -21205,6 +21367,7 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "zhengyiyu",
       matiji_id: "217035",
       grade: 2025,
+      nowcoder_id: "439746717",
       atcoder: 20,
       codeforces: 66,
       matiji: 124
@@ -21216,8 +21379,9 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "wangruiting",
       matiji_id: "162386",
       grade: 2024,
+      nowcoder_id: "239582048",
       atcoder: 127,
-      codeforces: 418,
+      codeforces: 429,
       matiji: 92
     },
     {
@@ -21227,8 +21391,9 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "FinaICode",
       matiji_id: "118407",
       grade: 2023,
-      atcoder: 43,
-      codeforces: 1037,
+      nowcoder_id: "无",
+      atcoder: 55,
+      codeforces: 1038,
       matiji: 193
     },
     {
@@ -21238,8 +21403,9 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "MysterService",
       matiji_id: "218083",
       grade: 2025,
+      nowcoder_id: "294690038",
       atcoder: 15,
-      codeforces: 19,
+      codeforces: 20,
       matiji: 33
     },
     {
@@ -21249,8 +21415,9 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "chu4351",
       matiji_id: "218118",
       grade: 2025,
-      atcoder: 25,
-      codeforces: 34,
+      nowcoder_id: "878907312",
+      atcoder: 26,
+      codeforces: 38,
       matiji: 22
     },
     {
@@ -21260,8 +21427,9 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "stone0629",
       matiji_id: "",
       grade: 2024,
+      nowcoder_id: "stone0629",
       atcoder: 139,
-      codeforces: 758,
+      codeforces: 763,
       matiji: 0
     },
     {
@@ -21271,8 +21439,9 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "hql666",
       matiji_id: "218654",
       grade: 2025,
+      nowcoder_id: "343880102",
       atcoder: 14,
-      codeforces: 19,
+      codeforces: 20,
       matiji: 22
     },
     {
@@ -21282,6 +21451,7 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "thefool23331",
       matiji_id: "219491",
       grade: 2025,
+      nowcoder_id: "216165092",
       atcoder: 11,
       codeforces: 1,
       matiji: 1
@@ -21293,8 +21463,9 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "cxy2006",
       matiji_id: "217005",
       grade: 2025,
-      atcoder: 44,
-      codeforces: 96,
+      nowcoder_id: "654985605",
+      atcoder: 46,
+      codeforces: 102,
       matiji: 54
     },
     {
@@ -21304,8 +21475,9 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "Ardmore",
       matiji_id: "217991",
       grade: 2025,
-      atcoder: 25,
-      codeforces: 85,
+      nowcoder_id: "366442741",
+      atcoder: 30,
+      codeforces: 93,
       matiji: 41
     },
     {
@@ -21315,6 +21487,7 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "sunshine_K",
       matiji_id: "219563",
       grade: 2025,
+      nowcoder_id: "482731071",
       atcoder: 0,
       codeforces: 0,
       matiji: 1
@@ -21326,6 +21499,7 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "Aaax",
       matiji_id: "219537",
       grade: 2025,
+      nowcoder_id: "317298474",
       atcoder: 2,
       codeforces: 4,
       matiji: 2
@@ -21337,6 +21511,7 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "zhouxian",
       matiji_id: "217815",
       grade: 2025,
+      nowcoder_id: "111055749",
       atcoder: 9,
       codeforces: 32,
       matiji: 27
@@ -21348,8 +21523,9 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "kilty",
       matiji_id: "218246",
       grade: 2025,
-      atcoder: 5,
-      codeforces: 8,
+      nowcoder_id: "866689974",
+      atcoder: 7,
+      codeforces: 10,
       matiji: 16
     },
     {
@@ -21357,10 +21533,11 @@ var __async = (__this, __arguments, generator) => {
       "class": "25届软件工程(本科)3班",
       codeforces_id: "caidetianhuaban",
       atcoder_id: "caidetianhuaban",
-      matiji_id: "菜的天花板",
+      matiji_id: "553748092",
       grade: 2025,
+      nowcoder_id: "菜的天花板",
       atcoder: 8,
-      codeforces: 48,
+      codeforces: 53,
       matiji: 0
     },
     {
@@ -21370,8 +21547,9 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "liuning123",
       matiji_id: "151967",
       grade: 2025,
+      nowcoder_id: "906372667",
       atcoder: 58,
-      codeforces: 114,
+      codeforces: 118,
       matiji: 0
     },
     {
@@ -21381,8 +21559,9 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "Asyurain",
       matiji_id: "221672",
       grade: 2024,
+      nowcoder_id: "737049232",
       atcoder: 11,
-      codeforces: 17,
+      codeforces: 18,
       matiji: 2
     },
     {
@@ -21392,8 +21571,9 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "tokyoww",
       matiji_id: "216968",
       grade: 2025,
+      nowcoder_id: "416371990",
       atcoder: 32,
-      codeforces: 96,
+      codeforces: 102,
       matiji: 24
     },
     {
@@ -21403,6 +21583,7 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "Kyrie_11",
       matiji_id: "218127",
       grade: 2025,
+      nowcoder_id: "453204777",
       atcoder: 0,
       codeforces: 1,
       matiji: 2
@@ -21414,6 +21595,7 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "Oabj6n",
       matiji_id: "167579",
       grade: 2024,
+      nowcoder_id: "804032790",
       atcoder: 39,
       codeforces: 76,
       matiji: 66
@@ -21425,6 +21607,7 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "ziying032",
       matiji_id: "162137",
       grade: 2024,
+      nowcoder_id: "447583027",
       atcoder: 73,
       codeforces: 202,
       matiji: 8
@@ -21436,8 +21619,9 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "ruanmei",
       matiji_id: "217486",
       grade: 2025,
-      atcoder: 32,
-      codeforces: 49,
+      nowcoder_id: "702164060",
+      atcoder: 35,
+      codeforces: 56,
       matiji: 25
     },
     {
@@ -21447,6 +21631,7 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "SiShao",
       matiji_id: "218729",
       grade: 2025,
+      nowcoder_id: "666645500",
       atcoder: 6,
       codeforces: 8,
       matiji: 12
@@ -21458,9 +21643,10 @@ var __async = (__this, __arguments, generator) => {
       atcoder_id: "yixinWan",
       matiji_id: "218264",
       grade: 2025,
+      nowcoder_id: "132881049",
       atcoder: 4,
       codeforces: 4,
-      matiji: 38
+      matiji: 40
     }
   ];
   const data = {
@@ -21469,31 +21655,37 @@ var __async = (__this, __arguments, generator) => {
         "2025-10-20": 111,
         "2025-11-01": 117,
         "2025-11-20": 120,
-        "2025-11-29": 120
+        "2025-11-29": 120,
+        "2025-12-08": 120
       },
       codeforces: {
         "2025-10-20": 233,
         "2025-11-01": 237,
         "2025-11-20": 242,
-        "2025-11-29": 242
+        "2025-11-29": 242,
+        "2025-12-08": 242
       },
       matiji: {
-        "2025-11-29": 61
+        "2025-11-29": 61,
+        "2025-12-08": 61
       }
     },
     "叶智豪": {
       atcoder: {
         "2025-11-20": 6,
-        "2025-11-29": 12
+        "2025-11-29": 12,
+        "2025-12-08": 12
       },
       codeforces: {
         "2025-10-20": 762,
         "2025-11-01": 762,
         "2025-11-20": 764,
-        "2025-11-29": 768
+        "2025-11-29": 768,
+        "2025-12-08": 772
       },
       matiji: {
-        "2025-11-29": 304
+        "2025-11-29": 304,
+        "2025-12-08": 304
       }
     },
     "燕诺": {
@@ -21501,19 +21693,22 @@ var __async = (__this, __arguments, generator) => {
         "2025-10-20": 2,
         "2025-11-01": 5,
         "2025-11-20": 11,
-        "2025-11-29": 14
+        "2025-11-29": 14,
+        "2025-12-08": 19
       },
       codeforces: {
         "2025-10-20": 5,
         "2025-11-01": 17,
         "2025-11-20": 23,
-        "2025-11-29": 26
+        "2025-11-29": 26,
+        "2025-12-08": 32
       },
       matiji: {
         "2025-10-20": 7,
         "2025-11-01": 18,
         "2025-11-20": 26,
-        "2025-11-29": 26
+        "2025-11-29": 26,
+        "2025-12-08": 26
       }
     },
     "李俊": {
@@ -21521,16 +21716,19 @@ var __async = (__this, __arguments, generator) => {
         "2025-10-20": 28,
         "2025-11-01": 36,
         "2025-11-20": 56,
-        "2025-11-29": 64
+        "2025-11-29": 64,
+        "2025-12-08": 64
       },
       codeforces: {
         "2025-10-20": 131,
         "2025-11-01": 145,
         "2025-11-20": 165,
-        "2025-11-29": 180
+        "2025-11-29": 180,
+        "2025-12-08": 189
       },
       matiji: {
-        "2025-11-29": 181
+        "2025-11-29": 181,
+        "2025-12-08": 181
       }
     },
     "王西门": {
@@ -21538,19 +21736,22 @@ var __async = (__this, __arguments, generator) => {
         "2025-10-20": 3,
         "2025-11-01": 5,
         "2025-11-20": 7,
-        "2025-11-29": 7
+        "2025-11-29": 7,
+        "2025-12-08": 7
       },
       codeforces: {
         "2025-10-20": 4,
         "2025-11-01": 8,
         "2025-11-20": 11,
-        "2025-11-29": 12
+        "2025-11-29": 12,
+        "2025-12-08": 12
       },
       matiji: {
         "2025-10-20": 2,
         "2025-11-01": 2,
         "2025-11-20": 2,
-        "2025-11-29": 2
+        "2025-11-29": 2,
+        "2025-12-08": 2
       }
     },
     "胡悠茗": {
@@ -21558,19 +21759,22 @@ var __async = (__this, __arguments, generator) => {
         "2025-10-20": 18,
         "2025-11-01": 21,
         "2025-11-20": 35,
-        "2025-11-29": 38
+        "2025-11-29": 38,
+        "2025-12-08": 39
       },
       codeforces: {
         "2025-10-20": 55,
         "2025-11-01": 73,
         "2025-11-20": 89,
-        "2025-11-29": 93
+        "2025-11-29": 93,
+        "2025-12-08": 101
       },
       matiji: {
         "2025-10-20": 10,
         "2025-11-01": 12,
         "2025-11-20": 28,
-        "2025-11-29": 28
+        "2025-11-29": 28,
+        "2025-12-08": 28
       }
     },
     "符轩跃": {
@@ -21578,19 +21782,22 @@ var __async = (__this, __arguments, generator) => {
         "2025-10-20": 23,
         "2025-11-01": 30,
         "2025-11-20": 50,
-        "2025-11-29": 50
+        "2025-11-29": 50,
+        "2025-12-08": 50
       },
       codeforces: {
         "2025-10-20": 26,
         "2025-11-01": 54,
         "2025-11-20": 78,
-        "2025-11-29": 84
+        "2025-11-29": 84,
+        "2025-12-08": 87
       },
       matiji: {
         "2025-10-20": 22,
         "2025-11-01": 30,
         "2025-11-20": 30,
-        "2025-11-29": 30
+        "2025-11-29": 30,
+        "2025-12-08": 30
       }
     },
     "徐文静": {
@@ -21598,19 +21805,22 @@ var __async = (__this, __arguments, generator) => {
         "2025-10-20": 12,
         "2025-11-01": 15,
         "2025-11-20": 27,
-        "2025-11-29": 28
+        "2025-11-29": 28,
+        "2025-12-08": 28
       },
       codeforces: {
         "2025-10-20": 43,
         "2025-11-01": 65,
         "2025-11-20": 76,
-        "2025-11-29": 78
+        "2025-11-29": 78,
+        "2025-12-08": 80
       },
       matiji: {
         "2025-10-20": 22,
         "2025-11-01": 33,
         "2025-11-20": 42,
-        "2025-11-29": 42
+        "2025-11-29": 42,
+        "2025-12-08": 42
       }
     },
     "曹政业": {
@@ -21618,16 +21828,19 @@ var __async = (__this, __arguments, generator) => {
         "2025-10-20": 297,
         "2025-11-01": 297,
         "2025-11-20": 307,
-        "2025-11-29": 309
+        "2025-11-29": 309,
+        "2025-12-08": 309
       },
       codeforces: {
         "2025-10-20": 1305,
         "2025-11-01": 1305,
         "2025-11-20": 1309,
-        "2025-11-29": 1314
+        "2025-11-29": 1314,
+        "2025-12-08": 1321
       },
       matiji: {
-        "2025-11-29": 210
+        "2025-11-29": 210,
+        "2025-12-08": 210
       }
     },
     "姜银": {
@@ -21635,16 +21848,19 @@ var __async = (__this, __arguments, generator) => {
         "2025-10-20": 130,
         "2025-11-01": 140,
         "2025-11-20": 155,
-        "2025-11-29": 159
+        "2025-11-29": 159,
+        "2025-12-08": 159
       },
       codeforces: {
         "2025-10-20": 307,
         "2025-11-01": 317,
         "2025-11-20": 333,
-        "2025-11-29": 338
+        "2025-11-29": 338,
+        "2025-12-08": 349
       },
       matiji: {
-        "2025-11-29": 95
+        "2025-11-29": 95,
+        "2025-12-08": 95
       }
     },
     "陈硕": {
@@ -21652,49 +21868,61 @@ var __async = (__this, __arguments, generator) => {
         "2025-10-20": 250,
         "2025-11-01": 252,
         "2025-11-20": 261,
-        "2025-11-29": 266
+        "2025-11-29": 266,
+        "2025-12-08": 266
       },
       codeforces: {
         "2025-10-20": 1156,
         "2025-11-01": 1157,
         "2025-11-20": 1157,
-        "2025-11-29": 1159
+        "2025-11-29": 1159,
+        "2025-12-08": 1159
       },
       matiji: {
-        "2025-11-29": 199
+        "2025-11-29": 199,
+        "2025-12-08": 204
       }
     },
     "屈健健": {
       atcoder: {
-        "2025-11-29": 13
+        "2025-11-29": 13,
+        "2025-12-08": 18
       },
       codeforces: {
-        "2025-11-29": 27
+        "2025-11-29": 27,
+        "2025-12-08": 34
       },
       matiji: {
-        "2025-11-29": 14
+        "2025-11-29": 14,
+        "2025-12-08": 14
       }
     },
     "龚孝天": {
       atcoder: {
-        "2025-11-29": 44
+        "2025-11-29": 44,
+        "2025-12-08": 44
       },
       codeforces: {
-        "2025-11-29": 54
+        "2025-11-29": 54,
+        "2025-12-08": 64
       },
       matiji: {
-        "2025-11-29": 61
+        "2025-11-29": 61,
+        "2025-12-08": 61
       }
     },
     "顾光辉": {
       atcoder: {
-        "2025-11-29": 132
+        "2025-11-29": 132,
+        "2025-12-08": 132
       },
       codeforces: {
-        "2025-11-29": 322
+        "2025-11-29": 322,
+        "2025-12-08": 322
       },
       matiji: {
-        "2025-11-29": 71
+        "2025-11-29": 71,
+        "2025-12-08": 71
       }
     },
     "赵星宇": {
@@ -21702,16 +21930,19 @@ var __async = (__this, __arguments, generator) => {
         "2025-10-20": 128,
         "2025-11-01": 130,
         "2025-11-20": 138,
-        "2025-11-29": 142
+        "2025-11-29": 142,
+        "2025-12-08": 142
       },
       codeforces: {
         "2025-10-20": 146,
         "2025-11-01": 149,
         "2025-11-20": 156,
-        "2025-11-29": 161
+        "2025-11-29": 161,
+        "2025-12-08": 165
       },
       matiji: {
-        "2025-11-29": 107
+        "2025-11-29": 107,
+        "2025-12-08": 107
       }
     },
     "杜蘇航": {
@@ -21719,16 +21950,19 @@ var __async = (__this, __arguments, generator) => {
         "2025-10-20": 85,
         "2025-11-01": 94,
         "2025-11-20": 119,
-        "2025-11-29": 123
+        "2025-11-29": 123,
+        "2025-12-08": 123
       },
       codeforces: {
         "2025-10-20": 180,
         "2025-11-01": 182,
         "2025-11-20": 185,
-        "2025-11-29": 190
+        "2025-11-29": 190,
+        "2025-12-08": 205
       },
       matiji: {
-        "2025-11-29": 165
+        "2025-11-29": 165,
+        "2025-12-08": 165
       }
     },
     "尚淇淇": {
@@ -21736,16 +21970,19 @@ var __async = (__this, __arguments, generator) => {
         "2025-10-20": 140,
         "2025-11-01": 145,
         "2025-11-20": 166,
-        "2025-11-29": 170
+        "2025-11-29": 170,
+        "2025-12-08": 170
       },
       codeforces: {
         "2025-10-20": 285,
         "2025-11-01": 295,
         "2025-11-20": 302,
-        "2025-11-29": 314
+        "2025-11-29": 314,
+        "2025-12-08": 320
       },
       matiji: {
-        "2025-11-29": 112
+        "2025-11-29": 112,
+        "2025-12-08": 112
       }
     },
     "陈资权": {
@@ -21753,16 +21990,19 @@ var __async = (__this, __arguments, generator) => {
         "2025-10-20": 177,
         "2025-11-01": 177,
         "2025-11-20": 184,
-        "2025-11-29": 188
+        "2025-11-29": 188,
+        "2025-12-08": 188
       },
       codeforces: {
         "2025-10-20": 786,
         "2025-11-01": 795,
         "2025-11-20": 800,
-        "2025-11-29": 812
+        "2025-11-29": 812,
+        "2025-12-08": 817
       },
       matiji: {
-        "2025-11-29": 75
+        "2025-11-29": 75,
+        "2025-12-08": 75
       }
     },
     "张宇翔": {
@@ -21770,19 +22010,22 @@ var __async = (__this, __arguments, generator) => {
         "2025-10-20": 19,
         "2025-11-01": 23,
         "2025-11-20": 37,
-        "2025-11-29": 40
+        "2025-11-29": 40,
+        "2025-12-08": 45
       },
       codeforces: {
         "2025-10-20": 68,
         "2025-11-01": 91,
         "2025-11-20": 119,
-        "2025-11-29": 132
+        "2025-11-29": 132,
+        "2025-12-08": 137
       },
       matiji: {
         "2025-10-20": 12,
         "2025-11-01": 12,
         "2025-11-20": 14,
-        "2025-11-29": 14
+        "2025-11-29": 14,
+        "2025-12-08": 14
       }
     },
     "马逍遥": {
@@ -21790,16 +22033,19 @@ var __async = (__this, __arguments, generator) => {
         "2025-10-20": 86,
         "2025-11-01": 94,
         "2025-11-20": 114,
-        "2025-11-29": 121
+        "2025-11-29": 121,
+        "2025-12-08": 121
       },
       codeforces: {
         "2025-10-20": 212,
         "2025-11-01": 218,
         "2025-11-20": 221,
-        "2025-11-29": 225
+        "2025-11-29": 225,
+        "2025-12-08": 229
       },
       matiji: {
-        "2025-11-29": 122
+        "2025-11-29": 122,
+        "2025-12-08": 122
       }
     },
     "郑亦宇": {
@@ -21807,19 +22053,22 @@ var __async = (__this, __arguments, generator) => {
         "2025-10-20": 10,
         "2025-11-01": 13,
         "2025-11-20": 17,
-        "2025-11-29": 20
+        "2025-11-29": 20,
+        "2025-12-08": 20
       },
       codeforces: {
         "2025-10-20": 55,
         "2025-11-01": 62,
         "2025-11-20": 65,
-        "2025-11-29": 66
+        "2025-11-29": 66,
+        "2025-12-08": 66
       },
       matiji: {
         "2025-10-20": 45,
         "2025-11-01": 76,
         "2025-11-20": 124,
-        "2025-11-29": 124
+        "2025-11-29": 124,
+        "2025-12-08": 124
       }
     },
     "王瑞珽": {
@@ -21827,27 +22076,33 @@ var __async = (__this, __arguments, generator) => {
         "2025-10-20": 109,
         "2025-11-01": 114,
         "2025-11-20": 121,
-        "2025-11-29": 127
+        "2025-11-29": 127,
+        "2025-12-08": 127
       },
       codeforces: {
         "2025-10-20": 334,
         "2025-11-01": 362,
         "2025-11-20": 398,
-        "2025-11-29": 418
+        "2025-11-29": 418,
+        "2025-12-08": 429
       },
       matiji: {
-        "2025-11-29": 92
+        "2025-11-29": 92,
+        "2025-12-08": 92
       }
     },
     "向⽂寿": {
       atcoder: {
-        "2025-11-29": 43
+        "2025-11-29": 43,
+        "2025-12-08": 55
       },
       codeforces: {
-        "2025-11-29": 1037
+        "2025-11-29": 1037,
+        "2025-12-08": 1038
       },
       matiji: {
-        "2025-11-29": 193
+        "2025-11-29": 193,
+        "2025-12-08": 193
       }
     },
     "陈光照": {
@@ -21855,19 +22110,22 @@ var __async = (__this, __arguments, generator) => {
         "2025-10-20": 4,
         "2025-11-01": 4,
         "2025-11-20": 13,
-        "2025-11-29": 15
+        "2025-11-29": 15,
+        "2025-12-08": 15
       },
       codeforces: {
         "2025-10-20": 6,
         "2025-11-01": 12,
         "2025-11-20": 17,
-        "2025-11-29": 19
+        "2025-11-29": 19,
+        "2025-12-08": 20
       },
       matiji: {
         "2025-10-20": 10,
         "2025-11-01": 21,
         "2025-11-20": 33,
-        "2025-11-29": 33
+        "2025-11-29": 33,
+        "2025-12-08": 33
       }
     },
     "孙叶": {
@@ -21875,50 +22133,61 @@ var __async = (__this, __arguments, generator) => {
         "2025-10-20": 6,
         "2025-11-01": 8,
         "2025-11-20": 22,
-        "2025-11-29": 25
+        "2025-11-29": 25,
+        "2025-12-08": 26
       },
       codeforces: {
         "2025-10-20": 6,
         "2025-11-01": 19,
         "2025-11-20": 31,
-        "2025-11-29": 34
+        "2025-11-29": 34,
+        "2025-12-08": 38
       },
       matiji: {
         "2025-10-20": 3,
         "2025-11-01": 12,
         "2025-11-20": 22,
-        "2025-11-29": 22
+        "2025-11-29": 22,
+        "2025-12-08": 22
       }
     },
     "陈道磊": {
       atcoder: {
-        "2025-11-29": 139
+        "2025-11-29": 139,
+        "2025-12-08": 139
       },
       codeforces: {
-        "2025-11-29": 758
+        "2025-11-29": 758,
+        "2025-12-08": 763
       },
       matiji: {}
     },
     "黄麒亮": {
       atcoder: {
-        "2025-11-29": 14
+        "2025-11-29": 14,
+        "2025-12-08": 14
       },
       codeforces: {
-        "2025-11-29": 19
+        "2025-11-29": 19,
+        "2025-12-08": 20
       },
       matiji: {
-        "2025-11-29": 22
+        "2025-11-29": 22,
+        "2025-12-08": 22
       }
     },
     "宋赵伟": {
       atcoder: {
-        "2025-11-29": 11
+        "2025-11-29": 11,
+        "2025-12-08": 11
       },
       codeforces: {
-        "2025-11-29": 1
+        "2025-11-29": 1,
+        "2025-12-08": 1
       },
       matiji: {
-        "2025-11-29": 1
+        "2025-11-29": 1,
+        "2025-12-08": 1
       }
     },
     "陈宣扬": {
@@ -21926,19 +22195,22 @@ var __async = (__this, __arguments, generator) => {
         "2025-10-20": 18,
         "2025-11-01": 21,
         "2025-11-20": 40,
-        "2025-11-29": 44
+        "2025-11-29": 44,
+        "2025-12-08": 46
       },
       codeforces: {
         "2025-10-20": 48,
         "2025-11-01": 59,
         "2025-11-20": 87,
-        "2025-11-29": 96
+        "2025-11-29": 96,
+        "2025-12-08": 102
       },
       matiji: {
         "2025-10-20": 20,
         "2025-11-01": 37,
         "2025-11-20": 54,
-        "2025-11-29": 54
+        "2025-11-29": 54,
+        "2025-12-08": 54
       }
     },
     "倪志杰": {
@@ -21946,39 +22218,47 @@ var __async = (__this, __arguments, generator) => {
         "2025-10-20": 6,
         "2025-11-01": 9,
         "2025-11-20": 21,
-        "2025-11-29": 25
+        "2025-11-29": 25,
+        "2025-12-08": 30
       },
       codeforces: {
         "2025-10-20": 22,
         "2025-11-01": 48,
         "2025-11-20": 73,
-        "2025-11-29": 85
+        "2025-11-29": 85,
+        "2025-12-08": 93
       },
       matiji: {
         "2025-10-20": 19,
         "2025-11-01": 31,
         "2025-11-20": 41,
-        "2025-11-29": 41
+        "2025-11-29": 41,
+        "2025-12-08": 41
       }
     },
     "郑珂慧": {
       atcoder: {},
       codeforces: {
-        "2025-11-29": 0
+        "2025-11-29": 0,
+        "2025-12-08": 0
       },
       matiji: {
-        "2025-11-29": 1
+        "2025-11-29": 1,
+        "2025-12-08": 1
       }
     },
     "薛璇": {
       atcoder: {
-        "2025-11-29": 2
+        "2025-11-29": 2,
+        "2025-12-08": 2
       },
       codeforces: {
-        "2025-11-29": 4
+        "2025-11-29": 4,
+        "2025-12-08": 4
       },
       matiji: {
-        "2025-11-29": 2
+        "2025-11-29": 2,
+        "2025-12-08": 2
       }
     },
     "施宇轩": {
@@ -21986,19 +22266,22 @@ var __async = (__this, __arguments, generator) => {
         "2025-10-20": 2,
         "2025-11-01": 4,
         "2025-11-20": 7,
-        "2025-11-29": 9
+        "2025-11-29": 9,
+        "2025-12-08": 9
       },
       codeforces: {
         "2025-10-20": 8,
         "2025-11-01": 20,
         "2025-11-20": 29,
-        "2025-11-29": 32
+        "2025-11-29": 32,
+        "2025-12-08": 32
       },
       matiji: {
         "2025-10-20": 14,
         "2025-11-01": 23,
         "2025-11-20": 27,
-        "2025-11-29": 27
+        "2025-11-29": 27,
+        "2025-12-08": 27
       }
     },
     "陈轩宇": {
@@ -22006,24 +22289,29 @@ var __async = (__this, __arguments, generator) => {
         "2025-10-20": 2,
         "2025-11-01": 2,
         "2025-11-20": 5,
-        "2025-11-29": 5
+        "2025-11-29": 5,
+        "2025-12-08": 7
       },
       codeforces: {
         "2025-10-20": 2,
         "2025-11-01": 4,
         "2025-11-20": 8,
-        "2025-11-29": 8
+        "2025-11-29": 8,
+        "2025-12-08": 10
       },
       matiji: {
-        "2025-11-29": 16
+        "2025-11-29": 16,
+        "2025-12-08": 16
       }
     },
     "许文韬": {
       atcoder: {
-        "2025-11-29": 8
+        "2025-11-29": 8,
+        "2025-12-08": 8
       },
       codeforces: {
-        "2025-11-29": 48
+        "2025-11-29": 48,
+        "2025-12-08": 53
       },
       matiji: {}
     },
@@ -22032,30 +22320,36 @@ var __async = (__this, __arguments, generator) => {
         "2025-10-20": 31,
         "2025-11-01": 39,
         "2025-11-20": 55,
-        "2025-11-29": 58
+        "2025-11-29": 58,
+        "2025-12-08": 58
       },
       codeforces: {
         "2025-10-20": 66,
         "2025-11-01": 81,
         "2025-11-20": 103,
-        "2025-11-29": 114
+        "2025-11-29": 114,
+        "2025-12-08": 118
       },
       matiji: {
         "2025-10-20": 0,
         "2025-11-01": 0,
         "2025-11-20": 0,
-        "2025-11-29": 0
+        "2025-11-29": 0,
+        "2025-12-08": 0
       }
     },
     "俞泽炜": {
       atcoder: {
-        "2025-11-29": 11
+        "2025-11-29": 11,
+        "2025-12-08": 11
       },
       codeforces: {
-        "2025-11-29": 17
+        "2025-11-29": 17,
+        "2025-12-08": 18
       },
       matiji: {
-        "2025-11-29": 2
+        "2025-11-29": 2,
+        "2025-12-08": 2
       }
     },
     "刘云琪": {
@@ -22063,19 +22357,22 @@ var __async = (__this, __arguments, generator) => {
         "2025-10-20": 14,
         "2025-11-01": 17,
         "2025-11-20": 29,
-        "2025-11-29": 32
+        "2025-11-29": 32,
+        "2025-12-08": 32
       },
       codeforces: {
         "2025-10-20": 49,
         "2025-11-01": 64,
         "2025-11-20": 82,
-        "2025-11-29": 96
+        "2025-11-29": 96,
+        "2025-12-08": 102
       },
       matiji: {
         "2025-10-20": 16,
         "2025-11-01": 23,
         "2025-11-20": 24,
-        "2025-11-29": 24
+        "2025-11-29": 24,
+        "2025-12-08": 24
       }
     },
     "巫浩锋": {
@@ -22084,24 +22381,29 @@ var __async = (__this, __arguments, generator) => {
         "2025-10-20": 1,
         "2025-11-01": 1,
         "2025-11-20": 1,
-        "2025-11-29": 1
+        "2025-11-29": 1,
+        "2025-12-08": 1
       },
       matiji: {
         "2025-10-20": 2,
         "2025-11-01": 2,
         "2025-11-20": 2,
-        "2025-11-29": 2
+        "2025-11-29": 2,
+        "2025-12-08": 2
       }
     },
     "叶童": {
       atcoder: {
-        "2025-11-29": 39
+        "2025-11-29": 39,
+        "2025-12-08": 39
       },
       codeforces: {
-        "2025-11-29": 76
+        "2025-11-29": 76,
+        "2025-12-08": 76
       },
       matiji: {
-        "2025-11-29": 66
+        "2025-11-29": 66,
+        "2025-12-08": 66
       }
     },
     "陈姿蓥": {
@@ -22109,16 +22411,19 @@ var __async = (__this, __arguments, generator) => {
         "2025-10-20": 68,
         "2025-11-01": 68,
         "2025-11-20": 73,
-        "2025-11-29": 73
+        "2025-11-29": 73,
+        "2025-12-08": 73
       },
       codeforces: {
         "2025-10-20": 202,
         "2025-11-01": 202,
         "2025-11-20": 202,
-        "2025-11-29": 202
+        "2025-11-29": 202,
+        "2025-12-08": 202
       },
       matiji: {
-        "2025-11-29": 8
+        "2025-11-29": 8,
+        "2025-12-08": 8
       }
     },
     "杜光明": {
@@ -22126,30 +22431,36 @@ var __async = (__this, __arguments, generator) => {
         "2025-10-20": 9,
         "2025-11-01": 12,
         "2025-11-20": 29,
-        "2025-11-29": 32
+        "2025-11-29": 32,
+        "2025-12-08": 35
       },
       codeforces: {
         "2025-10-20": 22,
         "2025-11-01": 29,
         "2025-11-20": 46,
-        "2025-11-29": 49
+        "2025-11-29": 49,
+        "2025-12-08": 56
       },
       matiji: {
         "2025-10-20": 11,
         "2025-11-01": 18,
         "2025-11-20": 25,
-        "2025-11-29": 25
+        "2025-11-29": 25,
+        "2025-12-08": 25
       }
     },
     "李德浩": {
       atcoder: {
-        "2025-11-29": 6
+        "2025-11-29": 6,
+        "2025-12-08": 6
       },
       codeforces: {
-        "2025-11-29": 8
+        "2025-11-29": 8,
+        "2025-12-08": 8
       },
       matiji: {
-        "2025-11-29": 12
+        "2025-11-29": 12,
+        "2025-12-08": 12
       }
     },
     "万奕忻": {
@@ -22157,23 +22468,26 @@ var __async = (__this, __arguments, generator) => {
         "2025-10-20": 2,
         "2025-11-01": 2,
         "2025-11-20": 4,
-        "2025-11-29": 4
+        "2025-11-29": 4,
+        "2025-12-08": 4
       },
       codeforces: {
         "2025-10-20": 2,
         "2025-11-01": 2,
         "2025-11-20": 4,
-        "2025-11-29": 4
+        "2025-11-29": 4,
+        "2025-12-08": 4
       },
       matiji: {
         "2025-10-20": 7,
         "2025-11-01": 26,
         "2025-11-20": 32,
-        "2025-11-29": 38
+        "2025-11-29": 38,
+        "2025-12-08": 40
       }
     }
   };
-  const lastUpdate = "2025-11-29T23:05:42.625949";
+  const lastUpdate = "2025-12-08T13:42:24.384888";
   const allData = {
     users,
     data,
@@ -22342,7 +22656,7 @@ var __async = (__this, __arguments, generator) => {
       };
     }
   });
-  const Statistics = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-21e0ea8b"]]);
+  const Statistics = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-f091ff2c"]]);
   const _hoisted_1 = { class: "app" };
   const _hoisted_2 = { class: "page" };
   const _sfc_main = /* @__PURE__ */ defineComponent({

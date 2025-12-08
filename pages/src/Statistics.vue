@@ -54,7 +54,7 @@ import UserListSidebar from './components/UserListSidebar.vue';
 import StatsCards from './components/StatsCards.vue';
 import TrendChart from './components/TrendChart.vue';
 import FilterControls from './components/FilterControls.vue';
-import allData from '../src/all_data.json';
+import allData from './all_data.json';
 console.log(allData)
 
 // 定义数据类型
@@ -232,105 +232,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-:root {
-  --primary-color: #4361ee;
-  --primary-light: #4895ef;
-  --secondary-color: #6c757d;
-  --success-color: #4cc9f0;
-  --success-light: #4cc9f0;
-  --warning-color: #f72585;
-  --danger-color: #e63946;
-  --light-bg: #f8f9fa;
-  --dark-bg: #212529;
-  --border-color: #e0e0e0;
-  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  --card-shadow-hover: 0 20px 40px rgba(67, 97, 238, 0.15);
-  --border-radius: 16px;
-  --sidebar-width: 320px;
-  --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.container {
-  display: flex;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #f0f4f8 0%, #e6eef5 50%, #dae6f2 100%);
-  color: #333;
-  line-height: 1.6;
-  position: relative;
-  overflow-x: hidden;
-}
-
-.container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at top left, rgba(67, 97, 238, 0.05) 0%, transparent 40%);
-  z-index: -1;
-}
-
-.container::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(72, 149, 239, 0.08) 0%, transparent 70%);
-  border-radius: 50%;
-  z-index: -1;
-  filter: blur(20px);
-}
-
-/* 主内容区样式 */
-.main-content {
-  flex: 1;
-  padding: 25px;
-  overflow-y: auto;
-}
-
-header {
-  background: white;
-  padding: 25px;
-  border-radius: var(--border-radius);
-  box-shadow: var(--card-shadow);
-  margin-bottom: 25px;
-  background: linear-gradient(120deg, #ffffff 0%, #f8fbff 100%);
-  border: 1px solid var(--border-color);
-}
-
-h1 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-  color: var(--primary-color);
-  font-weight: 700;
-}
-
-footer {
-  text-align: center;
-  margin-top: 40px;
-  padding: 25px;
-  color: var(--secondary-color);
-  font-size: 0.9rem;
-  background: white;
-  border-radius: var(--border-radius);
-  box-shadow: var(--card-shadow);
-  margin-left: 25px;
-  margin-right: 25px;
-}
-
-</style>
-
-<style scoped>
-/* Import all styles */
 @import './styles/app.css';
+@import './styles/Statistics.css';
 </style>
