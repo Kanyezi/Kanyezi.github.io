@@ -20756,7 +20756,7 @@ var __async = (__this, __arguments, generator) => {
       const props = __props;
       const trendChartRef = ref(null);
       let chartInstance = null;
-      const currentView = ref("chart");
+      const currentView = ref("table");
       const sortKey = ref("");
       const sortOrder = ref(1);
       const chartTitle = computed(() => {
@@ -21046,7 +21046,7 @@ var __async = (__this, __arguments, generator) => {
       };
     }
   });
-  const TrendChart = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-b777d40a"]]);
+  const TrendChart = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-a608534c"]]);
   const _hoisted_1$2 = { class: "controls" };
   const _hoisted_2$2 = { class: "filter-group" };
   const _hoisted_3 = ["value"];

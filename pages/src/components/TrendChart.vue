@@ -116,7 +116,7 @@ const emit = defineEmits<Emits>();
 // 引用和响应式数据
 const trendChartRef = ref<HTMLCanvasElement | null>(null);
 let chartInstance: Chart | null = null;
-const currentView = ref('chart'); // 'chart' or 'table'
+const currentView = ref('table'); // 'chart' or 'table'
 const sortKey = ref(''); // 当前排序的列
 const sortOrder = ref(1); // 1 为升序，-1 为降序
 

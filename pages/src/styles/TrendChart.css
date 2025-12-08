@@ -103,15 +103,15 @@
   background-color: var(--light-bg);
 }
 
+
 /* 交替行颜色 */
 .data-table tbody tr:nth-child(even) {
-  background-color: var(--light-bg);
+  background-color: var(--light-bg2);
 }
 
-.data-table tbody tr:nth-child(even):hover {
-  background-color: #e9ecef;
+.data-table tbody tr:hover {
+  background-color: #eee8bf;
 }
-
 /* 排序样式 */
 .data-table th.sortable {
   cursor: pointer;
