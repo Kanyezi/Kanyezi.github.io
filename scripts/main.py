@@ -1,7 +1,6 @@
-from user_problems import atcoderData,codeforcesData,matijiData
-from user_contest import atcoder_contest,codeforces_contest,matiji_contest,nowcoder_contest,saixuan
-import data_converter,file_list_generator
-import pages.get_pachong.files.paths as paths
+from crawler.user import atcoderData,codeforcesData,matijiData
+from crawler.contest import atcoder_contest,codeforces_contest,matiji_contest,nowcoder_contest,saixuan
+from crawler.files import data_converter,file_list_generator,paths
 
 if __name__ == "__main__":
     ps=paths.PathS()
@@ -48,7 +47,7 @@ if __name__ == "__main__":
 
     # 抓取用户ac题目数
 
-    # atcoderData.atcoder_gets(user,ps.atcoder_path_user)
+    atcoderData.atcoder_gets(user,ps.atcoder_path_user)
     # codeforcesData.codeforces_gets(user,ps.codeforces_path_user)
     # matijiData.matiji_gets(user,ps.matiji_path_user)
 
