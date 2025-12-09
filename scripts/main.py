@@ -1,7 +1,7 @@
 from user_problems import atcoderData,codeforcesData,matijiData
 from user_contest import atcoder_contest,codeforces_contest,matiji_contest,nowcoder_contest,saixuan
 import data_converter,file_list_generator
-import paths
+import pages.get_pachong.files.paths as paths
 
 if __name__ == "__main__":
     ps=paths.PathS()
