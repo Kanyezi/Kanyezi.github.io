@@ -16,24 +16,12 @@ def get_user_ac_count_api(username):
     try:
         # 发送GET请求
         response = requests.get(url)
-        # 检查请求是否成功
-        if response.status_code != 200:
-            print(f"API请求失败，状态码：{response.status_code}")
-            return None
-        
         # 解析JSON响应
         resjson = response.json()
         res = resjson['count']
         return res
     
     except requests.exceptions.RequestException as e:
-        print(f"网络请求错误: {e}")
-        return None
-    except json.JSONDecodeError as e:
-        print(f"JSON解析错误: {e}")
-        return None
-    except Exception as e:
-        print(f"处理过程中发生错误: {e}")
         return None
 
 def atcoder_gets(user_path,problems_path):
@@ -53,7 +41,7 @@ def atcoder_gets(user_path,problems_path):
                 print(f"用户 {uname} 在AtCoder上AC的题目数量为: {ac_count}")
                 ru[uname]=ac_count
             else:
-                print("获取数据失败，请检查用户名或网络连接")
+                print(uname,"获取数据失败，请检查用户名或网络连接")
             time.sleep(0.1)
         json.dump(ru,f)
 

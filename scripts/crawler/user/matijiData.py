@@ -16,7 +16,7 @@ def get_user_ac_count(id):
     if(requ.status_code!=200 or requ.json()["error_no"]!="0"):
         return None
     else:
-        return requ.json()["data"]["passNum"]
+        return requ.json()
 def matiji_gets(user_path,problems_path):
     data = {}
     
@@ -31,7 +31,7 @@ def matiji_gets(user_path,problems_path):
             if(uid==""):
                 print(f"用户 {uname} id未写入")
                 continue
-            ac_count = get_user_ac_count(uid)
+            ac_count = get_user_ac_count(uid)["data"]["passNum"]
             if ac_count is not None:
                 print(f"用户 {uname} 在码题集上AC的题目数量为: {ac_count}")
                 ru[uname]=ac_count
@@ -42,5 +42,5 @@ def matiji_gets(user_path,problems_path):
 
 # 使用示例
 if __name__ == "__main__":
-    # print(get_user_ac_count(218775))
-    matiji_gets()
+    print(get_user_ac_count(218775))
+    # matiji_gets()
