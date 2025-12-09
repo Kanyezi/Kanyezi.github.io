@@ -26,7 +26,7 @@ def read_contest_records(type,contest,contest_path):
 def check(type,record,users):
     name = ""
     if(type=="atcoder"):
-        name=record["UserName"]
+        name=record["UserScreenName"]
     elif(type=="codeforces"):
         name=record["party"]["members"][0]["handle"]
     elif(type=="matiji"):
