@@ -11,11 +11,11 @@ if __name__ == "__main__":
 
     # 抓取用户ac题目数
 
-    atcoderData.atcoder_gets(user,ps.atcoder_path_user)
+    # atcoderData.atcoder_gets(user,ps.atcoder_path_user)
     # codeforcesData.codeforces_gets(user,ps.codeforces_path_user)
     # matijiData.matiji_gets(user,ps.matiji_path_user)
 
     # # 地址列表生成
-    # file_list_generator.generate_file_list_json(ps.root_path)
+    file_list_generator.generate_file_list_json(ps.root_path)
     # # 合并
     data_converter.convert_data(ps.root_path,user,ps.out_path)

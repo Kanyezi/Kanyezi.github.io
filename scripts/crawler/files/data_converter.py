@@ -107,11 +107,11 @@ def convert_data(root_path,user_path,out_path):
             for date_str, date_data in platform_date_data[platform].items():
                 if name in date_data:
                     if platform == 'atcoder':
-                        sum_atcoder = max(sum_atcoder,date_data[name])
+                        sum_atcoder = max(sum_atcoder,date_data[name]["ac_count"])
                     elif platform == 'codeforces':
-                        sum_codeforces = max(sum_codeforces,date_data[name])
+                        sum_codeforces = max(sum_codeforces,date_data[name]["ac_count"])
                     elif platform == 'matiji':
-                        sum_matiji = max(sum_matiji,date_data[name])
+                        sum_matiji = max(sum_matiji,date_data[name]["ac_count"])
         
         # 构建用户数据
         user_data = {
