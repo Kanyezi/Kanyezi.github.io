@@ -54,10 +54,10 @@
         <tbody>
           <tr v-for="user in sortedUsers" :key="user.name">
             <td>{{ user.name }}</td>
-            <td>{{ user.atcoder }}</td>
-            <td>{{ user.codeforces }}</td>
-            <td>{{ user.matiji }}</td>
-            <td>{{ user.atcoder + user.codeforces + user.matiji }}</td>
+            <td>{{ getUserPlatformCount(user.name, 'atcoder') }}</td>
+            <td>{{ getUserPlatformCount(user.name, 'codeforces') }}</td>
+            <td>{{ getUserPlatformCount(user.name, 'matiji') }}</td>
+            <td>{{ getUserTotalCount(user.name) }}</td>
           </tr>
         </tbody>
       </table>
@@ -187,17 +187,17 @@ const sortedUsers = computed(() => {
       valueA = a.name;
       valueB = b.name;
     } else if (sortKey.value === 'atcoder') {
-      valueA = a.atcoder;
-      valueB = b.atcoder;
+      valueA = getUserPlatformCount(a.name, 'atcoder');
+      valueB = getUserPlatformCount(b.name, 'atcoder');
     } else if (sortKey.value === 'codeforces') {
-      valueA = a.codeforces;
-      valueB = b.codeforces;
+      valueA = getUserPlatformCount(a.name, 'codeforces');
+      valueB = getUserPlatformCount(b.name, 'codeforces');
     } else if (sortKey.value === 'matiji') {
-      valueA = a.matiji;
-      valueB = b.matiji;
+      valueA = getUserPlatformCount(a.name, 'matiji');
+      valueB = getUserPlatformCount(b.name, 'matiji');
     } else if (sortKey.value === 'total') {
-      valueA = a.atcoder + a.codeforces + a.matiji;
-      valueB = b.atcoder + b.codeforces + b.matiji;
+      valueA = getUserTotalCount(a.name);
+      valueB = getUserTotalCount(b.name);
     } else {
       return 0;
     }
@@ -213,6 +213,64 @@ const sortedUsers = computed(() => {
     }
   });
 });
+
+// 获取用户特定平台的计数
+const getUserPlatformCount = (userName: string, platform: string): number => {
+  const userHistory = props.userData[userName];
+  if (!userHistory || !userHistory[platform as keyof StudentData]) {
+    return 0;
+  }
+
+  const platformData = userHistory[platform as keyof StudentData];
+  // 获取最新的日期数据
+  const latestDate = getLatestDateFromPlatformData(platformData);
+  if (latestDate && platformData[latestDate]) {
+    // 新数据格式：{ ac_count: number }
+    if (typeof platformData[latestDate] === 'object' && platformData[latestDate].ac_count !== undefined) {
+      return platformData[latestDate].ac_count;
+    } else {
+      // 旧数据格式：直接是数值
+      return platformData[latestDate];
+    }
+  }
+
+  return 0;
+};
+
+// 获取用户总数量
+const getUserTotalCount = (userName: string): number => {
+  const userHistory = props.userData[userName];
+  if (!userHistory) {
+    return 0;
+  }
+
+  let total = 0;
+  // 遍历所有平台
+  Object.entries(userHistory).forEach(([platform, platformData]) => {
+    const latestDate = getLatestDateFromPlatformData(platformData);
+    if (latestDate && platformData[latestDate]) {
+      // 新数据格式：{ ac_count: number }
+      if (typeof platformData[latestDate] === 'object' && platformData[latestDate].ac_count !== undefined) {
+        total += platformData[latestDate].ac_count;
+      } else {
+        // 旧数据格式：直接是数值
+        total += platformData[latestDate];
+      }
+    }
+  });
+
+  return total;
+};
+
+// 获取平台数据中的最新日期
+const getLatestDateFromPlatformData = (platformData: PlatformData): string | null => {
+  const dates = Object.keys(platformData);
+  if (dates.length === 0) return null;
+
+  // 排序并返回最新的日期
+  const sortedDates = dates.sort((a, b) => new Date(b).getTime() - new Date(a).getTime());
+  return sortedDates[0];
+};
 
 // 图表渲染函数
 const renderChart = () => {
@@ -249,9 +307,16 @@ const renderChart = () => {
           if (!userHistory) return 0;
           
           let total = 0;
+          // 检查每个平台的数据格式并提取ac_count值
           Object.values(userHistory).forEach(platformData => {
             if (platformData[date]) {
-              total += platformData[date];
+              // 新数据格式：{ ac_count: number }
+              if (typeof platformData[date] === 'object' && platformData[date].ac_count !== undefined) {
+                total += platformData[date].ac_count;
+              } else {
+                // 旧数据格式：直接是数值
+                total += platformData[date];
+              }
             }
           });
           return total;
@@ -261,7 +326,19 @@ const renderChart = () => {
         const userHistory = props.userData[user.name];
         if (userHistory && userHistory[platform as keyof StudentData]) {
           const platformData = userHistory[platform as keyof StudentData];
-          data = dateLabels.value.map(date => platformData[date] || 0);
+          data = dateLabels.value.map(date => {
+            if (platformData[date]) {
+              // 新数据格式：{ ac_count: number }
+              if (typeof platformData[date] === 'object' && platformData[date].ac_count !== undefined) {
+                return platformData[date].ac_count;
+              } else {
+                // 旧数据格式：直接是数值
+                return platformData[date];
+              }
+            } else {
+              return 0;
+            }
+          });
         } else {
           data = dateLabels.value.map(() => 0);
         }

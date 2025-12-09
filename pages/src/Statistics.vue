@@ -109,13 +109,59 @@ const activeUsersCount = computed(() => displayUsers.value.length);
 
 const getPlatformTotal = (platform: string) => {
   if (platform === 'all') {
-    return displayUsers.value.reduce((sum, user) => 
-      sum + (user.atcoder + user.codeforces + user.matiji), 0
-    );
+    return displayUsers.value.reduce((sum, user) => {
+      const userHistory = userData.value[user.name];
+      if (!userHistory) return sum;
+      
+      // 获取最新的日期
+      const latestDate = getLatestDateFromUserHistory(userHistory);
+      if (!latestDate) return sum;
+      
+      let userTotal = 0;
+      // 计算该用户在各个平台的总题数
+      if (userHistory.atcoder[latestDate]?.ac_count !== undefined) {
+        userTotal += userHistory.atcoder[latestDate].ac_count;
+      } else if (typeof userHistory.atcoder[latestDate] === 'number') {
+        userTotal += userHistory.atcoder[latestDate];
+      }
+      
+      if (userHistory.codeforces[latestDate]?.ac_count !== undefined) {
+        userTotal += userHistory.codeforces[latestDate].ac_count;
+      } else if (typeof userHistory.codeforces[latestDate] === 'number') {
+        userTotal += userHistory.codeforces[latestDate];
+      }
+      
+      if (userHistory.matiji[latestDate]?.ac_count !== undefined) {
+        userTotal += userHistory.matiji[latestDate].ac_count;
+      } else if (typeof userHistory.matiji[latestDate] === 'number') {
+        userTotal += userHistory.matiji[latestDate];
+      }
+      
+      return sum + userTotal;
+    }, 0);
+  } else {
+    // 单个平台
+    return displayUsers.value.reduce((sum, user) => {
+      const userHistory = userData.value[user.name];
+      if (!userHistory) return sum;
+      
+      // 获取最新的日期
+      const latestDate = getLatestDateFromUserHistory(userHistory);
+      if (!latestDate) return sum;
+      
+      const platformData = userHistory[platform as keyof StudentData];
+      if (platformData && platformData[latestDate]) {
+        // 新数据格式：{ ac_count: number }
+        if (typeof platformData[latestDate] === 'object' && platformData[latestDate].ac_count !== undefined) {
+          return sum + platformData[latestDate].ac_count;
+        } else {
+          // 旧数据格式：直接是数值
+          return sum + platformData[latestDate];
+        }
+      }
+      return sum;
+    }, 0);
   }
-  return displayUsers.value.reduce((sum, user) => 
-    sum + (user[platform as keyof User] as number), 0
-  );
 };
 
 const totalCount = computed(() => {
@@ -130,13 +176,61 @@ const averageCount = computed(() => {
 const maxCount = computed(() => {
   if (displayUsers.value.length === 0) return 0;
   if (currentPlatformFilter.value === 'all') {
-    return Math.max(...displayUsers.value.map(user => 
-      user.atcoder + user.codeforces + user.matiji
-    ));
+    const userSums = displayUsers.value.map(user => {
+      const userHistory = userData.value[user.name];
+      if (!userHistory) return 0;
+      
+      // 获取最新的日期
+      const latestDate = getLatestDateFromUserHistory(userHistory);
+      if (!latestDate) return 0;
+      
+      let userTotal = 0;
+      // 计算该用户在各个平台的总题数
+      if (userHistory.atcoder[latestDate]?.ac_count !== undefined) {
+        userTotal += userHistory.atcoder[latestDate].ac_count;
+      } else if (typeof userHistory.atcoder[latestDate] === 'number') {
+        userTotal += userHistory.atcoder[latestDate];
+      }
+      
+      if (userHistory.codeforces[latestDate]?.ac_count !== undefined) {
+        userTotal += userHistory.codeforces[latestDate].ac_count;
+      } else if (typeof userHistory.codeforces[latestDate] === 'number') {
+        userTotal += userHistory.codeforces[latestDate];
+      }
+      
+      if (userHistory.matiji[latestDate]?.ac_count !== undefined) {
+        userTotal += userHistory.matiji[latestDate].ac_count;
+      } else if (typeof userHistory.matiji[latestDate] === 'number') {
+        userTotal += userHistory.matiji[latestDate];
+      }
+      
+      return userTotal;
+    });
+    return Math.max(...userSums);
+  } else {
+    // 单个平台
+    const platformValues = displayUsers.value.map(user => {
+      const userHistory = userData.value[user.name];
+      if (!userHistory) return 0;
+      
+      // 获取最新的日期
+      const latestDate = getLatestDateFromUserHistory(userHistory);
+      if (!latestDate) return 0;
+      
+      const platformData = userHistory[currentPlatformFilter.value as keyof StudentData];
+      if (platformData && platformData[latestDate]) {
+        // 新数据格式：{ ac_count: number }
+        if (typeof platformData[latestDate] === 'object' && platformData[latestDate].ac_count !== undefined) {
+          return platformData[latestDate].ac_count;
+        } else {
+          // 旧数据格式：直接是数值
+          return platformData[latestDate];
+        }
+      }
+      return 0;
+    });
+    return Math.max(...platformValues);
   }
-  return Math.max(...displayUsers.value.map(user => 
-    user[currentPlatformFilter.value as keyof User] as number
-  ));
 });
 
 // 方法
@@ -180,9 +274,26 @@ const loadData = async () => {
     const data25:AppData = {users:[],data:{}};
     // 收集所有日期以确定最后更新日期
     const allDates = new Set<string>();
+    
     for(let i=0;i<data.users.length;i++){
-      const u = data.users[i];   // ← 一次性收窄
+      const u = {...data.users[i]};   // 创建副本以修改数据
       if (!u || u.grade !== 2025) continue;
+
+      // 根据新数据格式，从嵌套对象中提取最新数值
+      const userHistory = data.data[u.name];
+      if (userHistory) {
+        // 获取最新的日期
+        const latestDate = getLatestDateFromUserHistory(userHistory);
+        if (latestDate) {
+          u.atcoder = userHistory.atcoder[latestDate]?.ac_count || 0;
+          u.codeforces = userHistory.codeforces[latestDate]?.ac_count || 0;
+          u.matiji = userHistory.matiji[latestDate]?.ac_count || 0;
+        } else {
+          u.atcoder = 0;
+          u.codeforces = 0;
+          u.matiji = 0;
+        }
+      }
 
       data25.users.push(u);
       const d = data.data[u.name];
@@ -218,6 +329,22 @@ const loadData = async () => {
   } catch (error) {
     console.error('加载数据失败:', error);
   }
+};
+
+// 辅助函数：从用户历史数据中获取最新日期
+const getLatestDateFromUserHistory = (userHistory: StudentData): string | null => {
+  const allDates = new Set<string>();
+  
+  // 收集所有平台的日期
+  Object.values(userHistory).forEach(platformData => {
+    Object.keys(platformData).forEach(date => allDates.add(date));
+  });
+  
+  if (allDates.size === 0) return null;
+  
+  // 排序并返回最新的日期
+  const sortedDates = Array.from(allDates).sort((a, b) => new Date(b).getTime() - new Date(a).getTime());
+  return sortedDates[0];
 };
 
 const refreshData = () => {
