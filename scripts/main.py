@@ -45,7 +45,7 @@ if __name__ == "__main__":
     # print(records)
 
 
-    # 抓取用户ac题目数
+    # 抓取用户ac题数以及rating
 
     atcoderData.atcoder_gets(user,ps.atcoder_path_user)
     # codeforcesData.codeforces_gets(user,ps.codeforces_path_user)

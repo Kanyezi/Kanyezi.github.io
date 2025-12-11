@@ -9,7 +9,7 @@ if __name__ == "__main__":
     user=ps.users_path
 
 
-    # 抓取用户ac题目数
+    # 抓取用户
 
     # atcoderData.atcoder_gets(user,ps.atcoder_path_user)
     # codeforcesData.codeforces_gets(user,ps.codeforces_path_user)
