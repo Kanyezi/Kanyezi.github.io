@@ -9,5 +9,6 @@
     import Statistics from './Statistics.vue';
 </script>
 <style>
+@import './styles/root.css';
 @import './styles/App.css';
 </style>

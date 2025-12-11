@@ -19,9 +19,11 @@
         :period-filter="currentPeriodFilter"
         :user-filter="currentUserFilter"
         :platform-filter="currentPlatformFilter"
+        :data-filter="currentDataFilter"
         @update:period-filter="updatePeriodFilter"
         @update:user-filter="updateUserFilter"
         @update:platform-filter="updatePlatformFilter"
+        @update:data-filter="updateDataFilter"
         
         @refresh-data="refreshData"
       />
@@ -37,6 +39,7 @@
         :display-users="displayUsers"
         :user-data="userData"
         :current-platform-filter="currentPlatformFilter"
+        :data-filter="currentDataFilter"
         :chart-type="trendChartType"
         @chart-type-change="handleChartTypeChange"
       />
@@ -95,6 +98,7 @@ const selectedUsers = ref<string[]>(['孙叶', '陈宣扬', '杜光明']);
 const currentPeriodFilter = ref<string>('all');
 const currentUserFilter = ref<string>('selected');
 const currentPlatformFilter = ref<string>('all');
+const currentDataFilter = ref<string>('ac');
 const trendChartType = ref<string>('line');
 
 // 计算属性
@@ -263,6 +267,10 @@ const updateUserFilter = (value: string) => {
 
 const updatePlatformFilter = (value: string) => {
   currentPlatformFilter.value = value;
+};
+
+const updateDataFilter = (value: string) => {
+  currentDataFilter.value = value;
 };
 
 

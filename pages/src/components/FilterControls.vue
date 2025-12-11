@@ -19,7 +19,11 @@
         <option value="matiji">Matiji</option>
       </select>
       
-      
+      <select class="filter-select" :value="dataFilter" @change="onDataFilterChange">
+        <option value="ac">AC题数</option>
+        <option value="rating">Rating</option>
+        <option value="all-data">全部数据</option>
+      </select>
     </div>
     
     <div class="filter-group">
@@ -34,15 +38,17 @@ interface Props {
   periodFilter: string;
   userFilter: string;
   platformFilter: string;
+  dataFilter: string;
 }
 
-const { periodFilter = 'all', userFilter = 'all', platformFilter = 'all' } = defineProps<Props>();
+const { periodFilter = 'all', userFilter = 'all', platformFilter = 'all', dataFilter = 'ac' } = defineProps<Props>();
 
 // 定义事件
 interface Emits {
   (e: 'update:periodFilter', value: string): void;
   (e: 'update:userFilter', value: string): void;
   (e: 'update:platformFilter', value: string): void;
+  (e: 'update:dataFilter', value: string): void;
   
   (e: 'refresh-data'): void;
 }
@@ -65,7 +71,10 @@ const onPlatformFilterChange = (event: Event) => {
   emit('update:platformFilter', target.value);
 };
 
-
+const onDataFilterChange = (event: Event) => {
+  const target = event.target as HTMLSelectElement;
+  emit('update:dataFilter', target.value);
+};
 
 const refreshData = () => {
   emit('refresh-data');

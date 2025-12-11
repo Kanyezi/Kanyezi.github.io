@@ -38,10 +38,10 @@ def atcoder_gets(user_path,problems_path):
             if ac_count is not None:
                 us['ac_count']=ac_count
                 print(f"用户 {uname} \t 在AtCoder上AC的题目数量为:{ac_count}",end='')
-                
             else:
                 print(uname,"获取数据失败，请检查用户名或网络连接")
-                return None
+                continue
+
             if  ra is not None:
                 rating = ra['rating']
                 highest_rating = ra['highest_rating']
@@ -49,6 +49,7 @@ def atcoder_gets(user_path,problems_path):
                 us['highest_rating']=highest_rating
                 print(f" \t 目前Rating为:{rating} \t 最高Rating为:{highest_rating}")
             else:
+                print()
                 print(uname,"获取Rating数据失败，请检查用户名或网络连接")
             time.sleep(0.1)
             ru[uname]=us

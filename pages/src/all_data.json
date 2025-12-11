@@ -92,7 +92,7 @@
       "matiji_id": "217485",
       "grade": 2025,
       "nowcoder_id": "266168715",
-      "atcoder": 28,
+      "atcoder": 33,
       "codeforces": 80,
       "matiji": 42
     },
@@ -140,7 +140,7 @@
       "matiji_id": "219493",
       "grade": 2025,
       "nowcoder_id": "264059817",
-      "atcoder": 18,
+      "atcoder": 19,
       "codeforces": 34,
       "matiji": 14
     },
@@ -272,7 +272,7 @@
       "matiji_id": "118407",
       "grade": 2023,
       "nowcoder_id": "无",
-      "atcoder": 55,
+      "atcoder": 56,
       "codeforces": 1038,
       "matiji": 193
     },
@@ -296,7 +296,7 @@
       "matiji_id": "218118",
       "grade": 2025,
       "nowcoder_id": "878907312",
-      "atcoder": 26,
+      "atcoder": 27,
       "codeforces": 38,
       "matiji": 22
     },
@@ -356,7 +356,7 @@
       "matiji_id": "217991",
       "grade": 2025,
       "nowcoder_id": "366442741",
-      "atcoder": 30,
+      "atcoder": 31,
       "codeforces": 93,
       "matiji": 41
     },
@@ -452,7 +452,7 @@
       "matiji_id": "216968",
       "grade": 2025,
       "nowcoder_id": "416371990",
-      "atcoder": 32,
+      "atcoder": 35,
       "codeforces": 102,
       "matiji": 24
     },
@@ -500,7 +500,7 @@
       "matiji_id": "217486",
       "grade": 2025,
       "nowcoder_id": "702164060",
-      "atcoder": 35,
+      "atcoder": 37,
       "codeforces": 56,
       "matiji": 25
     },
@@ -546,6 +546,11 @@
         },
         "2025-12-08": {
           "ac_count": 120
+        },
+        "2025-12-11": {
+          "ac_count": 120,
+          "rating": "718",
+          "highest_rating": "758"
         }
       },
       "codeforces": {
@@ -584,6 +589,11 @@
         },
         "2025-12-08": {
           "ac_count": 12
+        },
+        "2025-12-11": {
+          "ac_count": 12,
+          "rating": "766",
+          "highest_rating": "766"
         }
       },
       "codeforces": {
@@ -628,6 +638,11 @@
         },
         "2025-12-08": {
           "ac_count": 19
+        },
+        "2025-12-11": {
+          "ac_count": 19,
+          "rating": "59",
+          "highest_rating": "59"
         }
       },
       "codeforces": {
@@ -681,6 +696,11 @@
         },
         "2025-12-08": {
           "ac_count": 64
+        },
+        "2025-12-11": {
+          "ac_count": 64,
+          "rating": "686",
+          "highest_rating": "686"
         }
       },
       "codeforces": {
@@ -725,6 +745,11 @@
         },
         "2025-12-08": {
           "ac_count": 7
+        },
+        "2025-12-11": {
+          "ac_count": 7,
+          "rating": "46",
+          "highest_rating": "46"
         }
       },
       "codeforces": {
@@ -778,6 +803,11 @@
         },
         "2025-12-08": {
           "ac_count": 39
+        },
+        "2025-12-11": {
+          "ac_count": 39,
+          "rating": "257",
+          "highest_rating": "257"
         }
       },
       "codeforces": {
@@ -831,6 +861,11 @@
         },
         "2025-12-08": {
           "ac_count": 50
+        },
+        "2025-12-11": {
+          "ac_count": 50,
+          "rating": "741",
+          "highest_rating": "741"
         }
       },
       "codeforces": {
@@ -884,6 +919,11 @@
         },
         "2025-12-08": {
           "ac_count": 28
+        },
+        "2025-12-11": {
+          "ac_count": 33,
+          "rating": "268",
+          "highest_rating": "268"
         }
       },
       "codeforces": {
@@ -937,6 +977,11 @@
         },
         "2025-12-08": {
           "ac_count": 309
+        },
+        "2025-12-11": {
+          "ac_count": 309,
+          "rating": "1253",
+          "highest_rating": "1253"
         }
       },
       "codeforces": {
@@ -981,6 +1026,11 @@
         },
         "2025-12-08": {
           "ac_count": 159
+        },
+        "2025-12-11": {
+          "ac_count": 159,
+          "rating": "753",
+          "highest_rating": "753"
         }
       },
       "codeforces": {
@@ -1025,6 +1075,11 @@
         },
         "2025-12-08": {
           "ac_count": 266
+        },
+        "2025-12-11": {
+          "ac_count": 266,
+          "rating": "1212",
+          "highest_rating": "1212"
         }
       },
       "codeforces": {
@@ -1060,6 +1115,11 @@
         },
         "2025-12-08": {
           "ac_count": 18
+        },
+        "2025-12-11": {
+          "ac_count": 19,
+          "rating": "69",
+          "highest_rating": "69"
         }
       },
       "codeforces": {
@@ -1086,6 +1146,11 @@
         },
         "2025-12-08": {
           "ac_count": 44
+        },
+        "2025-12-11": {
+          "ac_count": 44,
+          "rating": "843",
+          "highest_rating": "843"
         }
       },
       "codeforces": {
@@ -1112,6 +1177,11 @@
         },
         "2025-12-08": {
           "ac_count": 132
+        },
+        "2025-12-11": {
+          "ac_count": 132,
+          "rating": "916",
+          "highest_rating": "916"
         }
       },
       "codeforces": {
@@ -1147,6 +1217,11 @@
         },
         "2025-12-08": {
           "ac_count": 142
+        },
+        "2025-12-11": {
+          "ac_count": 142,
+          "rating": "619",
+          "highest_rating": "619"
         }
       },
       "codeforces": {
@@ -1191,6 +1266,11 @@
         },
         "2025-12-08": {
           "ac_count": 123
+        },
+        "2025-12-11": {
+          "ac_count": 123,
+          "rating": "690",
+          "highest_rating": "690"
         }
       },
       "codeforces": {
@@ -1235,6 +1315,11 @@
         },
         "2025-12-08": {
           "ac_count": 170
+        },
+        "2025-12-11": {
+          "ac_count": 170,
+          "rating": "864",
+          "highest_rating": "864"
         }
       },
       "codeforces": {
@@ -1279,6 +1364,11 @@
         },
         "2025-12-08": {
           "ac_count": 188
+        },
+        "2025-12-11": {
+          "ac_count": 188,
+          "rating": "967",
+          "highest_rating": "1188"
         }
       },
       "codeforces": {
@@ -1323,6 +1413,11 @@
         },
         "2025-12-08": {
           "ac_count": 45
+        },
+        "2025-12-11": {
+          "ac_count": 45,
+          "rating": "403",
+          "highest_rating": "403"
         }
       },
       "codeforces": {
@@ -1376,6 +1471,11 @@
         },
         "2025-12-08": {
           "ac_count": 121
+        },
+        "2025-12-11": {
+          "ac_count": 121,
+          "rating": "592",
+          "highest_rating": "624"
         }
       },
       "codeforces": {
@@ -1420,6 +1520,11 @@
         },
         "2025-12-08": {
           "ac_count": 20
+        },
+        "2025-12-11": {
+          "ac_count": 20,
+          "rating": "7",
+          "highest_rating": "7"
         }
       },
       "codeforces": {
@@ -1473,6 +1578,11 @@
         },
         "2025-12-08": {
           "ac_count": 127
+        },
+        "2025-12-11": {
+          "ac_count": 127,
+          "rating": "685",
+          "highest_rating": "685"
         }
       },
       "codeforces": {
@@ -1508,6 +1618,11 @@
         },
         "2025-12-08": {
           "ac_count": 55
+        },
+        "2025-12-11": {
+          "ac_count": 56,
+          "rating": "226",
+          "highest_rating": "226"
         }
       },
       "codeforces": {
@@ -1543,6 +1658,11 @@
         },
         "2025-12-08": {
           "ac_count": 15
+        },
+        "2025-12-11": {
+          "ac_count": 15,
+          "rating": "132",
+          "highest_rating": "132"
         }
       },
       "codeforces": {
@@ -1596,6 +1716,11 @@
         },
         "2025-12-08": {
           "ac_count": 26
+        },
+        "2025-12-11": {
+          "ac_count": 27,
+          "rating": "113",
+          "highest_rating": "113"
         }
       },
       "codeforces": {
@@ -1640,6 +1765,11 @@
         },
         "2025-12-08": {
           "ac_count": 139
+        },
+        "2025-12-11": {
+          "ac_count": 139,
+          "rating": "1413",
+          "highest_rating": "1413"
         }
       },
       "codeforces": {
@@ -1659,6 +1789,11 @@
         },
         "2025-12-08": {
           "ac_count": 14
+        },
+        "2025-12-11": {
+          "ac_count": 14,
+          "rating": "84",
+          "highest_rating": "84"
         }
       },
       "codeforces": {
@@ -1684,6 +1819,9 @@
           "ac_count": 11
         },
         "2025-12-08": {
+          "ac_count": 11
+        },
+        "2025-12-11": {
           "ac_count": 11
         }
       },
@@ -1720,6 +1858,11 @@
         },
         "2025-12-08": {
           "ac_count": 46
+        },
+        "2025-12-11": {
+          "ac_count": 46,
+          "rating": "368",
+          "highest_rating": "372"
         }
       },
       "codeforces": {
@@ -1773,6 +1916,11 @@
         },
         "2025-12-08": {
           "ac_count": 30
+        },
+        "2025-12-11": {
+          "ac_count": 31,
+          "rating": "425",
+          "highest_rating": "425"
         }
       },
       "codeforces": {
@@ -1836,6 +1984,9 @@
         },
         "2025-12-08": {
           "ac_count": 2
+        },
+        "2025-12-11": {
+          "ac_count": 2
         }
       },
       "codeforces": {
@@ -1871,6 +2022,11 @@
         },
         "2025-12-08": {
           "ac_count": 9
+        },
+        "2025-12-11": {
+          "ac_count": 9,
+          "rating": "69",
+          "highest_rating": "69"
         }
       },
       "codeforces": {
@@ -1924,6 +2080,9 @@
         },
         "2025-12-08": {
           "ac_count": 7
+        },
+        "2025-12-11": {
+          "ac_count": 7
         }
       },
       "codeforces": {
@@ -1959,6 +2118,11 @@
         },
         "2025-12-08": {
           "ac_count": 8
+        },
+        "2025-12-11": {
+          "ac_count": 8,
+          "rating": "24",
+          "highest_rating": "24"
         }
       },
       "codeforces": {
@@ -1987,6 +2151,11 @@
         },
         "2025-12-08": {
           "ac_count": 58
+        },
+        "2025-12-11": {
+          "ac_count": 58,
+          "rating": "517",
+          "highest_rating": "517"
         }
       },
       "codeforces": {
@@ -2031,6 +2200,11 @@
         },
         "2025-12-08": {
           "ac_count": 11
+        },
+        "2025-12-11": {
+          "ac_count": 11,
+          "rating": "2",
+          "highest_rating": "2"
         }
       },
       "codeforces": {
@@ -2066,6 +2240,11 @@
         },
         "2025-12-08": {
           "ac_count": 32
+        },
+        "2025-12-11": {
+          "ac_count": 35,
+          "rating": "169",
+          "highest_rating": "172"
         }
       },
       "codeforces": {
@@ -2147,6 +2326,11 @@
         },
         "2025-12-08": {
           "ac_count": 39
+        },
+        "2025-12-11": {
+          "ac_count": 39,
+          "rating": "480",
+          "highest_rating": "480"
         }
       },
       "codeforces": {
@@ -2182,6 +2366,11 @@
         },
         "2025-12-08": {
           "ac_count": 73
+        },
+        "2025-12-11": {
+          "ac_count": 73,
+          "rating": "502",
+          "highest_rating": "573"
         }
       },
       "codeforces": {
@@ -2226,6 +2415,11 @@
         },
         "2025-12-08": {
           "ac_count": 35
+        },
+        "2025-12-11": {
+          "ac_count": 37,
+          "rating": "138",
+          "highest_rating": "163"
         }
       },
       "codeforces": {
@@ -2270,6 +2464,11 @@
         },
         "2025-12-08": {
           "ac_count": 6
+        },
+        "2025-12-11": {
+          "ac_count": 6,
+          "rating": "10",
+          "highest_rating": "10"
         }
       },
       "codeforces": {
@@ -2305,6 +2504,11 @@
         },
         "2025-12-08": {
           "ac_count": 4
+        },
+        "2025-12-11": {
+          "ac_count": 4,
+          "rating": "3",
+          "highest_rating": "3"
         }
       },
       "codeforces": {
@@ -2343,5 +2547,5 @@
       }
     }
   },
-  "lastUpdate": "2025-12-11T11:01:30.085999"
+  "lastUpdate": "2025-12-11T13:39:02.334887"
 }

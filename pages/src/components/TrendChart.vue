@@ -26,25 +26,25 @@
               </span>
             </th>
             <th @click="sortBy('atcoder')" :class="{ 'sortable': true, 'sorted-asc': sortKey === 'atcoder' && sortOrder === 1, 'sorted-desc': sortKey === 'atcoder' && sortOrder === -1 }">
-              AtCoder题数
+              {{ props.dataFilter === 'rating' ? 'AtCoder Rating' : (props.dataFilter === 'all-data' ? 'AtCoder题数' : 'AtCoder题数') }}
               <span v-if="sortKey === 'atcoder'" class="sort-indicator">
                 {{ sortOrder === 1 ? '↑' : '↓' }}
               </span>
             </th>
             <th @click="sortBy('codeforces')" :class="{ 'sortable': true, 'sorted-asc': sortKey === 'codeforces' && sortOrder === 1, 'sorted-desc': sortKey === 'codeforces' && sortOrder === -1 }">
-              Codeforces题数
+              {{ props.dataFilter === 'rating' ? 'Codeforces Rating' : (props.dataFilter === 'all-data' ? 'Codeforces题数' : 'Codeforces题数') }}
               <span v-if="sortKey === 'codeforces'" class="sort-indicator">
                 {{ sortOrder === 1 ? '↑' : '↓' }}
               </span>
             </th>
             <th @click="sortBy('matiji')" :class="{ 'sortable': true, 'sorted-asc': sortKey === 'matiji' && sortOrder === 1, 'sorted-desc': sortKey === 'matiji' && sortOrder === -1 }">
-              Matiji题数
+              {{ props.dataFilter === 'rating' ? 'Matiji Rating' : (props.dataFilter === 'all-data' ? 'Matiji题数' : 'Matiji题数') }}
               <span v-if="sortKey === 'matiji'" class="sort-indicator">
                 {{ sortOrder === 1 ? '↑' : '↓' }}
               </span>
             </th>
             <th @click="sortBy('total')" :class="{ 'sortable': true, 'sorted-asc': sortKey === 'total' && sortOrder === 1, 'sorted-desc': sortKey === 'total' && sortOrder === -1 }">
-              总题数
+              {{ props.dataFilter === 'rating' ? '总Rating' : (props.dataFilter === 'all-data' ? '总题数' : '总题数') }}
               <span v-if="sortKey === 'total'" class="sort-indicator">
                 {{ sortOrder === 1 ? '↑' : '↓' }}
               </span>
@@ -96,6 +96,7 @@ interface Props {
   displayUsers: User[];
   userData: Record<string, StudentData>;
   currentPlatformFilter: string;
+  dataFilter: string;
   chartType: string;
 }
 
@@ -103,6 +104,7 @@ const props = withDefaults(defineProps<Props>(), {
   displayUsers: () => [],
   userData: () => ({}),
   currentPlatformFilter: 'all',
+  dataFilter: 'ac',
   chartType: 'line'
 });
 
@@ -122,12 +124,30 @@ const sortOrder = ref(1); // 1 为升序，-1 为降序
 
 // 计算属性
 const chartTitle = computed(() => {
-  switch (props.currentPlatformFilter) {
-    case 'atcoder': return 'AtCoder 刷题数量趋势';
-    case 'codeforces': return 'Codeforces 刷题数量趋势';
-    case 'matiji': return 'Matiji 刷题数量趋势';
-    default: return '全部平台 刷题数量趋势';
+  const platformTitles = {
+    'atcoder': 'AtCoder',
+    'codeforces': 'Codeforces',
+    'matiji': 'Matiji'
+  };
+  
+  const platformTitle = platformTitles[props.currentPlatformFilter as keyof typeof platformTitles] || '全部平台';
+  
+  let dataType = '';
+  switch (props.dataFilter) {
+    case 'ac':
+      dataType = '刷题数量';
+      break;
+    case 'rating':
+      dataType = 'Rating';
+      break;
+    case 'all-data':
+      dataType = '全部数据';
+      break;
+    default:
+      dataType = '刷题数量';
   }
+  
+  return `${platformTitle} ${dataType}趋势`;
 });
 
 const currentChartType = ref(props.chartType);
@@ -225,19 +245,32 @@ const getUserPlatformCount = (userName: string, platform: string): number => {
   // 获取最新的日期数据
   const latestDate = getLatestDateFromPlatformData(platformData);
   if (latestDate && platformData[latestDate]) {
-    // 新数据格式：{ ac_count: number }
-    if (typeof platformData[latestDate] === 'object' && platformData[latestDate].ac_count !== undefined) {
-      return platformData[latestDate].ac_count;
+    // 根据数据过滤类型获取相应的值
+    if (props.dataFilter === 'rating') {
+      // 获取Rating值
+      if (typeof platformData[latestDate] === 'object' && platformData[latestDate].rating !== undefined) {
+        return parseInt(platformData[latestDate].rating) || 0;
+      }
+    } else if (props.dataFilter === 'all-data') {
+      // 获取AC题数
+      if (typeof platformData[latestDate] === 'object' && platformData[latestDate].ac_count !== undefined) {
+        return platformData[latestDate].ac_count;
+      }
     } else {
-      // 旧数据格式：直接是数值
-      return platformData[latestDate];
+      // 默认为AC题数
+      if (typeof platformData[latestDate] === 'object' && platformData[latestDate].ac_count !== undefined) {
+        return platformData[latestDate].ac_count;
+      } else {
+        // 旧数据格式：直接是数值
+        return platformData[latestDate];
+      }
     }
   }
 
   return 0;
 };
 
-// 获取用户总数量
+// 获取用户总数量或Rating
 const getUserTotalCount = (userName: string): number => {
   const userHistory = props.userData[userName];
   if (!userHistory) {
@@ -249,12 +282,25 @@ const getUserTotalCount = (userName: string): number => {
   Object.entries(userHistory).forEach(([platform, platformData]) => {
     const latestDate = getLatestDateFromPlatformData(platformData);
     if (latestDate && platformData[latestDate]) {
-      // 新数据格式：{ ac_count: number }
-      if (typeof platformData[latestDate] === 'object' && platformData[latestDate].ac_count !== undefined) {
-        total += platformData[latestDate].ac_count;
+      // 根据数据过滤类型获取相应的值
+      if (props.dataFilter === 'rating') {
+        // 获取Rating值
+        if (typeof platformData[latestDate] === 'object' && platformData[latestDate].rating !== undefined) {
+          total += parseInt(platformData[latestDate].rating) || 0;
+        }
+      } else if (props.dataFilter === 'all-data') {
+        // 获取AC题数
+        if (typeof platformData[latestDate] === 'object' && platformData[latestDate].ac_count !== undefined) {
+          total += platformData[latestDate].ac_count;
+        }
       } else {
-        // 旧数据格式：直接是数值
-        total += platformData[latestDate];
+        // 默认为AC题数
+        if (typeof platformData[latestDate] === 'object' && platformData[latestDate].ac_count !== undefined) {
+          total += platformData[latestDate].ac_count;
+        } else {
+          // 旧数据格式：直接是数值
+          total += platformData[latestDate];
+        }
       }
     }
   });
@@ -307,15 +353,28 @@ const renderChart = () => {
           if (!userHistory) return 0;
           
           let total = 0;
-          // 检查每个平台的数据格式并提取ac_count值
-          Object.values(userHistory).forEach(platformData => {
+          // 检查每个平台的数据格式并提取相应的值
+          Object.entries(userHistory).forEach(([plat, platformData]) => {
             if (platformData[date]) {
-              // 新数据格式：{ ac_count: number }
-              if (typeof platformData[date] === 'object' && platformData[date].ac_count !== undefined) {
-                total += platformData[date].ac_count;
+              // 根据数据过滤类型获取相应值
+              if (props.dataFilter === 'rating') {
+                // 获取Rating值
+                if (typeof platformData[date] === 'object' && platformData[date].rating !== undefined) {
+                  total += parseInt(platformData[date].rating) || 0;
+                }
+              } else if (props.dataFilter === 'all-data') {
+                // 获取AC题数
+                if (typeof platformData[date] === 'object' && platformData[date].ac_count !== undefined) {
+                  total += platformData[date].ac_count;
+                }
               } else {
-                // 旧数据格式：直接是数值
-                total += platformData[date];
+                // 默认获取AC题数
+                if (typeof platformData[date] === 'object' && platformData[date].ac_count !== undefined) {
+                  total += platformData[date].ac_count;
+                } else {
+                  // 旧数据格式：直接是数值
+                  total += platformData[date];
+                }
               }
             }
           });
@@ -328,12 +387,25 @@ const renderChart = () => {
           const platformData = userHistory[platform as keyof StudentData];
           data = dateLabels.value.map(date => {
             if (platformData[date]) {
-              // 新数据格式：{ ac_count: number }
-              if (typeof platformData[date] === 'object' && platformData[date].ac_count !== undefined) {
-                return platformData[date].ac_count;
+              // 根据数据过滤类型获取相应值
+              if (props.dataFilter === 'rating') {
+                // 获取Rating值
+                if (typeof platformData[date] === 'object' && platformData[date].rating !== undefined) {
+                  return parseInt(platformData[date].rating) || 0;
+                }
+              } else if (props.dataFilter === 'all-data') {
+                // 获取AC题数
+                if (typeof platformData[date] === 'object' && platformData[date].ac_count !== undefined) {
+                  return platformData[date].ac_count;
+                }
               } else {
-                // 旧数据格式：直接是数值
-                return platformData[date];
+                // 默认获取AC题数
+                if (typeof platformData[date] === 'object' && platformData[date].ac_count !== undefined) {
+                  return platformData[date].ac_count;
+                } else {
+                  // 旧数据格式：直接是数值
+                  return platformData[date];
+                }
               }
             } else {
               return 0;
@@ -385,10 +457,10 @@ const renderChart = () => {
           },
           scales: {
             y: {
-              beginAtZero: true,
+              beginAtZero: props.dataFilter !== 'rating', // Rating不需要从0开始
               title: {
                 display: true,
-                text: '刷题数量'
+                text: props.dataFilter === 'rating' ? 'Rating' : (props.dataFilter === 'all-data' ? '刷题数量' : '刷题数量')
               }
             },
             x: {
@@ -417,7 +489,7 @@ const renderChart = () => {
 };
 
 // 监听属性变化并重绘图表
-watch(() => [props.displayUsers, props.currentPlatformFilter, currentChartType.value, currentView.value], () => {
+watch(() => [props.displayUsers, props.currentPlatformFilter, props.dataFilter, currentChartType.value, currentView.value], () => {
   nextTick(() => {
     if (currentView.value === 'chart') {
       renderChart();
