@@ -28,16 +28,26 @@ def matiji_gets(user_path,problems_path):
         for user in data:
             uname = user['name']
             uid = user['matiji_id']
+            us={}
             if(uid==""):
                 print(f"用户 {uname} id未写入")
                 continue
-            ac_count = get_user_ac_count(uid)["data"]["passNum"]
-            if ac_count is not None:
-                print(f"用户 {uname} 在码题集上AC的题目数量为: {ac_count}")
-                ru[uname]=ac_count
+            data=get_user_ac_count(uid)
+            if data is not None:
+                ac_count = data['data']['passNum']
+                us['ac_count']=ac_count
+                print(f"用户 {uname} \t 在码题集上AC的题目数量为: {ac_count}",end='')
+
+                try:
+                    rating = data['data']['userMatchRankEntity']['needRating']
+                    us['rating']=rating
+                    print(f" \t 目前Rating为:{rating}")
+                except Exception as e:
+                    print(f" \t 目前Rating获取失败")
             else:
-                print(uid,"获取数据失败，请检查用户名或网络连接")
+                print(f"用户 {uname} \t 获取ac数据失败，请检查用户名或网络连接")
             time.sleep(0.1)
+            ru[uname]=us
         json.dump(ru,f)
 
 # 使用示例

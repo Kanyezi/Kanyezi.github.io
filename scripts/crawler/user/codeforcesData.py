@@ -3,12 +3,33 @@ import json
 import time
 import datetime
 import os
+def get_user_rating(handle):
+    url = f"https://codeforces.com/api/user.info?handles={handle}"
+    
+    
+    try:
+        # 发送API请求
+        response = requests.get(url)
+        data = response.json()
+        
+        # 检查API响应状态
+        if data['status'] != 'OK':
+            print(f"错误: {data.get('comment', '未知错误')}")
+            return None
+        
+        user_info = data['result'][0]
+        rating = user_info.get('rating')
+        highest_rating = user_info.get('maxRating')
+        
+        return {'rating': rating, 'highest_rating': highest_rating}
+    
+    except requests.exceptions.RequestException as e:
+        print(f"网络错误: {e}")
+        return None
+    except Exception as e:
+        print(f"处理错误: {e}")
+        return None
 def get_user_ac_count(handle):
-    """
-    获取指定用户的AC题目数量
-    :param handle: Codeforces用户名
-    :return: AC题目数量（整数）
-    """
     url = f"https://codeforces.com/api/user.status?handle={handle}"
     
     try:
@@ -56,12 +77,24 @@ def codeforces_gets(user_path,problems_path):
                 print(f"用户 {uname} id未写入")
                 continue
             ac_count = get_user_ac_count(uid)
+            ra = get_user_rating(uid)
+            us={}
             if ac_count is not None:
-                print(f"用户 {uname} 在Codeforces上AC的题目数量为: {ac_count}")
-                ru[uname]=ac_count
+                us['ac_count']=ac_count
+                print(f"用户 {uname} \t 在Codeforces上AC的题目数量为:{ac_count}",end='')
             else:
-                print("获取数据失败，请检查用户名或网络连接")
+                print(f"用户 {uname} \t 获取ac数据失败，请检查用户名或网络连接")
+                continue
+            if ra is not None:
+                rating = ra['rating']
+                highest_rating = ra['highest_rating']
+                us['rating']=rating
+                us['highest_rating']=highest_rating
+                print(f" \t 目前Rating为:{rating} \t 最高Rating为:{highest_rating}")
+            else:
+                print(f"用户 {uname} \t 获取Rating数据失败，请检查用户名或网络连接")
             time.sleep(0.1)
+            ru[uname]=us
         json.dump(ru,f)
 if __name__ == "__main__":
     # print(get_user_ac_count("YonagiKei"))

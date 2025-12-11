@@ -106,12 +106,15 @@ def convert_data(root_path,user_path,out_path):
         for platform in ['atcoder', 'codeforces', 'matiji']:
             for date_str, date_data in platform_date_data[platform].items():
                 if name in date_data:
-                    if platform == 'atcoder':
-                        sum_atcoder = max(sum_atcoder,date_data[name]["ac_count"])
-                    elif platform == 'codeforces':
-                        sum_codeforces = max(sum_codeforces,date_data[name]["ac_count"])
-                    elif platform == 'matiji':
-                        sum_matiji = max(sum_matiji,date_data[name]["ac_count"])
+                    try:
+                        if platform == 'atcoder':
+                            sum_atcoder = max(sum_atcoder,date_data[name]["ac_count"])
+                        elif platform == 'codeforces':
+                            sum_codeforces = max(sum_codeforces,date_data[name]["ac_count"])
+                        elif platform == 'matiji':
+                            sum_matiji = max(sum_matiji,date_data[name]["ac_count"])
+                    except Exception as e:
+                        print(f"处理{platform}数据时出错，用户: {name}, 日期: {date_str}, 错误: {e}")
         
         # 构建用户数据
         user_data = {
