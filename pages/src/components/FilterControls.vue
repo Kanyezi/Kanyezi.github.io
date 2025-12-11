@@ -22,7 +22,7 @@
       <select class="filter-select" :value="dataFilter" @change="onDataFilterChange">
         <option value="ac">AC题数</option>
         <option value="rating">Rating</option>
-        <option value="all-data">全部数据</option>
+        <option value="all-data">详细信息</option>
       </select>
     </div>
     

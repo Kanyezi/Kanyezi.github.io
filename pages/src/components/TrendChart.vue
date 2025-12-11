@@ -25,39 +25,127 @@
                 {{ sortOrder === 1 ? '↑' : '↓' }}
               </span>
             </th>
-            <th @click="sortBy('atcoder')" :class="{ 'sortable': true, 'sorted-asc': sortKey === 'atcoder' && sortOrder === 1, 'sorted-desc': sortKey === 'atcoder' && sortOrder === -1 }">
-              {{ props.dataFilter === 'rating' ? 'AtCoder Rating' : (props.dataFilter === 'all-data' ? 'AtCoder题数' : 'AtCoder题数') }}
-              <span v-if="sortKey === 'atcoder'" class="sort-indicator">
-                {{ sortOrder === 1 ? '↑' : '↓' }}
-              </span>
-            </th>
-            <th @click="sortBy('codeforces')" :class="{ 'sortable': true, 'sorted-asc': sortKey === 'codeforces' && sortOrder === 1, 'sorted-desc': sortKey === 'codeforces' && sortOrder === -1 }">
-              {{ props.dataFilter === 'rating' ? 'Codeforces Rating' : (props.dataFilter === 'all-data' ? 'Codeforces题数' : 'Codeforces题数') }}
-              <span v-if="sortKey === 'codeforces'" class="sort-indicator">
-                {{ sortOrder === 1 ? '↑' : '↓' }}
-              </span>
-            </th>
-            <th @click="sortBy('matiji')" :class="{ 'sortable': true, 'sorted-asc': sortKey === 'matiji' && sortOrder === 1, 'sorted-desc': sortKey === 'matiji' && sortOrder === -1 }">
-              {{ props.dataFilter === 'rating' ? 'Matiji Rating' : (props.dataFilter === 'all-data' ? 'Matiji题数' : 'Matiji题数') }}
-              <span v-if="sortKey === 'matiji'" class="sort-indicator">
-                {{ sortOrder === 1 ? '↑' : '↓' }}
-              </span>
-            </th>
-            <th @click="sortBy('total')" :class="{ 'sortable': true, 'sorted-asc': sortKey === 'total' && sortOrder === 1, 'sorted-desc': sortKey === 'total' && sortOrder === -1 }">
-              {{ props.dataFilter === 'rating' ? '总Rating' : (props.dataFilter === 'all-data' ? '总题数' : '总题数') }}
-              <span v-if="sortKey === 'total'" class="sort-indicator">
-                {{ sortOrder === 1 ? '↑' : '↓' }}
-              </span>
-            </th>
+            <template v-if="props.dataFilter === 'all-data'">
+              <!-- 在 all-data 模式下显示 AC 题数、Rating 和总 AC 题数 -->
+              <th @click="sortBy('atcoder')" :class="{ 'sortable': true, 'sorted-asc': sortKey === 'atcoder' && sortOrder === 1, 'sorted-desc': sortKey === 'atcoder' && sortOrder === -1 }">
+                AtCoder题数
+                <span v-if="sortKey === 'atcoder'" class="sort-indicator">
+                  {{ sortOrder === 1 ? '↑' : '↓' }}
+                </span>
+              </th>
+              <th @click="sortBy('atcoderRating')" :class="{ 'sortable': true, 'sorted-asc': sortKey === 'atcoderRating' && sortOrder === 1, 'sorted-desc': sortKey === 'atcoderRating' && sortOrder === -1 }">
+                AtCoder Rating
+                <span v-if="sortKey === 'atcoderRating'" class="sort-indicator">
+                  {{ sortOrder === 1 ? '↑' : '↓' }}
+                </span>
+              </th>
+              <th @click="sortBy('codeforces')" :class="{ 'sortable': true, 'sorted-asc': sortKey === 'codeforces' && sortOrder === 1, 'sorted-desc': sortKey === 'codeforces' && sortOrder === -1 }">
+                Codeforces题数
+                <span v-if="sortKey === 'codeforces'" class="sort-indicator">
+                  {{ sortOrder === 1 ? '↑' : '↓' }}
+                </span>
+              </th>
+              <th @click="sortBy('codeforcesRating')" :class="{ 'sortable': true, 'sorted-asc': sortKey === 'codeforcesRating' && sortOrder === 1, 'sorted-desc': sortKey === 'codeforcesRating' && sortOrder === -1 }">
+                Codeforces Rating
+                <span v-if="sortKey === 'codeforcesRating'" class="sort-indicator">
+                  {{ sortOrder === 1 ? '↑' : '↓' }}
+                </span>
+              </th>
+              <th @click="sortBy('matiji')" :class="{ 'sortable': true, 'sorted-asc': sortKey === 'matiji' && sortOrder === 1, 'sorted-desc': sortKey === 'matiji' && sortOrder === -1 }">
+                Matiji题数
+                <span v-if="sortKey === 'matiji'" class="sort-indicator">
+                  {{ sortOrder === 1 ? '↑' : '↓' }}
+                </span>
+              </th>
+              <th @click="sortBy('matijiRating')" :class="{ 'sortable': true, 'sorted-asc': sortKey === 'matijiRating' && sortOrder === 1, 'sorted-desc': sortKey === 'matijiRating' && sortOrder === -1 }">
+                Matiji Rating
+                <span v-if="sortKey === 'matijiRating'" class="sort-indicator">
+                  {{ sortOrder === 1 ? '↑' : '↓' }}
+                </span>
+              </th>
+              <th @click="sortBy('total')" :class="{ 'sortable': true, 'sorted-asc': sortKey === 'total' && sortOrder === 1, 'sorted-desc': sortKey === 'total' && sortOrder === -1 }">
+                总AC题数
+                <span v-if="sortKey === 'total'" class="sort-indicator">
+                  {{ sortOrder === 1 ? '↑' : '↓' }}
+                </span>
+              </th>
+            </template>
+            <template v-else-if="props.dataFilter === 'rating'">
+              <!-- 在 rating 模式下显示各平台 Rating 但不显示总 Rating -->
+              <th @click="sortBy('atcoderRating')" :class="{ 'sortable': true, 'sorted-asc': sortKey === 'atcoderRating' && sortOrder === 1, 'sorted-desc': sortKey === 'atcoderRating' && sortOrder === -1 }">
+                AtCoder Rating
+                <span v-if="sortKey === 'atcoderRating'" class="sort-indicator">
+                  {{ sortOrder === 1 ? '↑' : '↓' }}
+                </span>
+              </th>
+              <th @click="sortBy('codeforcesRating')" :class="{ 'sortable': true, 'sorted-asc': sortKey === 'codeforcesRating' && sortOrder === 1, 'sorted-desc': sortKey === 'codeforcesRating' && sortOrder === -1 }">
+                Codeforces Rating
+                <span v-if="sortKey === 'codeforcesRating'" class="sort-indicator">
+                  {{ sortOrder === 1 ? '↑' : '↓' }}
+                </span>
+              </th>
+              <th @click="sortBy('matijiRating')" :class="{ 'sortable': true, 'sorted-asc': sortKey === 'matijiRating' && sortOrder === 1, 'sorted-desc': sortKey === 'matijiRating' && sortOrder === -1 }">
+                Matiji Rating
+                <span v-if="sortKey === 'matijiRating'" class="sort-indicator">
+                  {{ sortOrder === 1 ? '↑' : '↓' }}
+                </span>
+              </th>
+            </template>
+            <template v-else>
+              <!-- 在 ac 模式下显示各平台 AC 题数和总 AC 题数 -->
+              <th @click="sortBy('atcoder')" :class="{ 'sortable': true, 'sorted-asc': sortKey === 'atcoder' && sortOrder === 1, 'sorted-desc': sortKey === 'atcoder' && sortOrder === -1 }">
+                AtCoder题数
+                <span v-if="sortKey === 'atcoder'" class="sort-indicator">
+                  {{ sortOrder === 1 ? '↑' : '↓' }}
+                </span>
+              </th>
+              <th @click="sortBy('codeforces')" :class="{ 'sortable': true, 'sorted-asc': sortKey === 'codeforces' && sortOrder === 1, 'sorted-desc': sortKey === 'codeforces' && sortOrder === -1 }">
+                Codeforces题数
+                <span v-if="sortKey === 'codeforces'" class="sort-indicator">
+                  {{ sortOrder === 1 ? '↑' : '↓' }}
+                </span>
+              </th>
+              <th @click="sortBy('matiji')" :class="{ 'sortable': true, 'sorted-asc': sortKey === 'matiji' && sortOrder === 1, 'sorted-desc': sortKey === 'matiji' && sortOrder === -1 }">
+                Matiji题数
+                <span v-if="sortKey === 'matiji'" class="sort-indicator">
+                  {{ sortOrder === 1 ? '↑' : '↓' }}
+                </span>
+              </th>
+              <th @click="sortBy('total')" :class="{ 'sortable': true, 'sorted-asc': sortKey === 'total' && sortOrder === 1, 'sorted-desc': sortKey === 'total' && sortOrder === -1 }">
+                总AC题数
+                <span v-if="sortKey === 'total'" class="sort-indicator">
+                  {{ sortOrder === 1 ? '↑' : '↓' }}
+                </span>
+              </th>
+            </template>
           </tr>
         </thead>
         <tbody>
           <tr v-for="user in sortedUsers" :key="user.name">
             <td>{{ user.name }}</td>
-            <td>{{ getUserPlatformCount(user.name, 'atcoder') }}</td>
-            <td>{{ getUserPlatformCount(user.name, 'codeforces') }}</td>
-            <td>{{ getUserPlatformCount(user.name, 'matiji') }}</td>
-            <td>{{ getUserTotalCount(user.name) }}</td>
+            <template v-if="props.dataFilter === 'all-data'">
+              <!-- 在 all-data 模式下显示 AC 题数、Rating 和总 AC 题数 -->
+              <td>{{ getUserPlatformCount(user.name, 'atcoder') }}</td>
+              <td>{{ getUserPlatformRating(user.name, 'atcoder') }}</td>
+              <td>{{ getUserPlatformCount(user.name, 'codeforces') }}</td>
+              <td>{{ getUserPlatformRating(user.name, 'codeforces') }}</td>
+              <td>{{ getUserPlatformCount(user.name, 'matiji') }}</td>
+              <td>{{ getUserPlatformRating(user.name, 'matiji') }}</td>
+              <td>{{ getUserTotalACCount(user.name) }}</td>
+            </template>
+            <template v-else-if="props.dataFilter === 'rating'">
+              <!-- 在 rating 模式下显示各平台 Rating 但不显示总 Rating -->
+              <td>{{ getUserPlatformRating(user.name, 'atcoder') }}</td>
+              <td>{{ getUserPlatformRating(user.name, 'codeforces') }}</td>
+              <td>{{ getUserPlatformRating(user.name, 'matiji') }}</td>
+            </template>
+            <template v-else>
+              <!-- 在 ac 模式下显示各平台 AC 题数和总 AC 题数 -->
+              <td>{{ getUserPlatformCount(user.name, 'atcoder') }}</td>
+              <td>{{ getUserPlatformCount(user.name, 'codeforces') }}</td>
+              <td>{{ getUserPlatformCount(user.name, 'matiji') }}</td>
+              <td>{{ getUserTotalACCount(user.name) }}</td>
+            </template>
           </tr>
         </tbody>
       </table>
@@ -133,15 +221,19 @@ const chartTitle = computed(() => {
   const platformTitle = platformTitles[props.currentPlatformFilter as keyof typeof platformTitles] || '全部平台';
   
   let dataType = '';
-  switch (props.dataFilter) {
+  // 对于图表，all-data 模式不改变显示内容，保持之前的模式
+  let currentDataFilter = props.dataFilter;
+  if (currentDataFilter === 'all-data') {
+    // 如果当前是 all-data 模式，使用默认的 ac 模式标题
+    currentDataFilter = 'ac';
+  }
+  
+  switch (currentDataFilter) {
     case 'ac':
       dataType = '刷题数量';
       break;
     case 'rating':
       dataType = 'Rating';
-      break;
-    case 'all-data':
-      dataType = '全部数据';
       break;
     default:
       dataType = '刷题数量';
@@ -209,15 +301,25 @@ const sortedUsers = computed(() => {
     } else if (sortKey.value === 'atcoder') {
       valueA = getUserPlatformCount(a.name, 'atcoder');
       valueB = getUserPlatformCount(b.name, 'atcoder');
+    } else if (sortKey.value === 'atcoderRating') {
+      valueA = getUserPlatformRating(a.name, 'atcoder');
+      valueB = getUserPlatformRating(b.name, 'atcoder');
     } else if (sortKey.value === 'codeforces') {
       valueA = getUserPlatformCount(a.name, 'codeforces');
       valueB = getUserPlatformCount(b.name, 'codeforces');
+    } else if (sortKey.value === 'codeforcesRating') {
+      valueA = getUserPlatformRating(a.name, 'codeforces');
+      valueB = getUserPlatformRating(b.name, 'codeforces');
     } else if (sortKey.value === 'matiji') {
       valueA = getUserPlatformCount(a.name, 'matiji');
       valueB = getUserPlatformCount(b.name, 'matiji');
+    } else if (sortKey.value === 'matijiRating') {
+      valueA = getUserPlatformRating(a.name, 'matiji');
+      valueB = getUserPlatformRating(b.name, 'matiji');
     } else if (sortKey.value === 'total') {
-      valueA = getUserTotalCount(a.name);
-      valueB = getUserTotalCount(b.name);
+      // 总是使用总 AC 题数进行排序
+      valueA = getUserTotalACCount(a.name);
+      valueB = getUserTotalACCount(b.name);
     } else {
       return 0;
     }
@@ -270,7 +372,53 @@ const getUserPlatformCount = (userName: string, platform: string): number => {
   return 0;
 };
 
-// 获取用户总数量或Rating
+// 获取用户特定平台的Rating
+const getUserPlatformRating = (userName: string, platform: string): number => {
+  const userHistory = props.userData[userName];
+  if (!userHistory || !userHistory[platform as keyof StudentData]) {
+    return 0;
+  }
+
+  const platformData = userHistory[platform as keyof StudentData];
+  // 获取最新的日期数据
+  const latestDate = getLatestDateFromPlatformData(platformData);
+  if (latestDate && platformData[latestDate]) {
+    // 获取Rating值
+    if (typeof platformData[latestDate] === 'object' && platformData[latestDate].rating !== undefined) {
+      return parseInt(platformData[latestDate].rating) || 0;
+    }
+  }
+
+  // 如果没有找到Rating数据，返回0
+  return 0;
+};
+
+// 获取用户总AC题数（不包含Rating）
+const getUserTotalACCount = (userName: string): number => {
+  const userHistory = props.userData[userName];
+  if (!userHistory) {
+    return 0;
+  }
+
+  let total = 0;
+  // 遍历所有平台，只计算AC题数，不计算Rating
+  Object.entries(userHistory).forEach(([platform, platformData]) => {
+    const latestDate = getLatestDateFromPlatformData(platformData);
+    if (latestDate && platformData[latestDate]) {
+      // 获取AC题数
+      if (typeof platformData[latestDate] === 'object' && platformData[latestDate].ac_count !== undefined) {
+        total += platformData[latestDate].ac_count;
+      } else {
+        // 旧数据格式：直接是数值
+        total += platformData[latestDate];
+      }
+    }
+  });
+
+  return total;
+};
+
+// 获取用户总AC题数（用于ac模式）
 const getUserTotalCount = (userName: string): number => {
   const userHistory = props.userData[userName];
   if (!userHistory) {
@@ -278,29 +426,16 @@ const getUserTotalCount = (userName: string): number => {
   }
 
   let total = 0;
-  // 遍历所有平台
+  // 遍历所有平台，只计算AC题数
   Object.entries(userHistory).forEach(([platform, platformData]) => {
     const latestDate = getLatestDateFromPlatformData(platformData);
     if (latestDate && platformData[latestDate]) {
-      // 根据数据过滤类型获取相应的值
-      if (props.dataFilter === 'rating') {
-        // 获取Rating值
-        if (typeof platformData[latestDate] === 'object' && platformData[latestDate].rating !== undefined) {
-          total += parseInt(platformData[latestDate].rating) || 0;
-        }
-      } else if (props.dataFilter === 'all-data') {
-        // 获取AC题数
-        if (typeof platformData[latestDate] === 'object' && platformData[latestDate].ac_count !== undefined) {
-          total += platformData[latestDate].ac_count;
-        }
+      // 获取AC题数，不计算Rating
+      if (typeof platformData[latestDate] === 'object' && platformData[latestDate].ac_count !== undefined) {
+        total += platformData[latestDate].ac_count;
       } else {
-        // 默认为AC题数
-        if (typeof platformData[latestDate] === 'object' && platformData[latestDate].ac_count !== undefined) {
-          total += platformData[latestDate].ac_count;
-        } else {
-          // 旧数据格式：直接是数值
-          total += platformData[latestDate];
-        }
+        // 旧数据格式：直接是数值
+        total += platformData[latestDate];
       }
     }
   });
@@ -355,27 +490,43 @@ const renderChart = () => {
           let total = 0;
           // 检查每个平台的数据格式并提取相应的值
           Object.entries(userHistory).forEach(([plat, platformData]) => {
+            // 检查当前日期是否有数据
             if (platformData[date]) {
               // 根据数据过滤类型获取相应值
               if (props.dataFilter === 'rating') {
-                // 获取Rating值
+                // 获取Rating值，如果不存在则为0
                 if (typeof platformData[date] === 'object' && platformData[date].rating !== undefined) {
                   total += parseInt(platformData[date].rating) || 0;
+                } else {
+                  // 如果没有Rating数据，则加0
+                  total += 0;
                 }
               } else if (props.dataFilter === 'all-data') {
-                // 获取AC题数
+                // 在all-data模式下，图表显示AC题数
                 if (typeof platformData[date] === 'object' && platformData[date].ac_count !== undefined) {
                   total += platformData[date].ac_count;
+                } else if (typeof platformData[date] === 'number') {
+                  // 旧数据格式
+                  total += platformData[date];
+                } else {
+                  // 如果没有AC题数数据，则加0
+                  total += 0;
                 }
               } else {
                 // 默认获取AC题数
                 if (typeof platformData[date] === 'object' && platformData[date].ac_count !== undefined) {
                   total += platformData[date].ac_count;
-                } else {
-                  // 旧数据格式：直接是数值
+                } else if (typeof platformData[date] === 'number') {
+                  // 旧数据格式
                   total += platformData[date];
+                } else {
+                  // 如果没有AC题数数据，则加0
+                  total += 0;
                 }
               }
+            } else {
+              // 如果该日期没有数据，则加0
+              total += 0;
             }
           });
           return total;
@@ -389,22 +540,34 @@ const renderChart = () => {
             if (platformData[date]) {
               // 根据数据过滤类型获取相应值
               if (props.dataFilter === 'rating') {
-                // 获取Rating值
+                // 获取Rating值，如果不存在则为0
                 if (typeof platformData[date] === 'object' && platformData[date].rating !== undefined) {
                   return parseInt(platformData[date].rating) || 0;
+                } else {
+                  // 如果没有Rating数据，返回0
+                  return 0;
                 }
               } else if (props.dataFilter === 'all-data') {
-                // 获取AC题数
+                // 在all-data模式下，图表显示AC题数
                 if (typeof platformData[date] === 'object' && platformData[date].ac_count !== undefined) {
                   return platformData[date].ac_count;
+                } else if (typeof platformData[date] === 'number') {
+                  // 旧数据格式
+                  return platformData[date];
+                } else {
+                  // 如果没有AC题数数据，返回0
+                  return 0;
                 }
               } else {
                 // 默认获取AC题数
                 if (typeof platformData[date] === 'object' && platformData[date].ac_count !== undefined) {
                   return platformData[date].ac_count;
-                } else {
-                  // 旧数据格式：直接是数值
+                } else if (typeof platformData[date] === 'number') {
+                  // 旧数据格式
                   return platformData[date];
+                } else {
+                  // 如果没有AC题数数据，返回0
+                  return 0;
                 }
               }
             } else {
@@ -460,7 +623,7 @@ const renderChart = () => {
               beginAtZero: props.dataFilter !== 'rating', // Rating不需要从0开始
               title: {
                 display: true,
-                text: props.dataFilter === 'rating' ? 'Rating' : (props.dataFilter === 'all-data' ? '刷题数量' : '刷题数量')
+                text: props.dataFilter === 'rating' ? 'Rating' : '刷题数量'
               }
             },
             x: {
@@ -488,11 +651,14 @@ const renderChart = () => {
   }
 };
 
-// 监听属性变化并重绘图表
+// 监听属性变化并重绘图表 - 但 dataFilter 为 'all-data' 时不重绘
 watch(() => [props.displayUsers, props.currentPlatformFilter, props.dataFilter, currentChartType.value, currentView.value], () => {
   nextTick(() => {
     if (currentView.value === 'chart') {
-      renderChart();
+      // 仅在 dataFilter 不是 'all-data' 时重绘图表
+      if (props.dataFilter !== 'all-data') {
+        renderChart();
+      }
     }
   });
 }, { deep: true });
