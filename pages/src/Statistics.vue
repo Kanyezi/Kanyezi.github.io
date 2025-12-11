@@ -360,6 +360,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-@import './styles/app.css';
+@import './styles/root.css';
 @import './styles/Statistics.css';
 </style>

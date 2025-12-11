@@ -443,6 +443,6 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-@import '../styles/app.css';
+@import '../styles/root.css';
 @import '../styles/TrendChart.css';
 </style>

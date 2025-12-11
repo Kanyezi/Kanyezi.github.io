@@ -11,7 +11,7 @@ if __name__ == "__main__":
 
     # 抓取用户ac题目数
 
-    # atcoderData.atcoder_gets(user,ps.atcoder_path_user)
+    atcoderData.atcoder_gets(user,ps.atcoder_path_user)
     # codeforcesData.codeforces_gets(user,ps.codeforces_path_user)
     # matijiData.matiji_gets(user,ps.matiji_path_user)
 

@@ -33,12 +33,25 @@ def atcoder_gets(user_path,problems_path):
                 print(f"用户 {uname} id未写入")
                 continue
             ac_count = get_user_ac_count_api(uid)
+            ra = get_user_rating_api(uid)
+            us={}
             if ac_count is not None:
-                print(f"用户 {uname} 在AtCoder上AC的题目数量为: {ac_count}")
-                ru[uname]=ac_count
+                us['ac_count']=ac_count
+                print(f"用户 {uname} \t 在AtCoder上AC的题目数量为:{ac_count}",end='')
+                
             else:
                 print(uname,"获取数据失败，请检查用户名或网络连接")
+                return None
+            if  ra is not None:
+                rating = ra['rating']
+                highest_rating = ra['highest_rating']
+                us['rating']=rating
+                us['highest_rating']=highest_rating
+                print(f" \t 目前Rating为:{rating} \t 最高Rating为:{highest_rating}")
+            else:
+                print(uname,"获取Rating数据失败，请检查用户名或网络连接")
             time.sleep(0.1)
+            ru[uname]=us
         json.dump(ru,f)
 def get_user_rating_api(username):
     # AtCoderProblems API接口
@@ -50,25 +63,25 @@ def get_user_rating_api(username):
 
     try:
         # 发送GET请求
-        # response = requests.get(url=url,headers=headers)
+        response = requests.get(url=url,headers=headers)
         # 解析JSON响应
-        # resjson = response.text
-        resjson="""
-        <table class="dl-table mt-2">
-                                                <tr><th class="no-break">Rank</th><td>22640th</td></tr>
-                                                <tr><th class="no-break">Rating</th><td><img src="//img.atcoder.jp/assets/user/user-brown-4.png" class="user-rating-stage-m"><span class='user-brown'>718</span>
-                                                        </td></tr>
-                                                <tr><th class="no-break">Highest Rating</th><td><img src="//img.atcoder.jp/assets/user/user-brown-4.png" class="user-rating-stage-m"><span class='user-brown'>758</span>
-                                                        <span class="gray">―</span>
-                                                        <span class="bold">7 Kyu</span>
+        resjson = response.text
+        # resjson="""
+        # <table class="dl-table mt-2">
+        #                                         <tr><th class="no-break">Rank</th><td>22640th</td></tr>
+        #                                         <tr><th class="no-break">Rating</th><td><img src="//img.atcoder.jp/assets/user/user-brown-4.png" class="user-rating-stage-m"><span class='user-brown'>718</span>
+        #                                                 </td></tr>
+        #                                         <tr><th class="no-break">Highest Rating</th><td><img src="//img.atcoder.jp/assets/user/user-brown-4.png" class="user-rating-stage-m"><span class='user-brown'>758</span>
+        #                                                 <span class="gray">―</span>
+        #                                                 <span class="bold">7 Kyu</span>
 
-                                                                <span class="gray">(&#43;42 to promote)</span>
+        #                                                         <span class="gray">(&#43;42 to promote)</span>
 
-                                                </td></tr>
-                                                <tr><th class="no-break">Rated Matches <span class='glyphicon glyphicon-question-sign' aria-hidden='true' data-html='true' data-toggle='tooltip' title="Counts only rated contests"></span></th><td>26</td></tr>
-                                                <tr><th class="no-break">Last Competed</th><td>2025/08/16</td></tr>
-                                        </table>
-        """
+        #                                         </td></tr>
+        #                                         <tr><th class="no-break">Rated Matches <span class='glyphicon glyphicon-question-sign' aria-hidden='true' data-html='true' data-toggle='tooltip' title="Counts only rated contests"></span></th><td>26</td></tr>
+        #                                         <tr><th class="no-break">Last Competed</th><td>2025/08/16</td></tr>
+        #                                 </table>
+        # """
         #rating,highest_rating
         rating = re.search(r'Rating</th><td>.*?</td></tr>', resjson, re.DOTALL)
         rating = re.search(r'<span .*?>.*?</span>', rating.group(0), re.DOTALL)
@@ -87,11 +100,11 @@ def get_user_rating_api(username):
         # res = resjson['rating']
         return data
     
-    except requests.exceptions.RequestException as e:
+    except Exception as e:
         return None
 # 使用示例
 if __name__ == "__main__":
     # print(get_user_ac_count_api("tokyoww"))
-    data=get_user_rating_api("ykkkk")
-    print(data)
-    # atcoder_gets()
+    # data=get_user_rating_api("ykkkk")
+    # print(data)
+    atcoder_gets()
