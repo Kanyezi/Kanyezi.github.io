@@ -170,8 +170,15 @@ interface User {
   matiji: number;
 }
 
+// Platform data can be either a number (old format) or an object with ac_count and rating (new format)
+interface PlatformDataValue {
+  ac_count?: number;
+  rating?: string | number;
+  highest_rating?: string | number;
+}
+
 interface PlatformData {
-  [date: string]: number;
+  [date: string]: number | PlatformDataValue;
 }
 
 interface StudentData {
@@ -348,23 +355,27 @@ const getUserPlatformCount = (userName: string, platform: string): number => {
   const latestDate = getLatestDateFromPlatformData(platformData);
   if (latestDate && platformData[latestDate]) {
     // 根据数据过滤类型获取相应的值
+    const platformDataValue = platformData[latestDate];
     if (props.dataFilter === 'rating') {
       // 获取Rating值
-      if (typeof platformData[latestDate] === 'object' && platformData[latestDate].rating !== undefined) {
-        return parseInt(platformData[latestDate].rating) || 0;
+      if (typeof platformDataValue === 'object' && 'rating' in platformDataValue && platformDataValue.rating !== undefined) {
+        return parseInt(platformDataValue.rating as string) || 0;
       }
     } else if (props.dataFilter === 'all-data') {
       // 获取AC题数
-      if (typeof platformData[latestDate] === 'object' && platformData[latestDate].ac_count !== undefined) {
-        return platformData[latestDate].ac_count;
+      if (typeof platformDataValue === 'object' && 'ac_count' in platformDataValue && platformDataValue.ac_count !== undefined) {
+        return platformDataValue.ac_count;
       }
     } else {
       // 默认为AC题数
-      if (typeof platformData[latestDate] === 'object' && platformData[latestDate].ac_count !== undefined) {
-        return platformData[latestDate].ac_count;
-      } else {
+      if (typeof platformDataValue === 'object' && 'ac_count' in platformDataValue && platformDataValue.ac_count !== undefined) {
+        return platformDataValue.ac_count;
+      } else if (typeof platformDataValue === 'number') {
         // 旧数据格式：直接是数值
-        return platformData[latestDate];
+        return platformDataValue;
+      } else {
+        // 如果是对象但没有ac_count，返回0
+        return 0;
       }
     }
   }
@@ -384,8 +395,9 @@ const getUserPlatformRating = (userName: string, platform: string): number => {
   const latestDate = getLatestDateFromPlatformData(platformData);
   if (latestDate && platformData[latestDate]) {
     // 获取Rating值
-    if (typeof platformData[latestDate] === 'object' && platformData[latestDate].rating !== undefined) {
-      return parseInt(platformData[latestDate].rating) || 0;
+    const platformDataValue = platformData[latestDate];
+    if (typeof platformDataValue === 'object' && 'rating' in platformDataValue && platformDataValue.rating !== undefined) {
+      return parseInt(platformDataValue.rating as string) || 0;
     }
   }
 
@@ -402,15 +414,16 @@ const getUserTotalACCount = (userName: string): number => {
 
   let total = 0;
   // 遍历所有平台，只计算AC题数，不计算Rating
-  Object.entries(userHistory).forEach(([platform, platformData]) => {
+  Object.entries(userHistory).forEach(([/* platform */, platformData]) => {
     const latestDate = getLatestDateFromPlatformData(platformData);
     if (latestDate && platformData[latestDate]) {
+      const platformDataValue = platformData[latestDate];
       // 获取AC题数
-      if (typeof platformData[latestDate] === 'object' && platformData[latestDate].ac_count !== undefined) {
-        total += platformData[latestDate].ac_count;
+      if (typeof platformDataValue === 'object' && 'ac_count' in platformDataValue && platformDataValue.ac_count !== undefined) {
+        total += platformDataValue.ac_count;
       } else {
         // 旧数据格式：直接是数值
-        total += platformData[latestDate];
+        total += platformDataValue;
       }
     }
   });
@@ -418,30 +431,7 @@ const getUserTotalACCount = (userName: string): number => {
   return total;
 };
 
-// 获取用户总AC题数（用于ac模式）
-const getUserTotalCount = (userName: string): number => {
-  const userHistory = props.userData[userName];
-  if (!userHistory) {
-    return 0;
-  }
 
-  let total = 0;
-  // 遍历所有平台，只计算AC题数
-  Object.entries(userHistory).forEach(([platform, platformData]) => {
-    const latestDate = getLatestDateFromPlatformData(platformData);
-    if (latestDate && platformData[latestDate]) {
-      // 获取AC题数，不计算Rating
-      if (typeof platformData[latestDate] === 'object' && platformData[latestDate].ac_count !== undefined) {
-        total += platformData[latestDate].ac_count;
-      } else {
-        // 旧数据格式：直接是数值
-        total += platformData[latestDate];
-      }
-    }
-  });
-
-  return total;
-};
 
 // 获取平台数据中的最新日期
 const getLatestDateFromPlatformData = (platformData: PlatformData): string | null => {
@@ -450,7 +440,7 @@ const getLatestDateFromPlatformData = (platformData: PlatformData): string | nul
 
   // 排序并返回最新的日期
   const sortedDates = dates.sort((a, b) => new Date(b).getTime() - new Date(a).getTime());
-  return sortedDates[0];
+  return sortedDates[0] || null;
 };
 
 // 图表渲染函数
@@ -489,36 +479,37 @@ const renderChart = () => {
           
           let total = 0;
           // 检查每个平台的数据格式并提取相应的值
-          Object.entries(userHistory).forEach(([plat, platformData]) => {
+          Object.entries(userHistory).forEach(([/* plat */, platformData]) => {
             // 检查当前日期是否有数据
             if (platformData[date]) {
               // 根据数据过滤类型获取相应值
+              const platformDataValue = platformData[date];
               if (props.dataFilter === 'rating') {
                 // 获取Rating值，如果不存在则为0
-                if (typeof platformData[date] === 'object' && platformData[date].rating !== undefined) {
-                  total += parseInt(platformData[date].rating) || 0;
+                if (typeof platformDataValue === 'object' && 'rating' in platformDataValue && platformDataValue.rating !== undefined) {
+                  total += parseInt(platformDataValue.rating as string) || 0;
                 } else {
                   // 如果没有Rating数据，则加0
                   total += 0;
                 }
               } else if (props.dataFilter === 'all-data') {
                 // 在all-data模式下，图表显示AC题数
-                if (typeof platformData[date] === 'object' && platformData[date].ac_count !== undefined) {
-                  total += platformData[date].ac_count;
-                } else if (typeof platformData[date] === 'number') {
+                if (typeof platformDataValue === 'object' && 'ac_count' in platformDataValue && platformDataValue.ac_count !== undefined) {
+                  total += platformDataValue.ac_count;
+                } else if (typeof platformDataValue === 'number') {
                   // 旧数据格式
-                  total += platformData[date];
+                  total += platformDataValue;
                 } else {
                   // 如果没有AC题数数据，则加0
                   total += 0;
                 }
               } else {
                 // 默认获取AC题数
-                if (typeof platformData[date] === 'object' && platformData[date].ac_count !== undefined) {
-                  total += platformData[date].ac_count;
-                } else if (typeof platformData[date] === 'number') {
+                if (typeof platformDataValue === 'object' && 'ac_count' in platformDataValue && platformDataValue.ac_count !== undefined) {
+                  total += platformDataValue.ac_count;
+                } else if (typeof platformDataValue === 'number') {
                   // 旧数据格式
-                  total += platformData[date];
+                  total += platformDataValue;
                 } else {
                   // 如果没有AC题数数据，则加0
                   total += 0;
@@ -538,33 +529,34 @@ const renderChart = () => {
           const platformData = userHistory[platform as keyof StudentData];
           data = dateLabels.value.map(date => {
             if (platformData[date]) {
+              const platformDataValue = platformData[date];
               // 根据数据过滤类型获取相应值
               if (props.dataFilter === 'rating') {
                 // 获取Rating值，如果不存在则为0
-                if (typeof platformData[date] === 'object' && platformData[date].rating !== undefined) {
-                  return parseInt(platformData[date].rating) || 0;
+                if (typeof platformDataValue === 'object' && 'rating' in platformDataValue && platformDataValue.rating !== undefined) {
+                  return parseInt(platformDataValue.rating as string) || 0;
                 } else {
                   // 如果没有Rating数据，返回0
                   return 0;
                 }
               } else if (props.dataFilter === 'all-data') {
                 // 在all-data模式下，图表显示AC题数
-                if (typeof platformData[date] === 'object' && platformData[date].ac_count !== undefined) {
-                  return platformData[date].ac_count;
-                } else if (typeof platformData[date] === 'number') {
+                if (typeof platformDataValue === 'object' && 'ac_count' in platformDataValue && platformDataValue.ac_count !== undefined) {
+                  return platformDataValue.ac_count;
+                } else if (typeof platformDataValue === 'number') {
                   // 旧数据格式
-                  return platformData[date];
+                  return platformDataValue;
                 } else {
                   // 如果没有AC题数数据，返回0
                   return 0;
                 }
               } else {
                 // 默认获取AC题数
-                if (typeof platformData[date] === 'object' && platformData[date].ac_count !== undefined) {
-                  return platformData[date].ac_count;
-                } else if (typeof platformData[date] === 'number') {
+                if (typeof platformDataValue === 'object' && 'ac_count' in platformDataValue && platformDataValue.ac_count !== undefined) {
+                  return platformDataValue.ac_count;
+                } else if (typeof platformDataValue === 'number') {
                   // 旧数据格式
-                  return platformData[date];
+                  return platformDataValue;
                 } else {
                   // 如果没有AC题数数据，返回0
                   return 0;

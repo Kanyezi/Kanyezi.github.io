@@ -6147,7 +6147,7 @@ var __async = (__this, __arguments, generator) => {
   const _hoisted_3$3 = ["value"];
   const _hoisted_4$3 = { class: "user-list" };
   const _hoisted_5$3 = ["onClick"];
-  const _hoisted_6$2 = { class: "user-info" };
+  const _hoisted_6$3 = { class: "user-info" };
   const _hoisted_7$2 = { class: "user-name" };
   const _hoisted_8$2 = { class: "user-stats" };
   const _sfc_main$5 = /* @__PURE__ */ defineComponent({
@@ -6189,7 +6189,7 @@ var __async = (__this, __arguments, generator) => {
                 class: normalizeClass(["user-item", { active: __props.selectedUsers.includes(user.name) }]),
                 onClick: ($event) => toggleUser(user.name)
               }, [
-                createBaseVNode("div", _hoisted_6$2, [
+                createBaseVNode("div", _hoisted_6$3, [
                   createBaseVNode("div", _hoisted_7$2, toDisplayString(user.name), 1),
                   createBaseVNode("div", _hoisted_8$2, [
                     createBaseVNode("span", null, "atcoder: " + toDisplayString(user.atcoder), 1),
@@ -6217,7 +6217,7 @@ var __async = (__this, __arguments, generator) => {
   const _hoisted_3$2 = { class: "value" };
   const _hoisted_4$2 = { class: "card" };
   const _hoisted_5$2 = { class: "value" };
-  const _hoisted_6$1 = { class: "card" };
+  const _hoisted_6$2 = { class: "card" };
   const _hoisted_7$1 = { class: "value" };
   const _hoisted_8$1 = { class: "card" };
   const _hoisted_9$1 = { class: "value" };
@@ -6240,7 +6240,7 @@ var __async = (__this, __arguments, generator) => {
             _cache[1] || (_cache[1] = createBaseVNode("h3", null, "总刷题数量", -1)),
             createBaseVNode("div", _hoisted_5$2, toDisplayString(__props.totalCount.toLocaleString()), 1)
           ]),
-          createBaseVNode("div", _hoisted_6$1, [
+          createBaseVNode("div", _hoisted_6$2, [
             _cache[2] || (_cache[2] = createBaseVNode("h3", null, "平均刷题数", -1)),
             createBaseVNode("div", _hoisted_7$1, toDisplayString(__props.averageCount), 1)
           ]),
@@ -20722,7 +20722,7 @@ var __async = (__this, __arguments, generator) => {
     key: 1,
     class: "data-table-container"
   };
-  const _hoisted_6 = { class: "data-table" };
+  const _hoisted_6$1 = { class: "data-table" };
   const _hoisted_7 = {
     key: 0,
     class: "sort-indicator"
@@ -20743,12 +20743,53 @@ var __async = (__this, __arguments, generator) => {
     key: 0,
     class: "sort-indicator"
   };
+  const _hoisted_12 = {
+    key: 0,
+    class: "sort-indicator"
+  };
+  const _hoisted_13 = {
+    key: 0,
+    class: "sort-indicator"
+  };
+  const _hoisted_14 = {
+    key: 0,
+    class: "sort-indicator"
+  };
+  const _hoisted_15 = {
+    key: 0,
+    class: "sort-indicator"
+  };
+  const _hoisted_16 = {
+    key: 0,
+    class: "sort-indicator"
+  };
+  const _hoisted_17 = {
+    key: 0,
+    class: "sort-indicator"
+  };
+  const _hoisted_18 = {
+    key: 0,
+    class: "sort-indicator"
+  };
+  const _hoisted_19 = {
+    key: 0,
+    class: "sort-indicator"
+  };
+  const _hoisted_20 = {
+    key: 0,
+    class: "sort-indicator"
+  };
+  const _hoisted_21 = {
+    key: 0,
+    class: "sort-indicator"
+  };
   const _sfc_main$3 = /* @__PURE__ */ defineComponent({
     __name: "TrendChart",
     props: {
       displayUsers: { default: () => [] },
       userData: { default: () => ({}) },
       currentPlatformFilter: { default: "all" },
+      dataFilter: { default: "ac" },
       chartType: { default: "line" }
     },
     emits: ["chart-type-change"],
@@ -20760,16 +20801,28 @@ var __async = (__this, __arguments, generator) => {
       const sortKey = ref("");
       const sortOrder = ref(1);
       const chartTitle = computed(() => {
-        switch (props.currentPlatformFilter) {
-          case "atcoder":
-            return "AtCoder 刷题数量趋势";
-          case "codeforces":
-            return "Codeforces 刷题数量趋势";
-          case "matiji":
-            return "Matiji 刷题数量趋势";
-          default:
-            return "全部平台 刷题数量趋势";
+        const platformTitles = {
+          "atcoder": "AtCoder",
+          "codeforces": "Codeforces",
+          "matiji": "Matiji"
+        };
+        const platformTitle = platformTitles[props.currentPlatformFilter] || "全部平台";
+        let dataType = "";
+        let currentDataFilter = props.dataFilter;
+        if (currentDataFilter === "all-data") {
+          currentDataFilter = "ac";
         }
+        switch (currentDataFilter) {
+          case "ac":
+            dataType = "刷题数量";
+            break;
+          case "rating":
+            dataType = "Rating";
+            break;
+          default:
+            dataType = "刷题数量";
+        }
+        return `${platformTitle} ${dataType}趋势`;
       });
       const currentChartType = ref(props.chartType);
       const dateLabels = computed(() => {
@@ -20809,17 +20862,26 @@ var __async = (__this, __arguments, generator) => {
             valueA = a.name;
             valueB = b.name;
           } else if (sortKey.value === "atcoder") {
-            valueA = a.atcoder;
-            valueB = b.atcoder;
+            valueA = getUserPlatformCount(a.name, "atcoder");
+            valueB = getUserPlatformCount(b.name, "atcoder");
+          } else if (sortKey.value === "atcoderRating") {
+            valueA = getUserPlatformRating(a.name, "atcoder");
+            valueB = getUserPlatformRating(b.name, "atcoder");
           } else if (sortKey.value === "codeforces") {
-            valueA = a.codeforces;
-            valueB = b.codeforces;
+            valueA = getUserPlatformCount(a.name, "codeforces");
+            valueB = getUserPlatformCount(b.name, "codeforces");
+          } else if (sortKey.value === "codeforcesRating") {
+            valueA = getUserPlatformRating(a.name, "codeforces");
+            valueB = getUserPlatformRating(b.name, "codeforces");
           } else if (sortKey.value === "matiji") {
-            valueA = a.matiji;
-            valueB = b.matiji;
+            valueA = getUserPlatformCount(a.name, "matiji");
+            valueB = getUserPlatformCount(b.name, "matiji");
+          } else if (sortKey.value === "matijiRating") {
+            valueA = getUserPlatformRating(a.name, "matiji");
+            valueB = getUserPlatformRating(b.name, "matiji");
           } else if (sortKey.value === "total") {
-            valueA = a.atcoder + a.codeforces + a.matiji;
-            valueB = b.atcoder + b.codeforces + b.matiji;
+            valueA = getUserTotalACCount(a.name);
+            valueB = getUserTotalACCount(b.name);
           } else {
             return 0;
           }
@@ -20832,6 +20894,75 @@ var __async = (__this, __arguments, generator) => {
           }
         });
       });
+      const getUserPlatformCount = (userName, platform) => {
+        const userHistory = props.userData[userName];
+        if (!userHistory || !userHistory[platform]) {
+          return 0;
+        }
+        const platformData = userHistory[platform];
+        const latestDate = getLatestDateFromPlatformData(platformData);
+        if (latestDate && platformData[latestDate]) {
+          const platformDataValue = platformData[latestDate];
+          if (props.dataFilter === "rating") {
+            if (typeof platformDataValue === "object" && "rating" in platformDataValue && platformDataValue.rating !== void 0) {
+              return parseInt(platformDataValue.rating) || 0;
+            }
+          } else if (props.dataFilter === "all-data") {
+            if (typeof platformDataValue === "object" && "ac_count" in platformDataValue && platformDataValue.ac_count !== void 0) {
+              return platformDataValue.ac_count;
+            }
+          } else {
+            if (typeof platformDataValue === "object" && "ac_count" in platformDataValue && platformDataValue.ac_count !== void 0) {
+              return platformDataValue.ac_count;
+            } else if (typeof platformDataValue === "number") {
+              return platformDataValue;
+            } else {
+              return 0;
+            }
+          }
+        }
+        return 0;
+      };
+      const getUserPlatformRating = (userName, platform) => {
+        const userHistory = props.userData[userName];
+        if (!userHistory || !userHistory[platform]) {
+          return 0;
+        }
+        const platformData = userHistory[platform];
+        const latestDate = getLatestDateFromPlatformData(platformData);
+        if (latestDate && platformData[latestDate]) {
+          const platformDataValue = platformData[latestDate];
+          if (typeof platformDataValue === "object" && "rating" in platformDataValue && platformDataValue.rating !== void 0) {
+            return parseInt(platformDataValue.rating) || 0;
+          }
+        }
+        return 0;
+      };
+      const getUserTotalACCount = (userName) => {
+        const userHistory = props.userData[userName];
+        if (!userHistory) {
+          return 0;
+        }
+        let total = 0;
+        Object.entries(userHistory).forEach(([, platformData]) => {
+          const latestDate = getLatestDateFromPlatformData(platformData);
+          if (latestDate && platformData[latestDate]) {
+            const platformDataValue = platformData[latestDate];
+            if (typeof platformDataValue === "object" && "ac_count" in platformDataValue && platformDataValue.ac_count !== void 0) {
+              total += platformDataValue.ac_count;
+            } else {
+              total += platformDataValue;
+            }
+          }
+        });
+        return total;
+      };
+      const getLatestDateFromPlatformData = (platformData) => {
+        const dates = Object.keys(platformData);
+        if (dates.length === 0) return null;
+        const sortedDates = dates.sort((a, b) => new Date(b).getTime() - new Date(a).getTime());
+        return sortedDates[0] || null;
+      };
       const renderChart = () => {
         if (!trendChartRef.value) return;
         try {
@@ -20861,9 +20992,34 @@ var __async = (__this, __arguments, generator) => {
                 const userHistory = props.userData[user.name];
                 if (!userHistory) return 0;
                 let total = 0;
-                Object.values(userHistory).forEach((platformData) => {
+                Object.entries(userHistory).forEach(([, platformData]) => {
                   if (platformData[date]) {
-                    total += platformData[date];
+                    const platformDataValue = platformData[date];
+                    if (props.dataFilter === "rating") {
+                      if (typeof platformDataValue === "object" && "rating" in platformDataValue && platformDataValue.rating !== void 0) {
+                        total += parseInt(platformDataValue.rating) || 0;
+                      } else {
+                        total += 0;
+                      }
+                    } else if (props.dataFilter === "all-data") {
+                      if (typeof platformDataValue === "object" && "ac_count" in platformDataValue && platformDataValue.ac_count !== void 0) {
+                        total += platformDataValue.ac_count;
+                      } else if (typeof platformDataValue === "number") {
+                        total += platformDataValue;
+                      } else {
+                        total += 0;
+                      }
+                    } else {
+                      if (typeof platformDataValue === "object" && "ac_count" in platformDataValue && platformDataValue.ac_count !== void 0) {
+                        total += platformDataValue.ac_count;
+                      } else if (typeof platformDataValue === "number") {
+                        total += platformDataValue;
+                      } else {
+                        total += 0;
+                      }
+                    }
+                  } else {
+                    total += 0;
                   }
                 });
                 return total;
@@ -20872,7 +21028,36 @@ var __async = (__this, __arguments, generator) => {
               const userHistory = props.userData[user.name];
               if (userHistory && userHistory[platform]) {
                 const platformData = userHistory[platform];
-                data2 = dateLabels.value.map((date) => platformData[date] || 0);
+                data2 = dateLabels.value.map((date) => {
+                  if (platformData[date]) {
+                    const platformDataValue = platformData[date];
+                    if (props.dataFilter === "rating") {
+                      if (typeof platformDataValue === "object" && "rating" in platformDataValue && platformDataValue.rating !== void 0) {
+                        return parseInt(platformDataValue.rating) || 0;
+                      } else {
+                        return 0;
+                      }
+                    } else if (props.dataFilter === "all-data") {
+                      if (typeof platformDataValue === "object" && "ac_count" in platformDataValue && platformDataValue.ac_count !== void 0) {
+                        return platformDataValue.ac_count;
+                      } else if (typeof platformDataValue === "number") {
+                        return platformDataValue;
+                      } else {
+                        return 0;
+                      }
+                    } else {
+                      if (typeof platformDataValue === "object" && "ac_count" in platformDataValue && platformDataValue.ac_count !== void 0) {
+                        return platformDataValue.ac_count;
+                      } else if (typeof platformDataValue === "number") {
+                        return platformDataValue;
+                      } else {
+                        return 0;
+                      }
+                    }
+                  } else {
+                    return 0;
+                  }
+                });
               } else {
                 data2 = dateLabels.value.map(() => 0);
               }
@@ -20916,10 +21101,11 @@ var __async = (__this, __arguments, generator) => {
                 },
                 scales: {
                   y: {
-                    beginAtZero: true,
+                    beginAtZero: props.dataFilter !== "rating",
+                    // Rating不需要从0开始
                     title: {
                       display: true,
-                      text: "刷题数量"
+                      text: props.dataFilter === "rating" ? "Rating" : "刷题数量"
                     }
                   },
                   x: {
@@ -20945,10 +21131,12 @@ var __async = (__this, __arguments, generator) => {
           }
         }
       };
-      watch(() => [props.displayUsers, props.currentPlatformFilter, currentChartType.value, currentView.value], () => {
+      watch(() => [props.displayUsers, props.currentPlatformFilter, props.dataFilter, currentChartType.value, currentView.value], () => {
         nextTick(() => {
           if (currentView.value === "chart") {
-            renderChart();
+            if (props.dataFilter !== "all-data") {
+              renderChart();
+            }
           }
         });
       }, { deep: true });
@@ -20986,45 +21174,119 @@ var __async = (__this, __arguments, generator) => {
             }, null, 512)
           ])) : createCommentVNode("", true),
           currentView.value === "table" ? (openBlock(), createElementBlock("div", _hoisted_5$1, [
-            _cache[12] || (_cache[12] = createBaseVNode("h3", null, "数据表格", -1)),
-            createBaseVNode("table", _hoisted_6, [
+            _cache[32] || (_cache[32] = createBaseVNode("h3", null, "数据表格", -1)),
+            createBaseVNode("table", _hoisted_6$1, [
               createBaseVNode("thead", null, [
                 createBaseVNode("tr", null, [
                   createBaseVNode("th", {
                     onClick: _cache[2] || (_cache[2] = ($event) => sortBy("name")),
                     class: normalizeClass({ "sortable": true, "sorted-asc": sortKey.value === "name" && sortOrder.value === 1, "sorted-desc": sortKey.value === "name" && sortOrder.value === -1 })
                   }, [
-                    _cache[7] || (_cache[7] = createTextVNode(" 姓名 ", -1)),
+                    _cache[17] || (_cache[17] = createTextVNode(" 姓名 ", -1)),
                     sortKey.value === "name" ? (openBlock(), createElementBlock("span", _hoisted_7, toDisplayString(sortOrder.value === 1 ? "↑" : "↓"), 1)) : createCommentVNode("", true)
                   ], 2),
-                  createBaseVNode("th", {
-                    onClick: _cache[3] || (_cache[3] = ($event) => sortBy("atcoder")),
-                    class: normalizeClass({ "sortable": true, "sorted-asc": sortKey.value === "atcoder" && sortOrder.value === 1, "sorted-desc": sortKey.value === "atcoder" && sortOrder.value === -1 })
-                  }, [
-                    _cache[8] || (_cache[8] = createTextVNode(" AtCoder题数 ", -1)),
-                    sortKey.value === "atcoder" ? (openBlock(), createElementBlock("span", _hoisted_8, toDisplayString(sortOrder.value === 1 ? "↑" : "↓"), 1)) : createCommentVNode("", true)
-                  ], 2),
-                  createBaseVNode("th", {
-                    onClick: _cache[4] || (_cache[4] = ($event) => sortBy("codeforces")),
-                    class: normalizeClass({ "sortable": true, "sorted-asc": sortKey.value === "codeforces" && sortOrder.value === 1, "sorted-desc": sortKey.value === "codeforces" && sortOrder.value === -1 })
-                  }, [
-                    _cache[9] || (_cache[9] = createTextVNode(" Codeforces题数 ", -1)),
-                    sortKey.value === "codeforces" ? (openBlock(), createElementBlock("span", _hoisted_9, toDisplayString(sortOrder.value === 1 ? "↑" : "↓"), 1)) : createCommentVNode("", true)
-                  ], 2),
-                  createBaseVNode("th", {
-                    onClick: _cache[5] || (_cache[5] = ($event) => sortBy("matiji")),
-                    class: normalizeClass({ "sortable": true, "sorted-asc": sortKey.value === "matiji" && sortOrder.value === 1, "sorted-desc": sortKey.value === "matiji" && sortOrder.value === -1 })
-                  }, [
-                    _cache[10] || (_cache[10] = createTextVNode(" Matiji题数 ", -1)),
-                    sortKey.value === "matiji" ? (openBlock(), createElementBlock("span", _hoisted_10, toDisplayString(sortOrder.value === 1 ? "↑" : "↓"), 1)) : createCommentVNode("", true)
-                  ], 2),
-                  createBaseVNode("th", {
-                    onClick: _cache[6] || (_cache[6] = ($event) => sortBy("total")),
-                    class: normalizeClass({ "sortable": true, "sorted-asc": sortKey.value === "total" && sortOrder.value === 1, "sorted-desc": sortKey.value === "total" && sortOrder.value === -1 })
-                  }, [
-                    _cache[11] || (_cache[11] = createTextVNode(" 总题数 ", -1)),
-                    sortKey.value === "total" ? (openBlock(), createElementBlock("span", _hoisted_11, toDisplayString(sortOrder.value === 1 ? "↑" : "↓"), 1)) : createCommentVNode("", true)
-                  ], 2)
+                  props.dataFilter === "all-data" ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
+                    createBaseVNode("th", {
+                      onClick: _cache[3] || (_cache[3] = ($event) => sortBy("atcoder")),
+                      class: normalizeClass({ "sortable": true, "sorted-asc": sortKey.value === "atcoder" && sortOrder.value === 1, "sorted-desc": sortKey.value === "atcoder" && sortOrder.value === -1 })
+                    }, [
+                      _cache[18] || (_cache[18] = createTextVNode(" AtCoder题数 ", -1)),
+                      sortKey.value === "atcoder" ? (openBlock(), createElementBlock("span", _hoisted_8, toDisplayString(sortOrder.value === 1 ? "↑" : "↓"), 1)) : createCommentVNode("", true)
+                    ], 2),
+                    createBaseVNode("th", {
+                      onClick: _cache[4] || (_cache[4] = ($event) => sortBy("atcoderRating")),
+                      class: normalizeClass({ "sortable": true, "sorted-asc": sortKey.value === "atcoderRating" && sortOrder.value === 1, "sorted-desc": sortKey.value === "atcoderRating" && sortOrder.value === -1 })
+                    }, [
+                      _cache[19] || (_cache[19] = createTextVNode(" AtCoder Rating ", -1)),
+                      sortKey.value === "atcoderRating" ? (openBlock(), createElementBlock("span", _hoisted_9, toDisplayString(sortOrder.value === 1 ? "↑" : "↓"), 1)) : createCommentVNode("", true)
+                    ], 2),
+                    createBaseVNode("th", {
+                      onClick: _cache[5] || (_cache[5] = ($event) => sortBy("codeforces")),
+                      class: normalizeClass({ "sortable": true, "sorted-asc": sortKey.value === "codeforces" && sortOrder.value === 1, "sorted-desc": sortKey.value === "codeforces" && sortOrder.value === -1 })
+                    }, [
+                      _cache[20] || (_cache[20] = createTextVNode(" Codeforces题数 ", -1)),
+                      sortKey.value === "codeforces" ? (openBlock(), createElementBlock("span", _hoisted_10, toDisplayString(sortOrder.value === 1 ? "↑" : "↓"), 1)) : createCommentVNode("", true)
+                    ], 2),
+                    createBaseVNode("th", {
+                      onClick: _cache[6] || (_cache[6] = ($event) => sortBy("codeforcesRating")),
+                      class: normalizeClass({ "sortable": true, "sorted-asc": sortKey.value === "codeforcesRating" && sortOrder.value === 1, "sorted-desc": sortKey.value === "codeforcesRating" && sortOrder.value === -1 })
+                    }, [
+                      _cache[21] || (_cache[21] = createTextVNode(" Codeforces Rating ", -1)),
+                      sortKey.value === "codeforcesRating" ? (openBlock(), createElementBlock("span", _hoisted_11, toDisplayString(sortOrder.value === 1 ? "↑" : "↓"), 1)) : createCommentVNode("", true)
+                    ], 2),
+                    createBaseVNode("th", {
+                      onClick: _cache[7] || (_cache[7] = ($event) => sortBy("matiji")),
+                      class: normalizeClass({ "sortable": true, "sorted-asc": sortKey.value === "matiji" && sortOrder.value === 1, "sorted-desc": sortKey.value === "matiji" && sortOrder.value === -1 })
+                    }, [
+                      _cache[22] || (_cache[22] = createTextVNode(" Matiji题数 ", -1)),
+                      sortKey.value === "matiji" ? (openBlock(), createElementBlock("span", _hoisted_12, toDisplayString(sortOrder.value === 1 ? "↑" : "↓"), 1)) : createCommentVNode("", true)
+                    ], 2),
+                    createBaseVNode("th", {
+                      onClick: _cache[8] || (_cache[8] = ($event) => sortBy("matijiRating")),
+                      class: normalizeClass({ "sortable": true, "sorted-asc": sortKey.value === "matijiRating" && sortOrder.value === 1, "sorted-desc": sortKey.value === "matijiRating" && sortOrder.value === -1 })
+                    }, [
+                      _cache[23] || (_cache[23] = createTextVNode(" Matiji Rating ", -1)),
+                      sortKey.value === "matijiRating" ? (openBlock(), createElementBlock("span", _hoisted_13, toDisplayString(sortOrder.value === 1 ? "↑" : "↓"), 1)) : createCommentVNode("", true)
+                    ], 2),
+                    createBaseVNode("th", {
+                      onClick: _cache[9] || (_cache[9] = ($event) => sortBy("total")),
+                      class: normalizeClass({ "sortable": true, "sorted-asc": sortKey.value === "total" && sortOrder.value === 1, "sorted-desc": sortKey.value === "total" && sortOrder.value === -1 })
+                    }, [
+                      _cache[24] || (_cache[24] = createTextVNode(" 总AC题数 ", -1)),
+                      sortKey.value === "total" ? (openBlock(), createElementBlock("span", _hoisted_14, toDisplayString(sortOrder.value === 1 ? "↑" : "↓"), 1)) : createCommentVNode("", true)
+                    ], 2)
+                  ], 64)) : props.dataFilter === "rating" ? (openBlock(), createElementBlock(Fragment, { key: 1 }, [
+                    createBaseVNode("th", {
+                      onClick: _cache[10] || (_cache[10] = ($event) => sortBy("atcoderRating")),
+                      class: normalizeClass({ "sortable": true, "sorted-asc": sortKey.value === "atcoderRating" && sortOrder.value === 1, "sorted-desc": sortKey.value === "atcoderRating" && sortOrder.value === -1 })
+                    }, [
+                      _cache[25] || (_cache[25] = createTextVNode(" AtCoder Rating ", -1)),
+                      sortKey.value === "atcoderRating" ? (openBlock(), createElementBlock("span", _hoisted_15, toDisplayString(sortOrder.value === 1 ? "↑" : "↓"), 1)) : createCommentVNode("", true)
+                    ], 2),
+                    createBaseVNode("th", {
+                      onClick: _cache[11] || (_cache[11] = ($event) => sortBy("codeforcesRating")),
+                      class: normalizeClass({ "sortable": true, "sorted-asc": sortKey.value === "codeforcesRating" && sortOrder.value === 1, "sorted-desc": sortKey.value === "codeforcesRating" && sortOrder.value === -1 })
+                    }, [
+                      _cache[26] || (_cache[26] = createTextVNode(" Codeforces Rating ", -1)),
+                      sortKey.value === "codeforcesRating" ? (openBlock(), createElementBlock("span", _hoisted_16, toDisplayString(sortOrder.value === 1 ? "↑" : "↓"), 1)) : createCommentVNode("", true)
+                    ], 2),
+                    createBaseVNode("th", {
+                      onClick: _cache[12] || (_cache[12] = ($event) => sortBy("matijiRating")),
+                      class: normalizeClass({ "sortable": true, "sorted-asc": sortKey.value === "matijiRating" && sortOrder.value === 1, "sorted-desc": sortKey.value === "matijiRating" && sortOrder.value === -1 })
+                    }, [
+                      _cache[27] || (_cache[27] = createTextVNode(" Matiji Rating ", -1)),
+                      sortKey.value === "matijiRating" ? (openBlock(), createElementBlock("span", _hoisted_17, toDisplayString(sortOrder.value === 1 ? "↑" : "↓"), 1)) : createCommentVNode("", true)
+                    ], 2)
+                  ], 64)) : (openBlock(), createElementBlock(Fragment, { key: 2 }, [
+                    createBaseVNode("th", {
+                      onClick: _cache[13] || (_cache[13] = ($event) => sortBy("atcoder")),
+                      class: normalizeClass({ "sortable": true, "sorted-asc": sortKey.value === "atcoder" && sortOrder.value === 1, "sorted-desc": sortKey.value === "atcoder" && sortOrder.value === -1 })
+                    }, [
+                      _cache[28] || (_cache[28] = createTextVNode(" AtCoder题数 ", -1)),
+                      sortKey.value === "atcoder" ? (openBlock(), createElementBlock("span", _hoisted_18, toDisplayString(sortOrder.value === 1 ? "↑" : "↓"), 1)) : createCommentVNode("", true)
+                    ], 2),
+                    createBaseVNode("th", {
+                      onClick: _cache[14] || (_cache[14] = ($event) => sortBy("codeforces")),
+                      class: normalizeClass({ "sortable": true, "sorted-asc": sortKey.value === "codeforces" && sortOrder.value === 1, "sorted-desc": sortKey.value === "codeforces" && sortOrder.value === -1 })
+                    }, [
+                      _cache[29] || (_cache[29] = createTextVNode(" Codeforces题数 ", -1)),
+                      sortKey.value === "codeforces" ? (openBlock(), createElementBlock("span", _hoisted_19, toDisplayString(sortOrder.value === 1 ? "↑" : "↓"), 1)) : createCommentVNode("", true)
+                    ], 2),
+                    createBaseVNode("th", {
+                      onClick: _cache[15] || (_cache[15] = ($event) => sortBy("matiji")),
+                      class: normalizeClass({ "sortable": true, "sorted-asc": sortKey.value === "matiji" && sortOrder.value === 1, "sorted-desc": sortKey.value === "matiji" && sortOrder.value === -1 })
+                    }, [
+                      _cache[30] || (_cache[30] = createTextVNode(" Matiji题数 ", -1)),
+                      sortKey.value === "matiji" ? (openBlock(), createElementBlock("span", _hoisted_20, toDisplayString(sortOrder.value === 1 ? "↑" : "↓"), 1)) : createCommentVNode("", true)
+                    ], 2),
+                    createBaseVNode("th", {
+                      onClick: _cache[16] || (_cache[16] = ($event) => sortBy("total")),
+                      class: normalizeClass({ "sortable": true, "sorted-asc": sortKey.value === "total" && sortOrder.value === 1, "sorted-desc": sortKey.value === "total" && sortOrder.value === -1 })
+                    }, [
+                      _cache[31] || (_cache[31] = createTextVNode(" 总AC题数 ", -1)),
+                      sortKey.value === "total" ? (openBlock(), createElementBlock("span", _hoisted_21, toDisplayString(sortOrder.value === 1 ? "↑" : "↓"), 1)) : createCommentVNode("", true)
+                    ], 2)
+                  ], 64))
                 ])
               ]),
               createBaseVNode("tbody", null, [
@@ -21033,10 +21295,24 @@ var __async = (__this, __arguments, generator) => {
                     key: user.name
                   }, [
                     createBaseVNode("td", null, toDisplayString(user.name), 1),
-                    createBaseVNode("td", null, toDisplayString(user.atcoder), 1),
-                    createBaseVNode("td", null, toDisplayString(user.codeforces), 1),
-                    createBaseVNode("td", null, toDisplayString(user.matiji), 1),
-                    createBaseVNode("td", null, toDisplayString(user.atcoder + user.codeforces + user.matiji), 1)
+                    props.dataFilter === "all-data" ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
+                      createBaseVNode("td", null, toDisplayString(getUserPlatformCount(user.name, "atcoder")), 1),
+                      createBaseVNode("td", null, toDisplayString(getUserPlatformRating(user.name, "atcoder")), 1),
+                      createBaseVNode("td", null, toDisplayString(getUserPlatformCount(user.name, "codeforces")), 1),
+                      createBaseVNode("td", null, toDisplayString(getUserPlatformRating(user.name, "codeforces")), 1),
+                      createBaseVNode("td", null, toDisplayString(getUserPlatformCount(user.name, "matiji")), 1),
+                      createBaseVNode("td", null, toDisplayString(getUserPlatformRating(user.name, "matiji")), 1),
+                      createBaseVNode("td", null, toDisplayString(getUserTotalACCount(user.name)), 1)
+                    ], 64)) : props.dataFilter === "rating" ? (openBlock(), createElementBlock(Fragment, { key: 1 }, [
+                      createBaseVNode("td", null, toDisplayString(getUserPlatformRating(user.name, "atcoder")), 1),
+                      createBaseVNode("td", null, toDisplayString(getUserPlatformRating(user.name, "codeforces")), 1),
+                      createBaseVNode("td", null, toDisplayString(getUserPlatformRating(user.name, "matiji")), 1)
+                    ], 64)) : (openBlock(), createElementBlock(Fragment, { key: 2 }, [
+                      createBaseVNode("td", null, toDisplayString(getUserPlatformCount(user.name, "atcoder")), 1),
+                      createBaseVNode("td", null, toDisplayString(getUserPlatformCount(user.name, "codeforces")), 1),
+                      createBaseVNode("td", null, toDisplayString(getUserPlatformCount(user.name, "matiji")), 1),
+                      createBaseVNode("td", null, toDisplayString(getUserTotalACCount(user.name)), 1)
+                    ], 64))
                   ]);
                 }), 128))
               ])
@@ -21046,20 +21322,22 @@ var __async = (__this, __arguments, generator) => {
       };
     }
   });
-  const TrendChart = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-a608534c"]]);
+  const TrendChart = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-824a8e40"]]);
   const _hoisted_1$2 = { class: "controls" };
   const _hoisted_2$2 = { class: "filter-group" };
   const _hoisted_3 = ["value"];
   const _hoisted_4 = ["value"];
   const _hoisted_5 = ["value"];
+  const _hoisted_6 = ["value"];
   const _sfc_main$2 = /* @__PURE__ */ defineComponent({
     __name: "FilterControls",
     props: {
       periodFilter: { default: "all" },
       userFilter: { default: "all" },
-      platformFilter: { default: "all" }
+      platformFilter: { default: "all" },
+      dataFilter: { default: "ac" }
     },
-    emits: ["update:periodFilter", "update:userFilter", "update:platformFilter", "refresh-data"],
+    emits: ["update:periodFilter", "update:userFilter", "update:platformFilter", "update:dataFilter", "refresh-data"],
     setup(__props, { emit: __emit }) {
       const emit2 = __emit;
       const onPeriodFilterChange = (event) => {
@@ -21073,6 +21351,10 @@ var __async = (__this, __arguments, generator) => {
       const onPlatformFilterChange = (event) => {
         const target = event.target;
         emit2("update:platformFilter", target.value);
+      };
+      const onDataFilterChange = (event) => {
+        const target = event.target;
+        emit2("update:dataFilter", target.value);
       };
       const refreshData = () => {
         emit2("refresh-data");
@@ -21106,7 +21388,16 @@ var __async = (__this, __arguments, generator) => {
               createBaseVNode("option", { value: "atcoder" }, "AtCoder", -1),
               createBaseVNode("option", { value: "codeforces" }, "Codeforces", -1),
               createBaseVNode("option", { value: "matiji" }, "Matiji", -1)
-            ])], 40, _hoisted_5)
+            ])], 40, _hoisted_5),
+            createBaseVNode("select", {
+              class: "filter-select",
+              value: __props.dataFilter,
+              onChange: onDataFilterChange
+            }, [..._cache[3] || (_cache[3] = [
+              createBaseVNode("option", { value: "ac" }, "AC题数", -1),
+              createBaseVNode("option", { value: "rating" }, "Rating", -1),
+              createBaseVNode("option", { value: "all-data" }, "详细信息", -1)
+            ])], 40, _hoisted_6)
           ]),
           createBaseVNode("div", { class: "filter-group" }, [
             createBaseVNode("button", {
@@ -21118,7 +21409,7 @@ var __async = (__this, __arguments, generator) => {
       };
     }
   });
-  const FilterControls = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-585d65da"]]);
+  const FilterControls = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-0a744250"]]);
   const users = [
     {
       name: "余凯",
@@ -21165,7 +21456,7 @@ var __async = (__this, __arguments, generator) => {
       grade: 2024,
       nowcoder_id: "257465926",
       atcoder: 64,
-      codeforces: 189,
+      codeforces: 194,
       matiji: 181
     },
     {
@@ -21189,7 +21480,7 @@ var __async = (__this, __arguments, generator) => {
       grade: 2025,
       nowcoder_id: "217712409",
       atcoder: 39,
-      codeforces: 101,
+      codeforces: 103,
       matiji: 28
     },
     {
@@ -21201,7 +21492,7 @@ var __async = (__this, __arguments, generator) => {
       grade: 2025,
       nowcoder_id: "478034914",
       atcoder: 50,
-      codeforces: 87,
+      codeforces: 103,
       matiji: 30
     },
     {
@@ -21212,8 +21503,8 @@ var __async = (__this, __arguments, generator) => {
       matiji_id: "217485",
       grade: 2025,
       nowcoder_id: "266168715",
-      atcoder: 28,
-      codeforces: 80,
+      atcoder: 33,
+      codeforces: 83,
       matiji: 42
     },
     {
@@ -21260,8 +21551,8 @@ var __async = (__this, __arguments, generator) => {
       matiji_id: "219493",
       grade: 2025,
       nowcoder_id: "264059817",
-      atcoder: 18,
-      codeforces: 34,
+      atcoder: 19,
+      codeforces: 35,
       matiji: 14
     },
     {
@@ -21273,7 +21564,7 @@ var __async = (__this, __arguments, generator) => {
       grade: 2023,
       nowcoder_id: "495585083",
       atcoder: 44,
-      codeforces: 64,
+      codeforces: 71,
       matiji: 61
     },
     {
@@ -21309,7 +21600,7 @@ var __async = (__this, __arguments, generator) => {
       grade: 2024,
       nowcoder_id: "781002196",
       atcoder: 123,
-      codeforces: 205,
+      codeforces: 206,
       matiji: 165
     },
     {
@@ -21321,7 +21612,7 @@ var __async = (__this, __arguments, generator) => {
       grade: 2024,
       nowcoder_id: "734467163",
       atcoder: 170,
-      codeforces: 320,
+      codeforces: 321,
       matiji: 112
     },
     {
@@ -21333,7 +21624,7 @@ var __async = (__this, __arguments, generator) => {
       grade: 2024,
       nowcoder_id: "972160990",
       atcoder: 188,
-      codeforces: 817,
+      codeforces: 819,
       matiji: 75
     },
     {
@@ -21345,7 +21636,7 @@ var __async = (__this, __arguments, generator) => {
       grade: 2025,
       nowcoder_id: "495136812",
       atcoder: 45,
-      codeforces: 137,
+      codeforces: 140,
       matiji: 14
     },
     {
@@ -21357,7 +21648,7 @@ var __async = (__this, __arguments, generator) => {
       grade: 2024,
       nowcoder_id: "967691174",
       atcoder: 121,
-      codeforces: 229,
+      codeforces: 230,
       matiji: 122
     },
     {
@@ -21381,7 +21672,7 @@ var __async = (__this, __arguments, generator) => {
       grade: 2024,
       nowcoder_id: "239582048",
       atcoder: 127,
-      codeforces: 429,
+      codeforces: 432,
       matiji: 92
     },
     {
@@ -21392,8 +21683,8 @@ var __async = (__this, __arguments, generator) => {
       matiji_id: "118407",
       grade: 2023,
       nowcoder_id: "无",
-      atcoder: 55,
-      codeforces: 1038,
+      atcoder: 56,
+      codeforces: 1039,
       matiji: 193
     },
     {
@@ -21405,7 +21696,7 @@ var __async = (__this, __arguments, generator) => {
       grade: 2025,
       nowcoder_id: "294690038",
       atcoder: 15,
-      codeforces: 20,
+      codeforces: 21,
       matiji: 33
     },
     {
@@ -21416,8 +21707,8 @@ var __async = (__this, __arguments, generator) => {
       matiji_id: "218118",
       grade: 2025,
       nowcoder_id: "878907312",
-      atcoder: 26,
-      codeforces: 38,
+      atcoder: 27,
+      codeforces: 39,
       matiji: 22
     },
     {
@@ -21465,7 +21756,7 @@ var __async = (__this, __arguments, generator) => {
       grade: 2025,
       nowcoder_id: "654985605",
       atcoder: 46,
-      codeforces: 102,
+      codeforces: 103,
       matiji: 54
     },
     {
@@ -21476,8 +21767,8 @@ var __async = (__this, __arguments, generator) => {
       matiji_id: "217991",
       grade: 2025,
       nowcoder_id: "366442741",
-      atcoder: 30,
-      codeforces: 93,
+      atcoder: 31,
+      codeforces: 96,
       matiji: 41
     },
     {
@@ -21533,12 +21824,12 @@ var __async = (__this, __arguments, generator) => {
       "class": "25届软件工程(本科)3班",
       codeforces_id: "caidetianhuaban",
       atcoder_id: "caidetianhuaban",
-      matiji_id: "553748092",
+      matiji_id: "218775",
       grade: 2025,
-      nowcoder_id: "菜的天花板",
+      nowcoder_id: "553748092",
       atcoder: 8,
-      codeforces: 53,
-      matiji: 0
+      codeforces: 55,
+      matiji: 2
     },
     {
       name: "刘意群",
@@ -21572,8 +21863,8 @@ var __async = (__this, __arguments, generator) => {
       matiji_id: "216968",
       grade: 2025,
       nowcoder_id: "416371990",
-      atcoder: 32,
-      codeforces: 102,
+      atcoder: 35,
+      codeforces: 104,
       matiji: 24
     },
     {
@@ -21620,8 +21911,8 @@ var __async = (__this, __arguments, generator) => {
       matiji_id: "217486",
       grade: 2025,
       nowcoder_id: "702164060",
-      atcoder: 35,
-      codeforces: 56,
+      atcoder: 37,
+      codeforces: 61,
       matiji: 25
     },
     {
@@ -21652,842 +21943,2391 @@ var __async = (__this, __arguments, generator) => {
   const data = {
     "余凯": {
       atcoder: {
-        "2025-10-20": 111,
-        "2025-11-01": 117,
-        "2025-11-20": 120,
-        "2025-11-29": 120,
-        "2025-12-08": 120
+        "2025-10-20": {
+          ac_count: 111
+        },
+        "2025-11-01": {
+          ac_count: 117
+        },
+        "2025-11-20": {
+          ac_count: 120
+        },
+        "2025-11-29": {
+          ac_count: 120
+        },
+        "2025-12-08": {
+          ac_count: 120
+        },
+        "2025-12-11": {
+          ac_count: 120,
+          rating: "718",
+          highest_rating: "758"
+        }
       },
       codeforces: {
-        "2025-10-20": 233,
-        "2025-11-01": 237,
-        "2025-11-20": 242,
-        "2025-11-29": 242,
-        "2025-12-08": 242
+        "2025-10-20": {
+          ac_count: 233
+        },
+        "2025-11-01": {
+          ac_count: 237
+        },
+        "2025-11-20": {
+          ac_count: 242
+        },
+        "2025-11-29": {
+          ac_count: 242
+        },
+        "2025-12-08": {
+          ac_count: 242
+        },
+        "2025-12-11": {
+          ac_count: 242,
+          rating: 1302,
+          highest_rating: 1302
+        }
       },
       matiji: {
-        "2025-11-29": 61,
-        "2025-12-08": 61
+        "2025-11-29": {
+          ac_count: 61
+        },
+        "2025-12-08": {
+          ac_count: 61
+        },
+        "2025-12-11": {
+          ac_count: 61,
+          rating: 1671
+        }
       }
     },
     "叶智豪": {
       atcoder: {
-        "2025-11-20": 6,
-        "2025-11-29": 12,
-        "2025-12-08": 12
+        "2025-11-20": {
+          ac_count: 6
+        },
+        "2025-11-29": {
+          ac_count: 12
+        },
+        "2025-12-08": {
+          ac_count: 12
+        },
+        "2025-12-11": {
+          ac_count: 12,
+          rating: "766",
+          highest_rating: "766"
+        }
       },
       codeforces: {
-        "2025-10-20": 762,
-        "2025-11-01": 762,
-        "2025-11-20": 764,
-        "2025-11-29": 768,
-        "2025-12-08": 772
+        "2025-10-20": {
+          ac_count: 762
+        },
+        "2025-11-01": {
+          ac_count: 762
+        },
+        "2025-11-20": {
+          ac_count: 764
+        },
+        "2025-11-29": {
+          ac_count: 768
+        },
+        "2025-12-08": {
+          ac_count: 772
+        },
+        "2025-12-11": {
+          ac_count: 772,
+          rating: 1491,
+          highest_rating: 1491
+        }
       },
       matiji: {
-        "2025-11-29": 304,
-        "2025-12-08": 304
+        "2025-11-29": {
+          ac_count: 304
+        },
+        "2025-12-08": {
+          ac_count: 304
+        },
+        "2025-12-11": {
+          ac_count: 304,
+          rating: 1801
+        }
       }
     },
     "燕诺": {
       atcoder: {
-        "2025-10-20": 2,
-        "2025-11-01": 5,
-        "2025-11-20": 11,
-        "2025-11-29": 14,
-        "2025-12-08": 19
+        "2025-10-20": {
+          ac_count: 2
+        },
+        "2025-11-01": {
+          ac_count: 5
+        },
+        "2025-11-20": {
+          ac_count: 11
+        },
+        "2025-11-29": {
+          ac_count: 14
+        },
+        "2025-12-08": {
+          ac_count: 19
+        },
+        "2025-12-11": {
+          ac_count: 19,
+          rating: "59",
+          highest_rating: "59"
+        }
       },
       codeforces: {
-        "2025-10-20": 5,
-        "2025-11-01": 17,
-        "2025-11-20": 23,
-        "2025-11-29": 26,
-        "2025-12-08": 32
+        "2025-10-20": {
+          ac_count: 5
+        },
+        "2025-11-01": {
+          ac_count: 17
+        },
+        "2025-11-20": {
+          ac_count: 23
+        },
+        "2025-11-29": {
+          ac_count: 26
+        },
+        "2025-12-08": {
+          ac_count: 32
+        },
+        "2025-12-11": {
+          ac_count: 32,
+          rating: 913,
+          highest_rating: 913
+        }
       },
       matiji: {
-        "2025-10-20": 7,
-        "2025-11-01": 18,
-        "2025-11-20": 26,
-        "2025-11-29": 26,
-        "2025-12-08": 26
+        "2025-10-20": {
+          ac_count: 7
+        },
+        "2025-11-01": {
+          ac_count: 18
+        },
+        "2025-11-20": {
+          ac_count: 26
+        },
+        "2025-11-29": {
+          ac_count: 26
+        },
+        "2025-12-08": {
+          ac_count: 26
+        },
+        "2025-12-11": {
+          ac_count: 26
+        }
       }
     },
     "李俊": {
       atcoder: {
-        "2025-10-20": 28,
-        "2025-11-01": 36,
-        "2025-11-20": 56,
-        "2025-11-29": 64,
-        "2025-12-08": 64
+        "2025-10-20": {
+          ac_count: 28
+        },
+        "2025-11-01": {
+          ac_count: 36
+        },
+        "2025-11-20": {
+          ac_count: 56
+        },
+        "2025-11-29": {
+          ac_count: 64
+        },
+        "2025-12-08": {
+          ac_count: 64
+        },
+        "2025-12-11": {
+          ac_count: 64,
+          rating: "686",
+          highest_rating: "686"
+        }
       },
       codeforces: {
-        "2025-10-20": 131,
-        "2025-11-01": 145,
-        "2025-11-20": 165,
-        "2025-11-29": 180,
-        "2025-12-08": 189
+        "2025-10-20": {
+          ac_count: 131
+        },
+        "2025-11-01": {
+          ac_count: 145
+        },
+        "2025-11-20": {
+          ac_count: 165
+        },
+        "2025-11-29": {
+          ac_count: 180
+        },
+        "2025-12-08": {
+          ac_count: 189
+        },
+        "2025-12-11": {
+          ac_count: 194,
+          rating: 1133,
+          highest_rating: 1236
+        }
       },
       matiji: {
-        "2025-11-29": 181,
-        "2025-12-08": 181
+        "2025-11-29": {
+          ac_count: 181
+        },
+        "2025-12-08": {
+          ac_count: 181
+        },
+        "2025-12-11": {
+          ac_count: 181,
+          rating: 1553
+        }
       }
     },
     "王西门": {
       atcoder: {
-        "2025-10-20": 3,
-        "2025-11-01": 5,
-        "2025-11-20": 7,
-        "2025-11-29": 7,
-        "2025-12-08": 7
+        "2025-10-20": {
+          ac_count: 3
+        },
+        "2025-11-01": {
+          ac_count: 5
+        },
+        "2025-11-20": {
+          ac_count: 7
+        },
+        "2025-11-29": {
+          ac_count: 7
+        },
+        "2025-12-08": {
+          ac_count: 7
+        },
+        "2025-12-11": {
+          ac_count: 7,
+          rating: "46",
+          highest_rating: "46"
+        }
       },
       codeforces: {
-        "2025-10-20": 4,
-        "2025-11-01": 8,
-        "2025-11-20": 11,
-        "2025-11-29": 12,
-        "2025-12-08": 12
+        "2025-10-20": {
+          ac_count: 4
+        },
+        "2025-11-01": {
+          ac_count: 8
+        },
+        "2025-11-20": {
+          ac_count: 11
+        },
+        "2025-11-29": {
+          ac_count: 12
+        },
+        "2025-12-08": {
+          ac_count: 12
+        },
+        "2025-12-11": {
+          ac_count: 12,
+          rating: 585,
+          highest_rating: 585
+        }
       },
       matiji: {
-        "2025-10-20": 2,
-        "2025-11-01": 2,
-        "2025-11-20": 2,
-        "2025-11-29": 2,
-        "2025-12-08": 2
+        "2025-10-20": {
+          ac_count: 2
+        },
+        "2025-11-01": {
+          ac_count: 2
+        },
+        "2025-11-20": {
+          ac_count: 2
+        },
+        "2025-11-29": {
+          ac_count: 2
+        },
+        "2025-12-08": {
+          ac_count: 2
+        },
+        "2025-12-11": {
+          ac_count: 2
+        }
       }
     },
     "胡悠茗": {
       atcoder: {
-        "2025-10-20": 18,
-        "2025-11-01": 21,
-        "2025-11-20": 35,
-        "2025-11-29": 38,
-        "2025-12-08": 39
+        "2025-10-20": {
+          ac_count: 18
+        },
+        "2025-11-01": {
+          ac_count: 21
+        },
+        "2025-11-20": {
+          ac_count: 35
+        },
+        "2025-11-29": {
+          ac_count: 38
+        },
+        "2025-12-08": {
+          ac_count: 39
+        },
+        "2025-12-11": {
+          ac_count: 39,
+          rating: "257",
+          highest_rating: "257"
+        }
       },
       codeforces: {
-        "2025-10-20": 55,
-        "2025-11-01": 73,
-        "2025-11-20": 89,
-        "2025-11-29": 93,
-        "2025-12-08": 101
+        "2025-10-20": {
+          ac_count: 55
+        },
+        "2025-11-01": {
+          ac_count: 73
+        },
+        "2025-11-20": {
+          ac_count: 89
+        },
+        "2025-11-29": {
+          ac_count: 93
+        },
+        "2025-12-08": {
+          ac_count: 101
+        },
+        "2025-12-11": {
+          ac_count: 103,
+          rating: 1025,
+          highest_rating: 1025
+        }
       },
       matiji: {
-        "2025-10-20": 10,
-        "2025-11-01": 12,
-        "2025-11-20": 28,
-        "2025-11-29": 28,
-        "2025-12-08": 28
+        "2025-10-20": {
+          ac_count: 10
+        },
+        "2025-11-01": {
+          ac_count: 12
+        },
+        "2025-11-20": {
+          ac_count: 28
+        },
+        "2025-11-29": {
+          ac_count: 28
+        },
+        "2025-12-08": {
+          ac_count: 28
+        },
+        "2025-12-11": {
+          ac_count: 28
+        }
       }
     },
     "符轩跃": {
       atcoder: {
-        "2025-10-20": 23,
-        "2025-11-01": 30,
-        "2025-11-20": 50,
-        "2025-11-29": 50,
-        "2025-12-08": 50
+        "2025-10-20": {
+          ac_count: 23
+        },
+        "2025-11-01": {
+          ac_count: 30
+        },
+        "2025-11-20": {
+          ac_count: 50
+        },
+        "2025-11-29": {
+          ac_count: 50
+        },
+        "2025-12-08": {
+          ac_count: 50
+        },
+        "2025-12-11": {
+          ac_count: 50,
+          rating: "741",
+          highest_rating: "741"
+        }
       },
       codeforces: {
-        "2025-10-20": 26,
-        "2025-11-01": 54,
-        "2025-11-20": 78,
-        "2025-11-29": 84,
-        "2025-12-08": 87
+        "2025-10-20": {
+          ac_count: 26
+        },
+        "2025-11-01": {
+          ac_count: 54
+        },
+        "2025-11-20": {
+          ac_count: 78
+        },
+        "2025-11-29": {
+          ac_count: 84
+        },
+        "2025-12-08": {
+          ac_count: 87
+        },
+        "2025-12-11": {
+          ac_count: 103,
+          rating: 1161,
+          highest_rating: 1298
+        }
       },
       matiji: {
-        "2025-10-20": 22,
-        "2025-11-01": 30,
-        "2025-11-20": 30,
-        "2025-11-29": 30,
-        "2025-12-08": 30
+        "2025-10-20": {
+          ac_count: 22
+        },
+        "2025-11-01": {
+          ac_count: 30
+        },
+        "2025-11-20": {
+          ac_count: 30
+        },
+        "2025-11-29": {
+          ac_count: 30
+        },
+        "2025-12-08": {
+          ac_count: 30
+        },
+        "2025-12-11": {
+          ac_count: 30,
+          rating: 1858
+        }
       }
     },
     "徐文静": {
       atcoder: {
-        "2025-10-20": 12,
-        "2025-11-01": 15,
-        "2025-11-20": 27,
-        "2025-11-29": 28,
-        "2025-12-08": 28
+        "2025-10-20": {
+          ac_count: 12
+        },
+        "2025-11-01": {
+          ac_count: 15
+        },
+        "2025-11-20": {
+          ac_count: 27
+        },
+        "2025-11-29": {
+          ac_count: 28
+        },
+        "2025-12-08": {
+          ac_count: 28
+        },
+        "2025-12-11": {
+          ac_count: 33,
+          rating: "268",
+          highest_rating: "268"
+        }
       },
       codeforces: {
-        "2025-10-20": 43,
-        "2025-11-01": 65,
-        "2025-11-20": 76,
-        "2025-11-29": 78,
-        "2025-12-08": 80
+        "2025-10-20": {
+          ac_count: 43
+        },
+        "2025-11-01": {
+          ac_count: 65
+        },
+        "2025-11-20": {
+          ac_count: 76
+        },
+        "2025-11-29": {
+          ac_count: 78
+        },
+        "2025-12-08": {
+          ac_count: 80
+        },
+        "2025-12-11": {
+          ac_count: 83,
+          rating: 956,
+          highest_rating: 956
+        }
       },
       matiji: {
-        "2025-10-20": 22,
-        "2025-11-01": 33,
-        "2025-11-20": 42,
-        "2025-11-29": 42,
-        "2025-12-08": 42
+        "2025-10-20": {
+          ac_count: 22
+        },
+        "2025-11-01": {
+          ac_count: 33
+        },
+        "2025-11-20": {
+          ac_count: 42
+        },
+        "2025-11-29": {
+          ac_count: 42
+        },
+        "2025-12-08": {
+          ac_count: 42
+        },
+        "2025-12-11": {
+          ac_count: 42
+        }
       }
     },
     "曹政业": {
       atcoder: {
-        "2025-10-20": 297,
-        "2025-11-01": 297,
-        "2025-11-20": 307,
-        "2025-11-29": 309,
-        "2025-12-08": 309
+        "2025-10-20": {
+          ac_count: 297
+        },
+        "2025-11-01": {
+          ac_count: 297
+        },
+        "2025-11-20": {
+          ac_count: 307
+        },
+        "2025-11-29": {
+          ac_count: 309
+        },
+        "2025-12-08": {
+          ac_count: 309
+        },
+        "2025-12-11": {
+          ac_count: 309,
+          rating: "1253",
+          highest_rating: "1253"
+        }
       },
       codeforces: {
-        "2025-10-20": 1305,
-        "2025-11-01": 1305,
-        "2025-11-20": 1309,
-        "2025-11-29": 1314,
-        "2025-12-08": 1321
+        "2025-10-20": {
+          ac_count: 1305
+        },
+        "2025-11-01": {
+          ac_count: 1305
+        },
+        "2025-11-20": {
+          ac_count: 1309
+        },
+        "2025-11-29": {
+          ac_count: 1314
+        },
+        "2025-12-08": {
+          ac_count: 1321
+        },
+        "2025-12-11": {
+          ac_count: 1321,
+          rating: 1726,
+          highest_rating: 1726
+        }
       },
       matiji: {
-        "2025-11-29": 210,
-        "2025-12-08": 210
+        "2025-11-29": {
+          ac_count: 210
+        },
+        "2025-12-08": {
+          ac_count: 210
+        },
+        "2025-12-11": {
+          ac_count: 210,
+          rating: 1795
+        }
       }
     },
     "姜银": {
       atcoder: {
-        "2025-10-20": 130,
-        "2025-11-01": 140,
-        "2025-11-20": 155,
-        "2025-11-29": 159,
-        "2025-12-08": 159
+        "2025-10-20": {
+          ac_count: 130
+        },
+        "2025-11-01": {
+          ac_count: 140
+        },
+        "2025-11-20": {
+          ac_count: 155
+        },
+        "2025-11-29": {
+          ac_count: 159
+        },
+        "2025-12-08": {
+          ac_count: 159
+        },
+        "2025-12-11": {
+          ac_count: 159,
+          rating: "753",
+          highest_rating: "753"
+        }
       },
       codeforces: {
-        "2025-10-20": 307,
-        "2025-11-01": 317,
-        "2025-11-20": 333,
-        "2025-11-29": 338,
-        "2025-12-08": 349
+        "2025-10-20": {
+          ac_count: 307
+        },
+        "2025-11-01": {
+          ac_count: 317
+        },
+        "2025-11-20": {
+          ac_count: 333
+        },
+        "2025-11-29": {
+          ac_count: 338
+        },
+        "2025-12-08": {
+          ac_count: 349
+        },
+        "2025-12-11": {
+          ac_count: 349,
+          rating: 1238,
+          highest_rating: 1286
+        }
       },
       matiji: {
-        "2025-11-29": 95,
-        "2025-12-08": 95
+        "2025-11-29": {
+          ac_count: 95
+        },
+        "2025-12-08": {
+          ac_count: 95
+        },
+        "2025-12-11": {
+          ac_count: 95,
+          rating: 1670
+        }
       }
     },
     "陈硕": {
       atcoder: {
-        "2025-10-20": 250,
-        "2025-11-01": 252,
-        "2025-11-20": 261,
-        "2025-11-29": 266,
-        "2025-12-08": 266
+        "2025-10-20": {
+          ac_count: 250
+        },
+        "2025-11-01": {
+          ac_count: 252
+        },
+        "2025-11-20": {
+          ac_count: 261
+        },
+        "2025-11-29": {
+          ac_count: 266
+        },
+        "2025-12-08": {
+          ac_count: 266
+        },
+        "2025-12-11": {
+          ac_count: 266,
+          rating: "1212",
+          highest_rating: "1212"
+        }
       },
       codeforces: {
-        "2025-10-20": 1156,
-        "2025-11-01": 1157,
-        "2025-11-20": 1157,
-        "2025-11-29": 1159,
-        "2025-12-08": 1159
+        "2025-10-20": {
+          ac_count: 1156
+        },
+        "2025-11-01": {
+          ac_count: 1157
+        },
+        "2025-11-20": {
+          ac_count: 1157
+        },
+        "2025-11-29": {
+          ac_count: 1159
+        },
+        "2025-12-08": {
+          ac_count: 1159
+        },
+        "2025-12-11": {
+          ac_count: 1159,
+          rating: 1692,
+          highest_rating: 1692
+        }
       },
       matiji: {
-        "2025-11-29": 199,
-        "2025-12-08": 204
+        "2025-11-29": {
+          ac_count: 199
+        },
+        "2025-12-08": {
+          ac_count: 204
+        },
+        "2025-12-11": {
+          ac_count: 204,
+          rating: 1700
+        }
       }
     },
     "屈健健": {
       atcoder: {
-        "2025-11-29": 13,
-        "2025-12-08": 18
+        "2025-11-29": {
+          ac_count: 13
+        },
+        "2025-12-08": {
+          ac_count: 18
+        },
+        "2025-12-11": {
+          ac_count: 19,
+          rating: "69",
+          highest_rating: "69"
+        }
       },
       codeforces: {
-        "2025-11-29": 27,
-        "2025-12-08": 34
+        "2025-11-29": {
+          ac_count: 27
+        },
+        "2025-12-08": {
+          ac_count: 34
+        },
+        "2025-12-11": {
+          ac_count: 35,
+          rating: 731,
+          highest_rating: 731
+        }
       },
       matiji: {
-        "2025-11-29": 14,
-        "2025-12-08": 14
+        "2025-11-29": {
+          ac_count: 14
+        },
+        "2025-12-08": {
+          ac_count: 14
+        },
+        "2025-12-11": {
+          ac_count: 14
+        }
       }
     },
     "龚孝天": {
       atcoder: {
-        "2025-11-29": 44,
-        "2025-12-08": 44
+        "2025-11-29": {
+          ac_count: 44
+        },
+        "2025-12-08": {
+          ac_count: 44
+        },
+        "2025-12-11": {
+          ac_count: 44,
+          rating: "843",
+          highest_rating: "843"
+        }
       },
       codeforces: {
-        "2025-11-29": 54,
-        "2025-12-08": 64
+        "2025-11-29": {
+          ac_count: 54
+        },
+        "2025-12-08": {
+          ac_count: 64
+        },
+        "2025-12-11": {
+          ac_count: 71,
+          rating: 1643,
+          highest_rating: 1643
+        }
       },
       matiji: {
-        "2025-11-29": 61,
-        "2025-12-08": 61
+        "2025-11-29": {
+          ac_count: 61
+        },
+        "2025-12-08": {
+          ac_count: 61
+        },
+        "2025-12-11": {
+          ac_count: 61,
+          rating: 1671
+        }
       }
     },
     "顾光辉": {
       atcoder: {
-        "2025-11-29": 132,
-        "2025-12-08": 132
+        "2025-11-29": {
+          ac_count: 132
+        },
+        "2025-12-08": {
+          ac_count: 132
+        },
+        "2025-12-11": {
+          ac_count: 132,
+          rating: "916",
+          highest_rating: "916"
+        }
       },
       codeforces: {
-        "2025-11-29": 322,
-        "2025-12-08": 322
+        "2025-11-29": {
+          ac_count: 322
+        },
+        "2025-12-08": {
+          ac_count: 322
+        },
+        "2025-12-11": {
+          ac_count: 322,
+          rating: 1416,
+          highest_rating: 1455
+        }
       },
       matiji: {
-        "2025-11-29": 71,
-        "2025-12-08": 71
+        "2025-11-29": {
+          ac_count: 71
+        },
+        "2025-12-08": {
+          ac_count: 71
+        },
+        "2025-12-11": {
+          ac_count: 71,
+          rating: 1778
+        }
       }
     },
     "赵星宇": {
       atcoder: {
-        "2025-10-20": 128,
-        "2025-11-01": 130,
-        "2025-11-20": 138,
-        "2025-11-29": 142,
-        "2025-12-08": 142
+        "2025-10-20": {
+          ac_count: 128
+        },
+        "2025-11-01": {
+          ac_count: 130
+        },
+        "2025-11-20": {
+          ac_count: 138
+        },
+        "2025-11-29": {
+          ac_count: 142
+        },
+        "2025-12-08": {
+          ac_count: 142
+        },
+        "2025-12-11": {
+          ac_count: 142,
+          rating: "619",
+          highest_rating: "619"
+        }
       },
       codeforces: {
-        "2025-10-20": 146,
-        "2025-11-01": 149,
-        "2025-11-20": 156,
-        "2025-11-29": 161,
-        "2025-12-08": 165
+        "2025-10-20": {
+          ac_count: 146
+        },
+        "2025-11-01": {
+          ac_count: 149
+        },
+        "2025-11-20": {
+          ac_count: 156
+        },
+        "2025-11-29": {
+          ac_count: 161
+        },
+        "2025-12-08": {
+          ac_count: 165
+        },
+        "2025-12-11": {
+          ac_count: 165,
+          rating: 1002,
+          highest_rating: 1257
+        }
       },
       matiji: {
-        "2025-11-29": 107,
-        "2025-12-08": 107
+        "2025-11-29": {
+          ac_count: 107
+        },
+        "2025-12-08": {
+          ac_count: 107
+        },
+        "2025-12-11": {
+          ac_count: 107,
+          rating: 1601
+        }
       }
     },
     "杜蘇航": {
       atcoder: {
-        "2025-10-20": 85,
-        "2025-11-01": 94,
-        "2025-11-20": 119,
-        "2025-11-29": 123,
-        "2025-12-08": 123
+        "2025-10-20": {
+          ac_count: 85
+        },
+        "2025-11-01": {
+          ac_count: 94
+        },
+        "2025-11-20": {
+          ac_count: 119
+        },
+        "2025-11-29": {
+          ac_count: 123
+        },
+        "2025-12-08": {
+          ac_count: 123
+        },
+        "2025-12-11": {
+          ac_count: 123,
+          rating: "690",
+          highest_rating: "690"
+        }
       },
       codeforces: {
-        "2025-10-20": 180,
-        "2025-11-01": 182,
-        "2025-11-20": 185,
-        "2025-11-29": 190,
-        "2025-12-08": 205
+        "2025-10-20": {
+          ac_count: 180
+        },
+        "2025-11-01": {
+          ac_count: 182
+        },
+        "2025-11-20": {
+          ac_count: 185
+        },
+        "2025-11-29": {
+          ac_count: 190
+        },
+        "2025-12-08": {
+          ac_count: 205
+        },
+        "2025-12-11": {
+          ac_count: 206,
+          rating: 1218,
+          highest_rating: 1262
+        }
       },
       matiji: {
-        "2025-11-29": 165,
-        "2025-12-08": 165
+        "2025-11-29": {
+          ac_count: 165
+        },
+        "2025-12-08": {
+          ac_count: 165
+        },
+        "2025-12-11": {
+          ac_count: 165,
+          rating: 1583
+        }
       }
     },
     "尚淇淇": {
       atcoder: {
-        "2025-10-20": 140,
-        "2025-11-01": 145,
-        "2025-11-20": 166,
-        "2025-11-29": 170,
-        "2025-12-08": 170
+        "2025-10-20": {
+          ac_count: 140
+        },
+        "2025-11-01": {
+          ac_count: 145
+        },
+        "2025-11-20": {
+          ac_count: 166
+        },
+        "2025-11-29": {
+          ac_count: 170
+        },
+        "2025-12-08": {
+          ac_count: 170
+        },
+        "2025-12-11": {
+          ac_count: 170,
+          rating: "864",
+          highest_rating: "864"
+        }
       },
       codeforces: {
-        "2025-10-20": 285,
-        "2025-11-01": 295,
-        "2025-11-20": 302,
-        "2025-11-29": 314,
-        "2025-12-08": 320
+        "2025-10-20": {
+          ac_count: 285
+        },
+        "2025-11-01": {
+          ac_count: 295
+        },
+        "2025-11-20": {
+          ac_count: 302
+        },
+        "2025-11-29": {
+          ac_count: 314
+        },
+        "2025-12-08": {
+          ac_count: 320
+        },
+        "2025-12-11": {
+          ac_count: 321,
+          rating: 1178,
+          highest_rating: 1218
+        }
       },
       matiji: {
-        "2025-11-29": 112,
-        "2025-12-08": 112
+        "2025-11-29": {
+          ac_count: 112
+        },
+        "2025-12-08": {
+          ac_count: 112
+        },
+        "2025-12-11": {
+          ac_count: 112,
+          rating: 1659
+        }
       }
     },
     "陈资权": {
       atcoder: {
-        "2025-10-20": 177,
-        "2025-11-01": 177,
-        "2025-11-20": 184,
-        "2025-11-29": 188,
-        "2025-12-08": 188
+        "2025-10-20": {
+          ac_count: 177
+        },
+        "2025-11-01": {
+          ac_count: 177
+        },
+        "2025-11-20": {
+          ac_count: 184
+        },
+        "2025-11-29": {
+          ac_count: 188
+        },
+        "2025-12-08": {
+          ac_count: 188
+        },
+        "2025-12-11": {
+          ac_count: 188,
+          rating: "967",
+          highest_rating: "1188"
+        }
       },
       codeforces: {
-        "2025-10-20": 786,
-        "2025-11-01": 795,
-        "2025-11-20": 800,
-        "2025-11-29": 812,
-        "2025-12-08": 817
+        "2025-10-20": {
+          ac_count: 786
+        },
+        "2025-11-01": {
+          ac_count: 795
+        },
+        "2025-11-20": {
+          ac_count: 800
+        },
+        "2025-11-29": {
+          ac_count: 812
+        },
+        "2025-12-08": {
+          ac_count: 817
+        },
+        "2025-12-11": {
+          ac_count: 819,
+          rating: 1498,
+          highest_rating: 1589
+        }
       },
       matiji: {
-        "2025-11-29": 75,
-        "2025-12-08": 75
+        "2025-11-29": {
+          ac_count: 75
+        },
+        "2025-12-08": {
+          ac_count: 75
+        },
+        "2025-12-11": {
+          ac_count: 75,
+          rating: 1791
+        }
       }
     },
     "张宇翔": {
       atcoder: {
-        "2025-10-20": 19,
-        "2025-11-01": 23,
-        "2025-11-20": 37,
-        "2025-11-29": 40,
-        "2025-12-08": 45
+        "2025-10-20": {
+          ac_count: 19
+        },
+        "2025-11-01": {
+          ac_count: 23
+        },
+        "2025-11-20": {
+          ac_count: 37
+        },
+        "2025-11-29": {
+          ac_count: 40
+        },
+        "2025-12-08": {
+          ac_count: 45
+        },
+        "2025-12-11": {
+          ac_count: 45,
+          rating: "403",
+          highest_rating: "403"
+        }
       },
       codeforces: {
-        "2025-10-20": 68,
-        "2025-11-01": 91,
-        "2025-11-20": 119,
-        "2025-11-29": 132,
-        "2025-12-08": 137
+        "2025-10-20": {
+          ac_count: 68
+        },
+        "2025-11-01": {
+          ac_count: 91
+        },
+        "2025-11-20": {
+          ac_count: 119
+        },
+        "2025-11-29": {
+          ac_count: 132
+        },
+        "2025-12-08": {
+          ac_count: 137
+        },
+        "2025-12-11": {
+          ac_count: 140,
+          rating: 1059,
+          highest_rating: 1152
+        }
       },
       matiji: {
-        "2025-10-20": 12,
-        "2025-11-01": 12,
-        "2025-11-20": 14,
-        "2025-11-29": 14,
-        "2025-12-08": 14
+        "2025-10-20": {
+          ac_count: 12
+        },
+        "2025-11-01": {
+          ac_count: 12
+        },
+        "2025-11-20": {
+          ac_count: 14
+        },
+        "2025-11-29": {
+          ac_count: 14
+        },
+        "2025-12-08": {
+          ac_count: 14
+        },
+        "2025-12-11": {
+          ac_count: 14
+        }
       }
     },
     "马逍遥": {
       atcoder: {
-        "2025-10-20": 86,
-        "2025-11-01": 94,
-        "2025-11-20": 114,
-        "2025-11-29": 121,
-        "2025-12-08": 121
+        "2025-10-20": {
+          ac_count: 86
+        },
+        "2025-11-01": {
+          ac_count: 94
+        },
+        "2025-11-20": {
+          ac_count: 114
+        },
+        "2025-11-29": {
+          ac_count: 121
+        },
+        "2025-12-08": {
+          ac_count: 121
+        },
+        "2025-12-11": {
+          ac_count: 121,
+          rating: "592",
+          highest_rating: "624"
+        }
       },
       codeforces: {
-        "2025-10-20": 212,
-        "2025-11-01": 218,
-        "2025-11-20": 221,
-        "2025-11-29": 225,
-        "2025-12-08": 229
+        "2025-10-20": {
+          ac_count: 212
+        },
+        "2025-11-01": {
+          ac_count: 218
+        },
+        "2025-11-20": {
+          ac_count: 221
+        },
+        "2025-11-29": {
+          ac_count: 225
+        },
+        "2025-12-08": {
+          ac_count: 229
+        },
+        "2025-12-11": {
+          ac_count: 230,
+          rating: 1130,
+          highest_rating: 1130
+        }
       },
       matiji: {
-        "2025-11-29": 122,
-        "2025-12-08": 122
+        "2025-11-29": {
+          ac_count: 122
+        },
+        "2025-12-08": {
+          ac_count: 122
+        },
+        "2025-12-11": {
+          ac_count: 122,
+          rating: 1601
+        }
       }
     },
     "郑亦宇": {
       atcoder: {
-        "2025-10-20": 10,
-        "2025-11-01": 13,
-        "2025-11-20": 17,
-        "2025-11-29": 20,
-        "2025-12-08": 20
+        "2025-10-20": {
+          ac_count: 10
+        },
+        "2025-11-01": {
+          ac_count: 13
+        },
+        "2025-11-20": {
+          ac_count: 17
+        },
+        "2025-11-29": {
+          ac_count: 20
+        },
+        "2025-12-08": {
+          ac_count: 20
+        },
+        "2025-12-11": {
+          ac_count: 20,
+          rating: "7",
+          highest_rating: "7"
+        }
       },
       codeforces: {
-        "2025-10-20": 55,
-        "2025-11-01": 62,
-        "2025-11-20": 65,
-        "2025-11-29": 66,
-        "2025-12-08": 66
+        "2025-10-20": {
+          ac_count: 55
+        },
+        "2025-11-01": {
+          ac_count: 62
+        },
+        "2025-11-20": {
+          ac_count: 65
+        },
+        "2025-11-29": {
+          ac_count: 66
+        },
+        "2025-12-08": {
+          ac_count: 66
+        },
+        "2025-12-11": {
+          ac_count: 66,
+          rating: 822,
+          highest_rating: 822
+        }
       },
       matiji: {
-        "2025-10-20": 45,
-        "2025-11-01": 76,
-        "2025-11-20": 124,
-        "2025-11-29": 124,
-        "2025-12-08": 124
+        "2025-10-20": {
+          ac_count: 45
+        },
+        "2025-11-01": {
+          ac_count: 76
+        },
+        "2025-11-20": {
+          ac_count: 124
+        },
+        "2025-11-29": {
+          ac_count: 124
+        },
+        "2025-12-08": {
+          ac_count: 124
+        },
+        "2025-12-11": {
+          ac_count: 124
+        }
       }
     },
     "王瑞珽": {
       atcoder: {
-        "2025-10-20": 109,
-        "2025-11-01": 114,
-        "2025-11-20": 121,
-        "2025-11-29": 127,
-        "2025-12-08": 127
+        "2025-10-20": {
+          ac_count: 109
+        },
+        "2025-11-01": {
+          ac_count: 114
+        },
+        "2025-11-20": {
+          ac_count: 121
+        },
+        "2025-11-29": {
+          ac_count: 127
+        },
+        "2025-12-08": {
+          ac_count: 127
+        },
+        "2025-12-11": {
+          ac_count: 127,
+          rating: "685",
+          highest_rating: "685"
+        }
       },
       codeforces: {
-        "2025-10-20": 334,
-        "2025-11-01": 362,
-        "2025-11-20": 398,
-        "2025-11-29": 418,
-        "2025-12-08": 429
+        "2025-10-20": {
+          ac_count: 334
+        },
+        "2025-11-01": {
+          ac_count: 362
+        },
+        "2025-11-20": {
+          ac_count: 398
+        },
+        "2025-11-29": {
+          ac_count: 418
+        },
+        "2025-12-08": {
+          ac_count: 429
+        },
+        "2025-12-11": {
+          ac_count: 432,
+          rating: 1377,
+          highest_rating: 1410
+        }
       },
       matiji: {
-        "2025-11-29": 92,
-        "2025-12-08": 92
+        "2025-11-29": {
+          ac_count: 92
+        },
+        "2025-12-08": {
+          ac_count: 92
+        },
+        "2025-12-11": {
+          ac_count: 92,
+          rating: 1721
+        }
       }
     },
     "向⽂寿": {
       atcoder: {
-        "2025-11-29": 43,
-        "2025-12-08": 55
+        "2025-11-29": {
+          ac_count: 43
+        },
+        "2025-12-08": {
+          ac_count: 55
+        },
+        "2025-12-11": {
+          ac_count: 56,
+          rating: "226",
+          highest_rating: "226"
+        }
       },
       codeforces: {
-        "2025-11-29": 1037,
-        "2025-12-08": 1038
+        "2025-11-29": {
+          ac_count: 1037
+        },
+        "2025-12-08": {
+          ac_count: 1038
+        },
+        "2025-12-11": {
+          ac_count: 1039,
+          rating: 1478,
+          highest_rating: 1519
+        }
       },
       matiji: {
-        "2025-11-29": 193,
-        "2025-12-08": 193
+        "2025-11-29": {
+          ac_count: 193
+        },
+        "2025-12-08": {
+          ac_count: 193
+        },
+        "2025-12-11": {
+          ac_count: 193,
+          rating: 1838
+        }
       }
     },
     "陈光照": {
       atcoder: {
-        "2025-10-20": 4,
-        "2025-11-01": 4,
-        "2025-11-20": 13,
-        "2025-11-29": 15,
-        "2025-12-08": 15
+        "2025-10-20": {
+          ac_count: 4
+        },
+        "2025-11-01": {
+          ac_count: 4
+        },
+        "2025-11-20": {
+          ac_count: 13
+        },
+        "2025-11-29": {
+          ac_count: 15
+        },
+        "2025-12-08": {
+          ac_count: 15
+        },
+        "2025-12-11": {
+          ac_count: 15,
+          rating: "132",
+          highest_rating: "132"
+        }
       },
       codeforces: {
-        "2025-10-20": 6,
-        "2025-11-01": 12,
-        "2025-11-20": 17,
-        "2025-11-29": 19,
-        "2025-12-08": 20
+        "2025-10-20": {
+          ac_count: 6
+        },
+        "2025-11-01": {
+          ac_count: 12
+        },
+        "2025-11-20": {
+          ac_count: 17
+        },
+        "2025-11-29": {
+          ac_count: 19
+        },
+        "2025-12-08": {
+          ac_count: 20
+        },
+        "2025-12-11": {
+          ac_count: 21,
+          rating: 744,
+          highest_rating: 744
+        }
       },
       matiji: {
-        "2025-10-20": 10,
-        "2025-11-01": 21,
-        "2025-11-20": 33,
-        "2025-11-29": 33,
-        "2025-12-08": 33
+        "2025-10-20": {
+          ac_count: 10
+        },
+        "2025-11-01": {
+          ac_count: 21
+        },
+        "2025-11-20": {
+          ac_count: 33
+        },
+        "2025-11-29": {
+          ac_count: 33
+        },
+        "2025-12-08": {
+          ac_count: 33
+        },
+        "2025-12-11": {
+          ac_count: 33
+        }
       }
     },
     "孙叶": {
       atcoder: {
-        "2025-10-20": 6,
-        "2025-11-01": 8,
-        "2025-11-20": 22,
-        "2025-11-29": 25,
-        "2025-12-08": 26
+        "2025-10-20": {
+          ac_count: 6
+        },
+        "2025-11-01": {
+          ac_count: 8
+        },
+        "2025-11-20": {
+          ac_count: 22
+        },
+        "2025-11-29": {
+          ac_count: 25
+        },
+        "2025-12-08": {
+          ac_count: 26
+        },
+        "2025-12-11": {
+          ac_count: 27,
+          rating: "113",
+          highest_rating: "113"
+        }
       },
       codeforces: {
-        "2025-10-20": 6,
-        "2025-11-01": 19,
-        "2025-11-20": 31,
-        "2025-11-29": 34,
-        "2025-12-08": 38
+        "2025-10-20": {
+          ac_count: 6
+        },
+        "2025-11-01": {
+          ac_count: 19
+        },
+        "2025-11-20": {
+          ac_count: 31
+        },
+        "2025-11-29": {
+          ac_count: 34
+        },
+        "2025-12-08": {
+          ac_count: 38
+        },
+        "2025-12-11": {
+          ac_count: 39,
+          rating: 627,
+          highest_rating: 627
+        }
       },
       matiji: {
-        "2025-10-20": 3,
-        "2025-11-01": 12,
-        "2025-11-20": 22,
-        "2025-11-29": 22,
-        "2025-12-08": 22
+        "2025-10-20": {
+          ac_count: 3
+        },
+        "2025-11-01": {
+          ac_count: 12
+        },
+        "2025-11-20": {
+          ac_count: 22
+        },
+        "2025-11-29": {
+          ac_count: 22
+        },
+        "2025-12-08": {
+          ac_count: 22
+        },
+        "2025-12-11": {
+          ac_count: 22
+        }
       }
     },
     "陈道磊": {
       atcoder: {
-        "2025-11-29": 139,
-        "2025-12-08": 139
+        "2025-11-29": {
+          ac_count: 139
+        },
+        "2025-12-08": {
+          ac_count: 139
+        },
+        "2025-12-11": {
+          ac_count: 139,
+          rating: "1413",
+          highest_rating: "1413"
+        }
       },
       codeforces: {
-        "2025-11-29": 758,
-        "2025-12-08": 763
+        "2025-11-29": {
+          ac_count: 758
+        },
+        "2025-12-08": {
+          ac_count: 763
+        },
+        "2025-12-11": {
+          ac_count: 763,
+          rating: 1623,
+          highest_rating: 1783
+        }
       },
       matiji: {}
     },
     "黄麒亮": {
       atcoder: {
-        "2025-11-29": 14,
-        "2025-12-08": 14
+        "2025-11-29": {
+          ac_count: 14
+        },
+        "2025-12-08": {
+          ac_count: 14
+        },
+        "2025-12-11": {
+          ac_count: 14,
+          rating: "84",
+          highest_rating: "84"
+        }
       },
       codeforces: {
-        "2025-11-29": 19,
-        "2025-12-08": 20
+        "2025-11-29": {
+          ac_count: 19
+        },
+        "2025-12-08": {
+          ac_count: 20
+        },
+        "2025-12-11": {
+          ac_count: 20,
+          rating: 897,
+          highest_rating: 897
+        }
       },
       matiji: {
-        "2025-11-29": 22,
-        "2025-12-08": 22
+        "2025-11-29": {
+          ac_count: 22
+        },
+        "2025-12-08": {
+          ac_count: 22
+        },
+        "2025-12-11": {
+          ac_count: 22
+        }
       }
     },
     "宋赵伟": {
       atcoder: {
-        "2025-11-29": 11,
-        "2025-12-08": 11
+        "2025-11-29": {
+          ac_count: 11
+        },
+        "2025-12-08": {
+          ac_count: 11
+        },
+        "2025-12-11": {
+          ac_count: 11
+        }
       },
       codeforces: {
-        "2025-11-29": 1,
-        "2025-12-08": 1
+        "2025-11-29": {
+          ac_count: 1
+        },
+        "2025-12-08": {
+          ac_count: 1
+        },
+        "2025-12-11": {
+          ac_count: 1,
+          rating: null,
+          highest_rating: null
+        }
       },
       matiji: {
-        "2025-11-29": 1,
-        "2025-12-08": 1
+        "2025-11-29": {
+          ac_count: 1
+        },
+        "2025-12-08": {
+          ac_count: 1
+        },
+        "2025-12-11": {
+          ac_count: 1
+        }
       }
     },
     "陈宣扬": {
       atcoder: {
-        "2025-10-20": 18,
-        "2025-11-01": 21,
-        "2025-11-20": 40,
-        "2025-11-29": 44,
-        "2025-12-08": 46
+        "2025-10-20": {
+          ac_count: 18
+        },
+        "2025-11-01": {
+          ac_count: 21
+        },
+        "2025-11-20": {
+          ac_count: 40
+        },
+        "2025-11-29": {
+          ac_count: 44
+        },
+        "2025-12-08": {
+          ac_count: 46
+        },
+        "2025-12-11": {
+          ac_count: 46,
+          rating: "368",
+          highest_rating: "372"
+        }
       },
       codeforces: {
-        "2025-10-20": 48,
-        "2025-11-01": 59,
-        "2025-11-20": 87,
-        "2025-11-29": 96,
-        "2025-12-08": 102
+        "2025-10-20": {
+          ac_count: 48
+        },
+        "2025-11-01": {
+          ac_count: 59
+        },
+        "2025-11-20": {
+          ac_count: 87
+        },
+        "2025-11-29": {
+          ac_count: 96
+        },
+        "2025-12-08": {
+          ac_count: 102
+        },
+        "2025-12-11": {
+          ac_count: 103,
+          rating: 1165,
+          highest_rating: 1165
+        }
       },
       matiji: {
-        "2025-10-20": 20,
-        "2025-11-01": 37,
-        "2025-11-20": 54,
-        "2025-11-29": 54,
-        "2025-12-08": 54
+        "2025-10-20": {
+          ac_count: 20
+        },
+        "2025-11-01": {
+          ac_count: 37
+        },
+        "2025-11-20": {
+          ac_count: 54
+        },
+        "2025-11-29": {
+          ac_count: 54
+        },
+        "2025-12-08": {
+          ac_count: 54
+        },
+        "2025-12-11": {
+          ac_count: 54
+        }
       }
     },
     "倪志杰": {
       atcoder: {
-        "2025-10-20": 6,
-        "2025-11-01": 9,
-        "2025-11-20": 21,
-        "2025-11-29": 25,
-        "2025-12-08": 30
+        "2025-10-20": {
+          ac_count: 6
+        },
+        "2025-11-01": {
+          ac_count: 9
+        },
+        "2025-11-20": {
+          ac_count: 21
+        },
+        "2025-11-29": {
+          ac_count: 25
+        },
+        "2025-12-08": {
+          ac_count: 30
+        },
+        "2025-12-11": {
+          ac_count: 31,
+          rating: "425",
+          highest_rating: "425"
+        }
       },
       codeforces: {
-        "2025-10-20": 22,
-        "2025-11-01": 48,
-        "2025-11-20": 73,
-        "2025-11-29": 85,
-        "2025-12-08": 93
+        "2025-10-20": {
+          ac_count: 22
+        },
+        "2025-11-01": {
+          ac_count: 48
+        },
+        "2025-11-20": {
+          ac_count: 73
+        },
+        "2025-11-29": {
+          ac_count: 85
+        },
+        "2025-12-08": {
+          ac_count: 93
+        },
+        "2025-12-11": {
+          ac_count: 96,
+          rating: 1037,
+          highest_rating: 1037
+        }
       },
       matiji: {
-        "2025-10-20": 19,
-        "2025-11-01": 31,
-        "2025-11-20": 41,
-        "2025-11-29": 41,
-        "2025-12-08": 41
+        "2025-10-20": {
+          ac_count: 19
+        },
+        "2025-11-01": {
+          ac_count: 31
+        },
+        "2025-11-20": {
+          ac_count: 41
+        },
+        "2025-11-29": {
+          ac_count: 41
+        },
+        "2025-12-08": {
+          ac_count: 41
+        },
+        "2025-12-11": {
+          ac_count: 41
+        }
       }
     },
     "郑珂慧": {
       atcoder: {},
       codeforces: {
-        "2025-11-29": 0,
-        "2025-12-08": 0
+        "2025-11-29": {
+          ac_count: 0
+        },
+        "2025-12-08": {
+          ac_count: 0
+        },
+        "2025-12-11": {
+          ac_count: 0,
+          rating: null,
+          highest_rating: null
+        }
       },
       matiji: {
-        "2025-11-29": 1,
-        "2025-12-08": 1
+        "2025-11-29": {
+          ac_count: 1
+        },
+        "2025-12-08": {
+          ac_count: 1
+        },
+        "2025-12-11": {
+          ac_count: 1
+        }
       }
     },
     "薛璇": {
       atcoder: {
-        "2025-11-29": 2,
-        "2025-12-08": 2
+        "2025-11-29": {
+          ac_count: 2
+        },
+        "2025-12-08": {
+          ac_count: 2
+        },
+        "2025-12-11": {
+          ac_count: 2
+        }
       },
       codeforces: {
-        "2025-11-29": 4,
-        "2025-12-08": 4
+        "2025-11-29": {
+          ac_count: 4
+        },
+        "2025-12-08": {
+          ac_count: 4
+        },
+        "2025-12-11": {
+          ac_count: 4,
+          rating: null,
+          highest_rating: null
+        }
       },
       matiji: {
-        "2025-11-29": 2,
-        "2025-12-08": 2
+        "2025-11-29": {
+          ac_count: 2
+        },
+        "2025-12-08": {
+          ac_count: 2
+        },
+        "2025-12-11": {
+          ac_count: 2
+        }
       }
     },
     "施宇轩": {
       atcoder: {
-        "2025-10-20": 2,
-        "2025-11-01": 4,
-        "2025-11-20": 7,
-        "2025-11-29": 9,
-        "2025-12-08": 9
+        "2025-10-20": {
+          ac_count: 2
+        },
+        "2025-11-01": {
+          ac_count: 4
+        },
+        "2025-11-20": {
+          ac_count: 7
+        },
+        "2025-11-29": {
+          ac_count: 9
+        },
+        "2025-12-08": {
+          ac_count: 9
+        },
+        "2025-12-11": {
+          ac_count: 9,
+          rating: "69",
+          highest_rating: "69"
+        }
       },
       codeforces: {
-        "2025-10-20": 8,
-        "2025-11-01": 20,
-        "2025-11-20": 29,
-        "2025-11-29": 32,
-        "2025-12-08": 32
+        "2025-10-20": {
+          ac_count: 8
+        },
+        "2025-11-01": {
+          ac_count: 20
+        },
+        "2025-11-20": {
+          ac_count: 29
+        },
+        "2025-11-29": {
+          ac_count: 32
+        },
+        "2025-12-08": {
+          ac_count: 32
+        },
+        "2025-12-11": {
+          ac_count: 32,
+          rating: 648,
+          highest_rating: 648
+        }
       },
       matiji: {
-        "2025-10-20": 14,
-        "2025-11-01": 23,
-        "2025-11-20": 27,
-        "2025-11-29": 27,
-        "2025-12-08": 27
+        "2025-10-20": {
+          ac_count: 14
+        },
+        "2025-11-01": {
+          ac_count: 23
+        },
+        "2025-11-20": {
+          ac_count: 27
+        },
+        "2025-11-29": {
+          ac_count: 27
+        },
+        "2025-12-08": {
+          ac_count: 27
+        },
+        "2025-12-11": {
+          ac_count: 27
+        }
       }
     },
     "陈轩宇": {
       atcoder: {
-        "2025-10-20": 2,
-        "2025-11-01": 2,
-        "2025-11-20": 5,
-        "2025-11-29": 5,
-        "2025-12-08": 7
+        "2025-10-20": {
+          ac_count: 2
+        },
+        "2025-11-01": {
+          ac_count: 2
+        },
+        "2025-11-20": {
+          ac_count: 5
+        },
+        "2025-11-29": {
+          ac_count: 5
+        },
+        "2025-12-08": {
+          ac_count: 7
+        },
+        "2025-12-11": {
+          ac_count: 7
+        }
       },
       codeforces: {
-        "2025-10-20": 2,
-        "2025-11-01": 4,
-        "2025-11-20": 8,
-        "2025-11-29": 8,
-        "2025-12-08": 10
+        "2025-10-20": {
+          ac_count: 2
+        },
+        "2025-11-01": {
+          ac_count: 4
+        },
+        "2025-11-20": {
+          ac_count: 8
+        },
+        "2025-11-29": {
+          ac_count: 8
+        },
+        "2025-12-08": {
+          ac_count: 10
+        },
+        "2025-12-11": {
+          ac_count: 10,
+          rating: 864,
+          highest_rating: 864
+        }
       },
       matiji: {
-        "2025-11-29": 16,
-        "2025-12-08": 16
+        "2025-11-29": {
+          ac_count: 16
+        },
+        "2025-12-08": {
+          ac_count: 16
+        },
+        "2025-12-11": {
+          ac_count: 16
+        }
       }
     },
     "许文韬": {
       atcoder: {
-        "2025-11-29": 8,
-        "2025-12-08": 8
+        "2025-11-29": {
+          ac_count: 8
+        },
+        "2025-12-08": {
+          ac_count: 8
+        },
+        "2025-12-11": {
+          ac_count: 8,
+          rating: "24",
+          highest_rating: "24"
+        }
       },
       codeforces: {
-        "2025-11-29": 48,
-        "2025-12-08": 53
+        "2025-11-29": {
+          ac_count: 48
+        },
+        "2025-12-08": {
+          ac_count: 53
+        },
+        "2025-12-11": {
+          ac_count: 55,
+          rating: 775,
+          highest_rating: 775
+        }
       },
-      matiji: {}
+      matiji: {
+        "2025-12-11": {
+          ac_count: 2
+        }
+      }
     },
     "刘意群": {
       atcoder: {
-        "2025-10-20": 31,
-        "2025-11-01": 39,
-        "2025-11-20": 55,
-        "2025-11-29": 58,
-        "2025-12-08": 58
+        "2025-10-20": {
+          ac_count: 31
+        },
+        "2025-11-01": {
+          ac_count: 39
+        },
+        "2025-11-20": {
+          ac_count: 55
+        },
+        "2025-11-29": {
+          ac_count: 58
+        },
+        "2025-12-08": {
+          ac_count: 58
+        },
+        "2025-12-11": {
+          ac_count: 58,
+          rating: "517",
+          highest_rating: "517"
+        }
       },
       codeforces: {
-        "2025-10-20": 66,
-        "2025-11-01": 81,
-        "2025-11-20": 103,
-        "2025-11-29": 114,
-        "2025-12-08": 118
+        "2025-10-20": {
+          ac_count: 66
+        },
+        "2025-11-01": {
+          ac_count: 81
+        },
+        "2025-11-20": {
+          ac_count: 103
+        },
+        "2025-11-29": {
+          ac_count: 114
+        },
+        "2025-12-08": {
+          ac_count: 118
+        },
+        "2025-12-11": {
+          ac_count: 118,
+          rating: 1283,
+          highest_rating: 1285
+        }
       },
       matiji: {
-        "2025-10-20": 0,
-        "2025-11-01": 0,
-        "2025-11-20": 0,
-        "2025-11-29": 0,
-        "2025-12-08": 0
+        "2025-10-20": {
+          ac_count: 0
+        },
+        "2025-11-01": {
+          ac_count: 0
+        },
+        "2025-11-20": {
+          ac_count: 0
+        },
+        "2025-11-29": {
+          ac_count: 0
+        },
+        "2025-12-08": {
+          ac_count: 0
+        },
+        "2025-12-11": {
+          ac_count: 0,
+          rating: 1638
+        }
       }
     },
     "俞泽炜": {
       atcoder: {
-        "2025-11-29": 11,
-        "2025-12-08": 11
+        "2025-11-29": {
+          ac_count: 11
+        },
+        "2025-12-08": {
+          ac_count: 11
+        },
+        "2025-12-11": {
+          ac_count: 11,
+          rating: "2",
+          highest_rating: "2"
+        }
       },
       codeforces: {
-        "2025-11-29": 17,
-        "2025-12-08": 18
+        "2025-11-29": {
+          ac_count: 17
+        },
+        "2025-12-08": {
+          ac_count: 18
+        },
+        "2025-12-11": {
+          ac_count: 18,
+          rating: null,
+          highest_rating: null
+        }
       },
       matiji: {
-        "2025-11-29": 2,
-        "2025-12-08": 2
+        "2025-11-29": {
+          ac_count: 2
+        },
+        "2025-12-08": {
+          ac_count: 2
+        },
+        "2025-12-11": {
+          ac_count: 2
+        }
       }
     },
     "刘云琪": {
       atcoder: {
-        "2025-10-20": 14,
-        "2025-11-01": 17,
-        "2025-11-20": 29,
-        "2025-11-29": 32,
-        "2025-12-08": 32
+        "2025-10-20": {
+          ac_count: 14
+        },
+        "2025-11-01": {
+          ac_count: 17
+        },
+        "2025-11-20": {
+          ac_count: 29
+        },
+        "2025-11-29": {
+          ac_count: 32
+        },
+        "2025-12-08": {
+          ac_count: 32
+        },
+        "2025-12-11": {
+          ac_count: 35,
+          rating: "169",
+          highest_rating: "172"
+        }
       },
       codeforces: {
-        "2025-10-20": 49,
-        "2025-11-01": 64,
-        "2025-11-20": 82,
-        "2025-11-29": 96,
-        "2025-12-08": 102
+        "2025-10-20": {
+          ac_count: 49
+        },
+        "2025-11-01": {
+          ac_count: 64
+        },
+        "2025-11-20": {
+          ac_count: 82
+        },
+        "2025-11-29": {
+          ac_count: 96
+        },
+        "2025-12-08": {
+          ac_count: 102
+        },
+        "2025-12-11": {
+          ac_count: 104,
+          rating: 872,
+          highest_rating: 872
+        }
       },
       matiji: {
-        "2025-10-20": 16,
-        "2025-11-01": 23,
-        "2025-11-20": 24,
-        "2025-11-29": 24,
-        "2025-12-08": 24
+        "2025-10-20": {
+          ac_count: 16
+        },
+        "2025-11-01": {
+          ac_count: 23
+        },
+        "2025-11-20": {
+          ac_count: 24
+        },
+        "2025-11-29": {
+          ac_count: 24
+        },
+        "2025-12-08": {
+          ac_count: 24
+        },
+        "2025-12-11": {
+          ac_count: 24
+        }
       }
     },
     "巫浩锋": {
       atcoder: {},
       codeforces: {
-        "2025-10-20": 1,
-        "2025-11-01": 1,
-        "2025-11-20": 1,
-        "2025-11-29": 1,
-        "2025-12-08": 1
+        "2025-10-20": {
+          ac_count: 1
+        },
+        "2025-11-01": {
+          ac_count: 1
+        },
+        "2025-11-20": {
+          ac_count: 1
+        },
+        "2025-11-29": {
+          ac_count: 1
+        },
+        "2025-12-08": {
+          ac_count: 1
+        },
+        "2025-12-11": {
+          ac_count: 1,
+          rating: null,
+          highest_rating: null
+        }
       },
       matiji: {
-        "2025-10-20": 2,
-        "2025-11-01": 2,
-        "2025-11-20": 2,
-        "2025-11-29": 2,
-        "2025-12-08": 2
+        "2025-10-20": {
+          ac_count: 2
+        },
+        "2025-11-01": {
+          ac_count: 2
+        },
+        "2025-11-20": {
+          ac_count: 2
+        },
+        "2025-11-29": {
+          ac_count: 2
+        },
+        "2025-12-08": {
+          ac_count: 2
+        },
+        "2025-12-11": {
+          ac_count: 2
+        }
       }
     },
     "叶童": {
       atcoder: {
-        "2025-11-29": 39,
-        "2025-12-08": 39
+        "2025-11-29": {
+          ac_count: 39
+        },
+        "2025-12-08": {
+          ac_count: 39
+        },
+        "2025-12-11": {
+          ac_count: 39,
+          rating: "480",
+          highest_rating: "480"
+        }
       },
       codeforces: {
-        "2025-11-29": 76,
-        "2025-12-08": 76
+        "2025-11-29": {
+          ac_count: 76
+        },
+        "2025-12-08": {
+          ac_count: 76
+        },
+        "2025-12-11": {
+          ac_count: 76,
+          rating: 1117,
+          highest_rating: 1117
+        }
       },
       matiji: {
-        "2025-11-29": 66,
-        "2025-12-08": 66
+        "2025-11-29": {
+          ac_count: 66
+        },
+        "2025-12-08": {
+          ac_count: 66
+        },
+        "2025-12-11": {
+          ac_count: 66,
+          rating: 1644
+        }
       }
     },
     "陈姿蓥": {
       atcoder: {
-        "2025-10-20": 68,
-        "2025-11-01": 68,
-        "2025-11-20": 73,
-        "2025-11-29": 73,
-        "2025-12-08": 73
+        "2025-10-20": {
+          ac_count: 68
+        },
+        "2025-11-01": {
+          ac_count: 68
+        },
+        "2025-11-20": {
+          ac_count: 73
+        },
+        "2025-11-29": {
+          ac_count: 73
+        },
+        "2025-12-08": {
+          ac_count: 73
+        },
+        "2025-12-11": {
+          ac_count: 73,
+          rating: "502",
+          highest_rating: "573"
+        }
       },
       codeforces: {
-        "2025-10-20": 202,
-        "2025-11-01": 202,
-        "2025-11-20": 202,
-        "2025-11-29": 202,
-        "2025-12-08": 202
+        "2025-10-20": {
+          ac_count: 202
+        },
+        "2025-11-01": {
+          ac_count: 202
+        },
+        "2025-11-20": {
+          ac_count: 202
+        },
+        "2025-11-29": {
+          ac_count: 202
+        },
+        "2025-12-08": {
+          ac_count: 202
+        },
+        "2025-12-11": {
+          ac_count: 202,
+          rating: 1291,
+          highest_rating: 1394
+        }
       },
       matiji: {
-        "2025-11-29": 8,
-        "2025-12-08": 8
+        "2025-11-29": {
+          ac_count: 8
+        },
+        "2025-12-08": {
+          ac_count: 8
+        },
+        "2025-12-11": {
+          ac_count: 8,
+          rating: 1610
+        }
       }
     },
     "杜光明": {
       atcoder: {
-        "2025-10-20": 9,
-        "2025-11-01": 12,
-        "2025-11-20": 29,
-        "2025-11-29": 32,
-        "2025-12-08": 35
+        "2025-10-20": {
+          ac_count: 9
+        },
+        "2025-11-01": {
+          ac_count: 12
+        },
+        "2025-11-20": {
+          ac_count: 29
+        },
+        "2025-11-29": {
+          ac_count: 32
+        },
+        "2025-12-08": {
+          ac_count: 35
+        },
+        "2025-12-11": {
+          ac_count: 37,
+          rating: "138",
+          highest_rating: "163"
+        }
       },
       codeforces: {
-        "2025-10-20": 22,
-        "2025-11-01": 29,
-        "2025-11-20": 46,
-        "2025-11-29": 49,
-        "2025-12-08": 56
+        "2025-10-20": {
+          ac_count: 22
+        },
+        "2025-11-01": {
+          ac_count: 29
+        },
+        "2025-11-20": {
+          ac_count: 46
+        },
+        "2025-11-29": {
+          ac_count: 49
+        },
+        "2025-12-08": {
+          ac_count: 56
+        },
+        "2025-12-11": {
+          ac_count: 61,
+          rating: 896,
+          highest_rating: 944
+        }
       },
       matiji: {
-        "2025-10-20": 11,
-        "2025-11-01": 18,
-        "2025-11-20": 25,
-        "2025-11-29": 25,
-        "2025-12-08": 25
+        "2025-10-20": {
+          ac_count: 11
+        },
+        "2025-11-01": {
+          ac_count: 18
+        },
+        "2025-11-20": {
+          ac_count: 25
+        },
+        "2025-11-29": {
+          ac_count: 25
+        },
+        "2025-12-08": {
+          ac_count: 25
+        },
+        "2025-12-11": {
+          ac_count: 25
+        }
       }
     },
     "李德浩": {
       atcoder: {
-        "2025-11-29": 6,
-        "2025-12-08": 6
+        "2025-11-29": {
+          ac_count: 6
+        },
+        "2025-12-08": {
+          ac_count: 6
+        },
+        "2025-12-11": {
+          ac_count: 6,
+          rating: "10",
+          highest_rating: "10"
+        }
       },
       codeforces: {
-        "2025-11-29": 8,
-        "2025-12-08": 8
+        "2025-11-29": {
+          ac_count: 8
+        },
+        "2025-12-08": {
+          ac_count: 8
+        },
+        "2025-12-11": {
+          ac_count: 8,
+          rating: 395,
+          highest_rating: 395
+        }
       },
       matiji: {
-        "2025-11-29": 12,
-        "2025-12-08": 12
+        "2025-11-29": {
+          ac_count: 12
+        },
+        "2025-12-08": {
+          ac_count: 12
+        },
+        "2025-12-11": {
+          ac_count: 12
+        }
       }
     },
     "万奕忻": {
       atcoder: {
-        "2025-10-20": 2,
-        "2025-11-01": 2,
-        "2025-11-20": 4,
-        "2025-11-29": 4,
-        "2025-12-08": 4
+        "2025-10-20": {
+          ac_count: 2
+        },
+        "2025-11-01": {
+          ac_count: 2
+        },
+        "2025-11-20": {
+          ac_count: 4
+        },
+        "2025-11-29": {
+          ac_count: 4
+        },
+        "2025-12-08": {
+          ac_count: 4
+        },
+        "2025-12-11": {
+          ac_count: 4,
+          rating: "3",
+          highest_rating: "3"
+        }
       },
       codeforces: {
-        "2025-10-20": 2,
-        "2025-11-01": 2,
-        "2025-11-20": 4,
-        "2025-11-29": 4,
-        "2025-12-08": 4
+        "2025-10-20": {
+          ac_count: 2
+        },
+        "2025-11-01": {
+          ac_count: 2
+        },
+        "2025-11-20": {
+          ac_count: 4
+        },
+        "2025-11-29": {
+          ac_count: 4
+        },
+        "2025-12-08": {
+          ac_count: 4
+        },
+        "2025-12-11": {
+          ac_count: 4,
+          rating: 347,
+          highest_rating: 347
+        }
       },
       matiji: {
-        "2025-10-20": 7,
-        "2025-11-01": 26,
-        "2025-11-20": 32,
-        "2025-11-29": 38,
-        "2025-12-08": 40
+        "2025-10-20": {
+          ac_count: 7
+        },
+        "2025-11-01": {
+          ac_count: 26
+        },
+        "2025-11-20": {
+          ac_count: 32
+        },
+        "2025-11-29": {
+          ac_count: 38
+        },
+        "2025-12-08": {
+          ac_count: 40
+        },
+        "2025-12-11": {
+          ac_count: 40
+        }
       }
     }
   };
-  const lastUpdate = "2025-12-08T13:42:24.384888";
+  const lastUpdate = "2025-12-11T15:08:26.143315";
   const allData = {
     users,
     data,
@@ -22507,6 +24347,7 @@ var __async = (__this, __arguments, generator) => {
       const currentPeriodFilter = ref("all");
       const currentUserFilter = ref("selected");
       const currentPlatformFilter = ref("all");
+      const currentDataFilter = ref("ac");
       const trendChartType = ref("line");
       const displayUsers = computed(() => {
         if (currentUserFilter.value === "all") {
@@ -22517,15 +24358,52 @@ var __async = (__this, __arguments, generator) => {
       const activeUsersCount = computed(() => displayUsers.value.length);
       const getPlatformTotal = (platform) => {
         if (platform === "all") {
-          return displayUsers.value.reduce(
-            (sum, user) => sum + (user.atcoder + user.codeforces + user.matiji),
-            0
-          );
+          return displayUsers.value.reduce((sum, user) => {
+            const userHistory = userData.value[user.name];
+            if (!userHistory) return sum;
+            const latestDate = getLatestDateFromUserHistory(userHistory);
+            if (!latestDate) return sum;
+            let userTotal = 0;
+            const atcoderData = userHistory.atcoder[latestDate];
+            if (atcoderData && typeof atcoderData === "object" && "ac_count" in atcoderData && atcoderData.ac_count !== void 0) {
+              userTotal += atcoderData.ac_count;
+            } else if (typeof atcoderData === "number") {
+              userTotal += atcoderData;
+            }
+            const codeforcesData = userHistory.codeforces[latestDate];
+            if (codeforcesData && typeof codeforcesData === "object" && "ac_count" in codeforcesData && codeforcesData.ac_count !== void 0) {
+              userTotal += codeforcesData.ac_count;
+            } else if (typeof codeforcesData === "number") {
+              userTotal += codeforcesData;
+            }
+            const matijiData = userHistory.matiji[latestDate];
+            if (matijiData && typeof matijiData === "object" && "ac_count" in matijiData && matijiData.ac_count !== void 0) {
+              userTotal += matijiData.ac_count;
+            } else if (typeof matijiData === "number") {
+              userTotal += matijiData;
+            }
+            return sum + userTotal;
+          }, 0);
+        } else {
+          return displayUsers.value.reduce((sum, user) => {
+            const userHistory = userData.value[user.name];
+            if (!userHistory) return sum;
+            const latestDate = getLatestDateFromUserHistory(userHistory);
+            if (!latestDate) return sum;
+            const platformData = userHistory[platform];
+            if (platformData && platformData[latestDate]) {
+              const platformDataValue = platformData[latestDate];
+              if (typeof platformDataValue === "object" && "ac_count" in platformDataValue && platformDataValue.ac_count !== void 0) {
+                return sum + platformDataValue.ac_count;
+              } else if (typeof platformDataValue === "number") {
+                return sum + platformDataValue;
+              } else {
+                return sum;
+              }
+            }
+            return sum;
+          }, 0);
         }
-        return displayUsers.value.reduce(
-          (sum, user) => sum + user[platform],
-          0
-        );
       };
       const totalCount = computed(() => {
         return getPlatformTotal(currentPlatformFilter.value);
@@ -22537,13 +24415,54 @@ var __async = (__this, __arguments, generator) => {
       const maxCount = computed(() => {
         if (displayUsers.value.length === 0) return 0;
         if (currentPlatformFilter.value === "all") {
-          return Math.max(...displayUsers.value.map(
-            (user) => user.atcoder + user.codeforces + user.matiji
-          ));
+          const userSums = displayUsers.value.map((user) => {
+            const userHistory = userData.value[user.name];
+            if (!userHistory) return 0;
+            const latestDate = getLatestDateFromUserHistory(userHistory);
+            if (!latestDate) return 0;
+            let userTotal = 0;
+            const atcoderData = userHistory.atcoder[latestDate];
+            if (atcoderData && typeof atcoderData === "object" && "ac_count" in atcoderData && atcoderData.ac_count !== void 0) {
+              userTotal += atcoderData.ac_count;
+            } else if (typeof atcoderData === "number") {
+              userTotal += atcoderData;
+            }
+            const codeforcesData = userHistory.codeforces[latestDate];
+            if (codeforcesData && typeof codeforcesData === "object" && "ac_count" in codeforcesData && codeforcesData.ac_count !== void 0) {
+              userTotal += codeforcesData.ac_count;
+            } else if (typeof codeforcesData === "number") {
+              userTotal += codeforcesData;
+            }
+            const matijiData = userHistory.matiji[latestDate];
+            if (matijiData && typeof matijiData === "object" && "ac_count" in matijiData && matijiData.ac_count !== void 0) {
+              userTotal += matijiData.ac_count;
+            } else if (typeof matijiData === "number") {
+              userTotal += matijiData;
+            }
+            return userTotal;
+          });
+          return Math.max(...userSums);
+        } else {
+          const platformValues = displayUsers.value.map((user) => {
+            const userHistory = userData.value[user.name];
+            if (!userHistory) return 0;
+            const latestDate = getLatestDateFromUserHistory(userHistory);
+            if (!latestDate) return 0;
+            const platformData = userHistory[currentPlatformFilter.value];
+            if (platformData && platformData[latestDate]) {
+              const platformDataValue = platformData[latestDate];
+              if (typeof platformDataValue === "object" && "ac_count" in platformDataValue && platformDataValue.ac_count !== void 0) {
+                return platformDataValue.ac_count;
+              } else if (typeof platformDataValue === "number") {
+                return platformDataValue;
+              } else {
+                return 0;
+              }
+            }
+            return 0;
+          });
+          return Math.max(...platformValues);
         }
-        return Math.max(...displayUsers.value.map(
-          (user) => user[currentPlatformFilter.value]
-        ));
       });
       const toggleUser = (userName) => {
         const index2 = selectedUsers.value.indexOf(userName);
@@ -22568,24 +24487,47 @@ var __async = (__this, __arguments, generator) => {
       const updatePlatformFilter = (value) => {
         currentPlatformFilter.value = value;
       };
+      const updateDataFilter = (value) => {
+        currentDataFilter.value = value;
+      };
       const loadData = () => __async(null, null, function* () {
         try {
           const data2 = allData;
           const data25 = { users: [], data: {} };
           const allDates = /* @__PURE__ */ new Set();
           for (let i = 0; i < data2.users.length; i++) {
-            const u = data2.users[i];
-            if (!u || u.grade !== 2025) continue;
-            data25.users.push(u);
-            const d = data2.data[u.name];
-            if (d) {
-              data25.data[u.name] = d;
-              Object.values(d).forEach((platformData) => {
-                Object.keys(platformData).forEach((date) => allDates.add(date));
-              });
+            const originalUser = data2.users[i];
+            if (!originalUser || originalUser.grade !== 2025 || !originalUser.name) continue;
+            const u = __spreadValues({}, originalUser);
+            const userHistory = data2.data[u.name];
+            if (userHistory) {
+              const latestDate = getLatestDateFromUserHistory(userHistory);
+              if (latestDate) {
+                const atcoderData = userHistory.atcoder[latestDate];
+                u.atcoder = atcoderData && typeof atcoderData === "object" && "ac_count" in atcoderData && atcoderData.ac_count !== void 0 ? atcoderData.ac_count : typeof atcoderData === "number" ? atcoderData : 0;
+                const codeforcesData = userHistory.codeforces[latestDate];
+                u.codeforces = codeforcesData && typeof codeforcesData === "object" && "ac_count" in codeforcesData && codeforcesData.ac_count !== void 0 ? codeforcesData.ac_count : typeof codeforcesData === "number" ? codeforcesData : 0;
+                const matijiData = userHistory.matiji[latestDate];
+                u.matiji = matijiData && typeof matijiData === "object" && "ac_count" in matijiData && matijiData.ac_count !== void 0 ? matijiData.ac_count : typeof matijiData === "number" ? matijiData : 0;
+              } else {
+                u.atcoder = 0;
+                u.codeforces = 0;
+                u.matiji = 0;
+              }
+            }
+            if (u.name) {
+              data25.users.push(u);
+              const d = data2.data[u.name];
+              if (d) {
+                data25.data[u.name] = d;
+                Object.values(d).forEach((platformData) => {
+                  Object.keys(platformData).forEach((date) => allDates.add(date));
+                });
+              }
             }
           }
           users2.value = data25.users;
+          console.log(data25.users);
           userData.value = data25.data;
           if (allDates.size > 0) {
             const sortedDates = Array.from(allDates).sort((a, b) => new Date(b).getTime() - new Date(a).getTime());
@@ -22604,6 +24546,15 @@ var __async = (__this, __arguments, generator) => {
           console.error("加载数据失败:", error);
         }
       });
+      const getLatestDateFromUserHistory = (userHistory) => {
+        const allDates = /* @__PURE__ */ new Set();
+        Object.values(userHistory).forEach((platformData) => {
+          Object.keys(platformData).forEach((date) => allDates.add(date));
+        });
+        if (allDates.size === 0) return null;
+        const sortedDates = Array.from(allDates).sort((a, b) => new Date(b).getTime() - new Date(a).getTime());
+        return sortedDates[0] || null;
+      };
       const refreshData = () => {
         loadData();
       };
@@ -22627,11 +24578,13 @@ var __async = (__this, __arguments, generator) => {
               "period-filter": currentPeriodFilter.value,
               "user-filter": currentUserFilter.value,
               "platform-filter": currentPlatformFilter.value,
+              "data-filter": currentDataFilter.value,
               "onUpdate:periodFilter": updatePeriodFilter,
               "onUpdate:userFilter": updateUserFilter,
               "onUpdate:platformFilter": updatePlatformFilter,
+              "onUpdate:dataFilter": updateDataFilter,
               onRefreshData: refreshData
-            }, null, 8, ["period-filter", "user-filter", "platform-filter"]),
+            }, null, 8, ["period-filter", "user-filter", "platform-filter", "data-filter"]),
             createVNode(StatsCards, {
               "active-users-count": activeUsersCount.value,
               "total-count": totalCount.value,
@@ -22642,9 +24595,10 @@ var __async = (__this, __arguments, generator) => {
               "display-users": displayUsers.value,
               "user-data": userData.value,
               "current-platform-filter": currentPlatformFilter.value,
+              "data-filter": currentDataFilter.value,
               "chart-type": trendChartType.value,
               onChartTypeChange: handleChartTypeChange
-            }, null, 8, ["display-users", "user-data", "current-platform-filter", "chart-type"]),
+            }, null, 8, ["display-users", "user-data", "current-platform-filter", "data-filter", "chart-type"]),
             createBaseVNode("footer", null, [
               createBaseVNode("p", null, [
                 _cache[0] || (_cache[0] = createTextVNode("数据每10天更新一次 | 最后更新: ", -1)),
@@ -22656,7 +24610,7 @@ var __async = (__this, __arguments, generator) => {
       };
     }
   });
-  const Statistics = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-f091ff2c"]]);
+  const Statistics = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-e03bb3e0"]]);
   const _hoisted_1 = { class: "app" };
   const _hoisted_2 = { class: "page" };
   const _sfc_main = /* @__PURE__ */ defineComponent({

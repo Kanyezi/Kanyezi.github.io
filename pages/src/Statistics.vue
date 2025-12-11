@@ -73,8 +73,15 @@ interface User {
   matiji: number;
 }
 
+// Platform data can be either a number (old format) or an object with ac_count and rating (new format)
+interface PlatformDataValue {
+  ac_count?: number;
+  rating?: string | number;
+  highest_rating?: string | number;
+}
+
 interface PlatformData {
-  [date: string]: number;
+  [date: string]: number | PlatformDataValue;
 }
 
 interface StudentData {
@@ -123,22 +130,25 @@ const getPlatformTotal = (platform: string) => {
       
       let userTotal = 0;
       // 计算该用户在各个平台的总题数
-      if (userHistory.atcoder[latestDate]?.ac_count !== undefined) {
-        userTotal += userHistory.atcoder[latestDate].ac_count;
-      } else if (typeof userHistory.atcoder[latestDate] === 'number') {
-        userTotal += userHistory.atcoder[latestDate];
+      const atcoderData = userHistory.atcoder[latestDate];
+      if (atcoderData && typeof atcoderData === 'object' && 'ac_count' in atcoderData && atcoderData.ac_count !== undefined) {
+        userTotal += atcoderData.ac_count;
+      } else if (typeof atcoderData === 'number') {
+        userTotal += atcoderData;
       }
       
-      if (userHistory.codeforces[latestDate]?.ac_count !== undefined) {
-        userTotal += userHistory.codeforces[latestDate].ac_count;
-      } else if (typeof userHistory.codeforces[latestDate] === 'number') {
-        userTotal += userHistory.codeforces[latestDate];
+      const codeforcesData = userHistory.codeforces[latestDate];
+      if (codeforcesData && typeof codeforcesData === 'object' && 'ac_count' in codeforcesData && codeforcesData.ac_count !== undefined) {
+        userTotal += codeforcesData.ac_count;
+      } else if (typeof codeforcesData === 'number') {
+        userTotal += codeforcesData;
       }
       
-      if (userHistory.matiji[latestDate]?.ac_count !== undefined) {
-        userTotal += userHistory.matiji[latestDate].ac_count;
-      } else if (typeof userHistory.matiji[latestDate] === 'number') {
-        userTotal += userHistory.matiji[latestDate];
+      const matijiData = userHistory.matiji[latestDate];
+      if (matijiData && typeof matijiData === 'object' && 'ac_count' in matijiData && matijiData.ac_count !== undefined) {
+        userTotal += matijiData.ac_count;
+      } else if (typeof matijiData === 'number') {
+        userTotal += matijiData;
       }
       
       return sum + userTotal;
@@ -156,11 +166,15 @@ const getPlatformTotal = (platform: string) => {
       const platformData = userHistory[platform as keyof StudentData];
       if (platformData && platformData[latestDate]) {
         // 新数据格式：{ ac_count: number }
-        if (typeof platformData[latestDate] === 'object' && platformData[latestDate].ac_count !== undefined) {
-          return sum + platformData[latestDate].ac_count;
-        } else {
+        const platformDataValue = platformData[latestDate];
+        if (typeof platformDataValue === 'object' && 'ac_count' in platformDataValue && platformDataValue.ac_count !== undefined) {
+          return sum + platformDataValue.ac_count;
+        } else if (typeof platformDataValue === 'number') {
           // 旧数据格式：直接是数值
-          return sum + platformData[latestDate];
+          return sum + platformDataValue;
+        } else {
+          // 如果是对象但没有ac_count，返回sum不变
+          return sum;
         }
       }
       return sum;
@@ -190,22 +204,25 @@ const maxCount = computed(() => {
       
       let userTotal = 0;
       // 计算该用户在各个平台的总题数
-      if (userHistory.atcoder[latestDate]?.ac_count !== undefined) {
-        userTotal += userHistory.atcoder[latestDate].ac_count;
-      } else if (typeof userHistory.atcoder[latestDate] === 'number') {
-        userTotal += userHistory.atcoder[latestDate];
+      const atcoderData = userHistory.atcoder[latestDate];
+      if (atcoderData && typeof atcoderData === 'object' && 'ac_count' in atcoderData && atcoderData.ac_count !== undefined) {
+        userTotal += atcoderData.ac_count;
+      } else if (typeof atcoderData === 'number') {
+        userTotal += atcoderData;
       }
       
-      if (userHistory.codeforces[latestDate]?.ac_count !== undefined) {
-        userTotal += userHistory.codeforces[latestDate].ac_count;
-      } else if (typeof userHistory.codeforces[latestDate] === 'number') {
-        userTotal += userHistory.codeforces[latestDate];
+      const codeforcesData = userHistory.codeforces[latestDate];
+      if (codeforcesData && typeof codeforcesData === 'object' && 'ac_count' in codeforcesData && codeforcesData.ac_count !== undefined) {
+        userTotal += codeforcesData.ac_count;
+      } else if (typeof codeforcesData === 'number') {
+        userTotal += codeforcesData;
       }
       
-      if (userHistory.matiji[latestDate]?.ac_count !== undefined) {
-        userTotal += userHistory.matiji[latestDate].ac_count;
-      } else if (typeof userHistory.matiji[latestDate] === 'number') {
-        userTotal += userHistory.matiji[latestDate];
+      const matijiData = userHistory.matiji[latestDate];
+      if (matijiData && typeof matijiData === 'object' && 'ac_count' in matijiData && matijiData.ac_count !== undefined) {
+        userTotal += matijiData.ac_count;
+      } else if (typeof matijiData === 'number') {
+        userTotal += matijiData;
       }
       
       return userTotal;
@@ -224,11 +241,15 @@ const maxCount = computed(() => {
       const platformData = userHistory[currentPlatformFilter.value as keyof StudentData];
       if (platformData && platformData[latestDate]) {
         // 新数据格式：{ ac_count: number }
-        if (typeof platformData[latestDate] === 'object' && platformData[latestDate].ac_count !== undefined) {
-          return platformData[latestDate].ac_count;
-        } else {
+        const platformDataValue = platformData[latestDate];
+        if (typeof platformDataValue === 'object' && 'ac_count' in platformDataValue && platformDataValue.ac_count !== undefined) {
+          return platformDataValue.ac_count;
+        } else if (typeof platformDataValue === 'number') {
           // 旧数据格式：直接是数值
-          return platformData[latestDate];
+          return platformDataValue;
+        } else {
+          // 如果是对象但没有ac_count，返回0
+          return 0;
         }
       }
       return 0;
@@ -278,14 +299,15 @@ const loadData = async () => {
   try {
     // 直接使用导入的数据
     // 筛选2025级数据
-    const data: AppData = allData as AppData;
+    const data: AppData = allData as unknown as AppData;
     const data25:AppData = {users:[],data:{}};
     // 收集所有日期以确定最后更新日期
     const allDates = new Set<string>();
     
     for(let i=0;i<data.users.length;i++){
-      const u = {...data.users[i]};   // 创建副本以修改数据
-      if (!u || u.grade !== 2025) continue;
+      const originalUser = data.users[i];
+      if (!originalUser || originalUser.grade !== 2025 || !originalUser.name) continue;
+      const u: User = {...originalUser};   // 创建副本以修改数据
 
       // 根据新数据格式，从嵌套对象中提取最新数值
       const userHistory = data.data[u.name];
@@ -293,9 +315,14 @@ const loadData = async () => {
         // 获取最新的日期
         const latestDate = getLatestDateFromUserHistory(userHistory);
         if (latestDate) {
-          u.atcoder = userHistory.atcoder[latestDate]?.ac_count || 0;
-          u.codeforces = userHistory.codeforces[latestDate]?.ac_count || 0;
-          u.matiji = userHistory.matiji[latestDate]?.ac_count || 0;
+          const atcoderData = userHistory.atcoder[latestDate];
+          u.atcoder = (atcoderData && typeof atcoderData === 'object' && 'ac_count' in atcoderData && atcoderData.ac_count !== undefined) ? atcoderData.ac_count : (typeof atcoderData === 'number' ? atcoderData : 0);
+          
+          const codeforcesData = userHistory.codeforces[latestDate];
+          u.codeforces = (codeforcesData && typeof codeforcesData === 'object' && 'ac_count' in codeforcesData && codeforcesData.ac_count !== undefined) ? codeforcesData.ac_count : (typeof codeforcesData === 'number' ? codeforcesData : 0);
+          
+          const matijiData = userHistory.matiji[latestDate];
+          u.matiji = (matijiData && typeof matijiData === 'object' && 'ac_count' in matijiData && matijiData.ac_count !== undefined) ? matijiData.ac_count : (typeof matijiData === 'number' ? matijiData : 0);
         } else {
           u.atcoder = 0;
           u.codeforces = 0;
@@ -303,14 +330,16 @@ const loadData = async () => {
         }
       }
 
-      data25.users.push(u);
-      const d = data.data[u.name];
-      if (d) {
-        data25.data[u.name] = d;   // 防止 data 里没有这个人
-        // 收集所有平台的日期
-        Object.values(d).forEach(platformData => {
-          Object.keys(platformData).forEach(date => allDates.add(date));
-        });
+      if (u.name) {
+        data25.users.push(u);
+        const d = data.data[u.name];
+        if (d) {
+          data25.data[u.name] = d;   // 防止 data 里没有这个人
+          // 收集所有平台的日期
+          Object.values(d).forEach(platformData => {
+            Object.keys(platformData).forEach(date => allDates.add(date));
+          });
+        }
       }
     }
     users.value = data25.users;
@@ -344,7 +373,7 @@ const getLatestDateFromUserHistory = (userHistory: StudentData): string | null =
   const allDates = new Set<string>();
   
   // 收集所有平台的日期
-  Object.values(userHistory).forEach(platformData => {
+  Object.values(userHistory as unknown as Record<string, Record<string, number | PlatformDataValue>>).forEach(platformData => {
     Object.keys(platformData).forEach(date => allDates.add(date));
   });
   
@@ -352,7 +381,7 @@ const getLatestDateFromUserHistory = (userHistory: StudentData): string | null =
   
   // 排序并返回最新的日期
   const sortedDates = Array.from(allDates).sort((a, b) => new Date(b).getTime() - new Date(a).getTime());
-  return sortedDates[0];
+  return sortedDates[0] || null;
 };
 
 const refreshData = () => {
