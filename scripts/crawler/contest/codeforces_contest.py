@@ -10,7 +10,7 @@ def codeforces_usrs(user_path):
             list[item['codeforces_id']]={"name":item['name']}
     return list
 def get_codeforces_contest_standing(contest):
-    url = f"https://codeforces.com/api/contest.standings?contestId={contest}"
+    url = f"https://codeforces.com/api/contest.standings?contestId={contest}&&showUnofficial=true"
 
     try:
         response = requests.get(url)
