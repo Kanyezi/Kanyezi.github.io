@@ -11,22 +11,22 @@ if __name__ == "__main__":
     # print(atcoder_contest.atcoder_usrs(user))
     #抓取比赛数据
     # atcoder_contest.save_json_to_file("abc434",ps.atcoder_path_contest)
-    # codeforces_contest.save_json_to_file("2126",ps.codeforces_path_contest)
+    codeforces_contest.save_json_to_file("2170",ps.codeforces_path_contest)
     # matiji_contest.save_json_to_file("296",ps.matiji_path_contest)
     # nowcoder_contest.save_json_to_file("122727",ps.nowcoder_path_contest)
 
     #读取比赛记录
-    type="atcoder"
-    contest="abc434"
-    users=atcoder_contest.atcoder_usrs(user)
-    format=[["Rank"],["UserName"]]
-    contest_path=ps.atcoder_path_contest
+    # type="atcoder"
+    # contest="abc434"
+    # users=atcoder_contest.atcoder_usrs(user)
+    # format=[["Rank"],["UserName"]]
+    # contest_path=ps.atcoder_path_contest
     
-    # type="codeforces"
-    # contest="2126"
-    # users=codeforces_contest.codeforces_usrs(user)
-    # format=[["rank"],["party", "members", 0, "handle"]]
-    # contest_path=ps.codeforces_path_contest
+    type="codeforces"
+    contest="2170"
+    users=codeforces_contest.codeforces_usrs(user)
+    format=[["rank"],["party", "members", 0, "handle"]]
+    contest_path=ps.codeforces_path_contest
 
     # type="matiji"
     # contest="296"
