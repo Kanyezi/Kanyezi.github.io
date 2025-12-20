@@ -10,7 +10,7 @@ if __name__ == "__main__":
 
     #抓取比赛数据
     # atcoder_contest.save_json_to_file("abc380",ps.atcoder_path_contest)
-    codeforces_contest.save_json_to_file("2176",ps.codeforces_path_contest)
+    # codeforces_contest.save_json_to_file("2176",ps.codeforces_path_contest)
     # matiji_contest.save_json_to_file("296",ps.matiji_path_contest)
     # nowcoder_contest.save_json_to_file("122727",ps.nowcoder_path_contest)
 
@@ -21,11 +21,11 @@ if __name__ == "__main__":
     # format=[["Rank"],["UserName"]]
     # contest_path=ps.atcoder_path_contest
     
-    type="codeforces"
-    contest="2176"
-    users=codeforces_contest.codeforces_usrs(user)
-    format=[["rank"],["party", "members", 0, "handle"]]
-    contest_path=ps.codeforces_path_contest
+    # type="codeforces"
+    # contest="2176"
+    # users=codeforces_contest.codeforces_usrs(user)
+    # format=[["rank"],["party", "members", 0, "handle"]]
+    # contest_path=ps.codeforces_path_contest
 
     # type="matiji"
     # contest="296"
@@ -41,11 +41,11 @@ if __name__ == "__main__":
     # format=[["ranking"],["userName"]]
     # contest_path=ps.nowcoder_path_contest
 
-    records=saixuan.saixuan_contest_records(type,contest,users,format,contest_path)
-    print(records)
+    # records=saixuan.saixuan_contest_records(type,contest,users,format,contest_path)
+    # print(records)
 
     # 抓取用户
-    # atcoderData.atcoder_gets(user,ps.atcoder_path_user)
+    atcoderData.atcoder_gets(user,ps.atcoder_path_user)
     # codeforcesData.codeforces_gets(user,ps.codeforces_path_user)
     # matijiData.matiji_gets(user,ps.matiji_path_user)
 
