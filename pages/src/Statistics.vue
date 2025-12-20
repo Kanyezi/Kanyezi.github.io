@@ -57,7 +57,7 @@ import UserListSidebar from './components/UserListSidebar.vue';
 import StatsCards from './components/StatsCards.vue';
 import TrendChart from './components/TrendChart.vue';
 import FilterControls from './components/FilterControls.vue';
-import allData from './all_data.json';
+import allData from '../public/all_data.json';
 console.log(allData)
 
 // 定义数据类型

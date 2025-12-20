@@ -11,7 +11,7 @@ class PathS:
             "codeforces_path": "./../.././data/codeforces/",
             "matiji_path": "./../.././data/matiji/",
             "nowcoder_path": "./../.././data/nowcoder/",
-            "out_path": "./../../..//pages/src/all_data.json"
+            "out_path": "./../../..//pages/public/all_data.json"
             
         }
         self.out_path = os.path.join(current_dir,data["out_path"])
