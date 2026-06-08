@@ -239,7 +239,7 @@
             },
             {
                 "acceptedCount": 5,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 16877000,
                 "ranking": 3,
@@ -631,11 +631,11 @@
             },
             {
                 "acceptedCount": 5,
-                "colorLevel": 4,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 22208000,
                 "ranking": 7,
-                "school": "中南林业科技大学涉外学院",
+                "school": "Victoria University of Wellington",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -729,7 +729,7 @@
             },
             {
                 "acceptedCount": 5,
-                "colorLevel": 5,
+                "colorLevel": 6,
                 "fullScore": 0.0,
                 "penaltyTime": 23342000,
                 "ranking": 8,
@@ -831,7 +831,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 25458000,
                 "ranking": 9,
-                "school": "j",
+                "school": "下北泽沼气研究所",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -1023,7 +1023,7 @@
             },
             {
                 "acceptedCount": 5,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 26805000,
                 "ranking": 11,
@@ -1317,7 +1317,7 @@
             },
             {
                 "acceptedCount": 4,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 9134000,
                 "ranking": 14,
@@ -1415,7 +1415,7 @@
             },
             {
                 "acceptedCount": 4,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 9968000,
                 "ranking": 15,
@@ -2003,7 +2003,7 @@
             },
             {
                 "acceptedCount": 4,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 12318000,
                 "ranking": 21,
@@ -2297,7 +2297,7 @@
             },
             {
                 "acceptedCount": 4,
-                "colorLevel": 4,
+                "colorLevel": 6,
                 "fullScore": 0.0,
                 "penaltyTime": 12971000,
                 "ranking": 24,
@@ -2493,7 +2493,7 @@
             },
             {
                 "acceptedCount": 4,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 13573000,
                 "ranking": 26,
@@ -2787,7 +2787,7 @@
             },
             {
                 "acceptedCount": 4,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 14101000,
                 "ranking": 29,
@@ -3179,7 +3179,7 @@
             },
             {
                 "acceptedCount": 4,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 14570000,
                 "ranking": 32,
@@ -3473,11 +3473,11 @@
             },
             {
                 "acceptedCount": 4,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 16451000,
                 "ranking": 36,
-                "school": "原神大学",
+                "school": "Carleton College",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -3669,11 +3669,11 @@
             },
             {
                 "acceptedCount": 4,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 16529000,
                 "ranking": 38,
-                "school": "广西科技大学",
+                "school": "北京大学",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -3767,11 +3767,11 @@
             },
             {
                 "acceptedCount": 4,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 16606000,
                 "ranking": 39,
-                "school": "FYNU阜阳师范大学",
+                "school": "FYNU",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -3865,7 +3865,7 @@
             },
             {
                 "acceptedCount": 4,
-                "colorLevel": 4,
+                "colorLevel": 6,
                 "fullScore": 0.0,
                 "penaltyTime": 16825000,
                 "ranking": 40,
@@ -4257,7 +4257,7 @@
             },
             {
                 "acceptedCount": 4,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 18813000,
                 "ranking": 44,
@@ -4453,7 +4453,7 @@
             },
             {
                 "acceptedCount": 4,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 20252000,
                 "ranking": 46,
@@ -4845,7 +4845,7 @@
             },
             {
                 "acceptedCount": 4,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 20893000,
                 "ranking": 50,
@@ -5139,7 +5139,7 @@
             },
             {
                 "acceptedCount": 4,
-                "colorLevel": 3,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 23458000,
                 "ranking": 53,
@@ -5433,11 +5433,11 @@
             },
             {
                 "acceptedCount": 4,
-                "colorLevel": 4,
+                "colorLevel": 6,
                 "fullScore": 0.0,
                 "penaltyTime": 26574000,
                 "ranking": 56,
-                "school": "城阳一中",
+                "school": "chennie fan club",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -5923,7 +5923,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 3857000,
                 "ranking": 61,
@@ -6217,7 +6217,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 4665000,
                 "ranking": 64,
@@ -6315,7 +6315,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 4842000,
                 "ranking": 65,
@@ -6413,7 +6413,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 4889000,
                 "ranking": 66,
@@ -6511,7 +6511,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 4993000,
                 "ranking": 67,
@@ -7001,7 +7001,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 5684000,
                 "ranking": 72,
@@ -7099,7 +7099,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 5904000,
                 "ranking": 73,
@@ -7299,7 +7299,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 5950000,
                 "ranking": 75,
-                "school": "广东江门幼儿师范高等专科学校",
+                "school": "五邑大学",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -7985,7 +7985,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 6736000,
                 "ranking": 82,
-                "school": "中北大学",
+                "school": "太原理工大学",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -8667,7 +8667,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 7860000,
                 "ranking": 89,
@@ -8961,7 +8961,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 8148000,
                 "ranking": 92,
@@ -9357,7 +9357,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 8504000,
                 "ranking": 96,
-                "school": "北海幼儿园",
+                "school": "三峡大学",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -9843,7 +9843,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 8883000,
                 "ranking": 101,
@@ -9941,7 +9941,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 8928000,
                 "ranking": 102,
@@ -10039,7 +10039,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 9102000,
                 "ranking": 103,
@@ -10137,7 +10137,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 9181000,
                 "ranking": 104,
@@ -10431,7 +10431,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 9623000,
                 "ranking": 107,
@@ -10823,7 +10823,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 9853000,
                 "ranking": 111,
@@ -10921,11 +10921,11 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 4,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 9919000,
                 "ranking": 112,
-                "school": "新疆大学",
+                "school": "奶龙大学",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -11019,11 +11019,11 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 4,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 9934000,
                 "ranking": 113,
-                "school": "江西农业大学",
+                "school": "井冈山大学",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -11117,7 +11117,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 10089000,
                 "ranking": 114,
@@ -11509,11 +11509,11 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 10466000,
                 "ranking": 118,
-                "school": "武汉工程大学",
+                "school": "国家纳米科学中心",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -11607,7 +11607,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 4,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 10486000,
                 "ranking": 119,
@@ -11705,7 +11705,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 10620000,
                 "ranking": 120,
@@ -11999,7 +11999,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 10762000,
                 "ranking": 123,
@@ -12489,7 +12489,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 11206000,
                 "ranking": 128,
@@ -12685,7 +12685,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 11225000,
                 "ranking": 130,
@@ -13861,11 +13861,11 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 12889000,
                 "ranking": 142,
-                "school": "鲁东大学",
+                "school": "门头沟学院",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -14057,7 +14057,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 13033000,
                 "ranking": 144,
@@ -14449,7 +14449,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 13210000,
                 "ranking": 148,
@@ -14645,7 +14645,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 13344000,
                 "ranking": 150,
@@ -14743,11 +14743,11 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 13386000,
                 "ranking": 151,
-                "school": "门头沟学院",
+                "school": "河北建筑工程学院",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -14841,11 +14841,11 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 13462000,
                 "ranking": 152,
-                "school": "南昌航空大学",
+                "school": "南昌大学",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -15041,7 +15041,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 13645000,
                 "ranking": 154,
-                "school": "江西师范大学",
+                "school": "北京有色金属研究院",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -15135,7 +15135,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 13652000,
                 "ranking": 155,
@@ -15527,7 +15527,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 14172000,
                 "ranking": 159,
@@ -15723,7 +15723,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 14184000,
                 "ranking": 161,
@@ -16017,7 +16017,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 14369000,
                 "ranking": 164,
@@ -16413,7 +16413,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 14571000,
                 "ranking": 168,
-                "school": "东华理工大学",
+                "school": "南昌航空大学",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -16605,7 +16605,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 4,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 15016000,
                 "ranking": 170,
@@ -16997,7 +16997,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 15232000,
                 "ranking": 174,
@@ -17193,7 +17193,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 15681000,
                 "ranking": 176,
@@ -17291,7 +17291,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 15852000,
                 "ranking": 177,
@@ -17389,7 +17389,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 15893000,
                 "ranking": 178,
@@ -18075,7 +18075,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 17113000,
                 "ranking": 185,
@@ -18467,11 +18467,11 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 17416000,
                 "ranking": 189,
-                "school": "中南大学",
+                "school": "兰溪市实验中学",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -18565,7 +18565,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 17450000,
                 "ranking": 190,
@@ -18663,7 +18663,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 17724000,
                 "ranking": 191,
@@ -18957,7 +18957,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 18353000,
                 "ranking": 194,
@@ -19545,7 +19545,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 19330000,
                 "ranking": 200,
@@ -19745,7 +19745,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 19475000,
                 "ranking": 202,
-                "school": "上海理工大学",
+                "school": "乐邦詹士训练营",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -19839,11 +19839,11 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 19524000,
                 "ranking": 203,
-                "school": "江西理工大学",
+                "school": "浙江大学",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -20035,11 +20035,11 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 19685000,
                 "ranking": 205,
-                "school": "阜阳师范大学",
+                "school": "台州小学",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -20329,7 +20329,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 20022000,
                 "ranking": 208,
@@ -20431,7 +20431,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 20121000,
                 "ranking": 209,
-                "school": "门头沟学院",
+                "school": "暨南大学",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -20525,7 +20525,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 20250000,
                 "ranking": 210,
@@ -20623,7 +20623,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 20492000,
                 "ranking": 211,
@@ -20721,7 +20721,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 20522000,
                 "ranking": 212,
@@ -20917,7 +20917,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 4,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 21007000,
                 "ranking": 214,
@@ -21309,7 +21309,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 22020000,
                 "ranking": 218,
@@ -21411,7 +21411,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 22217000,
                 "ranking": 219,
-                "school": "成都信息工程大学",
+                "school": "成都理工大学",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -21505,7 +21505,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 23180000,
                 "ranking": 220,
@@ -21701,11 +21701,11 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 2,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 24171000,
                 "ranking": 222,
-                "school": "dsgdas",
+                "school": "北京第二外国语学院成都附属中学",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -21799,7 +21799,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 24447000,
                 "ranking": 223,
@@ -21995,7 +21995,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 25991000,
                 "ranking": 225,
@@ -22093,7 +22093,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 26518000,
                 "ranking": 226,
@@ -22387,7 +22387,7 @@
             },
             {
                 "acceptedCount": 3,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 30039000,
                 "ranking": 229,
@@ -22587,7 +22587,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 41498000,
                 "ranking": 231,
-                "school": "私立bamani学园voltex学院",
+                "school": "沈阳化工大学",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -22779,7 +22779,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 4,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 1401000,
                 "ranking": 233,
@@ -22877,7 +22877,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 1670000,
                 "ranking": 234,
@@ -23269,7 +23269,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 2445000,
                 "ranking": 238,
@@ -23371,7 +23371,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 2580000,
                 "ranking": 239,
-                "school": "北京大学医学部",
+                "school": "湖南文理学院",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -23465,7 +23465,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 4,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 2617000,
                 "ranking": 240,
@@ -23857,7 +23857,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 3272000,
                 "ranking": 244,
@@ -24151,7 +24151,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 3551000,
                 "ranking": 247,
@@ -24445,7 +24445,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 3951000,
                 "ranking": 250,
@@ -24739,7 +24739,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 4423000,
                 "ranking": 253,
@@ -25131,7 +25131,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 4699000,
                 "ranking": 257,
@@ -25229,7 +25229,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 4705000,
                 "ranking": 258,
@@ -25425,7 +25425,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 4740000,
                 "ranking": 260,
@@ -25523,7 +25523,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 4995000,
                 "ranking": 261,
@@ -25817,7 +25817,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 4,
+                "colorLevel": 5,
                 "fullScore": 0.0,
                 "penaltyTime": 5255000,
                 "ranking": 264,
@@ -26013,7 +26013,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 5559000,
                 "ranking": 266,
@@ -26115,7 +26115,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 5663000,
                 "ranking": 267,
-                "school": "重庆交通大学",
+                "school": "笑看繁花",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -26405,7 +26405,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 5977000,
                 "ranking": 270,
@@ -26997,7 +26997,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 6489000,
                 "ranking": 276,
-                "school": "四川师范大学",
+                "school": "门头沟学院",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -27189,7 +27189,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 6690000,
                 "ranking": 278,
@@ -27287,7 +27287,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 6738000,
                 "ranking": 279,
@@ -27385,7 +27385,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 6808000,
                 "ranking": 280,
@@ -27581,7 +27581,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 6931000,
                 "ranking": 282,
@@ -27777,7 +27777,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 7064000,
                 "ranking": 284,
@@ -27875,7 +27875,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 7076000,
                 "ranking": 285,
@@ -28071,7 +28071,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 7115000,
                 "ranking": 287,
@@ -28169,7 +28169,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 7137000,
                 "ranking": 288,
@@ -28365,7 +28365,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 7311000,
                 "ranking": 290,
@@ -28463,7 +28463,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 7404000,
                 "ranking": 291,
@@ -28953,7 +28953,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 7681000,
                 "ranking": 296,
@@ -29639,7 +29639,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 8193000,
                 "ranking": 303,
@@ -29835,7 +29835,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 8402000,
                 "ranking": 305,
@@ -29933,11 +29933,11 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 8443000,
                 "ranking": 306,
-                "school": "煤炭科学研究总院",
+                "school": "河北科技学院",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -30031,11 +30031,11 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 8608000,
                 "ranking": 307,
-                "school": "苏州大学",
+                "school": "清华大学",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -30129,7 +30129,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 8630000,
                 "ranking": 308,
@@ -30231,7 +30231,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 8643000,
                 "ranking": 309,
-                "school": "突突突",
+                "school": "uihiuhfsiu",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -30521,7 +30521,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 8777000,
                 "ranking": 312,
@@ -30913,7 +30913,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 9032000,
                 "ranking": 316,
@@ -31207,7 +31207,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 9198000,
                 "ranking": 319,
@@ -31991,7 +31991,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 9768000,
                 "ranking": 327,
@@ -32971,7 +32971,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 10972000,
                 "ranking": 337,
@@ -33069,7 +33069,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 11007000,
                 "ranking": 338,
@@ -33167,7 +33167,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 11063000,
                 "ranking": 339,
@@ -33265,7 +33265,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 11144000,
                 "ranking": 340,
@@ -33363,7 +33363,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 11160000,
                 "ranking": 341,
@@ -33461,7 +33461,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 11247000,
                 "ranking": 342,
@@ -33657,7 +33657,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 11405000,
                 "ranking": 344,
@@ -33951,7 +33951,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 11633000,
                 "ranking": 347,
@@ -34147,7 +34147,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 11696000,
                 "ranking": 349,
@@ -34637,11 +34637,11 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 12086000,
                 "ranking": 354,
-                "school": "1",
+                "school": "湖南涉外经济学院",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -34935,7 +34935,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 12163000,
                 "ranking": 357,
-                "school": "南昌航空大学",
+                "school": "门头沟学院",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -35029,7 +35029,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 12268000,
                 "ranking": 358,
@@ -35225,7 +35225,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 12320000,
                 "ranking": 360,
@@ -35323,7 +35323,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 12513000,
                 "ranking": 361,
@@ -35421,7 +35421,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 12541000,
                 "ranking": 362,
@@ -35813,7 +35813,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 12703000,
                 "ranking": 366,
@@ -36009,7 +36009,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 12897000,
                 "ranking": 368,
@@ -36107,7 +36107,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 13118000,
                 "ranking": 369,
@@ -36205,7 +36205,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 13136000,
                 "ranking": 370,
@@ -36303,7 +36303,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 13190000,
                 "ranking": 371,
@@ -36695,7 +36695,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 13302000,
                 "ranking": 375,
@@ -36793,7 +36793,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 13322000,
                 "ranking": 376,
@@ -36891,7 +36891,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 13381000,
                 "ranking": 377,
@@ -37087,7 +37087,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 13535000,
                 "ranking": 379,
@@ -37185,7 +37185,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 13558000,
                 "ranking": 380,
@@ -37283,7 +37283,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 13673000,
                 "ranking": 381,
@@ -37479,7 +37479,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 13928000,
                 "ranking": 383,
@@ -37675,7 +37675,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 14073000,
                 "ranking": 385,
@@ -37871,7 +37871,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 14222000,
                 "ranking": 387,
@@ -38169,7 +38169,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 14584000,
                 "ranking": 390,
-                "school": "五邑大学",
+                "school": "佛山市南海技师学院",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -38263,7 +38263,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 14597000,
                 "ranking": 391,
@@ -38361,7 +38361,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 14702000,
                 "ranking": 392,
@@ -38949,7 +38949,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 15596000,
                 "ranking": 398,
@@ -39047,7 +39047,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 15624000,
                 "ranking": 399,
@@ -39145,11 +39145,11 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 1,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 15643000,
                 "ranking": 400,
-                "school": "四川城市职业学院",
+                "school": "电子科技大学成都学院",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -39341,7 +39341,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 16098000,
                 "ranking": 402,
@@ -39537,7 +39537,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 16367000,
                 "ranking": 404,
@@ -39635,7 +39635,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 16416000,
                 "ranking": 405,
@@ -39733,7 +39733,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 16431000,
                 "ranking": 406,
@@ -39835,7 +39835,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 16683000,
                 "ranking": 407,
-                "school": "江门职业技术学院",
+                "school": "广州商学院",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -39933,7 +39933,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 16764000,
                 "ranking": 408,
-                "school": "小学",
+                "school": "中国海洋小学",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -40027,7 +40027,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 16814000,
                 "ranking": 409,
@@ -40913,7 +40913,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 17983000,
                 "ranking": 418,
-                "school": "玄奘大学",
+                "school": "中央戏剧学院",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -41105,7 +41105,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 18093000,
                 "ranking": 420,
@@ -41497,7 +41497,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 18456000,
                 "ranking": 424,
@@ -41595,7 +41595,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 18599000,
                 "ranking": 425,
@@ -41693,11 +41693,11 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 18683000,
                 "ranking": 426,
-                "school": "安阳工学院",
+                "school": "应急管理部国家自然灾害防治研究院",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -41987,7 +41987,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 18990000,
                 "ranking": 429,
@@ -42285,7 +42285,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 19140000,
                 "ranking": 432,
-                "school": "菜鸡小学",
+                "school": "人类",
                 "scoreList": [
                     {
                         "accepted": false,
@@ -42575,7 +42575,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 19577000,
                 "ranking": 435,
@@ -42673,7 +42673,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 19594000,
                 "ranking": 436,
@@ -42771,7 +42771,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 19867000,
                 "ranking": 437,
@@ -43261,7 +43261,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 20758000,
                 "ranking": 442,
@@ -43359,7 +43359,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 21026000,
                 "ranking": 443,
@@ -43751,7 +43751,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 23538000,
                 "ranking": 447,
@@ -43947,7 +43947,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 23829000,
                 "ranking": 449,
@@ -44143,7 +44143,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 24540000,
                 "ranking": 451,
@@ -44241,7 +44241,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 24633000,
                 "ranking": 452,
@@ -44437,7 +44437,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 27694000,
                 "ranking": 454,
@@ -44535,7 +44535,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 27941000,
                 "ranking": 455,
@@ -44633,11 +44633,11 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 28509000,
                 "ranking": 456,
-                "school": "清华大学",
+                "school": "郑州商学院",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -44731,7 +44731,7 @@
             },
             {
                 "acceptedCount": 2,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 30047000,
                 "ranking": 457,
@@ -44829,7 +44829,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 581000,
                 "ranking": 458,
@@ -45417,7 +45417,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 1085000,
                 "ranking": 464,
@@ -45613,7 +45613,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 1186000,
                 "ranking": 466,
@@ -45809,7 +45809,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 1346000,
                 "ranking": 468,
@@ -46103,7 +46103,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 1404000,
                 "ranking": 471,
@@ -46397,7 +46397,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 1743000,
                 "ranking": 474,
@@ -46495,7 +46495,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 1760000,
                 "ranking": 475,
@@ -46789,7 +46789,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 1883000,
                 "ranking": 478,
@@ -46887,11 +46887,11 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 1939000,
                 "ranking": 479,
-                "school": "青岛理工大学",
+                "school": "门头沟学院",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -46985,7 +46985,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 2066000,
                 "ranking": 480,
@@ -47181,7 +47181,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 2209000,
                 "ranking": 482,
@@ -47475,7 +47475,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 2306000,
                 "ranking": 485,
@@ -47867,7 +47867,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 2448000,
                 "ranking": 489,
@@ -47965,7 +47965,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 2465000,
                 "ranking": 490,
@@ -48067,7 +48067,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 2465000,
                 "ranking": 490,
-                "school": "南阳理工学院",
+                "school": "Nanyang Technological University",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -48259,7 +48259,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 2696000,
                 "ranking": 493,
@@ -48357,7 +48357,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 2716000,
                 "ranking": 494,
@@ -48651,7 +48651,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 2787000,
                 "ranking": 497,
@@ -48847,7 +48847,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 2916000,
                 "ranking": 499,
@@ -48945,7 +48945,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 2935000,
                 "ranking": 500,
@@ -49533,7 +49533,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 3311000,
                 "ranking": 506,
@@ -49827,7 +49827,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 3494000,
                 "ranking": 509,
@@ -50023,7 +50023,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 3539000,
                 "ranking": 511,
@@ -50513,7 +50513,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 3736000,
                 "ranking": 516,
@@ -50611,7 +50611,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 3810000,
                 "ranking": 517,
@@ -50905,7 +50905,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 3857000,
                 "ranking": 520,
@@ -51395,7 +51395,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 3988000,
                 "ranking": 525,
@@ -51493,7 +51493,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 4079000,
                 "ranking": 526,
@@ -51983,7 +51983,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 4252000,
                 "ranking": 531,
@@ -52179,7 +52179,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 4357000,
                 "ranking": 533,
@@ -52277,7 +52277,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 4430000,
                 "ranking": 534,
@@ -52473,7 +52473,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 4506000,
                 "ranking": 536,
@@ -52669,7 +52669,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 4555000,
                 "ranking": 538,
@@ -52767,7 +52767,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 4593000,
                 "ranking": 539,
@@ -53159,7 +53159,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 4717000,
                 "ranking": 543,
@@ -53355,7 +53355,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 4740000,
                 "ranking": 545,
@@ -53453,7 +53453,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 4807000,
                 "ranking": 546,
@@ -54139,7 +54139,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 5232000,
                 "ranking": 553,
@@ -54335,7 +54335,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 5291000,
                 "ranking": 555,
@@ -55021,7 +55021,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 5943000,
                 "ranking": 562,
@@ -55217,7 +55217,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 6105000,
                 "ranking": 564,
@@ -55319,7 +55319,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 6148000,
                 "ranking": 565,
-                "school": "中国计量大学",
+                "school": "xx",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -55609,7 +55609,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 6197000,
                 "ranking": 568,
@@ -55707,7 +55707,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 6223000,
                 "ranking": 569,
@@ -55903,7 +55903,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 6339000,
                 "ranking": 571,
@@ -56099,7 +56099,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 6572000,
                 "ranking": 573,
@@ -56491,7 +56491,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 6815000,
                 "ranking": 577,
@@ -56589,7 +56589,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 6819000,
                 "ranking": 578,
@@ -56687,7 +56687,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 6848000,
                 "ranking": 579,
@@ -57181,7 +57181,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 7080000,
                 "ranking": 584,
-                "school": "河北经贸大学",
+                "school": "中国政法大学",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -57275,7 +57275,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 7144000,
                 "ranking": 585,
@@ -57667,7 +57667,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 7240000,
                 "ranking": 589,
@@ -58063,7 +58063,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 7387000,
                 "ranking": 592,
-                "school": "清华大学附属中学",
+                "school": "浙江工商大学",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -58455,7 +58455,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 7650000,
                 "ranking": 597,
-                "school": "浙江省温岭中学",
+                "school": "浙江工商大学",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -58843,7 +58843,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 8021000,
                 "ranking": 601,
@@ -58941,7 +58941,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 8176000,
                 "ranking": 602,
@@ -60117,7 +60117,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 8635000,
                 "ranking": 614,
@@ -60607,7 +60607,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 8734000,
                 "ranking": 618,
@@ -60803,7 +60803,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 3,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 8829000,
                 "ranking": 621,
@@ -61003,7 +61003,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 8885000,
                 "ranking": 623,
-                "school": "圣芙蕾雅学院",
+                "school": "南京工程学院",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -61097,7 +61097,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 8957000,
                 "ranking": 624,
@@ -61293,7 +61293,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 9130000,
                 "ranking": 626,
@@ -61391,7 +61391,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 9146000,
                 "ranking": 627,
@@ -61489,7 +61489,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 9728000,
                 "ranking": 628,
@@ -61587,7 +61587,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 9806000,
                 "ranking": 629,
@@ -61979,7 +61979,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 10445000,
                 "ranking": 633,
@@ -62371,7 +62371,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 10935000,
                 "ranking": 637,
@@ -62567,7 +62567,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 11341000,
                 "ranking": 639,
@@ -62665,7 +62665,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 11342000,
                 "ranking": 640,
@@ -63159,7 +63159,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 12114000,
                 "ranking": 645,
-                "school": "山东大学（洛天依音声合成研究院）",
+                "school": "第五音乐学院附属中学",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -63257,7 +63257,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 12212000,
                 "ranking": 646,
-                "school": "阜阳师范大学",
+                "school": "阜阳师范太学",
                 "scoreList": [
                     {
                         "accepted": true,
@@ -63351,7 +63351,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 12442000,
                 "ranking": 647,
@@ -63841,7 +63841,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 13327000,
                 "ranking": 652,
@@ -64037,7 +64037,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 13768000,
                 "ranking": 654,
@@ -64135,7 +64135,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 14062000,
                 "ranking": 655,
@@ -64331,7 +64331,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 14628000,
                 "ranking": 657,
@@ -65311,7 +65311,7 @@
             },
             {
                 "acceptedCount": 1,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 21739000,
                 "ranking": 667,
@@ -66193,7 +66193,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -66389,7 +66389,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -66683,7 +66683,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -66977,11 +66977,11 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
-                "school": "无锡学院",
+                "school": "河南省无锡市无锡小学",
                 "scoreList": [
                     {
                         "accepted": false,
@@ -68055,7 +68055,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -69137,7 +69137,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
-                "school": "湖南科技学院",
+                "school": "湖南三一工业职业技术学院",
                 "scoreList": [
                     {
                         "accepted": false,
@@ -69231,7 +69231,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -69427,7 +69427,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -69623,7 +69623,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -69819,7 +69819,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -70603,7 +70603,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -70701,7 +70701,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -70897,7 +70897,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -72171,7 +72171,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -72955,7 +72955,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -73347,7 +73347,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -73543,7 +73543,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -73935,7 +73935,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -74429,7 +74429,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
-                "school": "浙江大学",
+                "school": "山东管理学院",
                 "scoreList": [
                     {
                         "accepted": false,
@@ -74719,7 +74719,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -74915,7 +74915,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -75013,7 +75013,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -75503,7 +75503,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -76483,7 +76483,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -76679,7 +76679,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -76781,7 +76781,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
-                "school": "宁夏理工学院",
+                "school": "蒟蒻小学",
                 "scoreList": [
                     {
                         "accepted": false,
@@ -77071,7 +77071,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -77169,7 +77169,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -78541,7 +78541,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -78639,7 +78639,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -79031,7 +79031,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -79619,7 +79619,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -79721,7 +79721,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
-                "school": "阜阳师范大学",
+                "school": "北京市第一七一中学",
                 "scoreList": [
                     {
                         "accepted": false,
@@ -80991,11 +80991,11 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
-                "school": "阜阳师范大学",
+                "school": "怀远县第一中学",
                 "scoreList": [
                     {
                         "accepted": false,
@@ -81579,11 +81579,11 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
-                "school": "泉州信息工程学院",
+                "school": "河北科技学院",
                 "scoreList": [
                     {
                         "accepted": false,
@@ -81775,7 +81775,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -81873,7 +81873,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -82167,7 +82167,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -83343,7 +83343,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -83833,7 +83833,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -84029,7 +84029,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -84229,7 +84229,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
-                "school": "重庆第二师范学院",
+                "school": "蚌埠坦克学院",
                 "scoreList": [
                     {
                         "accepted": false,
@@ -84519,7 +84519,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -84617,7 +84617,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -84813,7 +84813,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -85205,7 +85205,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -85499,7 +85499,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -85989,7 +85989,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -86283,11 +86283,11 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
-                "school": "东华大学",
+                "school": "月之森女子学院",
                 "scoreList": [
                     {
                         "accepted": false,
@@ -86479,11 +86479,11 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
-                "school": "西南科技大学",
+                "school": "成都七中万达学校",
                 "scoreList": [
                     {
                         "accepted": false,
@@ -86577,7 +86577,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -86773,7 +86773,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -86871,7 +86871,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -86969,7 +86969,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -87067,7 +87067,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 4,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -87165,7 +87165,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -87361,7 +87361,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -87557,7 +87557,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -87655,7 +87655,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -88831,7 +88831,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 4,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -88929,7 +88929,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -89321,7 +89321,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -89419,7 +89419,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 3,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -89615,7 +89615,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 1,
+                "colorLevel": 2,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -89713,7 +89713,7 @@
             },
             {
                 "acceptedCount": 0,
-                "colorLevel": 2,
+                "colorLevel": 1,
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
@@ -90305,7 +90305,7 @@
                 "fullScore": 0.0,
                 "penaltyTime": 0,
                 "ranking": 672,
-                "school": "广州大学",
+                "school": "广东工业大学",
                 "scoreList": [
                     {
                         "accepted": false,

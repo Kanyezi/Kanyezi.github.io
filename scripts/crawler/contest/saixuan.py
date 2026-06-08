@@ -12,15 +12,23 @@ except ImportError:
 def read_contest_records(type,contest,contest_path):
     if(type=="atcoder"):
         data=atcoder_contest.read_json(contest,contest_path)
+        if data is None:
+            return None
         return data['StandingsData']
     elif(type=="codeforces"):
         data=codeforces_contest.read_json(contest,contest_path)
+        if data is None:
+            return None
         return data['result']['rows']
     elif(type=="matiji"):
         data=matiji_contest.read_json(contest,contest_path)
+        if data is None:
+            return None
         return data['data']['datas']
     elif(type=="nowcoder"):
         data=nowcoder_contest.read_json(contest,contest_path)
+        if data is None:
+            return None
         return data['data']['rankData']
     return None
 def check(type,record,users):
@@ -43,7 +51,10 @@ def check(type,record,users):
 def saixuan_contest_records(type,contest,users,paths,contest_path):
     result = []
     data=read_contest_records(type,contest,contest_path)
-    
+    if data is None:
+        print(f"无法读取{type}比赛{contest}的数据")
+        return result
+
     for record in data:
         # print(record["userId"])
         if check(type,record,users):
